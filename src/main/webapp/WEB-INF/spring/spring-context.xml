@@ -42,8 +42,6 @@
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="packagesToScan" value="com.aboutdata.domain"/>
-        <property name="persistenceXmlLocation" value="classpath*:/persistence.xml" />
-        <property name="persistenceUnitName" value="persistenceUnit" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <property name="showSql" value="false" />
@@ -52,7 +50,8 @@
         </property>
         <property name="jpaProperties">
             <props>
-                <prop key="javax.persistence.validation.mode">none</prop>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.use_sql_comments">false</prop>

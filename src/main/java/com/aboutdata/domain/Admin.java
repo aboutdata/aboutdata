@@ -313,4 +313,10 @@ public class Admin extends BaseEntity {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+
+    @Override
+    public String toString() {
+        return "Admin{" + "username=" + username + ", password=" + password + ", email=" + email + ", name=" + name + ", department=" + department + ", isEnabled=" + isEnabled + ", isLocked=" + isLocked + ", loginFailureCount=" + loginFailureCount + ", lockedDate=" + lockedDate + ", loginDate=" + loginDate + ", loginIp=" + loginIp +'}';
+    }
+        
 }
