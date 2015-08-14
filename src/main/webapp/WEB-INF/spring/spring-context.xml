@@ -18,7 +18,8 @@
         http://www.springframework.org/schema/cache/spring-cache.xsd
         http://www.springmodules.org/schema/oscache 
         http://www.springmodules.org/schema/cache/springmodules-oscache.xsd">
-
+    <context:annotation-config/>
+    
     <context:property-placeholder location="classpath*:/jdbc.properties" ignore-resource-not-found="true" ignore-unresolvable="true" />
 
     <context:component-scan base-package="com.aboutdata">
@@ -40,6 +41,7 @@
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="com.aboutdata.domain"/>
         <property name="persistenceXmlLocation" value="classpath*:/persistence.xml" />
         <property name="persistenceUnitName" value="persistenceUnit" />
         <property name="jpaVendorAdapter">
@@ -50,14 +52,6 @@
         </property>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
-                <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-                <prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
-                <prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
-                <prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
-                <prop key="hibernate.jdbc.fetch_size">${hibernate.jdbc.fetch_size}</prop>
-                <prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
-                <prop key="hibernate.connection.isolation">2</prop>
                 <prop key="javax.persistence.validation.mode">none</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">true</prop>
