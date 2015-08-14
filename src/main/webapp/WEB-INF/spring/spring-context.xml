@@ -59,8 +59,6 @@
                 <prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
                 <prop key="hibernate.connection.isolation">2</prop>
                 <prop key="javax.persistence.validation.mode">none</prop>
-                <prop key="hibernate.search.default.directory_provider">org.hibernate.search.store.FSDirectoryProvider</prop>
-                <prop key="hibernate.search.default.indexBase">${java.io.tmpdir}/${system.project_name}/index</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.use_sql_comments">false</prop>
