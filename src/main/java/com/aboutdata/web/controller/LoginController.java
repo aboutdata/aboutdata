@@ -5,21 +5,13 @@ import com.aboutdata.security.shiro.Principal;
 import com.aboutdata.service.CaptchaService;
 import com.aboutdata.service.MemberService;
 import java.util.Date;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.time.DateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -102,13 +94,13 @@ public class LoginController {
             model.addAttribute("errorMessage", "用户名不存在");
             return "/login";
         }
-        
-        System.out.println("member.getIsEnabled() "+member.getIsEnabled());
+
+        System.out.println("member.getIsEnabled() " + member.getIsEnabled());
 //        if (!member.getIsEnabled()) {
 //            model.addAttribute("errorMessage", "用户名限制登录");
 //            return "/login";
 //        }
-            System.out.println("DigestUtils.md5Hex(password)"+DigestUtils.md5Hex("123456"));
+        System.out.println("DigestUtils.md5Hex(password)" + DigestUtils.md5Hex("123456"));
         if (!DigestUtils.md5Hex(password).equals(member.getPassword())) {
             int loginFailureCount = member.getLoginFailureCount() + 1;
             if (loginFailureCount >= 5) {
