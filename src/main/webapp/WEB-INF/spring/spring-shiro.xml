@@ -19,7 +19,7 @@
     <context:annotation-config />
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager" />
-        <property name="loginUrl" value="/login"/> 
+        <property name="loginUrl" value="/admin/login"/> 
         <property name="successUrl" value="/admin/dashboard"/> 
         <property name="filterChainDefinitions">
             <value>

@@ -30,6 +30,20 @@
     <!-- 对静态资源文件的访问 -->
     <mvc:default-servlet-handler />
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+    
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/member/**" />
+            <bean id="memberInterceptor" class="com.aboutdata.web.interceptor.MemberInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <bean id="openSessionInViewInterceptor" class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">
+                <property name="entityManagerFactory" ref="entityManagerFactory" />
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding">

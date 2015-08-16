@@ -1,6 +1,7 @@
 
 import com.aboutdata.dao.AdminDao;
 import com.aboutdata.domain.Admin;
+import com.aboutdata.security.utils.SecurityUtils;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -46,11 +47,14 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
      * 测试 查询所有管理员
      */
     @Test
-//    @Ignore
+    @Ignore
     public void findByIdTest() {
         try {
-            Admin admin = adminDao.find(1l);
-            logger.info("amdin {}",admin);
+            String salt = SecurityUtils.getSalt();
+            logger.info("salt : {}", salt);
+            String passphrase = SecurityUtils.getPassphrase(salt, "admin");
+
+            logger.info("amdin passphrase {}", passphrase);
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -1,11 +1,13 @@
 package com.aboutdata.security.shiro;
 
 import com.aboutdata.domain.Admin;
+import com.aboutdata.security.utils.SecurityUtils;
 import com.aboutdata.service.AdminService;
 import java.util.Date;
 import javax.annotation.Resource;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -46,13 +48,15 @@ public class AuthenticationRealm extends AuthorizingRealm {
             }
             //密码验证
             logger.info("not match");
-//            if (!DigestUtils.md5Hex(password).equals(admin.getPassword())) {
-//                logger.info("密码不匹配");
-//                throw new IncorrectCredentialsException();
-//            }
+            if (!SecurityUtils.matchPassphrase(admin.getPassword(), admin.getSalt(), password)) {
+                logger.info("password not match");
+                throw new IncorrectCredentialsException();
+            }
+            
             admin.setLoginDate(new Date());
             admin.setLoginFailureCount(0);
 //            adminService.update(admin);
+            
             return new SimpleAuthenticationInfo(new Principal(admin.getId(), username), password, getName());
         }
         throw new UnknownAccountException();

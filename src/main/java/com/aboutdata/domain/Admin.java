@@ -34,6 +34,9 @@ public class Admin extends BaseEntity {
 
 	/** 密码 */
 	private String password;
+        
+        /** 密码salt */
+        private String salt;
 
 	/** E-mail */
 	private String email;
@@ -95,8 +98,8 @@ public class Admin extends BaseEntity {
 	 */
 	@NotEmpty(groups = Save.class)
 	@Pattern(regexp = "^[^\\s&\"<>]+$")
-	@Length(min = 4, max = 20)
-	@Column(nullable = false)
+	@Length(min = 4, max = 32)
+	@Column(nullable = false,length = 32)
 	public String getPassword() {
 		return password;
 	}
@@ -110,6 +113,19 @@ public class Admin extends BaseEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+        
+       
+	@NotEmpty(groups = Save.class)
+	@Column(nullable = false,length = 64)
+        public String getSalt() {
+            return salt;
+        }
+
+        
+        public void setSalt(String salt) {
+            this.salt = salt;
+        }
+
 
 	/**
 	 * 获取E-mail
