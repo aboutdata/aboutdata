@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aboutdata.dao;
+package com.aboutdata.service;
 
-import com.aboutdata.domain.ImageInfo;
+import com.aboutdata.domain.Photos;
 
 /**
  *
  * @author youyou
  */
-public interface ImageInfoDao extends BaseDao<ImageInfo, Long> {
-
+public interface PhotosService{
+    
 }

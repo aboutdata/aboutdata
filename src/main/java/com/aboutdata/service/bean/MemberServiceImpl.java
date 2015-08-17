@@ -26,107 +26,86 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
  * Service - 会员
- * 
- * 
- * 
+ *
+ *
+ *
  */
 @Service("memberServiceImpl")
-public class MemberServiceImpl extends BaseServiceImpl<Member, Long> implements MemberService {
+public class MemberServiceImpl implements MemberService {
 
-	@Resource(name = "memberDaoImpl")
-	private MemberDao memberDao;
+    @Resource
+    private MemberDao memberDao;
 
-	@Resource(name = "memberDaoImpl")
-	public void setBaseDao(MemberDao memberDao) {
-		super.setBaseDao(memberDao);
-	}
+    @Transactional(readOnly = true)
+    public boolean usernameExists(String username) {
+        return memberDao.usernameExists(username)>0;
+    }
 
-	@Transactional(readOnly = true)
-	public boolean usernameExists(String username) {
-		return memberDao.usernameExists(username);
-	}
+    @Transactional(readOnly = true)
+    public boolean emailExists(String email) {
+        return memberDao.emailExists(email)>0;
+    }
 
-	@Transactional(readOnly = true)
-	public boolean emailExists(String email) {
-		return memberDao.emailExists(email);
-	}
+    @Transactional(readOnly = true)
+    public boolean emailUnique(String previousEmail, String currentEmail) {
+        if (StringUtils.equalsIgnoreCase(previousEmail, currentEmail)) {
+            return true;
+        } else {
+            if (memberDao.emailExists(currentEmail)>0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
 
-	@Transactional(readOnly = true)
-	public boolean emailUnique(String previousEmail, String currentEmail) {
-		if (StringUtils.equalsIgnoreCase(previousEmail, currentEmail)) {
-			return true;
-		} else {
-			if (memberDao.emailExists(currentEmail)) {
-				return false;
-			} else {
-				return true;
-			}
-		}
-	}
+    @Transactional(readOnly = true)
+    public Member findByUsername(String username) {
+        return memberDao.findByUsername(username);
+    }
 
-	public void save(Member member, Admin operator) {
-		Assert.notNull(member);
-		memberDao.persist(member);
-	}
+    @Transactional(readOnly = true)
+    public List<Member> findListByEmail(String email) {
+        return memberDao.findListByEmail(email);
+    }
 
-	public void update(Member member, Integer modifyPoint, BigDecimal modifyBalance, String depositMemo, Admin operator) {
-		Assert.notNull(member);
+    @Transactional(readOnly = true)
+    public boolean isAuthenticated() {
+        RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+        if (requestAttributes != null) {
+            HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
+            Principal principal = (Principal) request.getSession().getAttribute(Member.PRINCIPAL_ATTRIBUTE_NAME);
+            if (principal != null) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-		memberDao.lock(member, LockModeType.PESSIMISTIC_WRITE);
+    @Transactional(readOnly = true)
+    public Member getCurrent() {
+        RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+        if (requestAttributes != null) {
+            HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
+            Principal principal = (Principal) request.getSession().getAttribute(Member.PRINCIPAL_ATTRIBUTE_NAME);
+            if (principal != null) {
+                return memberDao.findOne(principal.getId());
+            }
+        }
+        return null;
+    }
 
-		if (modifyPoint != null && modifyPoint != 0 && member.getPoint() + modifyPoint >= 0) {
-			member.setPoint(member.getPoint() + modifyPoint);
-		}
-		memberDao.merge(member);
-	}
-
-	@Transactional(readOnly = true)
-	public Member findByUsername(String username) {
-		return memberDao.findByUsername(username);
-	}
-
-	@Transactional(readOnly = true)
-	public List<Member> findListByEmail(String email) {
-		return memberDao.findListByEmail(email);
-	}
-
-	@Transactional(readOnly = true)
-	public boolean isAuthenticated() {
-		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
-		if (requestAttributes != null) {
-			HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
-			Principal principal = (Principal) request.getSession().getAttribute(Member.PRINCIPAL_ATTRIBUTE_NAME);
-			if (principal != null) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	@Transactional(readOnly = true)
-	public Member getCurrent() {
-		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
-		if (requestAttributes != null) {
-			HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
-			Principal principal = (Principal) request.getSession().getAttribute(Member.PRINCIPAL_ATTRIBUTE_NAME);
-			if (principal != null) {
-				return memberDao.find(principal.getId());
-			}
-		}
-		return null;
-	}
-
-	@Transactional(readOnly = true)
-	public String getCurrentUsername() {
-		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
-		if (requestAttributes != null) {
-			HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
-			Principal principal = (Principal) request.getSession().getAttribute(Member.PRINCIPAL_ATTRIBUTE_NAME);
-			if (principal != null) {
-				return principal.getUsername();
-			}
-		}
-		return null;
-	}
+    @Transactional(readOnly = true)
+    public String getCurrentUsername() {
+        RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+        if (requestAttributes != null) {
+            HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
+            Principal principal = (Principal) request.getSession().getAttribute(Member.PRINCIPAL_ATTRIBUTE_NAME);
+            if (principal != null) {
+                return principal.getUsername();
+            }
+        }
+        return null;
+    }
 
 }

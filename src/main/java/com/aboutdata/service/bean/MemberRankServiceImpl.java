@@ -22,15 +22,10 @@ import org.springframework.transaction.annotation.Transactional;
  * 
  */
 @Service("memberRankServiceImpl")
-public class MemberRankServiceImpl extends BaseServiceImpl<MemberRank, Long> implements MemberRankService {
+public class MemberRankServiceImpl implements MemberRankService {
 
-	@Resource(name = "memberRankDaoImpl")
+	@Resource
 	private MemberRankDao memberRankDao;
-
-	@Resource(name = "memberRankDaoImpl")
-	public void setBaseDao(MemberRankDao memberRankDao) {
-		super.setBaseDao(memberRankDao);
-	}
 
 	@Transactional(readOnly = true)
 	public boolean nameExists(String name) {

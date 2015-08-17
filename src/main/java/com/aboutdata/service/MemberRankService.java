@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * 
  * 
  */
-public interface MemberRankService extends BaseService<MemberRank, Long> {
+public interface MemberRankService {
 
 	/**
 	 * 判断名称是否存在

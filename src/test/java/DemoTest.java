@@ -1,10 +1,8 @@
 
 import com.aboutdata.dao.AdminDao;
-import com.aboutdata.dao.ImageInfoDao;
 import com.aboutdata.domain.Admin;
-import com.aboutdata.domain.ImageInfo;
 import com.aboutdata.security.utils.SecurityUtils;
-import com.aboutdata.service.ImageInfoService;
+import com.aboutdata.service.PhotosService;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -37,8 +35,6 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 
     @Resource
     private AdminDao adminDao;
-    @Resource
-    private ImageInfoService ImageInfoService;
 
     /**
      * 默认提供测试方法
@@ -55,9 +51,8 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 //    @Ignore
     public void findByIdTest() {
         try {
-            ImageInfo imageInfo = ImageInfoService.find(1l);
-
-            logger.info(" imageInfo {}", imageInfo);
+          Admin admin =   adminDao.findByUsername("admin");
+          logger.info("admin is jpa {}",admin);
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
         }

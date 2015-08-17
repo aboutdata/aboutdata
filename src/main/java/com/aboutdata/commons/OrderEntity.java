@@ -4,12 +4,7 @@ import com.aboutdata.domain.BaseEntity;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.Min;
-
 import org.apache.commons.lang.builder.CompareToBuilder;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Index;
-import org.hibernate.search.annotations.Store;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -35,7 +30,6 @@ public abstract class OrderEntity extends BaseEntity implements Comparable<Order
 	 * @return 排序
 	 */
 	@JsonProperty
-	@Field(store = Store.YES, index = Index.UN_TOKENIZED)
 	@Min(0)
 	@Column(name = "orders")
 	public Integer getOrder() {

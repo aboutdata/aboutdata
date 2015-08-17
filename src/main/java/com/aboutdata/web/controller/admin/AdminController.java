@@ -33,7 +33,7 @@ public class AdminController {
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Pageable pageable, ModelMap model) {
-        model.addAttribute("page", adminService.findPage(pageable));
+        
         return "/admin/employee/list";
     }
 

@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aboutdata.dao.bean;
+package com.aboutdata.dao;
 
-import com.aboutdata.dao.ImageInfoDao;
-import com.aboutdata.domain.ImageInfo;
+import com.aboutdata.domain.Photos;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author youyou
  */
-@Repository("imageInfoDaoImpl")
-public class ImageInfoDaoImpl extends BaseDaoImpl<ImageInfo, Long> implements ImageInfoDao {
+@Repository
+public interface PhotosDao extends JpaRepository<Photos, Long> {
 
 }

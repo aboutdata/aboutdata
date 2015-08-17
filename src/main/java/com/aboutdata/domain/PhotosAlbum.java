@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aboutdata.service;
-
-import com.aboutdata.domain.ImageInfo;
+package com.aboutdata.domain;
 
 /**
- *
- * @author youyou
+ * 相册集
+ * @author Administrator
  */
-public interface ImageInfoService extends BaseService<ImageInfo, Long>{
+public class PhotosAlbum extends BaseEntity{
     
 }

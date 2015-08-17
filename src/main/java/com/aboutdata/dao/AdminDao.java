@@ -1,31 +1,36 @@
 package com.aboutdata.dao;
 
 import com.aboutdata.domain.Admin;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 /**
  * Dao - 管理员
- * 
- * 
- * 
+ *
+ *
+ *
  */
-public interface AdminDao extends BaseDao<Admin, Long> {
+@Repository
+public interface AdminDao extends JpaRepository<Admin, Long> {
 
-	/**
-	 * 判断用户名是否存在
-	 * 
-	 * @param username
-	 *            用户名(忽略大小写)
-	 * @return 用户名是否存在
-	 */
-	boolean usernameExists(String username);
+    /**
+     * 判断用户名是否存在
+     *
+     * @param username 用户名(忽略大小写)
+     * @return 用户名是否存在
+     */
+    @Query("select count(*) from Admin admin where lower(admin.username) = lower(:username)")
+    int usernameExists(@Param("username") String username);
 
-	/**
-	 * 根据用户名查找管理员
-	 * 
-	 * @param username
-	 *            用户名(忽略大小写)
-	 * @return 管理员，若不存在则返回null
-	 */
-	Admin findByUsername(String username);
+    /**
+     * 根据用户名查找管理员
+     *
+     * @param username 用户名(忽略大小写)
+     * @return 管理员，若不存在则返回null
+     */
+    @Query("select admin from Admin admin where lower(admin.username) = lower(:username)")
+    Admin findByUsername(@Param("username") String username);
 
 }

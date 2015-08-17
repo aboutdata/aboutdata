@@ -1,30 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.aboutdata.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.Min;
-import org.apache.commons.lang.StringUtils;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
- * @author youyou
+ * @author Administrator
  */
-@Entity
-@Table(name = "xx_ImageInfo")
-@SequenceGenerator(name = "sequenceGenerator", sequenceName = "xx_ImageInfo_sequence")
-public class ImageInfo extends BaseEntity {
 
-    private static final long serialVersionUID = -673883300094536107L;
+@Entity
+@Table(name = "xx_photos")
+@SequenceGenerator(name = "sequenceGenerator", sequenceName = "xx_photos_sequence")
+public class Photos extends BaseEntity {
 
     /**
      * 标题
@@ -55,12 +46,6 @@ public class ImageInfo extends BaseEntity {
      * 排序
      */
     private Integer order;
-
-    /**
-     * 文件
-     */
-    private MultipartFile file;
-
     /**
      * 获取标题
      *
@@ -171,39 +156,9 @@ public class ImageInfo extends BaseEntity {
     public void setOrder(Integer order) {
         this.order = order;
     }
-
-    /**
-     * 获取文件
-     *
-     * @return 文件
-     */
-    @Transient
-    public MultipartFile getFile() {
-        return file;
-    }
-
-    /**
-     * 设置文件
-     *
-     * @param file 文件
-     */
-    public void setFile(MultipartFile file) {
-        this.file = file;
-    }
-
-    /**
-     * 判断是否为空
-     *
-     * @return 是否为空
-     */
-    @Transient
-    public boolean isEmpty() {
-        return (getFile() == null || getFile().isEmpty()) && (StringUtils.isEmpty(getSource()) || StringUtils.isEmpty(getLarge()) || StringUtils.isEmpty(getMedium()) || StringUtils.isEmpty(getThumbnail()));
-    }
-
+    
     @Override
     public String toString() {
-        return "ImageInfo{" + "title=" + title + ", source=" + source + ", large=" + large + ", medium=" + medium + ", thumbnail=" + thumbnail + ", order=" + order + ", file=" + file + '}';
+        return "ImageInfo{" + "title=" + title + ", source=" + source + ", large=" + large + ", medium=" + medium + ", thumbnail=" + thumbnail + ", order=" + order + '}';
     }
-
 }

@@ -17,13 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.groups.Default;
 
-import org.hibernate.search.annotations.DateBridge;
-import org.hibernate.search.annotations.DocumentId;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Index;
-import org.hibernate.search.annotations.Resolution;
-import org.hibernate.search.annotations.Store;
-
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -76,7 +69,6 @@ public abstract class BaseEntity implements Serializable {
 	 * @return ID
 	 */
 	@JsonProperty
-	@DocumentId
 	@Id
 	// MySQL/SQLServer: @GeneratedValue(strategy = GenerationType.AUTO)
 	// Oracle: @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequenceGenerator")
@@ -101,8 +93,6 @@ public abstract class BaseEntity implements Serializable {
 	 * @return 创建日期
 	 */
 	@JsonProperty
-	@Field(store = Store.YES, index = Index.UN_TOKENIZED)
-	@DateBridge(resolution = Resolution.SECOND)
 	@Column(nullable = false, updatable = false)
 	public Date getCreateDate() {
 		return createDate;
@@ -124,8 +114,6 @@ public abstract class BaseEntity implements Serializable {
 	 * @return 修改日期
 	 */
 	@JsonProperty
-	@Field(store = Store.YES, index = Index.UN_TOKENIZED)
-	@DateBridge(resolution = Resolution.SECOND)
 	@Column(nullable = false)
 	public Date getModifyDate() {
 		return modifyDate;
