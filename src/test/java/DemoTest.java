@@ -1,7 +1,10 @@
 
 import com.aboutdata.dao.AdminDao;
+import com.aboutdata.dao.PhotosAlbumDao;
 import com.aboutdata.domain.Admin;
+import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.security.utils.SecurityUtils;
+import com.aboutdata.service.PhotosAlbumService;
 import com.aboutdata.service.PhotosService;
 import java.util.Date;
 import java.util.HashMap;
@@ -34,7 +37,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @Resource
-    private AdminDao adminDao;
+    private PhotosAlbumService photosAlbumService;
 
     /**
      * 默认提供测试方法
@@ -51,8 +54,8 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 //    @Ignore
     public void findByIdTest() {
         try {
-          Admin admin =   adminDao.findByUsername("admin");
-          logger.info("admin is jpa {}",admin);
+            List<PhotosAlbum> photosAlbums = photosAlbumService.findRoots();
+            logger.info("admin is jpa {}", photosAlbums);
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
         }

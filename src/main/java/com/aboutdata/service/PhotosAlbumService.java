@@ -5,17 +5,19 @@
  */
 package com.aboutdata.service;
 
-import com.aboutdata.domain.Photos;
+import com.aboutdata.domain.PhotosAlbum;
 import java.util.List;
 
 /**
  *
  * @author youyou
  */
-public interface PhotosService {
+public interface PhotosAlbumService {
 
-    public List<Photos> findTop50();
-
-    public List<Photos> findTop10();
-
+    /**
+     * 查找顶级分类
+     *
+     * @return 顶级分类
+     */
+    public List<PhotosAlbum> findRoots();
 }

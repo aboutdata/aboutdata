@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en" class="app">
     <head>  
@@ -114,38 +116,27 @@
                                     <div class="item">
                                         <div class="carousel slide auto" data-interval="3000">
                                             <div class="carousel-inner">
-                                                <div class="item active">
-                                                    <div class="item-overlay opacity animated fadeInDown wrapper bg-info">
-                                                        <p class="text-white">N.01</p>
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="icon-control-play i-2x"></i></a>
+                                                <c:forEach items="${top50}" var="photos" varStatus="idx">
+                                                    <div class="item <c:if test="${idx.index==0}">active</c:if>">
+                                                        <div class="item-overlay opacity animated fadeInDown wrapper bg-info">
+                                                            <p class="text-white">${photos.title}</p>
+                                                            <div class="center text-center m-t-n">
+                                                                <a href="#"><i class="icon-control-play i-2x"></i></a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="bottom wrapper bg-info gd">
-                                                        <div class="m-t m-b"><a href="#" class="b-b b-danger h2 text-u-c text-lt font-bold">Teideal</a></div>
-                                                        <p class="hidden-xs">Morbi nec nunc condimentum, egestas dui nec, fermentum diam. Vivamus vel tincidunt libero, vitae elementum ligula</p>
-                                                    </div>
-                                                    <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m20.jpg" alt="" class="img-full"></a>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-overlay opacity animated fadeInDown wrapper bg-info">
-                                                        <p class="text-white">N.02</p>
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="icon-control-play i-2x"></i></a>
+                                                        <div class="bottom wrapper bg-info gd">
+                                                            <div class="m-t m-b"><a href="#" class="b-b b-danger h2 text-u-c text-lt font-bold">Teideal</a></div>
+                                                            <p class="hidden-xs">Morbi nec nunc condimentum, egestas dui nec, fermentum diam. Vivamus vel tincidunt libero, vitae elementum ligula</p>
                                                         </div>
+                                                        <a href="#"><img src="${photos.thumbnail}" alt="" class="img-full"></a>
                                                     </div>
-                                                    <div class="bottom wrapper bg-info gd">
-                                                        <div class="m-t m-b"><a href="#" class="b-b b-warning h2 text-u-c text-lt font-bold">Tincidunt</a></div>
-                                                        <p class="hidden-xs">Gestas dui nec, fermentum diam. Vivamus vel tincidunt libero, vitae ligula elementum</p>
-                                                    </div>
-                                                    <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m22.jpg" alt="" class="img-full"></a>
-                                                </div>
+                                                </c:forEach>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="item">
                                         <div class="item-overlay gd animated fadeInUp wrapper bg-info">
-                                            <p class="text-white">Watch later</p>
+                                            <p class="text-white">稍后查看</p>
                                             <div class="center text-center m-t-n">
                                                 <a href="#"><i class="icon-control-play i-2x"></i></a>
                                             </div>
@@ -156,6 +147,7 @@
                                         </div>
                                         <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m31.jpg" alt="" class="img-full"></a>
                                     </div>
+                                    
                                     <div class="item">
                                         <div class="bottom gd bg-info wrapper">
                                             <div class="m-t m-b"><a href="#" class="b-b b-warning h4 text-u-c text-lt font-bold">Duis</a></div>
@@ -163,12 +155,14 @@
                                         </div>
                                         <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m10.jpg" alt="" class="img-full"></a>
                                     </div>
+                                    
                                     <div class="item">
                                         <div class="item-overlay active bg-primary dker wrapper text-center">
                                             <div class="m-t m-b"><a href="#" class="b-b b-white h4 text-u-c text-lt font-bold">lementum</a></div>
                                             <p class="hidden-xs">lementum ligula vitae est quis congue ero</p>
                                         </div>
                                     </div>
+                                    
                                     <div class="item">
                                         <div class="bottom gd bg-info wrapper">
                                             <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Diam</a></div>
@@ -176,6 +170,7 @@
                                         </div>
                                         <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m4.jpg" alt="" class="img-full"></a>
                                     </div>
+                                    
                                     <div class="item">
                                         <div class="carousel carousel-fade bg-info slide auto" data-interval="6000">
                                             <div class="carousel-inner">
@@ -196,6 +191,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                                
                                     <div class="item">
                                         <div class="bottom gd bg-info wrapper">
                                             <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Vivamus</a></div>
@@ -223,6 +219,7 @@
                                             <p class="hidden-xs">Sesuada est, quis congue tincidunt libero nibh ligula</p>
                                         </div>
                                     </div>
+                                    
                                     <div class="item">
                                         <div class="bottom gd bg-info wrapper">
                                             <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Malesuada</a></div>
