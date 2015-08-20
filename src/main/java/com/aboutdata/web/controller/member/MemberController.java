@@ -29,11 +29,13 @@ public class MemberController {
      * @param model
      */
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String index(Integer pageNumber, ModelMap model) {
+    public String profile(Integer pageNumber, ModelMap model) {
         Member member = memberService.getCurrent();
         
         
         return "/member/index";
     }
+    
+  
 
 }
