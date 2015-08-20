@@ -6,7 +6,10 @@
 package com.aboutdata.web.controller.member;
 
 import com.aboutdata.domain.Member;
+import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.service.MemberService;
+import com.aboutdata.service.PhotosAlbumService;
+import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,6 +27,9 @@ public class PhotosAlbumController {
     @Resource(name = "memberServiceImpl")
     private MemberService memberService;
 
+    @Resource
+    private PhotosAlbumService photosAlbumService;
+
     /**
      * 首页
      *
@@ -32,7 +38,11 @@ public class PhotosAlbumController {
      */
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(Integer pageNumber, ModelMap model) {
+
         Member member = memberService.getCurrent();
+
+        List<PhotosAlbum> albums = photosAlbumService.findRoots();
+        model.addAttribute("albums", albums);
 
         return "/member/photos/album";
     }
