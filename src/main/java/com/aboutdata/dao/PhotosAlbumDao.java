@@ -9,6 +9,7 @@ import com.aboutdata.domain.PhotosAlbum;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -23,25 +24,16 @@ public interface PhotosAlbumDao extends JpaRepository<PhotosAlbum, Long> {
      *
      * @return 顶级分类
      */
-    @Query("select photosAlbum from PhotosAlbum photosAlbum where photosAlbum.parent is null order by photosAlbum.order asc")
+    @Query("select photosAlbum from PhotosAlbum photosAlbum where photosAlbum.parentId is null order by photosAlbum.order asc")
     List<PhotosAlbum> findRoots();
 
     /**
      * 查找上级分类
      *
-     * @param ids
+     * @param parentId
      * @return 上级文章分类
      */
-    @Query("select photosAlbum from PhotosAlbum photosAlbum where photosAlbum.id in (:ids) order by photosAlbum.grade asc")
-    List<PhotosAlbum> findParents(String ids);
-
-    /**
-     * 查找下级分类
-     *
-     * @param parnetId
-     * @return 下级文章分类
-     */
-    @Query("select photosAlbum from PhotosAlbum photosAlbum where photosAlbum.treePath like :treePath order by photosAlbum.order asc")
-    List<PhotosAlbum> findChildren(String parnetId);
+    @Query("select photosAlbum from PhotosAlbum photosAlbum where photosAlbum.parentId  = :parentId order by photosAlbum.grade asc")
+    List<PhotosAlbum> findByParent(@Param("parentId") long parentId);
 
 }

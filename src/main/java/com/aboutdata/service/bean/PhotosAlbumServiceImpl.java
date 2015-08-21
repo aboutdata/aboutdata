@@ -33,11 +33,18 @@ public class PhotosAlbumServiceImpl implements PhotosAlbumService {
     @Transactional
     public List<PhotosAlbum> findRoots() {
         List<PhotosAlbum> photosAlbums = photosAlbumDao.findRoots();
-        for (PhotosAlbum photosAlbum : photosAlbums) {
-            Hibernate.initialize(photosAlbum.getChildren());
-            Hibernate.initialize(photosAlbum.getParent());
-        }
         return photosAlbums;
+    }
+
+    @Override
+    public List<PhotosAlbum> getByParent(long ParentId) {
+        return photosAlbumDao.findByParent(ParentId);
+    }
+
+    @Override
+    @Transactional
+    public void create(PhotosAlbum album) {
+        photosAlbumDao.save(album);
     }
 
 }

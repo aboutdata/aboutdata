@@ -20,4 +20,19 @@ public interface PhotosAlbumService {
      * @return 顶级分类
      */
     public List<PhotosAlbum> findRoots();
+
+    /**
+     * 根据父类超找
+     *
+     * @param ParentId
+     * @return
+     */
+    public List<PhotosAlbum> getByParent(long ParentId);
+
+    /**
+     *
+     * @param album
+     */
+    public void create(PhotosAlbum album);
+
 }

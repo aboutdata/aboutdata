@@ -46,4 +46,22 @@ public class PhotosAlbumController {
 
         return "/member/photos/album";
     }
+
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public String createPhotosAlbum(Integer pageNumber, ModelMap model) {
+
+        Member member = memberService.getCurrent();
+        PhotosAlbum album = new PhotosAlbum();
+        album.setName("测试相册一");
+
+        photosAlbumService.create(album);
+        
+        if (album.getParentId() != null) {
+            return "redirect:/gallery/album/" + album.getParentId();
+        } else {
+            return "redirect:/gallery";
+        }
+        
+    }
+
 }
