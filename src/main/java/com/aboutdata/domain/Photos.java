@@ -46,6 +46,10 @@ public class Photos extends BaseEntity {
      * 排序
      */
     private Integer order;
+    
+    
+    private long albumId;
+    
     /**
      * 获取标题
      *
@@ -155,6 +159,14 @@ public class Photos extends BaseEntity {
      */
     public void setOrder(Integer order) {
         this.order = order;
+    }
+
+    public long getAlbumId() {
+        return albumId;
+    }
+
+    public void setAlbumId(long albumId) {
+        this.albumId = albumId;
     }
     
     @Override

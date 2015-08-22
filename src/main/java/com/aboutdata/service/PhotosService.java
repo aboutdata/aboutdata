@@ -18,4 +18,8 @@ public interface PhotosService {
 
     public List<Photos> findTop10();
 
+    public List<Photos> findByAlbumId(long albumId);
+
+    public Photos findById(long id);
+
 }

@@ -85,26 +85,26 @@
                             <section class="vbox" id="bjax-el">
                                 <section class="scrollable padder-lg">
                                     <a href="#modal-form" class="pull-right text-muted m-t-lg" data-toggle="modal">
-                                        <i class="fa fa-plus i-lg inline text-info"></i> 新建相册
+                                        <i class="fa fa-plus i-lg inline text-info"></i> 上传照片
                                     </a>
                                     <h2 class="font-thin m-b">Acoustic</h2>
                                     <div class="row row-sm">
-                                    <c:forEach items="${albums}" var="album">
+                                    <c:forEach items="${list}" var="photos">
                                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                                             <div class="item">
                                                 <div class="pos-rlt">
                                                     <div class="item-overlay opacity r r-2x bg-black">
                                                         <div class="center text-center m-t-n">
-                                                            <a href="${pageContext.request.contextPath}/phtots/album/${album.id}"><i class="fa fa-play-circle i-2x"></i></a>
+                                                            <a href="${pageContext.request.contextPath}/phtots/wallpaper/${photos.id}"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="${pageContext.request.contextPath}/phtots/album/${album.id}">
-                                                        <img src="${pageContext.request.contextPath}/assets/images/m1.jpg" alt="" class="r r-2x img-full">
+                                                    <a href="${pageContext.request.contextPath}/phtots/wallpaper/${photos.id}">
+                                                        <img src="${photos.thumbnail}" alt="" class="r r-2x img-full">
                                                     </a>
                                                 </div>
                                                 <div class="padder-v">
-                                                    <a href="${pageContext.request.contextPath}/phtots/album/${album.id}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis">${album.name}</a>
-                                                    <a href="${pageContext.request.contextPath}/phtots/album/${album.id}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis text-xs text-muted">${album.createDate}</a>
+                                                    <a href="${pageContext.request.contextPath}/phtots/wallpaper/${photos.id}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis">${photos.title}</a>
+                                                    <a href="${pageContext.request.contextPath}/phtots/wallpaper/${photos.id}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis text-xs text-muted">${photos.createDate}</a>
                                                 </div>
                                             </div>
                                         </div>

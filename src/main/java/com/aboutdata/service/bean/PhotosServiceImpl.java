@@ -48,4 +48,14 @@ public class PhotosServiceImpl implements PhotosService {
         return page.getContent();
     }
 
+    @Override
+    public List<Photos> findByAlbumId(long albumId) {
+        return photosDao.findByAlbumId(albumId);
+    }
+
+    @Override
+    public Photos findById(long id) {
+        return photosDao.findOne(id);
+    }
+
 }

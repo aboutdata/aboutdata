@@ -51,7 +51,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
      * 测试 查询所有管理员
      */
     @Test
-//    @Ignore
+    @Ignore
     public void findByIdTest() {
         try {
             List<PhotosAlbum> photosAlbums = photosAlbumService.findRoots();
