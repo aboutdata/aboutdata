@@ -14,7 +14,8 @@
         <title>Musik | Web Application</title>
         <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jPlayer/jplayer.flat.css" type="text/css" />
+
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/file-input/css/fileinput.css" media="all" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css" />
@@ -125,15 +126,15 @@
                 <div class="modal-content">
                     <div class="modal-body wrapper-md">
                         <div class="row">
-                            <h3 class="m-t-none m-b">创建新相册</h3>
+                            <h3 class="m-t-none m-b">上传照片</h3>
                             <p>创建新相册更好管理你的图片.</p>
-                            <div class="form-group">
-                                <label>相册名称</label>
-                                <input type="email" class="form-control" placeholder="Enter email">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success text-uc"><strong>保存相册</strong></button>
-                            </div>                
+                            <form action="${pageContext.request.contextPath}/phtots/upload" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="albumId" value="${albumId}"/>
+                                <div class="form-group">
+                                    <label>请选择照片</label>
+                                    <input id="photos-upload-input" type="file" name="file" class="form-control file">
+                                </div>
+                            </form>
                         </div>          
                     </div>
                 </div><!-- /.modal-content -->
@@ -141,6 +142,10 @@
         </div>
 
         <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+
+        <!--file-input-->
+        <script src="${pageContext.request.contextPath}/assets/js/file-input/js/fileinput.js" type="text/javascript"></script>
+        <!--<script src="${pageContext.request.contextPath}/assets/js/file-input/js/fileinput_locale_zh.js" type="text/javascript"></script>-->
 
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
@@ -150,5 +155,14 @@
         <script src="${pageContext.request.contextPath}/assets/js/masonry/tiles.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/masonry/demo.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('#photos-upload-input').fileinput({
+//                    uploadUrl: '${pageContext.request.contextPath}/phtots/upload',
+                    allowedFileExtensions: ['jpg', 'png', 'gif']
+                });
+            });
+        </script>
     </body>
 </html>

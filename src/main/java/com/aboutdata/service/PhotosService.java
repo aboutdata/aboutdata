@@ -22,4 +22,7 @@ public interface PhotosService {
 
     public Photos findById(long id);
 
+    public Photos create(Photos photos);
+    
+
 }

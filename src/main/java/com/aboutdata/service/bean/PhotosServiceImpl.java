@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -56,6 +57,13 @@ public class PhotosServiceImpl implements PhotosService {
     @Override
     public Photos findById(long id) {
         return photosDao.findOne(id);
+    }
+
+    @Override
+    @Transactional
+    public Photos create(Photos photos) {
+
+        return photosDao.save(photos);
     }
 
 }

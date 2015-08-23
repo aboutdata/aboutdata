@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import javax.annotation.Resource;
@@ -54,8 +55,10 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     @Ignore
     public void findByIdTest() {
         try {
-            List<PhotosAlbum> photosAlbums = photosAlbumService.findRoots();
-            logger.info("admin is jpa {}", photosAlbums);
+            
+          Random random = new  Random();
+          int n2 = random.nextInt(10);
+            logger.info("n2 is random {}", n2);
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -59,7 +59,7 @@ public class PhotosAlbumController {
      *
      * @param albumId
      * @param model
-     * @return 
+     * @return
      */
     @RequestMapping(value = "/{albumId}", method = RequestMethod.GET)
     public String gallery(@PathVariable("albumId") long albumId, ModelMap model) {
@@ -68,7 +68,8 @@ public class PhotosAlbumController {
 
         List<Photos> photos = photosService.findByAlbumId(albumId);
         model.addAttribute("list", photos);
-
+        model.addAttribute("albumId", albumId);
+        
         return "/member/photos/list";
     }
 
