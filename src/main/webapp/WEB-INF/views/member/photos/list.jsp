@@ -11,7 +11,7 @@
 <html lang="en" class="app">
     <head>  
         <meta charset="utf-8" />
-        <title>Musik | Web Application</title>
+        <title>相册系统 | aboutdata</title>
         <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
@@ -40,9 +40,6 @@
                             <section class="vbox">
                                 <section class="w-f-md scrollable">
                                     <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
-
-
-
                                         <!-- nav -->                 
                                         <nav class="nav-primary hidden-xs">
                                             <ul class="nav bg clearfix">

@@ -65,8 +65,9 @@ public class PhotosAlbumController {
     public String gallery(@PathVariable("albumId") long albumId, ModelMap model) {
 
         Member member = memberService.getCurrent();
-
+        
         List<Photos> photos = photosService.findByAlbumId(albumId);
+        
         model.addAttribute("list", photos);
         model.addAttribute("albumId", albumId);
         
