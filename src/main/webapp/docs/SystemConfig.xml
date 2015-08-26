@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SystemConfig>
+    <developMode>true</developMode>
+    <defaultPassword>123456</defaultPassword>
+    <features>
+        <dimPrivacy>true</dimPrivacy>
+        <enableSMS>true</enableSMS>
+    </features>
+</SystemConfig>
