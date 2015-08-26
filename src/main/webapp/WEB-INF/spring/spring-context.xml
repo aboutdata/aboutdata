@@ -42,6 +42,16 @@
         <property name="minGuarantedStorageDelayInSeconds" value="3600" />
     </bean>
     
+    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.timeout">25000</prop>
+                <prop key="mail.smtp.starttls.enable">false</prop>
+            </props>
+        </property>
+    </bean>
+    
     <import resource="spring-shiro.xml"></import>
     
     <import resource="spring-data-jpa.xml"></import>

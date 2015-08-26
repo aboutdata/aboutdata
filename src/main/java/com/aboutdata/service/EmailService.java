@@ -5,18 +5,13 @@
  */
 package com.aboutdata.service;
 
-import com.aboutdata.commons.config.EmailConfig;
-import com.aboutdata.commons.config.SystemConfig;
+import com.aboutdata.commons.enums.EmailType;
 
 /**
  *
  * @author Administrator
  */
-public interface ConfigService {
-
-    public String get();
-
-    public SystemConfig getSystemConfig();
-
-    public EmailConfig getEmailConfig();
+public interface EmailService {
+    
+    void send(EmailType emailType,String toMail, String subject, String... contents);
 }

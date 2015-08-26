@@ -1,15 +1,18 @@
 
+import com.aboutdata.commons.enums.EmailType;
 import com.aboutdata.dao.AdminDao;
 import com.aboutdata.dao.PhotosAlbumDao;
 import com.aboutdata.domain.Admin;
 import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.security.utils.SecurityUtils;
+import com.aboutdata.service.EmailService;
 import com.aboutdata.service.PhotosAlbumService;
 import com.aboutdata.service.PhotosService;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import javax.annotation.Resource;
@@ -39,6 +42,9 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     @Resource
     private PhotosAlbumService photosAlbumService;
 
+    @Resource
+    private EmailService emailService;
+
     /**
      * 默认提供测试方法
      */
@@ -54,8 +60,8 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 //    @Ignore
     public void findByIdTest() {
         try {
-            List<PhotosAlbum> photosAlbums = photosAlbumService.findRoots();
-            logger.info("admin is jpa {}", photosAlbums);
+          emailService.send(EmailType.MARKET_REGISTER_ACTIVE, "845885222@qq.com", "测试", UUID.randomUUID().toString());
+//            logger.info("admin is jpa {}", photosAlbums);
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
         }

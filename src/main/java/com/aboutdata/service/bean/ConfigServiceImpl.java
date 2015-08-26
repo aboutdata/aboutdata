@@ -6,6 +6,7 @@
 package com.aboutdata.service.bean;
 
 import com.aboutdata.commons.config.BaseConfig;
+import com.aboutdata.commons.config.EmailConfig;
 import com.aboutdata.commons.config.SystemConfig;
 import com.aboutdata.service.ConfigService;
 import java.io.File;
@@ -34,7 +35,7 @@ public class ConfigServiceImpl implements ConfigService {
     private BaseConfig loadConfig(Class clazz) {
         BaseConfig result = null;
         try {
-            this.unmarshallingClassJAXB = JAXBContext.newInstance(new Class[]{SystemConfig.class});
+            this.unmarshallingClassJAXB = JAXBContext.newInstance(new Class[]{SystemConfig.class,EmailConfig.class});
             String configName = (String) clazz.getField("CONFIG_NAME").get(null);
             result = (BaseConfig) unmarshallingClassJAXB.createUnmarshaller().unmarshal(new FileInputStream(getConfigFilename(configName)));
             result.setLastUpdate(System.currentTimeMillis());
@@ -73,6 +74,11 @@ public class ConfigServiceImpl implements ConfigService {
     @Override
     public SystemConfig getSystemConfig() {
         return (SystemConfig) loadConfig(SystemConfig.class);
+    }
+    
+     @Override
+    public EmailConfig getEmailConfig() {
+        return (EmailConfig) loadConfig(EmailConfig.class);
     }
 
 }
