@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailConfig>
+    <smtpFromMail>845885222@qq.com</smtpFromMail>
+    <smtpHost>smtp.qq.com</smtpHost>
+    <smtpPort>25</smtpPort>
+    <smtpUsername>845885222@qq.com</smtpUsername>
+    <smtpPassword>i dont tell you</smtpPassword>
+</EmailConfig>
