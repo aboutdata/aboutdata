@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import org.hibernate.validator.constraints.Length;
@@ -52,6 +53,10 @@ public class Photos extends BaseEntity {
     @Min(0)
     @Column(name = "orders")
     private Integer order;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "xx_photos_tag",
@@ -122,6 +127,14 @@ public class Photos extends BaseEntity {
         this.tags = tags;
     }
 
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+    
     @Override
     public String toString() {
         return "Photos{" + "title=" + title + ", source=" + source + ", large=" + large + ", medium=" + medium + ", thumbnail=" + thumbnail + ", order=" + order + ", tags=" + tags + '}';

@@ -1,7 +1,9 @@
+package com.aboutdata.test.photos;
 
 import com.aboutdata.commons.enums.EmailType;
 import com.aboutdata.dao.AdminDao;
 import com.aboutdata.dao.PhotosAlbumDao;
+import com.aboutdata.dao.PhotosDao;
 import com.aboutdata.domain.Admin;
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.Photos;
@@ -55,6 +57,9 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     @Resource
     private PhotosService photosService;
 
+    @Resource
+    private PhotosDao photosDao;
+
     /**
      * 默认提供测试方法
      */
@@ -67,20 +72,16 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
      * 测试 查询所有管理员
      */
     @Test
-    @Ignore
-    public void findByIdTest() {
+    public void addPhotos() {
         try {
-            
-            Member m =new Member();
+
+            Member m = new Member();
             m.setId("1");
-            PhotosAlbum photosAlbum = new PhotosAlbum();
-            photosAlbum.setName("哈哈");
-            photosAlbum.setGrade(1);
-            photosAlbum.setMember(m);
-            
-            
-            
-            photosAlbumService.create(photosAlbum);
+            Photos photos = new Photos();
+
+            photos.setTitle("哈哈");
+            photos.setMember(m);
+            photosDao.save(photos);
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
         }
