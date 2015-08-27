@@ -4,6 +4,7 @@ import com.aboutdata.dao.AdminDao;
 import com.aboutdata.dao.PhotosAlbumDao;
 import com.aboutdata.domain.Admin;
 import com.aboutdata.domain.Member;
+import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.domain.Tag;
 import com.aboutdata.security.utils.SecurityUtils;
@@ -48,6 +49,11 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     @Resource
     private EmailService emailService;
 
+    @Resource
+    private TagService tagService;
+
+    @Resource
+    private PhotosService photosService;
 
     /**
      * 默认提供测试方法
@@ -64,8 +70,8 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 //    @Ignore
     public void findByIdTest() {
         try {
-//    
-//            logger.info("admin is jpa {}", photoTagDao.findByPhotoId(1l).size());
+            Photos photos = photosService.get("1");
+            logger.info("admin is jpa {}", photos);
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
         }

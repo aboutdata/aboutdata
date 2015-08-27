@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -28,6 +29,14 @@ public class PhotosServiceImpl implements PhotosService {
 
     @Resource
     private PhotosDao photosDao;
+
+    @Override
+    @Transactional
+    public Photos get(String id) {
+        Photos photo = photosDao.findOne(id);
+        
+        return photo;
+    }
 
     public List<Photos> findTop50() {
         return photosDao.findAll();
@@ -46,6 +55,12 @@ public class PhotosServiceImpl implements PhotosService {
         }
 
         return page.getContent();
+    }
+
+    @Override
+    public List<Photos> findPhotosAndTags() {
+        List<Photos> all = photosDao.findAll();
+        return all;
     }
 
 }

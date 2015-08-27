@@ -9,6 +9,7 @@ import com.aboutdata.dao.TagDao;
 import com.aboutdata.domain.Tag;
 import com.aboutdata.service.TagService;
 import javax.annotation.Resource;
+import javax.persistence.PersistenceException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,5 +25,10 @@ public class TagServiceImpl implements TagService {
     @Override
     public Tag create(Tag tag) {
         return tagDao.save(tag);
+    }
+
+    @Override
+    public Tag getByName(String name) {
+        return tagDao.getByName(name);
     }
 }

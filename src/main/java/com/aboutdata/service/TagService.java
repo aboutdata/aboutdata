@@ -14,4 +14,6 @@ import com.aboutdata.domain.Tag;
 public interface TagService {
 
     public Tag create(Tag tag);
+    
+    Tag getByName(String name);
 }
