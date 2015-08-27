@@ -77,4 +77,21 @@ public class PhotosServiceImpl implements PhotosService {
         photosDao.save(photos);
     }
 
+    @Override
+    public List<Photos> findByAlbumId(String albumId) {
+        return photosDao.findByAlbumId(albumId);
+    }
+
+    @Override
+    public Photos findById(String id) {
+        return photosDao.findOne(id);
+    }
+
+    @Override
+    @Transactional
+    public Photos create(Photos photos) {
+
+        return photosDao.save(photos);
+    }
+
 }

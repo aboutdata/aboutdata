@@ -6,7 +6,10 @@
 package com.aboutdata.dao;
 
 import com.aboutdata.domain.Photos;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,5 +18,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PhotosDao extends JpaRepository<Photos, String> {
+
+    @Query("select photos from Photos photos where photos.albumId =:albumId order by photos.order asc")
+    public List<Photos> findByAlbumId(@Param("albumId") String albumId);
 
 }

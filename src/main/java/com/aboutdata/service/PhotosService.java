@@ -24,4 +24,10 @@ public interface PhotosService {
 
     public void addTags(String id, String tagString);
 
+    public List<Photos> findByAlbumId(String albumId);
+
+    public Photos findById(String id);
+
+    public Photos create(Photos photos);
+
 }
