@@ -70,9 +70,15 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 //    @Ignore
     public void findByIdTest() {
         try {
-            String tagString = "你好,中国,安好";
-            photosService.addTags("1", tagString);
-            logger.info("admin is jpa {}", tagString);
+            
+            Member m =new Member();
+            m.setId("1");
+            PhotosAlbum photosAlbum = new PhotosAlbum();
+            photosAlbum.setName("哈哈");
+            photosAlbum.setGrade(1);
+            photosAlbum.setMember(m);
+            
+            photosAlbumService.create(photosAlbum);
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
         }

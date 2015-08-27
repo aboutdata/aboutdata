@@ -8,6 +8,8 @@ package com.aboutdata.domain;
 import com.aboutdata.commons.OrderEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.Length;
@@ -42,6 +44,10 @@ public class PhotosAlbum extends OrderEntity {
     @Column(nullable = true)
     private Long parentId;
 
+    @ManyToOne
+    @JoinColumn(name = "member_id",nullable = false)
+    private Member member;
+
     public String getName() {
         return name;
     }
@@ -66,8 +72,17 @@ public class PhotosAlbum extends OrderEntity {
         this.grade = grade;
     }
 
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
     @Override
     public String toString() {
-        return "PhotosAlbum{" + "name=" + name + ", grade=" + grade + ", parentId=" + parentId + '}';
+        return "PhotosAlbum{" + "name=" + name + ", grade=" + grade + ", parentId=" + parentId + ", member=" + member + '}';
     }
+    
 }

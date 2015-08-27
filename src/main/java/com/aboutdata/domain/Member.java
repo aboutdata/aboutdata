@@ -218,6 +218,9 @@ public class Member extends BaseEntity {
     @JoinColumn(nullable = false)
     private MemberRank memberRank;
 
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+    private Set<PhotosAlbum> photosAlbums;
+
     public String getUsername() {
         return username;
     }
@@ -379,4 +382,21 @@ public class Member extends BaseEntity {
     public void setMemberRank(MemberRank memberRank) {
         this.memberRank = memberRank;
     }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public Set<PhotosAlbum> getPhotosAlbums() {
+        return photosAlbums;
+    }
+
+    public void setPhotosAlbums(Set<PhotosAlbum> photosAlbums) {
+        this.photosAlbums = photosAlbums;
+    }
+
 }
