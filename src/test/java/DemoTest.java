@@ -70,8 +70,9 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 //    @Ignore
     public void findByIdTest() {
         try {
-            Photos photos = photosService.get("1");
-            logger.info("admin is jpa {}", photos);
+            String tagString = "你好,中国,安好";
+            photosService.addTags("1", tagString);
+            logger.info("admin is jpa {}", tagString);
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -8,8 +8,9 @@ package com.aboutdata.service.bean;
 import com.aboutdata.dao.TagDao;
 import com.aboutdata.domain.Tag;
 import com.aboutdata.service.TagService;
+import java.util.HashSet;
+import java.util.Set;
 import javax.annotation.Resource;
-import javax.persistence.PersistenceException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -30,5 +31,22 @@ public class TagServiceImpl implements TagService {
     @Override
     public Tag getByName(String name) {
         return tagDao.getByName(name);
+    }
+
+    @Override
+    public Set<Tag> getTagsFromString(String tagString) {
+        Set<Tag> result = new HashSet<Tag>();
+        for (String tagName : tagString.split(",")) {
+            tagName = tagName.replaceAll("\\s+", "");
+            Tag tagObj = this.getByName(tagName);	// get persistent object
+            if (tagObj == null) {
+               //主要控制不能随便写标签 ,如果是自己的写的标签 系统将不保存
+               // tagObj = new Tag();
+               // tagObj.setName(tagName);
+            }else{
+                result.add(tagObj);
+            }
+        }
+        return result;
     }
 }

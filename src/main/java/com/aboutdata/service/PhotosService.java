@@ -7,6 +7,7 @@ package com.aboutdata.service;
 
 import com.aboutdata.domain.Photos;
 import java.util.List;
+
 /**
  *
  * @author youyou
@@ -20,5 +21,7 @@ public interface PhotosService {
     public List<Photos> findTop10();
 
     public List<Photos> findPhotosAndTags();
+
+    public void addTags(String id, String tagString);
 
 }

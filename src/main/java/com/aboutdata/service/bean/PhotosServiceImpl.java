@@ -7,8 +7,11 @@ package com.aboutdata.service.bean;
 
 import com.aboutdata.dao.PhotosDao;
 import com.aboutdata.domain.Photos;
+import com.aboutdata.domain.Tag;
 import com.aboutdata.service.PhotosService;
+import com.aboutdata.service.TagService;
 import java.util.List;
+import java.util.Set;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,11 +33,14 @@ public class PhotosServiceImpl implements PhotosService {
     @Resource
     private PhotosDao photosDao;
 
+    @Resource
+    private TagService tagService;
+
     @Override
     @Transactional
     public Photos get(String id) {
         Photos photo = photosDao.findOne(id);
-        
+
         return photo;
     }
 
@@ -61,6 +67,14 @@ public class PhotosServiceImpl implements PhotosService {
     public List<Photos> findPhotosAndTags() {
         List<Photos> all = photosDao.findAll();
         return all;
+    }
+
+    @Override
+    public void addTags(String id, String tagString) {
+        Set<Tag> tags = tagService.getTagsFromString(tagString);
+        Photos photos = photosDao.findOne(id);
+        photos.setTags(tags);
+        photosDao.save(photos);
     }
 
 }

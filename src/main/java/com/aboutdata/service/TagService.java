@@ -6,6 +6,7 @@
 package com.aboutdata.service;
 
 import com.aboutdata.domain.Tag;
+import java.util.Set;
 
 /**
  *
@@ -14,6 +15,8 @@ import com.aboutdata.domain.Tag;
 public interface TagService {
 
     public Tag create(Tag tag);
-    
-    Tag getByName(String name);
+
+    public Tag getByName(String name);
+
+    public Set<Tag> getTagsFromString(String tagString);
 }
