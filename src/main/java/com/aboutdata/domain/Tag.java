@@ -19,7 +19,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "xx_tag")
-@SequenceGenerator(name = "sequenceGenerator", sequenceName = "xx_tag_sequence")
 public class Tag extends BaseEntity {
 
     private static final long serialVersionUID = 984410247121721301L;

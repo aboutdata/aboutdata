@@ -20,319 +20,245 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Entity - 管理员
- * 
+ *
  */
 @Entity
 @Table(name = "xx_admin")
-@SequenceGenerator(name = "sequenceGenerator", sequenceName = "xx_admin_sequence")
+//@SequenceGenerator(name = "sequenceGenerator", sequenceName = "xx_admin_sequence")
 public class Admin extends BaseEntity {
 
-	private static final long serialVersionUID = -7519486823153844426L;
+    private static final long serialVersionUID = -7519486823153844426L;
 
-	/** 用户名 */
-	private String username;
+    /**
+     * 用户名
+     */
+    @NotEmpty(groups = Save.class)
+    @Pattern(regexp = "^[0-9a-z_A-Z\\u4e00-\\u9fa5]+$")
+    @Length(min = 2, max = 20)
+    @Column(nullable = false, updatable = false, unique = true, length = 100)
+    private String username;
 
-	/** 密码 */
-	private String password;
-        
-        /** 密码salt */
-        private String salt;
+    /**
+     * 密码
+     */
+    @NotEmpty(groups = Save.class)
+    @Pattern(regexp = "^[^\\s&\"<>]+$")
+    @Length(min = 4, max = 32)
+    @Column(nullable = false, length = 32)
+    private String password;
 
-	/** E-mail */
-	private String email;
+    /**
+     * 密码salt
+     */
+    @NotEmpty(groups = Save.class)
+    @Column(nullable = false, length = 64)
+    private String salt;
 
-	/** 姓名 */
-	private String name;
+    /**
+     * E-mail
+     */
+    @NotEmpty
+    @Email
+    @Length(max = 200)
+    @Column(nullable = false)
+    private String email;
 
-	/** 部门 */
-	private String department;
+    /**
+     * 姓名
+     */
+    @Length(max = 200)
+    private String name;
 
-	/** 是否启用 */
-	private Boolean isEnabled;
+    /**
+     * 部门
+     */
+    @Length(max = 200)
+    private String department;
 
-	/** 是否锁定 */
-	private Boolean isLocked;
+    /**
+     * 是否启用
+     */
+    @NotNull
+    @Column(nullable = false)
+    private Boolean isEnabled;
 
-	/** 连续登录失败次数 */
-	private Integer loginFailureCount;
+    /**
+     * 是否锁定
+     */
+    @Column(nullable = false)
+    private Boolean isLocked;
 
-	/** 锁定日期 */
-	private Date lockedDate;
+    /**
+     * 连续登录失败次数
+     */
+    @Column(nullable = false)
+    private Integer loginFailureCount;
 
-	/** 最后登录日期 */
-	private Date loginDate;
+    /**
+     * 锁定日期
+     */
+    private Date lockedDate;
 
-	/** 最后登录IP */
-	private String loginIp;
+    /**
+     * 最后登录日期
+     */
+    private Date loginDate;
 
-	/** 角色 */
-	private Set<Role> roles = new HashSet<Role>();
+    /**
+     * 最后登录IP
+     */
+    private String loginIp;
 
-	/**
-	 * 获取用户名
-	 * 
-	 * @return 用户名
-	 */
-	@NotEmpty(groups = Save.class)
-	@Pattern(regexp = "^[0-9a-z_A-Z\\u4e00-\\u9fa5]+$")
-	@Length(min = 2, max = 20)
-	@Column(nullable = false, updatable = false, unique = true, length = 100)
-	public String getUsername() {
-		return username;
-	}
+    /**
+     * 角色
+     */
+    @NotEmpty
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "xx_admin_role")
+    private Set<Role> roles = new HashSet<Role>();
 
-	/**
-	 * 设置用户名
-	 * 
-	 * @param username
-	 *            用户名
-	 */
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	/**
-	 * 获取密码
-	 * 
-	 * @return 密码
-	 */
-	@NotEmpty(groups = Save.class)
-	@Pattern(regexp = "^[^\\s&\"<>]+$")
-	@Length(min = 4, max = 32)
-	@Column(nullable = false,length = 32)
-	public String getPassword() {
-		return password;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	/**
-	 * 设置密码
-	 * 
-	 * @param password
-	 *            密码
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
-        
-       
-	@NotEmpty(groups = Save.class)
-	@Column(nullable = false,length = 64)
-        public String getSalt() {
-            return salt;
-        }
+    public String getPassword() {
+        return password;
+    }
 
-        
-        public void setSalt(String salt) {
-            this.salt = salt;
-        }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
+    public String getSalt() {
+        return salt;
+    }
 
-	/**
-	 * 获取E-mail
-	 * 
-	 * @return E-mail
-	 */
-	@NotEmpty
-	@Email
-	@Length(max = 200)
-	@Column(nullable = false)
-	public String getEmail() {
-		return email;
-	}
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
 
-	/**
-	 * 设置E-mail
-	 * 
-	 * @param email
-	 *            E-mail
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	/**
-	 * 获取姓名
-	 * 
-	 * @return 姓名
-	 */
-	@Length(max = 200)
-	public String getName() {
-		return name;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	/**
-	 * 设置姓名
-	 * 
-	 * @param name
-	 *            姓名
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	/**
-	 * 获取部门
-	 * 
-	 * @return 部门
-	 */
-	@Length(max = 200)
-	public String getDepartment() {
-		return department;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	/**
-	 * 设置部门
-	 * 
-	 * @param department
-	 *            部门
-	 */
-	public void setDepartment(String department) {
-		this.department = department;
-	}
+    public String getDepartment() {
+        return department;
+    }
 
-	/**
-	 * 获取是否启用
-	 * 
-	 * @return 是否启用
-	 */
-	@NotNull
-	@Column(nullable = false)
-	public Boolean getIsEnabled() {
-		return isEnabled;
-	}
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
-	/**
-	 * 设置是否启用
-	 * 
-	 * @param isEnabled
-	 *            是否启用
-	 */
-	public void setIsEnabled(Boolean isEnabled) {
-		this.isEnabled = isEnabled;
-	}
+    public Boolean getIsEnabled() {
+        return isEnabled;
+    }
 
-	/**
-	 * 获取是否锁定
-	 * 
-	 * @return 是否锁定
-	 */
-	@Column(nullable = false)
-	public Boolean getIsLocked() {
-		return isLocked;
-	}
+    public void setIsEnabled(Boolean isEnabled) {
+        this.isEnabled = isEnabled;
+    }
 
-	/**
-	 * 设置是否锁定
-	 * 
-	 * @param isLocked
-	 *            是否锁定
-	 */
-	public void setIsLocked(Boolean isLocked) {
-		this.isLocked = isLocked;
-	}
+    public Boolean getIsLocked() {
+        return isLocked;
+    }
 
-	/**
-	 * 获取连续登录失败次数
-	 * 
-	 * @return 连续登录失败次数
-	 */
-	@Column(nullable = false)
-	public Integer getLoginFailureCount() {
-		return loginFailureCount;
-	}
+    public void setIsLocked(Boolean isLocked) {
+        this.isLocked = isLocked;
+    }
 
-	/**
-	 * 设置连续登录失败次数
-	 * 
-	 * @param loginFailureCount
-	 *            连续登录失败次数
-	 */
-	public void setLoginFailureCount(Integer loginFailureCount) {
-		this.loginFailureCount = loginFailureCount;
-	}
+    public Integer getLoginFailureCount() {
+        return loginFailureCount;
+    }
 
-	/**
-	 * 获取锁定日期
-	 * 
-	 * @return 锁定日期
-	 */
-	public Date getLockedDate() {
-		return lockedDate;
-	}
+    /**
+     * 设置连续登录失败次数
+     *
+     * @param loginFailureCount 连续登录失败次数
+     */
+    public void setLoginFailureCount(Integer loginFailureCount) {
+        this.loginFailureCount = loginFailureCount;
+    }
 
-	/**
-	 * 设置锁定日期
-	 * 
-	 * @param lockedDate
-	 *            锁定日期
-	 */
-	public void setLockedDate(Date lockedDate) {
-		this.lockedDate = lockedDate;
-	}
+    /**
+     * 获取锁定日期
+     *
+     * @return 锁定日期
+     */
+    public Date getLockedDate() {
+        return lockedDate;
+    }
 
-	/**
-	 * 获取最后登录日期
-	 * 
-	 * @return 最后登录日期
-	 */
-	public Date getLoginDate() {
-		return loginDate;
-	}
+    /**
+     * 设置锁定日期
+     *
+     * @param lockedDate 锁定日期
+     */
+    public void setLockedDate(Date lockedDate) {
+        this.lockedDate = lockedDate;
+    }
 
-	/**
-	 * 设置最后登录日期
-	 * 
-	 * @param loginDate
-	 *            最后登录日期
-	 */
-	public void setLoginDate(Date loginDate) {
-		this.loginDate = loginDate;
-	}
+    /**
+     * 获取最后登录日期
+     *
+     * @return 最后登录日期
+     */
+    public Date getLoginDate() {
+        return loginDate;
+    }
 
-	/**
-	 * 获取最后登录IP
-	 * 
-	 * @return 最后登录IP
-	 */
-	public String getLoginIp() {
-		return loginIp;
-	}
+    /**
+     * 设置最后登录日期
+     *
+     * @param loginDate 最后登录日期
+     */
+    public void setLoginDate(Date loginDate) {
+        this.loginDate = loginDate;
+    }
 
-	/**
-	 * 设置最后登录IP
-	 * 
-	 * @param loginIp
-	 *            最后登录IP
-	 */
-	public void setLoginIp(String loginIp) {
-		this.loginIp = loginIp;
-	}
+    /**
+     * 获取最后登录IP
+     *
+     * @return 最后登录IP
+     */
+    public String getLoginIp() {
+        return loginIp;
+    }
 
-	/**
-	 * 获取角色
-	 * 
-	 * @return 角色
-	 */
-	@NotEmpty
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "xx_admin_role")
-	public Set<Role> getRoles() {
-		return roles;
-	}
+    /**
+     * 设置最后登录IP
+     *
+     * @param loginIp 最后登录IP
+     */
+    public void setLoginIp(String loginIp) {
+        this.loginIp = loginIp;
+    }
 
-	/**
-	 * 设置角色
-	 * 
-	 * @param roles
-	 *            角色
-	 */
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     @Override
     public String toString() {
-        return "Admin{" + "username=" + username + ", password=" + password + ", email=" + email + ", name=" + name + ", department=" + department + ", isEnabled=" + isEnabled + ", isLocked=" + isLocked + ", loginFailureCount=" + loginFailureCount + ", lockedDate=" + lockedDate + ", loginDate=" + loginDate + ", loginIp=" + loginIp +'}';
+        return "Admin{" + "username=" + username + ", password=" + password + ", email=" + email + ", name=" + name + ", department=" + department + ", isEnabled=" + isEnabled + ", isLocked=" + isLocked + ", loginFailureCount=" + loginFailureCount + ", lockedDate=" + lockedDate + ", loginDate=" + loginDate + ", loginIp=" + loginIp + '}';
     }
-        
+
 }

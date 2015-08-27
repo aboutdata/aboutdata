@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface AdminDao extends JpaRepository<Admin, Long> {
+public interface AdminDao extends JpaRepository<Admin, String> {
 
     /**
      * 判断用户名是否存在

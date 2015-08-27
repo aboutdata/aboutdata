@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface MemberRankDao extends JpaRepository<MemberRank, Long> {
+public interface MemberRankDao extends JpaRepository<MemberRank, String> {
 
     /**
      * 判断名称是否存在

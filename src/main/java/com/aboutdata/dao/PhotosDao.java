@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author youyou
  */
 @Repository
-public interface PhotosDao extends JpaRepository<Photos, Long> {
+public interface PhotosDao extends JpaRepository<Photos, String> {
 
 }

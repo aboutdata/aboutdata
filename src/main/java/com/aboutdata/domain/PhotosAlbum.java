@@ -20,7 +20,6 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity
 @Table(name = "xx_photos_album")
-@SequenceGenerator(name = "sequenceGenerator", sequenceName = "xx_photos_album_sequence")
 public class PhotosAlbum extends OrderEntity {
 
     private static final long serialVersionUID = -5132652107151648662L;

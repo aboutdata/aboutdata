@@ -42,7 +42,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Transactional(readOnly = true)
-    public List<String> findAuthorities(Long id) {
+    public List<String> findAuthorities(String id) {
         List<String> authorities = new ArrayList<String>();
         Admin admin = adminDao.findOne(id);
         if (admin != null) {

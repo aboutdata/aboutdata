@@ -10,7 +10,7 @@ public class Principal implements Serializable {
 	private static final long serialVersionUID = 5798882004228239559L;
 
 	/** ID */
-	private Long id;
+	private String id;
 
 	/** 用户名 */
 	private String username;
@@ -21,7 +21,7 @@ public class Principal implements Serializable {
 	 * @param username
 	 *            用户名
 	 */
-	public Principal(Long id, String username) {
+	public Principal(String id, String username) {
 		this.id = id;
 		this.username = username;
 	}
@@ -31,7 +31,7 @@ public class Principal implements Serializable {
 	 * 
 	 * @return ID
 	 */
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -41,7 +41,7 @@ public class Principal implements Serializable {
 	 * @param id
 	 *            ID
 	 */
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

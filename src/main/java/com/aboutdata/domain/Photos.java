@@ -14,7 +14,6 @@ import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "xx_photos")
-@SequenceGenerator(name = "sequenceGenerator", sequenceName = "xx_photos_sequence")
 public class Photos extends BaseEntity {
 
     /**

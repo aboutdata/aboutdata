@@ -33,7 +33,7 @@ public interface AdminService {
      * @param id ID
      * @return 权限,若不存在则返回null
      */
-    List<String> findAuthorities(Long id);
+    List<String> findAuthorities(String id);
 
     /**
      * 判断管理员是否登录

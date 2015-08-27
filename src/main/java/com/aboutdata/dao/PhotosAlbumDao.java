@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
  * @author youyou
  */
 @Repository
-public interface PhotosAlbumDao extends JpaRepository<PhotosAlbum, Long> {
+public interface PhotosAlbumDao extends JpaRepository<PhotosAlbum, String> {
 
     /**
      * 查找顶级分类

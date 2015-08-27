@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface AreaDao extends JpaRepository<Area, Long> {
+public interface AreaDao extends JpaRepository<Area, String> {
 
     /**
      * 查找顶级地区

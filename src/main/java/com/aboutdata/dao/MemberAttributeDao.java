@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface MemberAttributeDao extends JpaRepository<MemberAttribute, Long> {
+public interface MemberAttributeDao extends JpaRepository<MemberAttribute, String> {
 
     /**
      * 查找已启用会员注册项

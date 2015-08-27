@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface MemberDao extends JpaRepository<Member, Long> {
+public interface MemberDao extends JpaRepository<Member, String> {
 
     /**
      * 判断用户名是否存在

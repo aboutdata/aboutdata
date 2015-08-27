@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author Administrator
  */
 @Repository
-public interface TagDao extends JpaRepository<Tag, Long>{
+public interface TagDao extends JpaRepository<Tag, String>{
     
 }
