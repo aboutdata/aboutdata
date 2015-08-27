@@ -1,10 +1,17 @@
 package com.aboutdata.domain;
 
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import org.hibernate.validator.constraints.Length;
+
 /**
  *
  * @author Administrator
@@ -46,11 +53,14 @@ public class Photos extends BaseEntity {
     @Column(name = "orders")
     private Integer order;
 
-    /**
-     * 获取标题
-     *
-     * @return 标题
-     */
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "xx_photos_tag",
+            joinColumns = {
+                @JoinColumn(name = "photo_id")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "tag_id")})
+    private Set<Tag> tags;
+
     public String getTitle() {
         return title;
     }

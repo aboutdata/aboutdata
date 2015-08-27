@@ -1,7 +1,6 @@
 
 import com.aboutdata.commons.enums.EmailType;
 import com.aboutdata.dao.AdminDao;
-import com.aboutdata.dao.PhotoTagDao;
 import com.aboutdata.dao.PhotosAlbumDao;
 import com.aboutdata.domain.Admin;
 import com.aboutdata.domain.Member;
@@ -48,8 +47,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 
     @Resource
     private EmailService emailService;
-    @Resource
-    TagService tagService;
+
 
     /**
      * 默认提供测试方法
@@ -66,13 +64,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 //    @Ignore
     public void findByIdTest() {
         try {
-//          emailService.send(EmailType.MARKET_REGISTER_ACTIVE, "845885222@qq.com", "测试", UUID.randomUUID().toString());
-//            logger.info("admin is jpa {}", photosAlbums);
-            Tag tag = new Tag();
-            tag.setName("第三个TAG");
-            Member m = new Member();
-            tag.setMemberId(1l);
-            tagService.create(tag);
+//    
 //            logger.info("admin is jpa {}", photoTagDao.findByPhotoId(1l).size());
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);

@@ -5,10 +5,12 @@
  */
 package com.aboutdata.domain;
 
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -32,6 +34,9 @@ public class Tag extends BaseEntity {
     @Column(name = "member_id", nullable = false)
     private long memberId;
 
+    @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
+    private Set<Photos> photos;
+
     public String getName() {
         return name;
     }
@@ -47,6 +52,15 @@ public class Tag extends BaseEntity {
     public void setMemberId(long memberId) {
         this.memberId = memberId;
     }
+
+    public Set<Photos> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(Set<Photos> photos) {
+        this.photos = photos;
+    }
+    
 
     @Override
     public String toString() {
