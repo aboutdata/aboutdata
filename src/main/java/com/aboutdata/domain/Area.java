@@ -11,91 +11,92 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Entity - 地区
- * 
- * 
- * 
+ *
+ *
+ *
  */
 @Entity
 @Table(name = "xx_area")
-//@SequenceGenerator(name = "sequenceGenerator", sequenceName = "xx_area_sequence")
 public class Area extends OrderEntity {
 
-	private static final long serialVersionUID = -2158109459123036967L;
+    /**
+     * 名称
+     */
+    @NotEmpty
+    @Length(max = 100)
+    @Column(nullable = false, length = 100)
+    private String name;
 
-	/** 树路径分隔符 */
-	private static final String TREE_PATH_SEPARATOR = ",";
+    /**
+     * 全称
+     */
+    @Column(nullable = false, length = 500)
+    private String fullName;
 
-	/** 名称 */
-        @NotEmpty
-	@Length(max = 100)
-	@Column(nullable = false, length = 100)
-	private String name;
+    /**
+     * 树路径
+     */
+    @Column(nullable = false, updatable = false)
+    private String treePath;
 
-	/** 全称 */
-        @Column(nullable = false, length = 500)
-	private String fullName;
+    /**
+     * 上级地区
+     */
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Area parent;
 
-	/** 树路径 */
-        @Column(nullable = false, updatable = false)
-	private String treePath;
+    /**
+     * 下级地区
+     */
+    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OrderBy("order asc")
+    private Set<Area> children = new HashSet<Area>();
+    
 
-	/** 上级地区 */
-        @ManyToOne(fetch = FetchType.LAZY)
-	private Area parent;
+    public String getName() {
+        return name;
+    }
 
-	/** 下级地区 */
-        @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	@OrderBy("order asc")
-	private Set<Area> children = new HashSet<Area>();
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        public String getName() {
-		return name;
-	}
+    public String getFullName() {
+        return fullName;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
-	
-	public String getFullName() {
-		return fullName;
-	}
+    public String getTreePath() {
+        return treePath;
+    }
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
+    public void setTreePath(String treePath) {
+        this.treePath = treePath;
+    }
 
-	public String getTreePath() {
-		return treePath;
-	}
+    public Area getParent() {
+        return parent;
+    }
 
-	public void setTreePath(String treePath) {
-		this.treePath = treePath;
-	}
+    public void setParent(Area parent) {
+        this.parent = parent;
+    }
 
-	
-	public Area getParent() {
-		return parent;
-	}
+    public Set<Area> getChildren() {
+        return children;
+    }
 
-	public void setParent(Area parent) {
-		this.parent = parent;
-	}
-
-	public Set<Area> getChildren() {
-		return children;
-	}
-
-        public void setChildren(Set<Area> children) {
-		this.children = children;
-	}
+    public void setChildren(Set<Area> children) {
+        this.children = children;
+    }
 
 }

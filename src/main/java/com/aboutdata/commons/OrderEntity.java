@@ -22,6 +22,9 @@ public abstract class OrderEntity extends BaseEntity implements Comparable<Order
 	public static final String ORDER_PROPERTY_NAME = "order";
 
 	/** 排序 */
+        @JsonProperty
+	@Min(0)
+	@Column(name = "orders")
 	private Integer order;
 
 	/**
@@ -29,9 +32,6 @@ public abstract class OrderEntity extends BaseEntity implements Comparable<Order
 	 * 
 	 * @return 排序
 	 */
-	@JsonProperty
-	@Min(0)
-	@Column(name = "orders")
 	public Integer getOrder() {
 		return order;
 	}

@@ -26,10 +26,10 @@ public class Tag extends BaseEntity {
     /**
      * Tag name
      */
-    @Column(name = "name", nullable = false, unique = true, length = 20)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "member_id", nullable = false, unique = true, length = 20)
+    @Column(name = "member_id", nullable = false)
     private long memberId;
 
     public String getName() {
