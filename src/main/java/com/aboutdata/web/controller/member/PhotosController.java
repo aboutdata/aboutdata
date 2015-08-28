@@ -8,6 +8,7 @@ package com.aboutdata.web.controller.member;
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
+import com.aboutdata.service.ImageGraphicsService;
 import com.aboutdata.service.PhotosService;
 import java.util.List;
 import java.util.Random;
@@ -35,7 +36,11 @@ public class PhotosController {
     @Resource
     private PhotosService photosService;
 
+    @Resource
+    private ImageGraphicsService imageGraphicsService;
+
     @RequestMapping(method = RequestMethod.GET)
+
     public String index(Integer pageNumber, ModelMap model) {
 
 //        List<PhotosAlbum> albums = photosAlbumService.findRoots();
@@ -53,9 +58,9 @@ public class PhotosController {
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String wallpaper(String albumId, MultipartFile file, ModelMap model, RedirectAttributes rattr) {
-        logger.info("file name {}", file.getOriginalFilename());
-        logger.info("file name {}", file.getName());
+    public String wallpaper(String albumId, MultipartFile multipartFile, ModelMap model, RedirectAttributes rattr) {
+        logger.info("file name {}", multipartFile.getOriginalFilename());
+        logger.info("file name {}", multipartFile.getName());
 
         Random r1 = new Random();
         int num = r1.nextInt(19) + 1;
@@ -67,11 +72,9 @@ public class PhotosController {
 
         photos.setAlbumId(albumId);
         photos.setOrder(1);
-        photos.setTitle(file.getOriginalFilename());
-        photos.setThumbnail(thumbnail);
-        photos.setMedium(medium);
+        photos.setTitle(multipartFile.getOriginalFilename());
 
-        photosService.create(photos);
+        imageGraphicsService.build(photos, multipartFile);
 
         if (!albumId.isEmpty()) {
             return "redirect:/phtots/album/" + albumId;

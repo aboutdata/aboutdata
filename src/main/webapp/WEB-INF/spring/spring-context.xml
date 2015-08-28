@@ -52,6 +52,19 @@
         </property>
     </bean>
     
+    <!-- 
+        task.core_pool_size=5
+        task.max_pool_size=50
+        task.queue_capacity=1000
+        task.keep_alive_seconds=60
+    -->
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="5" />
+        <property name="maxPoolSize" value="50" />
+        <property name="queueCapacity" value="1000" />
+        <property name="keepAliveSeconds" value="60" />
+    </bean>
+    
     <import resource="spring-shiro.xml"></import>
     
     <import resource="spring-data-jpa.xml"></import>

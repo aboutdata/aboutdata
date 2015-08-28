@@ -161,7 +161,7 @@
             </exclusions>
         </dependency>
         
-       <dependency>
+        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>4.3.2.Final</version>
@@ -357,5 +357,11 @@
             <artifactId>jaxen</artifactId>
             <version>1.1.6</version>
         </dependency>
+        <dependency>
+            <groupId>net.mikesu</groupId>
+            <artifactId>FastdfsClient</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        
     </dependencies>
 </project>

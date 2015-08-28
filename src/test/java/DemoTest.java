@@ -11,7 +11,9 @@ import com.aboutdata.security.utils.SecurityUtils;
 import com.aboutdata.service.EmailService;
 import com.aboutdata.service.PhotosAlbumService;
 import com.aboutdata.service.PhotosService;
+import com.aboutdata.service.StorageService;
 import com.aboutdata.service.TagService;
+import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -55,6 +57,9 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     @Resource
     private PhotosService photosService;
 
+    @Resource
+    private StorageService storageService;
+
     /**
      * 默认提供测试方法
      */
@@ -67,20 +72,19 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
      * 测试 查询所有管理员
      */
     @Test
-    @Ignore
+//    @Ignore
     public void findByIdTest() {
         try {
-            
-            Member m =new Member();
-            m.setId("1");
-            PhotosAlbum photosAlbum = new PhotosAlbum();
-            photosAlbum.setName("哈哈");
-            photosAlbum.setGrade(1);
-            photosAlbum.setMember(m);
-            
-            
-            
-            photosAlbumService.create(photosAlbum);
+
+//            Member m = new Member();
+//            m.setId("1");
+//            PhotosAlbum photosAlbum = new PhotosAlbum();
+//            photosAlbum.setName("哈哈");
+//            photosAlbum.setGrade(1);
+//            photosAlbum.setMember(m);
+//            photosAlbumService.create(photosAlbum);
+            File file = new File("C:\\Users\\Administrator\\Documents\\NetBeansProjects\\FastdfsClient\\src\\test\\resources\\ace-Admin-template.zip");
+            storageService.upload(file);
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
         }
