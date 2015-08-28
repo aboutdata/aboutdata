@@ -76,15 +76,36 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     public void findByIdTest() {
         try {
 
-//            Member m = new Member();
-//            m.setId("1");
+            Member m = new Member();
+            m.setId("1");
 //            PhotosAlbum photosAlbum = new PhotosAlbum();
 //            photosAlbum.setName("哈哈");
 //            photosAlbum.setGrade(1);
 //            photosAlbum.setMember(m);
 //            photosAlbumService.create(photosAlbum);
-            File file = new File("C:\\Users\\Administrator\\Documents\\NetBeansProjects\\FastdfsClient\\src\\test\\resources\\ace-Admin-template.zip");
-            storageService.upload(file);
+            File dir = new File("E:\\photos");
+            if (dir.isDirectory()) {
+                for (File file : dir.listFiles()) {
+                    if (!file.isDirectory()) {
+                        String fileId = storageService.upload(file);
+                        String path = "http://localhost" + fileId;
+
+                        Photos photos = new Photos();
+                        photos.setAlbumId("3c3c81104f6da37f014f6da38d8a0000");
+                        photos.setOrder(1);
+                        photos.setTitle(file.getName());
+                        photos.setThumbnail(path);
+                        photos.setMedium(path);
+                        photos.setLarge(path);
+                        photos.setSource(path);
+
+                        photos.setMember(m);
+
+                        photosService.create(photos);
+                    }
+                }
+            }
+
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
         }
