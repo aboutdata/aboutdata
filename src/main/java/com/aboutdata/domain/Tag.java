@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -31,8 +32,9 @@ public class Tag extends BaseEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "member_id", nullable = false)
-    private long memberId;
+    @ManyToOne
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
 
     @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
     private Set<Photos> photos;
@@ -45,13 +47,14 @@ public class Tag extends BaseEntity {
         this.name = name;
     }
 
-    public long getMemberId() {
-        return memberId;
+    public Member getMember() {
+        return member;
     }
 
-    public void setMemberId(long memberId) {
-        this.memberId = memberId;
+    public void setMember(Member member) {
+        this.member = member;
     }
+
 
     public Set<Photos> getPhotos() {
         return photos;
@@ -60,11 +63,10 @@ public class Tag extends BaseEntity {
     public void setPhotos(Set<Photos> photos) {
         this.photos = photos;
     }
-    
 
     @Override
     public String toString() {
-        return "Tag{" + "name=" + name + ", memberId=" + memberId + '}';
+        return "Tag{" + "name=" + name + ", member=" + member + '}';
     }
 
 }

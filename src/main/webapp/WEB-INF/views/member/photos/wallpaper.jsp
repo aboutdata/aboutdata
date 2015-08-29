@@ -211,35 +211,11 @@
                                             </form>
                                         </div>
                                         <div class="col-sm-3">
-                                            <h5 class="font-bold">Categories</h5>
-                                            <ul class="list-group">
-                                                <li class="list-group-item">
-                                                    <a href="#">
-                                                        <span class="badge pull-right">15</span>
-                                                        Photograph
-                                                    </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="#">
-                                                        <span class="badge pull-right">30</span>
-                                                        Life style
-                                                    </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="#">
-                                                        <span class="badge pull-right">9</span>
-                                                        Food
-                                                    </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="#">
-                                                        <span class="badge pull-right">4</span>
-                                                        Travel world
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                            <h5 class="font-bold">标签</h5>
                                             <div class="tags m-b-lg l-h-2x">
-                                                <a href="#" class="label bg-primary">Bootstrap</a> <a href="#" class="label bg-primary">Application</a> <a href="#" class="label bg-primary">Apple</a> <a href="#" class="label bg-primary">Less</a> <a href="#" class="label bg-primary">Theme</a> <a href="#" class="label bg-primary">Wordpress</a>
+                                                <c:forEach items="${photos.tags}" var="tag">
+                                                    <a href="#" class="label bg-primary">${tag.name}</a> 
+                                                </c:forEach>
                                             </div>
                                             <h5 class="font-bold">Recent Posts</h5>
                                             <div>
