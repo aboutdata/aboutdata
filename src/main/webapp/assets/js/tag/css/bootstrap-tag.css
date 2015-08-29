@@ -1,0 +1,102 @@
+.tags {
+  display: inline-block;
+  padding: 4px 6px;
+  color: #777777;
+  vertical-align: middle;
+  background-color: #FFF;
+ /*border: 1px solid #d5d5d5;*/
+  width: 100%;
+}
+.tags:hover {
+  border-color: #b5b5b5;
+}
+.tags-hover,
+.tags-hover:hover {
+  border-color: #f59942;
+  outline: 0;
+}
+.tags[class*="span"] {
+  float: none;
+  margin-left: 0;
+}
+.tags input[type="text"],
+.tags input[type="text"]:focus {
+  border: none;
+  display: inline;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  line-height: 14px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  width: 100%;
+}
+.tags .tag {
+  display: inline-block;
+  position: relative;
+  font-size: 13px;
+  font-weight: normal;
+  vertical-align: baseline;
+  white-space: nowrap;
+  background-color: #91b8d0;
+  color: #FFF;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  padding: 4px 22px 5px 9px;
+  margin-bottom: 3px;
+  margin-right: 3px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  /**
+  &:nth-child(5n+1) {
+	background-color:#48A2E0;
+  }
+  &:nth-child(5n+2) {
+	background-color:#34C896;
+  }
+  &:nth-child(5n+3) {
+	background-color:#B57BB3;
+  }
+  &:nth-child(5n+4) {
+	background-color:#CC7DA8;
+  }
+  &:nth-child(5n+5) {
+	background-color:#666;
+  }
+*/
+}
+.tags .tag:empty {
+  display: none;
+}
+.tags .tag-important {
+  background-color: #d15b47;
+}
+.tags .tag-warning {
+  background-color: #ffb752;
+}
+.tags .tag-success {
+  background-color: #87b87f;
+}
+.tags .tag-info {
+  background-color: #6fb3e0;
+}
+.tags .tag-inverse {
+  background-color: #555555;
+}
+.tags .tag .close {
+  font-size: 15px;
+  line-height: 20px;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  color: #FFF;
+  text-shadow: none;
+  float: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 18px;
+  text-align: center;
+}
+.tags .tag .close:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}

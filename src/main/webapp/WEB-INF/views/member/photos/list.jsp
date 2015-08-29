@@ -143,7 +143,7 @@
         <!--file-input-->
         <script src="${pageContext.request.contextPath}/assets/js/file-input/js/fileinput.js" type="text/javascript"></script>
         <!--<script src="${pageContext.request.contextPath}/assets/js/file-input/js/fileinput_locale_zh.js" type="text/javascript"></script>-->
-
+        <script src="${pageContext.request.contextPath}/assets/js/tag/bootstrap-tag.min.js"></script>
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
         <!-- App -->
