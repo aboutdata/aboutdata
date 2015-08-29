@@ -43,15 +43,21 @@ public class TagServiceImpl implements TagService {
             Tag tagObj = this.getByName(tagName);	// get persistent object
             if (tagObj == null) {
                 //主要控制不能随便写标签 ,如果是自己的写的标签 系统将不保存
-                // tagObj = new Tag();
-                // tagObj.setName(tagName);
+                 //tagObj = new Tag();
+                 //tagObj.setName(tagName);
             } else {
                 result.add(tagObj);
             }
+            
         }
         return result;
     }
 
+    /**
+     * 用于用户查询标签时使用
+     * @param name
+     * @return
+     */
     @Override
     public List<String> findTagStringByName(String name) {
         List<String> tagString = new ArrayList<>();

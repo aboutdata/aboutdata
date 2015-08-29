@@ -5,9 +5,12 @@
  */
 package com.aboutdata.web.controller.member;
 
+import com.aboutdata.commons.ResponseMessage;
+import com.aboutdata.commons.enums.ResponseMessageType;
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
+import com.aboutdata.domain.Tag;
 import com.aboutdata.service.ImageGraphicsService;
 import com.aboutdata.service.PhotosAlbumService;
 import com.aboutdata.service.PhotosService;
@@ -21,6 +24,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -56,7 +60,17 @@ public class PhotosController {
     public String wallpaper(@PathVariable("photosId") String photosId, ModelMap model) {
         Photos photos = photosService.findById(photosId);
 
+        String tagString = "";
+        if (photos != null) {
+            for (Tag tag : photos.getTags()) {
+                tagString += tag.getName() + ",";
+            }
+            tagString = tagString.substring(0, tagString.length());
+        }
+
         model.addAttribute("photos", photos);
+
+        model.addAttribute("tagString", tagString);
 
         return "/member/photos/wallpaper";
     }
@@ -74,7 +88,7 @@ public class PhotosController {
 
         Member m = new Member();
         m.setId("1");
-        
+
         Photos photos = new Photos();
 
         PhotosAlbum album = new PhotosAlbum();
@@ -92,6 +106,14 @@ public class PhotosController {
         } else {
             return "redirect:/phtots/album";
         }
+    }
+
+    @RequestMapping(value = "/addTags", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseMessage addTags(String id, String tags, ModelMap model, RedirectAttributes rattr) {
+        photosService.addTags(id, tags);
+
+        return ResponseMessage.success("添加标签成功");
     }
 
 }

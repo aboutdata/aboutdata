@@ -70,9 +70,11 @@ public class PhotosServiceImpl implements PhotosService {
     }
 
     @Override
+    @Transactional
     public void addTags(String id, String tagString) {
         Set<Tag> tags = tagService.getTagsFromString(tagString);
         Photos photos = photosDao.findOne(id);
+          logger.info("top10  tags {}", tags.size());
         photos.setTags(tags);
         photosDao.save(photos);
     }

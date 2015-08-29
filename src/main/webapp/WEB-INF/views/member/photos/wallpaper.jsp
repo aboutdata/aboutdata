@@ -216,6 +216,12 @@
                                             <header class="panel-heading">
                                                 <ul class="nav nav-pills pull-right">
                                                     <li>
+                                                        <a href="#" data-id="${photos.id}" id="save-tags-btn" class="text-muted">
+                                                            <i class="fa fa-save text"></i>
+                                                            <span class="text">保存</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
                                                         <a href="#" class="panel-toggle text-muted"><i class="fa fa-caret-down text-active"></i><i class="fa fa-caret-up text"></i></a>
                                                     </li>
                                                 </ul>
@@ -223,8 +229,7 @@
                                             </header>
                                             <div class="panel-body clearfix">
                                                 <div class="inline">
-                                                    <input type="text" name="tags" id="form-field-tags" 
-                                                           placeholder="添加新标签 ..." />
+                                                    <input type="text" name="tags" id="form-field-tags" value="${tagString}" placeholder="添加新标签 ..." />
                                                 </div>
                                             </div>
                                         </section>
@@ -307,7 +312,6 @@
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
         <script>
             $(document).ready(function () {
-                var mycars = new Array("Saab", "Volvo", "BMW");
                 var tag_input = $('#form-field-tags');
                 try {
                     tag_input.tag(
@@ -330,6 +334,18 @@
                 catch (e) {
 
                 }
+                $("#save-tags-btn").click(function () {
+                    var id = $(this).data("id");
+                    $.ajax({
+                        type: "POST",
+                        url: '${pageContext.request.contextPath}/phtots/addTags',
+                        data: {id: id, tags: tag_input.val()}
+                    }).done(function (data) {
+                        alert("添加成功");
+                        location.reload();
+                    });
+                });
+
             });
         </script>
     </body>
