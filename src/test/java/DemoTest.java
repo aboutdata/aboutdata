@@ -72,7 +72,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
      * 测试 查询所有管理员
      */
     @Test
-//    @Ignore
+    @Ignore
     public void findByIdTest() {
         try {
 
@@ -91,7 +91,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
                         String path = "http://localhost" + fileId;
 
                         Photos photos = new Photos();
-                        photos.setAlbumId("3c3c81104f6da37f014f6da38d8a0000");
+                       // photos.setAlbumId("3c3c81104f6da37f014f6da38d8a0000");
                         photos.setOrder(1);
                         photos.setTitle(file.getName());
                         photos.setThumbnail(path);

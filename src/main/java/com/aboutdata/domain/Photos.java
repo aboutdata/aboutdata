@@ -54,7 +54,9 @@ public class Photos extends BaseEntity {
     @Column(name = "orders")
     private Integer order;
 
-    private String albumId;
+    @ManyToOne
+    @JoinColumn(name = "album_id", nullable = false)
+    private PhotosAlbum album;
 
     @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
@@ -137,12 +139,12 @@ public class Photos extends BaseEntity {
         this.member = member;
     }
 
-    public String getAlbumId() {
-        return albumId;
+    public PhotosAlbum getAlbum() {
+        return album;
     }
 
-    public void setAlbumId(String albumId) {
-        this.albumId = albumId;
+    public void setAlbum(PhotosAlbum album) {
+        this.album = album;
     }
 
     @Override

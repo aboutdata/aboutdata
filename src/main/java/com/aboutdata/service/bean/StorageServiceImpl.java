@@ -7,8 +7,8 @@ package com.aboutdata.service.bean;
 
 import com.aboutdata.service.StorageService;
 import java.io.File;
-import net.mikesu.fastdfs.FastdfsClient;
-import net.mikesu.fastdfs.FastdfsClientFactory;
+//import net.mikesu.fastdfs.FastdfsClient;
+//import net.mikesu.fastdfs.FastdfsClientFactory;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

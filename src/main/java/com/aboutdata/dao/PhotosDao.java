@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PhotosDao extends JpaRepository<Photos, String> {
 
-    @Query("select photos from Photos photos where photos.albumId =:albumId order by photos.order asc")
+    @Query("select photos from Photos photos where photos.album.id =:albumId order by photos.order asc")
     public List<Photos> findByAlbumId(@Param("albumId") String albumId);
 
 }

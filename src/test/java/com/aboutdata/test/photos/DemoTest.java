@@ -75,13 +75,13 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     public void addPhotos() {
         try {
 
-            Member m = new Member();
-            m.setId("1");
-            Photos photos = new Photos();
-
-            photos.setTitle("哈哈");
-            photos.setMember(m);
-            photosDao.save(photos);
+//            Member m = new Member();
+//            m.setId("1");
+//            Photos photos = new Photos();
+//
+//            photos.setTitle("哈哈");
+//            photos.setMember(m);
+//            photosDao.save(photos);
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -9,6 +9,7 @@ import com.aboutdata.domain.Member;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.service.ImageGraphicsService;
+import com.aboutdata.service.PhotosAlbumService;
 import com.aboutdata.service.PhotosService;
 import java.util.List;
 import java.util.Random;
@@ -37,14 +38,17 @@ public class PhotosController {
     private PhotosService photosService;
 
     @Resource
+    private PhotosAlbumService photosAlbumService;
+
+    @Resource
     private ImageGraphicsService imageGraphicsService;
 
     @RequestMapping(method = RequestMethod.GET)
 
     public String index(Integer pageNumber, ModelMap model) {
 
-//        List<PhotosAlbum> albums = photosAlbumService.findRoots();
-//        model.addAttribute("albums", albums);
+        List<PhotosAlbum> albums = photosAlbumService.findRoots();
+        model.addAttribute("albums", albums);
         return "/member/photos/album";
     }
 
@@ -68,12 +72,19 @@ public class PhotosController {
         String thumbnail = "http://themes.mediacreed.com/html/synergy/assets/media/galleries/image_gallery/thumbs/thumb" + num + ".jpg";
         String medium = "http://themes.mediacreed.com/html/synergy/assets/media/galleries/image_gallery/images/image" + num + ".jpg";
 
+        Member m = new Member();
+        m.setId("1");
+        
         Photos photos = new Photos();
 
-        photos.setAlbumId(albumId);
+        PhotosAlbum album = new PhotosAlbum();
+        album.setId(albumId);
+        photos.setMember(m);
+        photos.setAlbum(album);
         photos.setOrder(1);
         photos.setTitle(multipartFile.getOriginalFilename());
 
+        //该方法会处理图片并保存 图片信息
         imageGraphicsService.build(photos, multipartFile);
 
         if (!albumId.isEmpty()) {

@@ -10,12 +10,8 @@ import com.aboutdata.service.ImageGraphicsService;
 import com.aboutdata.service.PhotosService;
 import com.aboutdata.service.StorageService;
 import java.io.File;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.Random;
 import javax.annotation.Resource;
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -42,13 +38,17 @@ public class ImageGraphicsServiceImpl implements ImageGraphicsService {
                 }
                 multipartFile.transferTo(tempFile);
 //                addTask(sourcePath, largePath, mediumPath, thumbnailPath, tempFile, multipartFile.getContentType());
-                String path = storageService.upload(tempFile);
+//                String path = storageService.upload(tempFile);
+                Random r1 = new Random();
+                int num = r1.nextInt(19) + 1;
+                String thumbnail = "http://themes.mediacreed.com/html/synergy/assets/media/galleries/image_gallery/thumbs/thumb" + num + ".jpg";
+                String medium = "http://themes.mediacreed.com/html/synergy/assets/media/galleries/image_gallery/images/image" + num + ".jpg";
 
-                photos.setThumbnail(path);
-                photos.setMedium(path);
-                photos.setLarge(path);
-                photos.setSource(path);
-                
+                photos.setThumbnail(thumbnail);
+                photos.setMedium(medium);
+                photos.setLarge(thumbnail);
+                photos.setSource(thumbnail);
+
                 photosService.create(photos);
             } catch (Exception e) {
                 e.printStackTrace();
