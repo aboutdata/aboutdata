@@ -5,6 +5,7 @@
  */
 package com.aboutdata.web.controller.member;
 
+import com.aboutdata.commons.ResponseMessage;
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
@@ -18,6 +19,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -67,28 +69,34 @@ public class PhotosAlbumController {
         Member member = memberService.getCurrent();
 
         List<Photos> photos = photosService.findByAlbumId(albumId);
-
+        
+        PhotosAlbum photosAlbum = photosAlbumService.findById(albumId);
+        
         model.addAttribute("list", photos);
-        model.addAttribute("albumId", albumId);
+        model.addAttribute("photosAlbum", photosAlbum);
 
         return "/member/photos/list";
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String createPhotosAlbum(Integer pageNumber, ModelMap model) {
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseMessage createPhotosAlbum(String albumName, ModelMap model) {
 
-        Member member = memberService.getCurrent();
+//      Member member = memberService.getCurrent();
+        Member member = new Member();
+        member.setId("1");
         PhotosAlbum album = new PhotosAlbum();
-        album.setName("测试相册一");
-
+        album.setName(albumName);
+        album.setGrade(1);
+        album.setMember(member);
         photosAlbumService.create(album);
 
-        if (album.getParentId() != null) {
-            return "redirect:/gallery/album/" + album.getParentId();
-        } else {
-            return "redirect:/gallery";
-        }
-
+//        if (album.getParentId() != null) {
+//            return "redirect:/gallery/album/" + album.getParentId();
+//        } else {
+//            return "redirect:/gallery";
+//        }
+        return ResponseMessage.success("添加成功");
     }
 
 }

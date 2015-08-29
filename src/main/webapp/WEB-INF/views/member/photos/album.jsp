@@ -129,10 +129,10 @@
                             <p>创建新相册更好管理你的图片.</p>
                             <div class="form-group">
                                 <label>相册名称</label>
-                                <input type="email" class="form-control" placeholder="Enter email">
+                                <input type="input" class="form-control" id="albumName" placeholder="输入相册名称">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success text-uc"><strong>保存相册</strong></button>
+                                <button type="submit" id="album-save-btn" class="btn btn-success text-uc"><strong>保存相册</strong></button>
                             </div>                
                         </div>          
                     </div>
@@ -150,5 +150,23 @@
         <script src="${pageContext.request.contextPath}/assets/js/masonry/tiles.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/masonry/demo.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#album-save-btn").click(function () {
+                    $.ajax({
+                        type: "post",
+                        url: "${pageContext.request.contextPath}/phtots/album/create",
+                        data: {albumName: $("#albumName").val()},
+                        dataType: "json",
+                        success: function (data) {
+                            location.reload();
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert(errorThrown);
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

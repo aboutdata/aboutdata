@@ -85,8 +85,8 @@
                                     <a href="#modal-form" class="pull-right text-muted m-t-lg" data-toggle="modal">
                                         <i class="fa fa-plus i-lg inline text-info"></i> 上传照片
                                     </a>
-                                    <h2 class="font-thin m-b">Acoustic</h2>
-                                    <div class="row row-sm">
+                                    <h2 class="font-thin m-b">${photosAlbum.name}</h2>
+                                <div class="row row-sm">
                                     <c:forEach items="${list}" var="photos">
                                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                                             <div class="item">
@@ -126,7 +126,7 @@
                             <h3 class="m-t-none m-b">上传照片</h3>
                             <p>创建新相册更好管理你的图片.</p>
                             <form action="${pageContext.request.contextPath}/phtots/upload" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="albumId" value="${albumId}"/>
+                                <input type="hidden" name="albumId" value="${photosAlbum.id}"/>
                                 <div class="form-group">
                                     <label>请选择照片</label>
                                     <input id="photos-upload-input" type="file" name="multipartFile" class="form-control file">

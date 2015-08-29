@@ -47,4 +47,9 @@ public class PhotosAlbumServiceImpl implements PhotosAlbumService {
         photosAlbumDao.save(album);
     }
 
+    @Override
+    public PhotosAlbum findById(String id) {
+        return photosAlbumDao.findOne(id);
+    }
+
 }

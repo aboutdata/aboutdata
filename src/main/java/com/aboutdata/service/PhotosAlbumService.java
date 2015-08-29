@@ -35,4 +35,6 @@ public interface PhotosAlbumService {
      */
     public void create(PhotosAlbum album);
 
+    public PhotosAlbum findById(String id);
+
 }
