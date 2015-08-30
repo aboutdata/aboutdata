@@ -21,6 +21,8 @@ public interface PhotosAlbumService {
      */
     public List<PhotosAlbum> findRoots();
 
+    public List<PhotosAlbum> findRootsByMember(String memberId);
+
     /**
      * 根据父类超找
      *

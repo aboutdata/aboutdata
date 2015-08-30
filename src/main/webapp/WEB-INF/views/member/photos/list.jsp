@@ -93,16 +93,16 @@
                                                 <div class="pos-rlt">
                                                     <div class="item-overlay opacity r r-2x bg-black">
                                                         <div class="center text-center m-t-n">
-                                                            <a href="${pageContext.request.contextPath}/phtots/wallpaper/${photos.id}"><i class="fa fa-play-circle i-2x"></i></a>
+                                                            <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photos.id}"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="${pageContext.request.contextPath}/phtots/wallpaper/${photos.id}">
+                                                    <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photos.id}">
                                                         <img src="${photos.thumbnail}" alt="" class="r r-2x img-full">
                                                     </a>
                                                 </div>
                                                 <div class="padder-v">
-                                                    <a href="${pageContext.request.contextPath}/phtots/wallpaper/${photos.id}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis">${photos.title}</a>
-                                                    <a href="${pageContext.request.contextPath}/phtots/wallpaper/${photos.id}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis text-xs text-muted">${photos.createDate}</a>
+                                                    <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photos.id}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis">${photos.title}</a>
+                                                    <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photos.id}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis text-xs text-muted">${photos.createDate}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,7 +125,7 @@
                         <div class="row">
                             <h3 class="m-t-none m-b">上传照片</h3>
                             <p>创建新相册更好管理你的图片.</p>
-                            <form action="${pageContext.request.contextPath}/phtots/upload" method="post" enctype="multipart/form-data">
+                            <form action="${pageContext.request.contextPath}/member/photos/upload" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="albumId" value="${photosAlbum.id}"/>
                                 <div class="form-group">
                                     <label>请选择照片</label>
@@ -156,7 +156,7 @@
         <script>
             $(document).ready(function () {
                 $('#photos-upload-input').fileinput({
-//                    uploadUrl: '${pageContext.request.contextPath}/phtots/upload',
+//                    uploadUrl: '${pageContext.request.contextPath}/photos/upload',
                     allowedFileExtensions: ['jpg', 'png', 'gif']
                 });
             });

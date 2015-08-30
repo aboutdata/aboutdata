@@ -95,16 +95,16 @@
                                                 <div class="pos-rlt">
                                                     <div class="item-overlay opacity r r-2x bg-black">
                                                         <div class="center text-center m-t-n">
-                                                            <a href="${pageContext.request.contextPath}/phtots/album/${album.id}"><i class="fa fa-play-circle i-2x"></i></a>
+                                                            <a href="${pageContext.request.contextPath}/member/photos/album/${album.id}"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="${pageContext.request.contextPath}/phtots/album/${album.id}">
+                                                    <a href="${pageContext.request.contextPath}/member/photos/album/${album.id}">
                                                         <img src="${pageContext.request.contextPath}/assets/images/m1.jpg" alt="" class="r r-2x img-full">
                                                     </a>
                                                 </div>
                                                 <div class="padder-v">
-                                                    <a href="${pageContext.request.contextPath}/phtots/album/${album.id}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis">${album.name}</a>
-                                                    <a href="${pageContext.request.contextPath}/phtots/album/${album.id}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis text-xs text-muted">${album.createDate}</a>
+                                                    <a href="${pageContext.request.contextPath}/member/photos/album/${album.id}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis">${album.name}</a>
+                                                    <a href="${pageContext.request.contextPath}/member/photos/album/${album.id}" data-bjax data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis text-xs text-muted">${album.createDate}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -155,7 +155,7 @@
                 $("#album-save-btn").click(function () {
                     $.ajax({
                         type: "post",
-                        url: "${pageContext.request.contextPath}/phtots/album/create",
+                        url: "${pageContext.request.contextPath}/member/photos/album/create",
                         data: {albumName: $("#albumName").val()},
                         dataType: "json",
                         success: function (data) {

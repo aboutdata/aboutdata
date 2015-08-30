@@ -32,7 +32,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 	private static final String MEMBER_ATTRIBUTE_NAME = "member";
 
 	/** 默认登录URL */
-	private static final String DEFAULT_LOGIN_URL = "/member/login";
+	private static final String DEFAULT_LOGIN_URL = "/login";
 
 	/** 登录URL */
 	private String loginUrl = DEFAULT_LOGIN_URL;

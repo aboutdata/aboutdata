@@ -90,9 +90,8 @@
                             <a href="profile.html">Profile</a>
                         </li>
                         <li>
-                            <a href="#">
-                                <span class="badge bg-danger pull-right">3</span>
-                                Notifications
+                            <a href="${pageContext.request.contextPath}/member/photos/album">
+                                我的相册
                             </a>
                         </li>
                         <li>
@@ -100,7 +99,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="modal.lockme.html" data-toggle="ajaxModal" >Logout</a>
+                            <a href="${pageContext.request.contextPath}/logout">注销登录</a>
                         </li>
                     </ul>
                 </li>

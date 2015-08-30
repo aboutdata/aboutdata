@@ -27,6 +27,9 @@ public interface PhotosAlbumDao extends JpaRepository<PhotosAlbum, String> {
     @Query("select photosAlbum from PhotosAlbum photosAlbum where photosAlbum.parentId is null order by photosAlbum.order asc")
     List<PhotosAlbum> findRoots();
 
+    @Query("select photosAlbum from PhotosAlbum photosAlbum where photosAlbum.parentId is null and photosAlbum.member.id=:memberId order by photosAlbum.order asc")
+    List<PhotosAlbum> findRootsByMember(@Param("memberId") String memberId);
+
     /**
      * 查找上级分类
      *

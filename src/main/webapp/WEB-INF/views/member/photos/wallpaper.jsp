@@ -322,7 +322,7 @@
                     var id = $(this).data("id");
                     $.ajax({
                         type: "POST",
-                        url: '${pageContext.request.contextPath}/phtots/addTags',
+                        url: '${pageContext.request.contextPath}/member/photos/addTags',
                         data: {id: id, tags: tag_input.val()}
                     }).done(function (data) {
                         alert("添加成功");

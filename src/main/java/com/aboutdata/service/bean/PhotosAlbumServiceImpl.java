@@ -36,6 +36,11 @@ public class PhotosAlbumServiceImpl implements PhotosAlbumService {
         return photosAlbums;
     }
 
+    public List<PhotosAlbum> findRootsByMember(String memberId) {
+        List<PhotosAlbum> photosAlbums = photosAlbumDao.findRootsByMember(memberId);
+        return photosAlbums;
+    }
+
     @Override
     public List<PhotosAlbum> getByParent(long ParentId) {
         return photosAlbumDao.findByParent(ParentId);

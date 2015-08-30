@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author youyou
  */
 @Controller("photosAlbumController")
-@RequestMapping("/phtots/album")
+@RequestMapping("/member/photos/album")
 public class PhotosAlbumController {
 
     @Resource(name = "memberServiceImpl")
@@ -45,12 +45,11 @@ public class PhotosAlbumController {
      * @param model
      */
     @RequestMapping(method = RequestMethod.GET)
-
     public String index(Integer pageNumber, ModelMap model) {
 
         Member member = memberService.getCurrent();
 
-        List<PhotosAlbum> albums = photosAlbumService.findRoots();
+        List<PhotosAlbum> albums = photosAlbumService.findRootsByMember(member.getId());
         model.addAttribute("albums", albums);
 
         return "/member/photos/album";
@@ -69,9 +68,9 @@ public class PhotosAlbumController {
         Member member = memberService.getCurrent();
 
         List<Photos> photos = photosService.findByAlbumId(albumId);
-        
+
         PhotosAlbum photosAlbum = photosAlbumService.findById(albumId);
-        
+
         model.addAttribute("list", photos);
         model.addAttribute("photosAlbum", photosAlbum);
 
@@ -82,9 +81,9 @@ public class PhotosAlbumController {
     @ResponseBody
     public ResponseMessage createPhotosAlbum(String albumName, ModelMap model) {
 
-//      Member member = memberService.getCurrent();
-        Member member = new Member();
-        member.setId("1");
+        Member member = memberService.getCurrent();
+//      Member member = new Member();
+//      member.setId("1");
         PhotosAlbum album = new PhotosAlbum();
         album.setName(albumName);
         album.setGrade(1);

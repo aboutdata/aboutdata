@@ -33,7 +33,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author youyou
  */
 @Controller("photosController")
-@RequestMapping("/phtots")
+@RequestMapping("/member/photos")
 public class PhotosController {
 
     Logger logger = LoggerFactory.getLogger(PhotosController.class);
@@ -46,7 +46,6 @@ public class PhotosController {
 
     @Resource
     private ImageGraphicsService imageGraphicsService;
-
     @RequestMapping(method = RequestMethod.GET)
 
     public String index(Integer pageNumber, ModelMap model) {
@@ -102,9 +101,9 @@ public class PhotosController {
         imageGraphicsService.build(photos, multipartFile);
 
         if (!albumId.isEmpty()) {
-            return "redirect:/phtots/album/" + albumId;
+            return "redirect:/member/photos/album/" + albumId;
         } else {
-            return "redirect:/phtots/album";
+            return "redirect:/member/photos/album";
         }
     }
 
