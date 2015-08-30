@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author aboutdata.me
  */
-@Controller
+@Controller("adminLoginContrller")
 @RequestMapping("/admin/login")
 public class LoginController {
 

@@ -1,14 +1,8 @@
 <%-- 
-    Document   : login
-    Created on : 2015-8-30, 9:17:55
+    Document   : register
+    Created on : 2015-8-30, 11:21:53
     Author     : youyou
 --%>
-<%-- 
-    Document   : index
-    Created on : 2015-8-16, 13:41:17
-    Author     : youyou
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -89,7 +83,7 @@
                                     <div class="row">
                                         <div class="col-sm-3 b-r"></div>
                                         <div class="col-sm-3 b-r">
-                                            <h3 class="m-t-none m-b">用户登录</h3>
+                                            <h3 class="m-t-none m-b">用户注册</h3>
                                         <c:if test="${not empty errorMessage}">
                                             <div class="alert alert-danger">
                                                 <button type="button" class="close" data-dismiss="alert">×</button>
@@ -100,26 +94,34 @@
                                             <p>登录可以获得更好的服务</p>
                                         </c:if>
 
-                                        <form role="form" data-validate="parsley" action="${pageContext.request.contextPath}/login/submit" method="post">
+                                        <form role="form" data-validate="parsley" action="${pageContext.request.contextPath}/register/submit" method="post">
                                             <div class="form-group">
                                                 <label>用户名</label>
                                                 <input type="text" class="form-control" name="username" value="aboutdata" placeholder="Enter email" data-required="true">
                                             </div>
                                             <div class="form-group">
+                                                <label>电子邮件</label>
+                                                <input type=email class="form-control" name="email" value="845885222@qq.com" placeholder="Enter email" data-required="true">
+                                            </div>
+                                            <div class="form-group">
                                                 <label>密码</label>
-                                                <input type="password" class="form-control" name="password" placeholder="Password" data-required="true">
+                                                <input type="password" class="form-control" id="password" name="password"  placeholder="Password" data-required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>确认密码</label>
+                                                <input type="password" class="form-control" name="confirmpassword" data-equalto="#password"  placeholder="Password" data-required="true">
                                             </div>
                                             <div class="checkbox m-t-lg">
-                                                <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs"><strong>登录</strong></button>
+                                                <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs"><strong>注册</strong></button>
                                                 <label>
-                                                    <input type="checkbox" name="rememberme" checked data-required="true"> Remember me
+                                                    <input type="checkbox" name="rememberme" checked data-required="true">同意注册协议
                                                 </label>
                                             </div>                
                                         </form>
                                     </div>
                                     <div class="col-sm-3">
-                                        <h4>没有账号?</h4>
-                                        <p>点击<a href="${pageContext.request.contextPath}/register" class="text-info">注册新用户</a></p>
+                                        <h4>如果已有账号?</h4>
+                                        <p>You can create an account <a href="#" class="text-info">here</a></p>
                                         <p>OR</p>
                                         <a href="#" class="btn btn-primary btn-block m-b-sm"><i class="fa fa-facebook pull-left"></i>Sign in with Facebook</a>
                                         <a href="#" class="btn btn-info btn-block m-b-sm"><i class="fa fa-twitter pull-left"></i>Sign in with Twitter</a>

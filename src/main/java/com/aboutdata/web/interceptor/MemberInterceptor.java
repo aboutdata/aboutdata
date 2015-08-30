@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -33,7 +32,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 	private static final String MEMBER_ATTRIBUTE_NAME = "member";
 
 	/** 默认登录URL */
-	private static final String DEFAULT_LOGIN_URL = "/login.jhtml";
+	private static final String DEFAULT_LOGIN_URL = "/member/login";
 
 	/** 登录URL */
 	private String loginUrl = DEFAULT_LOGIN_URL;

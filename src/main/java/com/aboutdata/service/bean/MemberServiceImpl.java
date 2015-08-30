@@ -33,12 +33,12 @@ public class MemberServiceImpl implements MemberService {
 
     @Transactional(readOnly = true)
     public boolean usernameExists(String username) {
-        return memberDao.usernameExists(username)>0;
+        return memberDao.usernameExists(username) > 0;
     }
 
     @Transactional(readOnly = true)
     public boolean emailExists(String email) {
-        return memberDao.emailExists(email)>0;
+        return memberDao.emailExists(email) > 0;
     }
 
     @Transactional(readOnly = true)
@@ -46,7 +46,7 @@ public class MemberServiceImpl implements MemberService {
         if (StringUtils.equalsIgnoreCase(previousEmail, currentEmail)) {
             return true;
         } else {
-            if (memberDao.emailExists(currentEmail)>0) {
+            if (memberDao.emailExists(currentEmail) > 0) {
                 return false;
             } else {
                 return true;
@@ -101,6 +101,16 @@ public class MemberServiceImpl implements MemberService {
             }
         }
         return null;
+    }
+
+    @Override
+    public Member update(Member member) {
+        return memberDao.save(member);
+    }
+
+    @Override
+    public Member create(Member member) {
+        return memberDao.save(member);
     }
 
 }

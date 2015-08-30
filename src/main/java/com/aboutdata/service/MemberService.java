@@ -75,4 +75,8 @@ public interface MemberService {
      */
     String getCurrentUsername();
 
+    public Member update(Member member);
+
+    public Member create(Member member);
+
 }
