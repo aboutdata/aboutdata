@@ -24,11 +24,12 @@ import org.springframework.stereotype.Component;
 @Scope("singleton")
 public class ApplicationBean {
 
+    @InjectLogger
+    private Logger logger;
+
     private Features features;
 
     private SystemConfig systemConfig;
-
-    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Resource
     private MemberService memberService;
@@ -41,8 +42,9 @@ public class ApplicationBean {
     }
 
     /**
-     *  配置新开发功能是否可用线上
-     * @return 
+     * 配置新开发功能是否可用线上
+     *
+     * @return
      */
     public Features getFeatures() {
         return this.getSystemConfig().getFeatures();

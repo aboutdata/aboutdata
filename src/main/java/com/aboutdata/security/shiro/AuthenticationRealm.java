@@ -1,5 +1,6 @@
 package com.aboutdata.security.shiro;
 
+import com.aboutdata.commons.application.InjectLogger;
 import com.aboutdata.domain.Admin;
 import com.aboutdata.security.utils.SecurityUtils;
 import com.aboutdata.service.AdminService;
@@ -23,10 +24,11 @@ import org.slf4j.LoggerFactory;
  */
 public class AuthenticationRealm extends AuthorizingRealm {
 
+    @InjectLogger
+    private Logger logger;
+
     @Resource(name = "adminServiceImpl")
     private AdminService adminService;
-
-    private static final transient Logger logger = LoggerFactory.getLogger(AuthenticationRealm.class);
 
     /**
      * 验证当前登录的Subject
@@ -52,11 +54,11 @@ public class AuthenticationRealm extends AuthorizingRealm {
                 logger.info("password not match");
                 throw new IncorrectCredentialsException();
             }
-            
+
             admin.setLoginDate(new Date());
             admin.setLoginFailureCount(0);
 //            adminService.update(admin);
-            
+
             return new SimpleAuthenticationInfo(new Principal(admin.getId(), username), password, getName());
         }
         throw new UnknownAccountException();
