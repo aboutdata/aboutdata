@@ -33,6 +33,11 @@ public class Features implements Serializable{
     @XmlElement
     private boolean enableSMS = false;  //默认值
     
+    @XmlElement
+    private boolean enableSearch = false;  //默认值
+    
+    
+    
     public boolean isDimPrivacy() {
         return dimPrivacy;
     }
@@ -48,6 +53,14 @@ public class Features implements Serializable{
 
     public void setEnbaleSMS(boolean enableSMS) {
         this.enableSMS = enableSMS;
+    }
+
+    public boolean isEnableSearch() {
+        return enableSearch;
+    }
+
+    public void setEnableSearch(boolean enableSearch) {
+        this.enableSearch = enableSearch;
     }
 
     @Override

@@ -26,6 +26,7 @@
         </a>
     </li>
 </ul>
+<c:if test="${appBean.features.enableSearch}">
 <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
     <div class="form-group">
         <div class="input-group">
@@ -36,6 +37,7 @@
         </div>
     </div>
 </form>
+</c:if>
 <c:choose>
     <c:when test="${appBean.getCurrentUser() != null}">
         <div class="navbar-right ">

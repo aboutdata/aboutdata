@@ -30,13 +30,10 @@ public class ServletListener extends ContextLoaderListener implements HttpSessio
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext sc = sce.getServletContext();
-        long start = System.currentTimeMillis();
-        logger.info("contextInitialized start ...");
         //获取spring上下文
-        ApplicationContext applicationContext = getCurrentWebApplicationContext();
-        ApplicationBean appBean = (ApplicationBean) applicationContext.getBean("appBean");
+        springContext = getCurrentWebApplicationContext();
+        ApplicationBean appBean = (ApplicationBean) springContext.getBean("appBean");
         sc.setAttribute("appBean", appBean);
-        logger.info("contextInitialized {}", System.currentTimeMillis() - start);
     }
 
     @Override
