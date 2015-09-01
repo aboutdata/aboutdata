@@ -86,10 +86,10 @@
                     <ul class="dropdown-menu animated fadeInRight">            
                         <li>
                             <span class="arrow top"></span>
-                            <a href="#">Settings</a>
+                            <a href="#">设置</a>
                         </li>
                         <li>
-                            <a href="profile.html">Profile</a>
+                            <a href="${pageContext.request.contextPath}/member/profile">个人资料</a>
                         </li>
                         <li>
                             <a href="${pageContext.request.contextPath}/member/photos/album">
@@ -97,7 +97,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="docs.html">Help</a>
+                            <a href="docs.html">收藏</a>
                         </li>
                         <li class="divider"></li>
                         <li>

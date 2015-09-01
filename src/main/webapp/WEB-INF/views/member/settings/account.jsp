@@ -61,14 +61,14 @@
                                                             <small class="text-muted"><i class="fa fa-map-marker"></i>中国,北京</small>
                                                         </div>                
                                                     </div>
-                                                    
+
                                                     <div class="btn-group btn-group-justified m-b">
                                                         <a class="btn btn-success btn-rounded">
                                                             <span class="text">
                                                                 <i class="fa fa-eye"></i> Follow
                                                             </span>
                                                         </a>
-                                                        <a href="${pageContext.request.contextPath}/member/settings/account" class="btn btn-dark btn-rounded">
+                                                        <a class="btn btn-dark btn-rounded">
                                                             <i class="fa fa-comment-o"></i>修改资料
                                                         </a>
                                                     </div>
@@ -91,58 +91,73 @@
                                     </aside>
                                     <aside class="bg-white">
                                         <section class="panel panel-default">
-                                            <header class="panel-heading">
-                                                最新消息
+                                            <header class="panel-heading bg-light">
+                                                <ul class="nav nav-justified">
+                                                    <li class="active">
+                                                        <a href="#">
+                                                            <span class="m-b-xs h4 block"> 
+                                                                <i class="fa fa-user text-muted"></i>
+                                                            </span>
+                                                            <span class="text-muted">个人资料</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="bg-light">
+                                                            <span class="m-b-xs h4 block"> 
+                                                                <i class="icon-eyeglasses"></i>
+                                                            </span>
+                                                            <span class="text-muted">头像修改</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <span class="m-b-xs h4 block"> 
+                                                                <i class="fa fa-cog text-muted"></i>
+                                                            </span>
+                                                            <span class="text-muted">个人设置</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="bg-light">
+                                                            <span class="m-b-xs h4 block"> 
+                                                                <i class="fa fa-css3"></i>
+                                                            </span>
+                                                            <span class="text-muted">账户</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </header>
-                                            <section class="scrollable">
-                                                <div class="tab-pane active" id="activity">
-                                                    <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
-                                                        <li class="list-group-item">
-                                                            <a href="#" class="thumb-sm pull-left m-r-sm">
-                                                                <img src="${pageContext.request.contextPath}/assets/images/a0.png" class="img-circle">
-                                                            </a>
-                                                            <a href="#" class="clear">
-                                                                <small class="pull-right">3 minuts ago</small>
-                                                                <strong class="block">Drew Wllon</strong>
-                                                                <small>Wellcome and play this web application template ... </small>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
+                                            <div class="panel-body">
+                                                <div class="tab-pane" id="home">
+                                                    <form class="form-horizontal" data-validate="parsley">
+                                                        <section class="panel panel-default">
+                                                            <header class="panel-heading">
+                                                                <strong>个人资料</strong>
+                                                            </header>
+                                                            <div class="panel-body">
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3 control-label">描述一下自己</label>
+                                                                    <div class="col-sm-6">
+                                                                        <textarea class="form-control parsley-validated" name="description" rows="6" data-minwords="6" data-required="true" placeholder="Type your message"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="line line-dashed b-b line-lg pull-in"></div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3 control-label">首页背景ID</label>
+                                                                    <div class="col-sm-6">
+                                                                        <input type="text" data-type="url" name="backgroundId" class="form-control parsley-validated" placeholder="url">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="line line-dashed b-b line-lg pull-in"></div>
+                                                            </div>
+                                                            <footer class="panel-footer text-right bg-light lter">
+                                                                <button type="submit" class="btn btn-success btn-s-xs">保存</button>
+                                                            </footer>
+                                                        </section>
+                                                    </form>
+
                                                 </div>
-                                            </section>
-                                        </section>
-                                    </aside>
-                                    <aside class="col-lg-3 b-l">
-                                        <section class="panel panel-default">
-                                            <header class="panel-heading">
-                                                用户统计信息
-                                            </header>
-                                            <div class="list-group no-radius alt">
-                                                <a class="list-group-item" href="#">
-                                                    <span class="badge bg-success">25</span>
-                                                    <i class="fa fa-comment icon-muted"></i> 
-                                                    访问
-                                                </a>
-                                                <a class="list-group-item" href="#">
-                                                    <span class="badge bg-info">16</span>
-                                                    <i class="fa fa-envelope icon-muted"></i> 
-                                                    评论
-                                                </a>
-                                                <a class="list-group-item" href="#">
-                                                    <span class="badge bg-light">5</span>
-                                                    <i class="fa fa-eye icon-muted"></i> 
-                                                    标签
-                                                </a>
-                                                <a class="list-group-item" href="#">
-                                                    <span class="badge bg-light">5</span>
-                                                    <i class="fa fa-eye icon-muted"></i> 
-                                                    上传
-                                                </a>
-                                                 <a class="list-group-item" href="#">
-                                                    <span class="badge bg-light">5</span>
-                                                    <i class="fa fa-eye icon-muted"></i> 
-                                                    收藏
-                                                </a>
+                                            </div>
                                             </div>
                                         </section>
                                     </aside>

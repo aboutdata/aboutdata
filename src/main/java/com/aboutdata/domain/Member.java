@@ -1,35 +1,19 @@
 package com.aboutdata.domain;
 
 import com.aboutdata.web.interceptor.MemberInterceptor;
-import java.lang.reflect.InvocationTargetException;
-import java.math.BigDecimal;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.OrderBy;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-
-import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang.StringUtils;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -209,6 +193,9 @@ public class Member extends BaseEntity {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     private Area area;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private MemberInfomation memberInfomation;
 
     /**
      * 会员等级
@@ -398,5 +385,14 @@ public class Member extends BaseEntity {
     public void setPhotosAlbums(Set<PhotosAlbum> photosAlbums) {
         this.photosAlbums = photosAlbums;
     }
+
+    public MemberInfomation getMemberInfomation() {
+        return memberInfomation;
+    }
+
+    public void setMemberInfomation(MemberInfomation memberInfomation) {
+        this.memberInfomation = memberInfomation;
+    }
+    
 
 }
