@@ -10,6 +10,7 @@ import com.aboutdata.domain.Member;
 import com.aboutdata.domain.MemberInfomation;
 import com.aboutdata.service.AreaService;
 import com.aboutdata.service.MemberAttributeService;
+import com.aboutdata.service.MemberInfomationService;
 import com.aboutdata.service.MemberService;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
@@ -31,6 +32,10 @@ public class SettingsController {
 
     @Resource(name = "memberServiceImpl")
     private MemberService memberService;
+
+    @Resource
+    private MemberInfomationService memberInfomationService;
+
     @Resource(name = "memberAttributeServiceImpl")
     private MemberAttributeService memberAttributeService;
     @Resource(name = "areaServiceImpl")
@@ -55,17 +60,17 @@ public class SettingsController {
     public String updateProfile(String description, String backgroundId, ModelMap model) {
         Member member = memberService.getCurrent();
 
-        System.out.println("description" + description);
-//        logger.info("description id {}", description);
-//        logger.info("backgroundId id {}", backgroundId);
-        MemberInfomation mInfo = member.getMemberInfomation();
-        System.out.println("mInfo " + mInfo);
+        MemberInfomation mInfo = memberInfomationService.findByMember(member);
+
+        if (mInfo == null) {
+            mInfo = new MemberInfomation();
+        }
         mInfo.setDescription(description);
         mInfo.setBackgroundId(backgroundId);
+        mInfo.setMember(member);
         
-
-        member.setMemberInfomation(mInfo);
-        memberService.update(member);
+        memberInfomationService.create(mInfo);
+        
         model.addAttribute("member", member);
 
         return "/member/settings/profile";

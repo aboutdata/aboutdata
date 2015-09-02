@@ -88,7 +88,7 @@ public class RegisterController {
 
         Member member = new Member();
         if (memberService.usernameExists(username)) {
-            model.addAttribute("errorMessage", "密码错误");
+            model.addAttribute("errorMessage", "用户名存在");
             return "/register";
         }
         //密码

@@ -2,14 +2,18 @@
 import com.aboutdata.commons.application.InjectLogger;
 import com.aboutdata.commons.enums.EmailType;
 import com.aboutdata.dao.AdminDao;
+import com.aboutdata.dao.MemberInfomationDao;
 import com.aboutdata.dao.PhotosAlbumDao;
 import com.aboutdata.domain.Admin;
 import com.aboutdata.domain.Member;
+import com.aboutdata.domain.MemberInfomation;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.domain.Tag;
 import com.aboutdata.security.utils.SecurityUtils;
 import com.aboutdata.service.EmailService;
+import com.aboutdata.service.MemberRankService;
+import com.aboutdata.service.MemberService;
 import com.aboutdata.service.PhotosAlbumService;
 import com.aboutdata.service.PhotosService;
 import com.aboutdata.service.StorageService;
@@ -61,6 +65,12 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     @Resource
     private StorageService storageService;
 
+    @Resource
+    private MemberInfomationDao memberInfomationDao;
+
+    @Resource
+    private MemberService memberService;
+
     /**
      * 默认提供测试方法
      */
@@ -68,17 +78,57 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 
     }
 
+    @Test
+    public void createMember() {
+        Member member = new Member();
+//
+//        //密码
+//        String salt = SecurityUtils.getSalt();
+//        String passphrase = SecurityUtils.getPassphrase(salt, "123456");
+//
+//        member.setUsername("test3".toLowerCase());
+//
+//        member.setSalt(salt);
+//        member.setPassword(passphrase);
+//        member.setEmail("84588d5222@qq.com");
+//        member.setPoint(1l);
+//
+//        member.setIsEnabled(true);
+//        member.setIsLocked(false);
+//        member.setLoginFailureCount(0);
+//        member.setLockedDate(null);
+////        member.setRegisterIp(request.getRemoteAddr());
+////        member.setLoginIp(request.getRemoteAddr());
+//        member.setLoginDate(new Date());
+//        member.setMemberRank(memberRankService.findDefault());
+//
+//        if (member.getMemberInfomation() == null) {
+//            MemberInfomation minfo = new MemberInfomation();
+//            minfo.setDescription("setDescription setDescription");
+//            member.setMemberInfomation(minfo);
+//        } else {
+//            MemberInfomation minfo = member.getMemberInfomation();
+//            minfo.setDescription("setDescription setDescription222222222");
+//            member.setMemberInfomation(minfo);
+//        }
+        //MemberInfomation minfo = new MemberInfomation();
+        // minfo.setDescription("setDescription setDescription");
+//        member.setMemberInfomation(minfo);
+        member.setId("3c3c81104f8d0391014f8d03bea80000");
+        // minfo.setMember(member);
+        MemberInfomation minfo = memberInfomationDao.findByMember(member);
+        log.info("#######################dd###########################" + minfo);
+    }
+
     /**
      * *
      * 测试 查询所有管理员
      */
     @Test
-//    @Ignore
+    @Ignore
     public void findByIdTest() {
-        
-        log.info("#######################dd###########################");
-//        try {
 
+//        try {
 //            Member m = new Member();
 //            m.setId("1");
 ////            PhotosAlbum photosAlbum = new PhotosAlbum();
@@ -112,7 +162,6 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 //        } catch (Exception ex) {
 //            java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-
     }
 
 }

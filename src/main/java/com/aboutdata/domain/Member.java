@@ -3,6 +3,7 @@ package com.aboutdata.domain;
 import com.aboutdata.web.interceptor.MemberInterceptor;
 import java.util.Date;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -136,6 +137,7 @@ public class Member extends BaseEntity {
     /**
      * 注册IP
      */
+    @Column(nullable = false, updatable = false)
     private String registerIp;
 
     /**
@@ -194,14 +196,11 @@ public class Member extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Area area;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private MemberInfomation memberInfomation;
-
     /**
      * 会员等级
      */
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
     @JoinColumn(nullable = false)
     private MemberRank memberRank;
 
@@ -272,7 +271,6 @@ public class Member extends BaseEntity {
         this.lockedDate = lockedDate;
     }
 
-    @Column(nullable = false, updatable = false)
     public String getRegisterIp() {
         return registerIp;
     }
@@ -385,14 +383,5 @@ public class Member extends BaseEntity {
     public void setPhotosAlbums(Set<PhotosAlbum> photosAlbums) {
         this.photosAlbums = photosAlbums;
     }
-
-    public MemberInfomation getMemberInfomation() {
-        return memberInfomation;
-    }
-
-    public void setMemberInfomation(MemberInfomation memberInfomation) {
-        this.memberInfomation = memberInfomation;
-    }
     
-
 }
