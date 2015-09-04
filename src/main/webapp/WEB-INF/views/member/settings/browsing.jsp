@@ -1,6 +1,6 @@
 <%-- 
-    Document   : profile
-    Created on : 2015-8-30, 18:32:26
+    Document   : browsing
+    Created on : 2015-9-4, 11:20:28
     Author     : youyou
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -129,23 +129,50 @@
                                             </header>
                                             <div class="panel-body">
                                                 <div class="tab-pane" id="home">
-                                                    <form class="form-horizontal" data-validate="parsley" action="${pageContext.request.contextPath}/member/settings/profile" method="post">
+                                                    <form class="form-horizontal" data-validate="parsley" action="${pageContext.request.contextPath}/member/settings/#" method="post">
                                                         <section class="panel panel-default">
                                                             <header class="panel-heading">
-                                                                <strong>个人资料</strong>
+                                                                <strong>账户</strong>
                                                             </header>
                                                             <div class="panel-body">
                                                                 <div class="form-group">
-                                                                    <label class="col-sm-3 control-label">描述一下自己</label>
+                                                                    <label class="col-sm-3 control-label">图片大小</label>
                                                                     <div class="col-sm-6">
-                                                                        <textarea class="form-control parsley-validated" name="description" rows="6" data-minwords="6" data-required="true" placeholder="Type your message">${memberInfomation.description}</textarea>
+                                                                        <select data-required="true" id="thumbSize" name="thumbSize" class="form-control">
+                                                                            <option value="small">预览</option>
+                                                                            <option value="original">原图</option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="line line-dashed b-b line-lg pull-in"></div>
                                                                 <div class="form-group">
-                                                                    <label class="col-sm-3 control-label">首页背景ID</label>
+                                                                    <label class="col-sm-3 control-label">每页显示数量</label>
                                                                     <div class="col-sm-6">
-                                                                        <input type="text" name="backgroundId" class="form-control parsley-validated" placeholder="url" value="${memberInfomation.backgroundId}">
+                                                                        <select data-required="true" id="thumbsPer" name="items_per_page" class="form-control">
+                                                                            <option value="24">24</option>
+                                                                            <option value="32">32</option>
+                                                                            <option value="64">64</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="line line-dashed b-b line-lg pull-in"></div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3 control-label">滚条设置</label>
+                                                                    <div class="col-sm-6">
+                                                                        <select data-required="true" id=scrollStyle" name="scrollStyle" class="form-control">
+                                                                            <option value="traditional">传统样式</option>
+                                                                            <option value="infinite">瀑布样式</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="line line-dashed b-b line-lg pull-in"></div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3 control-label">查看图片</label>
+                                                                    <div class="col-sm-6">
+                                                                        <select data-required="true"  id="thumb_window" name="thumb_window" class="form-control">
+                                                                            <option value="new">新窗口</option>
+                                                                            <option value="same">当前窗口</option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -155,6 +182,7 @@
                                                             </footer>
                                                         </section>
                                                     </form>
+
                                                 </div>
                                             </div>
                                             </div>

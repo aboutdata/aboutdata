@@ -79,6 +79,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     }
 
     @Test
+      @Ignore
     public void createMember() {
         Member member = new Member();
 //
@@ -111,12 +112,14 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 //            minfo.setDescription("setDescription setDescription222222222");
 //            member.setMemberInfomation(minfo);
 //        }
-        //MemberInfomation minfo = new MemberInfomation();
-        // minfo.setDescription("setDescription setDescription");
+        MemberInfomation minfo = new MemberInfomation();
+        minfo.setDescription("setDescription setDescription");
 //        member.setMemberInfomation(minfo);
-        member.setId("3c3c81104f8d0391014f8d03bea80000");
-        // minfo.setMember(member);
-        MemberInfomation minfo = memberInfomationDao.findByMember(member);
+        member.setId("ff8081814f7cac97014f7cacec510000");
+        minfo.setMember(member);
+        memberInfomationDao.save(minfo);
+        
+        //MemberInfomation minfo = memberInfomationDao.findByMember(member);
         log.info("#######################dd###########################" + minfo);
     }
 

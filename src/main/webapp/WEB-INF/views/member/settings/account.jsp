@@ -94,7 +94,7 @@
                                             <header class="panel-heading bg-light">
                                                 <ul class="nav nav-justified">
                                                     <li class="active">
-                                                        <a href="#">
+                                                        <a href="${pageContext.request.contextPath}/member/settings/profile">
                                                             <span class="m-b-xs h4 block"> 
                                                                 <i class="fa fa-user text-muted"></i>
                                                             </span>
@@ -110,7 +110,7 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#">
+                                                        <a href="${pageContext.request.contextPath}/member/settings/browsing">
                                                             <span class="m-b-xs h4 block"> 
                                                                 <i class="fa fa-cog text-muted"></i>
                                                             </span>
@@ -118,7 +118,7 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#" class="bg-light">
+                                                        <a href="${pageContext.request.contextPath}/member/settings/account" class="bg-light">
                                                             <span class="m-b-xs h4 block"> 
                                                                 <i class="fa fa-css3"></i>
                                                             </span>
@@ -129,23 +129,30 @@
                                             </header>
                                             <div class="panel-body">
                                                 <div class="tab-pane" id="home">
-                                                    <form class="form-horizontal" data-validate="parsley">
+                                                    <form class="form-horizontal" data-validate="parsley" action="${pageContext.request.contextPath}/member/settings/account" method="post">
                                                         <section class="panel panel-default">
                                                             <header class="panel-heading">
-                                                                <strong>个人资料</strong>
+                                                                <strong>账户</strong>
                                                             </header>
                                                             <div class="panel-body">
                                                                 <div class="form-group">
-                                                                    <label class="col-sm-3 control-label">描述一下自己</label>
+                                                                    <label class="col-sm-3 control-label">邮箱</label>
                                                                     <div class="col-sm-6">
-                                                                        <textarea class="form-control parsley-validated" name="description" rows="6" data-minwords="6" data-required="true" placeholder="Type your message"></textarea>
+                                                                        <input type="text" data-type="email" name="email" class="form-control" placeholder="邮箱" value="${member.email}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="line line-dashed b-b line-lg pull-in"></div>
                                                                 <div class="form-group">
-                                                                    <label class="col-sm-3 control-label">首页背景ID</label>
+                                                                    <label class="col-sm-3 control-label">密码</label>
                                                                     <div class="col-sm-6">
-                                                                        <input type="text" data-type="url" name="backgroundId" class="form-control parsley-validated" placeholder="url">
+                                                                        <input type="password" name="password" class="form-control" data-rangelength="[5,10]" id="pwd">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="line line-dashed b-b line-lg pull-in"></div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3 control-label">确认密码</label>
+                                                                    <div class="col-sm-6">
+                                                                        <input type="password"  name="confirmPassword" class="form-control"  data-equalto="#pwd" data-rangelength="[5,10]">
                                                                     </div>
                                                                 </div>
                                                                 <div class="line line-dashed b-b line-lg pull-in"></div>
