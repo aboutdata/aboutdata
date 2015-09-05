@@ -92,127 +92,26 @@
                                                 <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Tincidunt</a></div>
                                                 <p class="hidden-xs">Vivamus vel tincidunt libero, lementum ligula vitae</p>
                                             </div>
-                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m31.jpg" class="img-full" ></a>
+                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m31.jpg" class="img-full"></a>
                                     </div>
-
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-warning h4 text-u-c text-lt font-bold">Duis</a></div>
-                                            <p class="hidden-xs">Tincidunt libero vitae elementum</p>
+                                    <c:forEach items="${top50}" var="photo" varStatus="idx">
+                                        <div class="item">
+                                            <div class="bottom gd bg-info wrapper">
+                                                <div class="m-t m-b"><a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}" class="b-b b-warning h4 text-u-c text-lt font-bold">Duis</a></div>
+                                                <p class="hidden-xs">Tincidunt libero vitae elementum</p>
+                                            </div>
+                                            <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}"><img src="${photo.thumbnail}" class="img-full"></a>
                                         </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m10.jpg" class="img-full" ></a>
-                                    </div>
-
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Diam</a></div>
-                                            <p class="hidden-xs">Con malesuada est, quis congue nibhs</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m4.jpg" class="img-full" ></a>
-                                    </div>
-
-
-
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Vivamus</a></div>
-                                            <p class="hidden-xs">Morbi id neque quam. Aliquam sollicitudin venenatis ipsum</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m13.jpg" class="img-full" ></a>
-                                    </div>
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-warning h4 text-u-c text-lt font-bold">Libero</a></div>
-                                            <p class="hidden-xs">Aliquam sollicitudin venenatis ipsum</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m30.jpg" class="img-full" ></a>
-                                    </div>
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">habitant</a></div>
-                                            <p class="hidden-xs">Vel tincidunt libero, vitae ligula tristique</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m19.jpg" class="img-full" ></a>
-                                    </div>
-
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Malesuada</a></div>
-                                            <p class="hidden-xs">Pellentesque habitant morbi tristique sodales</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m31.jpg" class="img-full" ></a>
-                                    </div>
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Donec</a></div>
-                                            <p class="hidden-xs">Vestibulum ullamcorper</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m18.jpg" class="img-full" ></a>
-                                    </div>
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-primary h4 text-u-c text-lt font-bold">Eleifend</a></div>
-                                            <p class="hidden-xs">Malesuada augue. Donec eleifend condimentum</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m32.jpg" class="img-full" ></a>
-                                    </div>
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Sollicitudin </a></div>
-                                            <p class="hidden-xs">Mauris convallis mauris at pellentesque volutpat</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m21.jpg" class="img-full" ></a>
-                                    </div>
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Phasellus</a></div>
-                                            <p class="hidden-xs">Senectus et netus et malesuada fames</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m5.jpg" class="img-full" ></a>
-                                    </div>
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-white h4 text-u-c text-lt font-bold">Neque</a></div>
-                                            <p class="hidden-xs">Consectetur adipiscing elit. Morbi id neque quam</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/a10.png" class="img-full" ></a>
-                                    </div>
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Nisi ne</a></div>
-                                            <p class="hidden-xs">Orbi tristique senectus et netus et malesuada</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m4.jpg" class="img-full" ></a>
-                                    </div>
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Congue</a></div>
-                                            <p class="hidden-xs">Malesuada est, quis congue nibh</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m6.jpg" class="img-full" ></a>
-                                    </div>
-
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Consectetur</a></div>
-                                            <p class="hidden-xs">Adipiscing elit senectus et netus mal.</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m7.jpg" class="img-full" ></a>
-                                    </div>
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Soesle</a></div>
-                                            <p class="hidden-xs">Adipiscing elituis congue</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/a7.png" class="img-full" ></a>
-                                    </div>
-                                    <div class="item">
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Congue</a></div>
-                                            <p class="hidden-xs">Malesuada est, congue nibh quis elituis</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m12.jpg" class="img-full" ></a>
-                                    </div>
+                                        <c:if test="${idx.index mod 5 ==0}">
+                                            <div class="item">
+                                                <div class="bottom gd bg-info wrapper">
+                                                    <div class="m-t m-b"><a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}" class="b-b b-warning h4 text-u-c text-lt font-bold">Duis</a></div>
+                                                    <p class="hidden-xs">Tincidunt libero vitae elementum</p>
+                                                </div>
+                                                <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}"><img src="${pageContext.request.contextPath}/assets/images/p9.jpg" class="img-full"></a>
+                                            </div> 
+                                        </c:if>
+                                    </c:forEach>
                                 </div>
                             </section>
                         </section>
@@ -244,6 +143,9 @@
                     });
                 });
 
+                $("img").error(function () {
+                    $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
+                });
 //                $('#waterfall').infinitescroll({
 //                    navSelector: "#navigation", //导航的选择器，会被隐藏
 //                    nextSelector: "#navigation a", //包含下一页链接的选择器
