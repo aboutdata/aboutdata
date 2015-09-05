@@ -44,8 +44,8 @@ public class PhotosServiceImpl implements PhotosService {
         return photo;
     }
 
-    public List<Photos> findTop50() {
-        return photosDao.findAll();
+    public Page<Photos> findTop50(Pageable pageable) {
+        return photosDao.findAll(pageable);
     }
 
     public List<Photos> findTop10() {
@@ -74,7 +74,7 @@ public class PhotosServiceImpl implements PhotosService {
     public void addTags(String id, String tagString) {
         Set<Tag> tags = tagService.getTagsFromString(tagString);
         Photos photos = photosDao.findOne(id);
-          logger.info("top10  tags {}", tags.size());
+        logger.info("top10  tags {}", tags.size());
         photos.setTags(tags);
         photosDao.save(photos);
     }

@@ -5,13 +5,21 @@ $(function(){
     15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
   ];
   var rows;
+//  var rows_lg = [
+//    " A A B . . . ",
+//    " A A B . . C ",
+//    " . . . . D C ",
+//    " E E F F D . ",
+//    " . . F F . . ",
+//    " . G G . . . "
+//  ];
   var rows_lg = [
     " A A B . . . ",
-    " A A B . . C ",
-    " . . . . D C ",
-    " E E F F D . ",
-    " . . F F . . ",
-    " . G G . . . "
+    " A A B . . . ",
+    " . . . . . . ",
+    " . . . . . . ",
+    " . . . . . . ",
+    " . . . . . . "
   ];
   var rows_sm = [
     " A A B . . ",
@@ -40,7 +48,7 @@ $(function(){
 
   var el = $('#masonry'),
   grid = new Tiles.Grid(el);
-  grid.cellPadding = 0;
+  grid.cellPadding = 1;
   grid.animationDuration = 0;
 
   grid.resizeColumns = function() {

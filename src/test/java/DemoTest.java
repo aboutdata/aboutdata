@@ -79,7 +79,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     }
 
     @Test
-      @Ignore
+    @Ignore
     public void createMember() {
         Member member = new Member();
 //
@@ -118,7 +118,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
         member.setId("ff8081814f7cac97014f7cacec510000");
         minfo.setMember(member);
         memberInfomationDao.save(minfo);
-        
+
         //MemberInfomation minfo = memberInfomationDao.findByMember(member);
         log.info("#######################dd###########################" + minfo);
     }
@@ -160,6 +160,39 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 //                        photosService.create(photos);
 //                    }
 //                }
+//            }
+//
+//        } catch (Exception ex) {
+//            java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }
+
+    @Test
+    @Ignore
+    public void wallHeaven() {
+
+//        try {
+//            Member m = new Member();
+//            m.setId("1");
+//            PhotosAlbum photosAlbum = new PhotosAlbum();
+//            photosAlbum.setId("1");
+//
+//            for (int i = 2, end = 10000; i < end; i++) {
+//                Photos photos = new Photos();
+//
+//                String small = "http://alpha.wallhaven.cc/wallpapers/thumb/small/th-" + i + ".jpg";
+//                String full = "http://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-" + i + ".jpg";
+//                photos.setOrder(1);
+//                photos.setTitle(i + "_wallHeaven");
+//                photos.setThumbnail(small);
+//                photos.setMedium(small);
+//                photos.setLarge(full);
+//                photos.setSource(full);
+//
+//                photos.setMember(m);
+//                photos.setAlbum(photosAlbum);
+//                photosService.create(photos);
+//
 //            }
 //
 //        } catch (Exception ex) {

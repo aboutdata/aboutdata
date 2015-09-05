@@ -11,6 +11,9 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +34,13 @@ public class IndexController {
     @RequestMapping("/index")
     public String displayIndex(Model model) {
 
-        List<Photos> top50 = photosService.findTop50();
+        Pageable pageable = new PageRequest(1, 50);
+
+        Page<Photos> top50 = photosService.findTop50(pageable);
 
         List<Photos> top10 = photosService.findTop10();
 
-        logger.info("top50 {}", top50.size());
-        model.addAttribute("top50", top50);
+        model.addAttribute("top50", top50.getContent());
         model.addAttribute("top10", top10);
         return "/index";
     }

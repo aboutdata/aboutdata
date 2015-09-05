@@ -5,12 +5,14 @@
  */
 package com.aboutdata.dao;
 
-import com.aboutdata.domain.Photos;
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.aboutdata.domain.Photos;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
@@ -21,5 +23,8 @@ public interface PhotosDao extends JpaRepository<Photos, String> {
 
     @Query("select photos from Photos photos where photos.album.id =:albumId order by photos.order asc")
     public List<Photos> findByAlbumId(@Param("albumId") String albumId);
+
+    //@Query("FROM Photos photos order by photos.order asc")
+    //public Page<Photos> findByPage(Pageable pageable);
 
 }

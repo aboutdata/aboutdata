@@ -7,6 +7,8 @@ package com.aboutdata.service;
 
 import com.aboutdata.domain.Photos;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  *
@@ -16,7 +18,7 @@ public interface PhotosService {
 
     public Photos get(String id);
 
-    public List<Photos> findTop50();
+    public Page<Photos> findTop50(Pageable pageable);
 
     public List<Photos> findTop10();
 
