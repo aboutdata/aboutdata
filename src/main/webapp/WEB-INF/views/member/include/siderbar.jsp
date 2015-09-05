@@ -7,13 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <nav class="nav-primary hidden-xs">
     <ul class="nav bg clearfix">
-        <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-            Discover
-        </li>
         <li>
-            <a href="index.html">
+            <a href="${pageContext.request.contextPath}">
                 <i class="icon-disc icon text-success"></i>
-                <span class="font-bold">What's new</span>
+                <span class="font-bold">发现</span>
             </a>
         </li>
         <li>
