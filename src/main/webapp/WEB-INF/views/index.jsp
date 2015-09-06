@@ -65,34 +65,34 @@
                                     </div>
                                     <c:forEach items="${top50}" var="photo" varStatus="idx">
                                         <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="text-info padder m-t-sm text-sm">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o text-muted"></i>
-                                                        </div>
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="icon-control-play i-2x"></i></a>
-                                                        </div>
-                                                        <div class="bottom padder m-b-sm">
-                                                            <a href="#" data-toggle="class" class="active">
-                                                                <i class="fa fa-heart-o text-muted text"></i>
-                                                                <i class="fa fa-heart text-danger text-active"></i> 
-                                                            </a>
-                                                        </div>
-                                                        <div class="top">
-                                                            <span class="pull-right m-t-sm m-r-sm badge bg-white">
-                                                                <i class="fa fa-star text-success"></i>
-                                                                12
-                                                            </span>
-                                                        </div>
+                                            <div class="pos-rlt">
+                                                <div class="item-overlay opacity r r-2x bg-black">
+                                                    <div class="text-info padder m-t-sm text-sm">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o text-muted"></i>
                                                     </div>
-                                                    <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}"><img src="${photo.thumbnail}" alt="" class="r r-2x img-full"></a>
+                                                    <div class="center text-center m-t-n">
+                                                        <a href="#"><i class="icon-control-play i-2x"></i></a>
+                                                    </div>
+                                                    <div class="bottom padder m-b-sm">
+                                                        <a href="#" data-toggle="class" class="active">
+                                                            <i class="fa fa-heart-o text-muted text"></i>
+                                                            <i class="fa fa-heart text-danger text-active"></i> 
+                                                        </a>
+                                                    </div>
+                                                    <div class="top">
+                                                        <span class="pull-right m-t-sm m-r-sm badge bg-white">
+                                                            <i class="fa fa-star text-success"></i>
+                                                            12
+                                                        </span>
+                                                    </div>
                                                 </div>
+                                                <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}"><img src="${photo.thumbnail}" alt="" class="r r-2x img-full"></a>
                                             </div>
+                                        </div>
                                         <c:if test="${idx.index mod 5 ==0}">
                                             <div class="item">
                                                 <div class="pos-rlt">
@@ -144,6 +144,9 @@
                 </section>
             </section>    
         </section>
+                                    
+        <div id="navigation"><a href="${pageContext.request.contextPath}/random?page=1"></a></div>                          
+
         <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
@@ -167,37 +170,38 @@
                     });
                 });
 
+                //滚动条加载数据
+                $('#masonry').infinitescroll({
+                    navSelector: "#navigation", //导航的选择器，会被隐藏
+                    nextSelector: "#navigation a", //包含下一页链接的选择器
+                    itemSelector: ".item", //你将要取回的选项(内容块)
+                    debug: true, //启用调试信息
+                    animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
+                    extraScrollPx: 150, //滚动条距离底部多少像素的时候开始加载，默认150
+                    bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
+                    errorCallback: function () {
+                        alert('error');
+                    }, //当出错的时候，比如404页面的时候执行的函数
+                    localMode: true, //是否允许载入具有相同函数的页面，默认为false
+                    dataType: 'html', //可以是json
+//                template: function(data) {
+//                    //data表示服务端返回的json格式数据，这里需要把data转换成瀑布流块的html格式，然后返回给回到函数
+//                    return '';
+//                },
+                    loading: {
+                        msgText: "加载中...",
+                        finishedMsg: '没有新数据了...'
+                                // selector: '.loading' // 显示loading信息的div
+                    }
+                }, function (newElems) {
+                    //程序执行完的回调函数
+                    var $newElems = $(newElems);
+                    $('#masonry').masonry('appended', $newElems);
+                });
+
                 $("img").error(function () {
                     $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
                 });
-//                $('#waterfall').infinitescroll({
-//                    navSelector: "#navigation", //导航的选择器，会被隐藏
-//                    nextSelector: "#navigation a", //包含下一页链接的选择器
-//                    itemSelector: ".wfc", //你将要取回的选项(内容块)
-//                    debug: true, //启用调试信息
-//                    animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
-//                    extraScrollPx: 150, //滚动条距离底部多少像素的时候开始加载，默认150
-//                    bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
-//                    errorCallback: function () {
-//                        alert('error');
-//                    }, //当出错的时候，比如404页面的时候执行的函数
-//                    localMode: true, //是否允许载入具有相同函数的页面，默认为false
-//                    dataType: 'html', //可以是json
-////                template: function(data) {
-////                    //data表示服务端返回的json格式数据，这里需要把data转换成瀑布流块的html格式，然后返回给回到函数
-////                    return '';
-////                },
-//                    loading: {
-//                        msgText: "加载中...",
-//                        finishedMsg: '没有新数据了...',
-//                        selector: '.loading' // 显示loading信息的div
-//                    }
-//                }, function (newElems) {
-//                    //程序执行完的回调函数
-//                    var $newElems = $(newElems);
-//                    $('.wrapper:eq(1)').masonry('appended', $newElems);
-//                });
-
             });
         </script>
     </body>
