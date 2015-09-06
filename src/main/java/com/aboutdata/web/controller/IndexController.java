@@ -34,7 +34,7 @@ public class IndexController {
     @RequestMapping("/index")
     public String displayIndex(Model model) {
 
-        Pageable pageable = new PageRequest(1, 50);
+        Pageable pageable = new PageRequest(1, 25);
 
         Page<Photos> top50 = photosService.findTop50(pageable);
 

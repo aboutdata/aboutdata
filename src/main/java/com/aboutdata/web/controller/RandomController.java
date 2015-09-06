@@ -9,6 +9,7 @@ import com.aboutdata.domain.Photos;
 import com.aboutdata.service.PhotosService;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -32,14 +33,14 @@ public class RandomController {
     private PhotosService photosService;
     
     @RequestMapping
-    public String list(int page, Model model) {
+    public String list(int page,HttpServletRequest request,Model model) {
         logger.info("page: {}", page);
-        Pageable pageable = new PageRequest(1, 50);
+        Pageable pageable = new PageRequest(page, 10);
         
         Page<Photos> pages = photosService.findTop50(pageable);
         
         model.addAttribute("list", pages.getContent());
-        return "/portal/ramdom/single";
+        return "/portal/random/single";
     }
     
 }
