@@ -357,6 +357,11 @@
             <artifactId>jaxen</artifactId>
             <version>1.1.6</version>
         </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.6.3</version>
+        </dependency>
         <!--        <dependency>
             <groupId>net.mikesu</groupId>
             <artifactId>FastdfsClient</artifactId>
