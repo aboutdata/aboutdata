@@ -48,7 +48,7 @@
                         <!-- /.aside -->
                         <section id="content">
                             <section class="vbox">
-                                <section class="scrollable">
+                                <section id="waterfall" class="scrollable" scrollpagination="enabled">
                                     <div id="masonry" class="pos-rlt animated fadeInUpBig">
                                         <div class="item">
                                             <div class="item-overlay gd animated fadeInUp wrapper bg-info">
@@ -144,7 +144,7 @@
                 </section>
             </section>    
         </section>
-                                    
+
         <div id="navigation"><a href="${pageContext.request.contextPath}/random?page=1"></a></div>                          
 
         <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
@@ -157,7 +157,8 @@
        <!--<script src="${pageContext.request.contextPath}/assets/js/masonry/tiles.min.js"></script>-->
        <!--<script src="${pageContext.request.contextPath}/assets/js/masonry/demo.js"></script>-->
         <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.masonry.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.infinitescroll.min.js" type="text/javascript"></script>
+        <!--<script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.infinitescroll.min.js" type="text/javascript"></script>-->
+        <script src="${pageContext.request.contextPath}/assets/js/scrollpagination.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
         <script>
             $(document).ready(function () {
@@ -171,33 +172,47 @@
                 });
 
                 //滚动条加载数据
-                $('#masonry').infinitescroll({
-                    navSelector: "#navigation", //导航的选择器，会被隐藏
-                    nextSelector: "#navigation a", //包含下一页链接的选择器
-                    itemSelector: ".item", //你将要取回的选项(内容块)
-                    debug: true, //启用调试信息
-                    animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
-                    extraScrollPx: 150, //滚动条距离底部多少像素的时候开始加载，默认150
-                    bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
-                    errorCallback: function () {
-                        alert('error');
-                    }, //当出错的时候，比如404页面的时候执行的函数
-                    localMode: true, //是否允许载入具有相同函数的页面，默认为false
-                    dataType: 'html', //可以是json
-//                template: function(data) {
-//                    //data表示服务端返回的json格式数据，这里需要把data转换成瀑布流块的html格式，然后返回给回到函数
-//                    return '';
-//                },
-                    loading: {
-                        msgText: "加载中...",
-                        finishedMsg: '没有新数据了...'
-                                // selector: '.loading' // 显示loading信息的div
-                    }
-                }, function (newElems) {
-                    //程序执行完的回调函数
-                    var $newElems = $(newElems);
-                    $('#masonry').masonry('appended', $newElems);
-                });
+//                $('#masonry').infinitescroll({
+//                    navSelector: "#navigation", //导航的选择器，会被隐藏
+//                    nextSelector: "#navigation a", //包含下一页链接的选择器
+//                    itemSelector: ".item", //你将要取回的选项(内容块)
+//                    debug: true, //启用调试信息
+//                    animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
+//                    extraScrollPx: 150, //滚动条距离底部多少像素的时候开始加载，默认150
+//                    bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
+//                    errorCallback: function () {
+//                        alert('error');
+//                    }, //当出错的时候，比如404页面的时候执行的函数
+//                    localMode: true, //是否允许载入具有相同函数的页面，默认为false
+//                    dataType: 'html', //可以是json
+////                template: function(data) {
+////                    //data表示服务端返回的json格式数据，这里需要把data转换成瀑布流块的html格式，然后返回给回到函数
+////                    return '';
+////                },
+//                    loading: {
+//                        msgText: "加载中...",
+//                        finishedMsg: '没有新数据了...'
+//                                // selector: '.loading' // 显示loading信息的div
+//                    }
+//                }, function (newElems) {
+//                    //程序执行完的回调函数
+//                    var $newElems = $(newElems);
+//                    $('#masonry').masonry('appended', $newElems);
+//                });
+                var page = 1;
+//                $("#waterfall").scroll(function () {
+//                    alert("ddd");
+//                    // top 0 -1294  height 797
+//                    if ($("#waterfall").scrollTop() > ($("#waterfall").height() * page) {
+//                        page = page + 1;
+//                    }
+////                    alert($("#waterfall").scrollTop());
+////                    if ($("#waterfall").scrollTop() === $("#waterfall").height()) {
+////                        alert("dd");
+////                    }
+//                });
+
+
 
                 $("img").error(function () {
                     $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");

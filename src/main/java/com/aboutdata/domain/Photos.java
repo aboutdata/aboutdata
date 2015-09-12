@@ -46,6 +46,13 @@ public class Photos extends BaseEntity {
      * 缩略图
      */
     private String thumbnail;
+    
+    /**
+     * 是否来自wallhaven
+     */
+    @Column(length = 9)
+    private String wallhaven;
+
 
     /**
      * 排序
@@ -146,6 +153,15 @@ public class Photos extends BaseEntity {
     public void setAlbum(PhotosAlbum album) {
         this.album = album;
     }
+
+    public String getWallhaven() {
+        return wallhaven;
+    }
+
+    public void setWallhaven(String wallhaven) {
+        this.wallhaven = wallhaven;
+    }
+    
 
     @Override
     public String toString() {
