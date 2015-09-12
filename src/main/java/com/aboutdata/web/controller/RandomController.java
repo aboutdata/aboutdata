@@ -26,21 +26,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/random")
 public class RandomController {
-    
+
     Logger logger = LoggerFactory.getLogger(RandomController.class);
-    
+
     @Resource
     private PhotosService photosService;
-    
+
     @RequestMapping
-    public String list(int page,HttpServletRequest request,Model model) {
-        logger.info("page: {}", page);
-        Pageable pageable = new PageRequest(page, 10);
-        
+    public String list(HttpServletRequest request, Model model) {
+//        logger.info("page: {}", page);
+//        if (page == 0) {
+//            page = 1;
+//        }
+        Pageable pageable = new PageRequest(1, 50);
+
         Page<Photos> pages = photosService.findTop50(pageable);
-        
+
         model.addAttribute("list", pages.getContent());
         return "/portal/random/single";
     }
-    
+
 }
