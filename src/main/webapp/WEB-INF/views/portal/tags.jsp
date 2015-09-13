@@ -56,114 +56,24 @@
                                         <span class="bar5 a5 bg-danger dker"></span>
                                     </span>
                                 </h2>
+                            <c:forEach items="page.content" var="tag">
                                 <div class="col-sm-2">
                                     <section class="panel panel-info">
                                         <div class="panel-body">
                                             <a href="#" class="thumb pull-right m-l m-t-xs avatar">
                                                 <img src="${pageContext.request.contextPath}/assets/images/m19.jpg" alt="...">
-                                            <i class="on md b-white bottom"></i>
-                                        </a>
-                                        <div class="clear">
-                                            <a href="#" class="text-info">@我是第一个标签<i class="icon-twitter"></i></a>
-                                            <small class="block m-t-sm">创建于三分钟前于三分钟前</small>
-                                            <a href="#" class="btn btn-xs m-t-xs"><i class="fa fa-camera-retro"></i> 25</a>
-                                             <a href="#" class="btn btn-xs m-t-xs"><i class="fa fa-eye"></i> 8</a>
+                                                <i class="on md b-white bottom"></i>
+                                            </a>
+                                            <div class="clear">
+                                                <a href="#" class="text-info">@我是第一个标签<i class="icon-twitter"></i></a>
+                                                <small class="block m-t-sm">创建于三分钟前于三分钟前</small>
+                                                <a href="#" class="btn btn-xs m-t-xs"><i class="fa fa-camera-retro"></i> 25</a>
+                                                <a href="#" class="btn btn-xs m-t-xs"><i class="fa fa-eye"></i> 8</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </section>
-                            </div>
-                                            <div class="col-sm-2">
-                                    <section class="panel panel-info">
-                                        <div class="panel-body">
-                                            <a href="#" class="thumb pull-right m-l m-t-xs avatar">
-                                                <img src="${pageContext.request.contextPath}/assets/images/m19.jpg" alt="...">
-                                            <i class="on md b-white bottom"></i>
-                                        </a>
-                                        <div class="clear">
-                                            <a href="#" class="text-info">@我是第一个标签<i class="icon-twitter"></i></a>
-                                            <small class="block m-t-sm">创建于三分钟前于三分钟前</small>
-                                            <a href="#" class="btn btn-xs m-t-xs"><i class="fa fa-camera-retro"></i> 25</a>
-                                             <a href="#" class="btn btn-xs m-t-xs"><i class="fa fa-eye"></i> 8</a>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                            <div class="col-sm-2">
-                                <section class="panel panel-info">
-                                    <div class="panel-body">
-                                        <a href="#" class="thumb pull-right m-l m-t-xs avatar">
-                                            <img src="${pageContext.request.contextPath}/assets/images/m19.jpg" alt="...">
-                                            <i class="on md b-white bottom"></i>
-                                        </a>
-                                        <div class="clear">
-                                            <a href="#" class="text-info">@Mike Mcalidek <i class="icon-twitter"></i></a>
-                                            <small class="block text-muted">2,415 followers / 225 tweets</small>
-                                            <a href="#" class="btn btn-xs btn-success m-t-xs">Follow</a>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                            <div class="col-sm-2">
-                                <section class="panel panel-info">
-                                    <div class="panel-body">
-                                        <a href="#" class="thumb pull-right m-l m-t-xs avatar">
-                                            <img src="${pageContext.request.contextPath}/assets/images/m19.jpg" alt="...">
-                                            <i class="on md b-white bottom"></i>
-                                        </a>
-                                        <div class="clear">
-                                            <a href="#" class="text-info">@Mike Mcalidek <i class="icon-twitter"></i></a>
-                                            <small class="block text-muted">2,415 followers / 225 tweets</small>
-                                            <a href="#" class="btn btn-xs btn-success m-t-xs">Follow</a>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                                            
-                            <div class="col-sm-2">
-                                <section class="panel panel-info">
-                                    <div class="panel-body">
-                                        <a href="#" class="thumb pull-right m-l m-t-xs avatar">
-                                            <img src="${pageContext.request.contextPath}/assets/images/m19.jpg" alt="...">
-                                            <i class="on md b-white bottom"></i>
-                                        </a>
-                                        <div class="clear">
-                                            <a href="#" class="text-info">@Mike Mcalidek <i class="icon-twitter"></i></a>
-                                            <small class="block text-muted">2,415 followers / 225 tweets</small>
-                                            <a href="#" class="btn btn-xs btn-success m-t-xs">Follow</a>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                            <div class="col-sm-2">
-                                <section class="panel panel-info">
-                                    <div class="panel-body">
-                                        <a href="#" class="thumb pull-right m-l m-t-xs avatar">
-                                            <img src="${pageContext.request.contextPath}/assets/images/m19.jpg" alt="...">
-                                            <i class="on md b-white bottom"></i>
-                                        </a>
-                                        <div class="clear">
-                                            <a href="#" class="text-info">@Mike Mcalidek <i class="icon-twitter"></i></a>
-                                            <small class="block text-muted">2,415 followers / 225 tweets</small>
-                                            <a href="#" class="btn btn-xs btn-success m-t-xs">Follow</a>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                            <div class="col-sm-2">
-                                <section class="panel panel-info">
-                                    <div class="panel-body">
-                                        <a href="#" class="thumb pull-right m-l m-t-xs avatar">
-                                            <img src="${pageContext.request.contextPath}/assets/images/m19.jpg" alt="...">
-                                            <i class="on md b-white bottom"></i>
-                                        </a>
-                                        <div class="clear">
-                                            <a href="#" class="text-info">@Mike Mcalidek <i class="icon-twitter"></i></a>
-                                            <small class="block text-muted">2,415 followers / 225 tweets</small>
-                                            <a href="#" class="btn btn-xs btn-success m-t-xs">Follow</a>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
+                                    </section>
+                                </div>
+                            </c:forEach>
                         </section>
                         <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
                     </section>
