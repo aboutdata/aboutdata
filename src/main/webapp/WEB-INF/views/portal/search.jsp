@@ -56,7 +56,7 @@
                                 </section>
                                 <footer class="footer bg-black lter text-center">
                                     <form class="form-inline" role="search">
-                                        <div class="form-group m-b-none">
+                                        <div class="form-group m-b-none col-lg-2 pull-right">
                                             <div class="input-group m-t m-b">
                                                 <input type="text" class="form-control">
                                                 <span class="input-group-btn">

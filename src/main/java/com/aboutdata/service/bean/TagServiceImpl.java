@@ -13,6 +13,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import javax.annotation.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -43,18 +45,19 @@ public class TagServiceImpl implements TagService {
             Tag tagObj = this.getByName(tagName);	// get persistent object
             if (tagObj == null) {
                 //主要控制不能随便写标签 ,如果是自己的写的标签 系统将不保存
-                 //tagObj = new Tag();
-                 //tagObj.setName(tagName);
+                //tagObj = new Tag();
+                //tagObj.setName(tagName);
             } else {
                 result.add(tagObj);
             }
-            
+
         }
         return result;
     }
 
     /**
      * 用于用户查询标签时使用
+     *
      * @param name
      * @return
      */
@@ -67,5 +70,16 @@ public class TagServiceImpl implements TagService {
             tagString.add(tag.getName());
         }
         return tagString;
+    }
+
+    /**
+     * 分页查找
+     *
+     * @param pageable
+     * @return
+     */
+    @Override
+    public Page<Tag> findPage(Pageable pageable) {
+        return tagDao.findAll(pageable);
     }
 }

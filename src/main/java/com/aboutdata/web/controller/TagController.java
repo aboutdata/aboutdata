@@ -6,13 +6,18 @@
 package com.aboutdata.web.controller;
 
 import com.aboutdata.domain.Member;
+import com.aboutdata.domain.Tag;
 import com.aboutdata.service.TagService;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,6 +32,22 @@ public class TagController {
 
     @Resource
     private TagService tagService;
+
+    /**
+     * 标签页面
+     *
+     * @param name
+     * @param request
+     * @param model
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET)
+    public String displayTags(String name, HttpServletRequest request, Model model) {
+        Pageable pageable = new PageRequest(1, 50);
+        Page<Tag> pages = tagService.findPage(pageable);
+        model.addAttribute("page", pages);
+        return "/portal/tags";
+    }
 
     /**
      *

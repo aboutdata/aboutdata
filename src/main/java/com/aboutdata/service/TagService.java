@@ -8,6 +8,8 @@ package com.aboutdata.service;
 import com.aboutdata.domain.Tag;
 import java.util.List;
 import java.util.Set;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  *
@@ -22,4 +24,6 @@ public interface TagService {
     public List<String> findTagStringByName(String name);
 
     public Set<Tag> getTagsFromString(String tagString);
+
+    public Page<Tag> findPage(Pageable pageable);
 }
