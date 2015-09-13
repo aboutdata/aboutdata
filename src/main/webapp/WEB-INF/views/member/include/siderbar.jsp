@@ -8,28 +8,27 @@
 <nav class="nav-primary hidden-xs">
     <ul class="nav bg clearfix">
         <li>
-            <a href="${pageContext.request.contextPath}">
-                <i class="icon-disc icon text-success"></i>
+            <a href="${pageContext.request.contextPath}/random">
+                <i class="icon-list icon text-success"></i>
                 <span class="font-bold">发现</span>
             </a>
         </li>
         <li>
-            <a href="genres.html">
-                <i class="icon-music-tone-alt icon text-info"></i>
-                <span class="font-bold">Genres</span>
+            <a href="${pageContext.request.contextPath}/latest">
+                <i class="icon-clock icon text-info"></i>
+                <span class="font-bold">最新</span>
             </a>
         </li>
         <li>
-            <a href="events.html">
-                <i class="icon-drawer icon text-primary-lter"></i>
-                <b class="badge bg-primary pull-right">6</b>
-                <span class="font-bold">Events</span>
+            <a href="${pageContext.request.contextPath}/search">
+                <i class="icon-support icon text-danger"></i>
+                <span class="font-bold">搜索</span>
             </a>
         </li>
         <li>
-            <a href="listen.html">
-                <i class="icon-list icon  text-info-dker"></i>
-                <span class="font-bold">Listen</span>
+            <a href="${pageContext.request.contextPath}/tags">
+                <i class="icon-tag icon  text-info-dker"></i>
+                <span class="font-bold">标签</span>
             </a>
         </li>
     </ul>

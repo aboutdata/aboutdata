@@ -57,7 +57,7 @@ public class WallhavenJobCrawler {
 
         Photos photos = new Photos();
 
-        photos.setWallhaven("wallhaven");
+        photos.setWallhaven(wallpaperId);
         photos.setOrder(1);
         photos.setTitle(wallpaperId);
         photos.setMember(m);

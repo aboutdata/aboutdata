@@ -43,7 +43,7 @@ public class RandomController {
         Page<Photos> pages = photosService.findTop50(pageable);
 
         model.addAttribute("list", pages.getContent());
-        return "/portal/random/single";
+        return "/portal/random";
     }
 
 }

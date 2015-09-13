@@ -1,5 +1,5 @@
 <%-- 
-    Document   : index
+    Document   : random
     Created on : 2015-8-16, 13:41:17
     Author     : youyou
 --%>

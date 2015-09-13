@@ -32,13 +32,13 @@ public class LatestController {
     private PhotosService photosService;
 
     @RequestMapping
-    public String list(int page, HttpServletRequest request, Model model) {
-        logger.info("page: {}", page);
-        Pageable pageable = new PageRequest(page, 10);
+    public String list(HttpServletRequest request, Model model) {
+//        logger.info("page: {}", page);
+        Pageable pageable = new PageRequest(1, 100);
 
         Page<Photos> pages = photosService.findTop50(pageable);
 
         model.addAttribute("list", pages.getContent());
-        return "/portal/random/single";
+        return "/portal/latest";
     }
 }
