@@ -3920,3 +3920,18 @@ fieldset[disabled] .i-checks input + i:before {
         height: 65%;
     }
 }
+
+
+/* CONTENT 无限加载需要设置宽度 */
+#masonry {
+	//display: block;
+	height:500px;
+	overflow: scroll;
+}
+
+#next {
+	font-size: 2.2em;
+	display: block;
+	width: 200px;
+	margin: 0 auto 72px;
+}

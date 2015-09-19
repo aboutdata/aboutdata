@@ -45,5 +45,19 @@ public class RandomController {
         model.addAttribute("list", pages.getContent());
         return "/portal/random";
     }
+    
+    @RequestMapping("/list")
+    public String listByInfinitescroll(int page,HttpServletRequest request, Model model) {
+        logger.info("page: {}", page);
+//        if (page == 0) {
+//            page = 1;
+//        }
+        Pageable pageable = new PageRequest(1, 50);
+
+        Page<Photos> pages = photosService.findTop50(pageable);
+
+        model.addAttribute("pageNow", page);
+        return "/portal/random_page";
+    }
 
 }
