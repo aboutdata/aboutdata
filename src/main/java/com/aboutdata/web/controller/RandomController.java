@@ -38,7 +38,7 @@ public class RandomController {
 //        if (page == 0) {
 //            page = 1;
 //        }
-        Pageable pageable = new PageRequest(1, 50);
+        Pageable pageable = new PageRequest(1, 30);
 
         Page<Photos> pages = photosService.findTop50(pageable);
 
@@ -49,14 +49,11 @@ public class RandomController {
     @RequestMapping("/list")
     public String listByInfinitescroll(int page,HttpServletRequest request, Model model) {
         logger.info("page: {}", page);
-//        if (page == 0) {
-//            page = 1;
-//        }
-        Pageable pageable = new PageRequest(1, 50);
+        Pageable pageable = new PageRequest(page, 5);
 
         Page<Photos> pages = photosService.findTop50(pageable);
 
-        model.addAttribute("pageNow", page);
+        model.addAttribute("pages", pages);
         return "/portal/random_page";
     }
 

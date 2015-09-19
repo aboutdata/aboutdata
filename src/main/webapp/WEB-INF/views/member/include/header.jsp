@@ -6,37 +6,51 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<div class="navbar-header aside bg-primary nav-xs">
-    <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
-        <i class="icon-list"></i>
-    </a>
-    <a href="index.html" class="navbar-brand text-lt">
-        <img src="${pageContext.request.contextPath}/assets/images/logo.png">
-        <span class="hidden-nav-xs m-l-sm">about data</span>
-    </a>
-    <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
-        <i class="icon-settings"></i>
-    </a>
-</div>      
-        <ul class="nav navbar-nav hidden-xs">
-    <li>
-        <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
-            <i class="fa fa-indent text"></i>
-            <i class="fa fa-dedent text-active"></i>
+<ul class="nav navbar-nav">
+    <li class="b-r">
+      <div class="navbar-header">
+        <a href="index.html" class="navbar-brand text-lt">
+            <img src="${pageContext.request.contextPath}/assets/images/logo-my.png">
+          <span class="hidden-nav-xs m-l-sm">aboutdata.me</span>
+        </a>
+      </div>
+    </li>
+    <li class="b-r">
+        <a href="${pageContext.request.contextPath}/random">
+            <i class="icon-list icon text-success"></i>
+            <span class="font-bold">发现</span>
+        </a>
+    </li>
+    <li class="b-r">
+        <a href="${pageContext.request.contextPath}/latest">
+            <i class="icon-clock icon text-info"></i>
+            <span class="font-bold">最新</span>
+        </a>
+    </li>
+    <li class="b-r">
+        <a href="${pageContext.request.contextPath}/search">
+            <i class="icon-support icon text-danger"></i>
+            <span class="font-bold">搜索</span>
+        </a>
+    </li>
+    <li class="b-r">
+        <a href="${pageContext.request.contextPath}/tags">
+            <i class="icon-tag icon  text-info-dker"></i>
+            <span class="font-bold">标签</span>
         </a>
     </li>
 </ul>
 <c:if test="${appBean.features.enableSearch}">
-<form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-btn">
-                <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
-            </span>
-            <input type="text" class="form-control input-sm no-border rounded" placeholder="Search songs, albums...">
+    <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
+                </span>
+                <input type="text" class="form-control input-sm no-border rounded" placeholder="Search songs, albums...">
+            </div>
         </div>
-    </div>
-</form>
+    </form>
 </c:if>
 <c:choose>
     <c:when test="${appBean.getCurrentUser() != null}">
