@@ -18,7 +18,7 @@ public interface PhotosService {
 
     public Photos get(String id);
 
-    public Page<Photos> findTop50(Pageable pageable);
+    public Page<Photos> find(Pageable pageable);
 
     public List<Photos> findTop10();
 

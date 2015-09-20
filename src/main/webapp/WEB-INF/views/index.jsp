@@ -49,18 +49,18 @@
                             <section class="vbox">
                                 <section class="scrollable">
                                     <div id="masonry" class="pos-rlt animated fadeInUpBig">
-                                    <div class="item">
-                                        <div class="item-overlay gd animated fadeInUp wrapper bg-info">
-                                            <p class="text-white">Watch later</p>
-                                            <div class="center text-center m-t-n">
-                                                <a href="#"><i class="icon-control-play i-2x"></i></a>
+                                        <div class="item">
+                                            <div class="item-overlay gd animated fadeInUp wrapper bg-info">
+                                                <p class="text-white">Watch later</p>
+                                                <div class="center text-center m-t-n">
+                                                    <a href="#"><i class="icon-control-play i-2x"></i></a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="bottom gd bg-info wrapper">
-                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Tincidunt</a></div>
-                                            <p class="hidden-xs">Vivamus vel tincidunt libero, lementum ligula vitae</p>
-                                        </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m31.jpg" alt="" class="img-full"></a>
+                                            <div class="bottom gd bg-info wrapper">
+                                                <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Tincidunt</a></div>
+                                                <p class="hidden-xs">Vivamus vel tincidunt libero, lementum ligula vitae</p>
+                                            </div>
+                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m31.jpg" alt="" class="img-full"></a>
                                     </div>
                                     <div class="item">
                                         <div class="bottom gd bg-info wrapper">
@@ -213,7 +213,13 @@
                                         <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m12.jpg" alt="" class="img-full"></a>
                                     </div>
                                 </div>
+                                <div class="text-center">
+                                    <ul class="pagination pagination-lg">
+                                        <li><a id="next">查看更多...</a></li>
+                                    </ul>
+                                </div>
                             </section>
+
                         </section>
                         <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
                     </section>
@@ -226,7 +232,7 @@
         <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-      
+
         <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.masonry.min.js"></script>
         <!--<script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.infinitescroll.min.js" type="text/javascript"></script>-->
         <script>
@@ -252,6 +258,24 @@
                     });
                 });
 
+                $("#next").click(function () {
+                    $.ajax({
+                        url: "${pageContext.request.contextPath}/index/next",
+                        // data: {page : 1},
+                        type: "get",
+                        dataType: "html",
+                        success: function (data) {
+                            var $boxes = $(data);
+                            $container.append($boxes);
+                            $container.masonry("appended", $boxes);
+                        },
+                        error: function () {
+                            //请求出错处理
+                            alert("请求出错处理");
+                        }
+                    });
+                });
+//                   
                 $("img").error(function () {
                     $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
                 });

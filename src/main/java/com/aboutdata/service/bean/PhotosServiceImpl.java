@@ -44,7 +44,7 @@ public class PhotosServiceImpl implements PhotosService {
         return photo;
     }
 
-    public Page<Photos> findTop50(Pageable pageable) {
+    public Page<Photos> find(Pageable pageable) {
         return photosDao.findAll(pageable);
     }
 
@@ -92,7 +92,7 @@ public class PhotosServiceImpl implements PhotosService {
     @Override
     @Transactional
     public Photos create(Photos photos) {
-        
+
         return photosDao.save(photos);
     }
 

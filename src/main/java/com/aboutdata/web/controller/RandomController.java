@@ -40,7 +40,7 @@ public class RandomController {
 //        }
         Pageable pageable = new PageRequest(1, 30);
 
-        Page<Photos> pages = photosService.findTop50(pageable);
+        Page<Photos> pages = photosService.find(pageable);
 
         model.addAttribute("list", pages.getContent());
         return "/portal/random";
@@ -51,7 +51,7 @@ public class RandomController {
         logger.info("page: {}", page);
         Pageable pageable = new PageRequest(page, 5);
 
-        Page<Photos> pages = photosService.findTop50(pageable);
+        Page<Photos> pages = photosService.find(pageable);
 
         model.addAttribute("pages", pages);
         return "/portal/random_page";

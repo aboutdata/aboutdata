@@ -36,7 +36,7 @@ public class LatestController {
 //        logger.info("page: {}", page);
         Pageable pageable = new PageRequest(1, 100);
 
-        Page<Photos> pages = photosService.findTop50(pageable);
+        Page<Photos> pages = photosService.find(pageable);
 
         model.addAttribute("list", pages.getContent());
         return "/portal/latest";

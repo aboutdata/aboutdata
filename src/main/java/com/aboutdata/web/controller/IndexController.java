@@ -17,6 +17,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -36,12 +38,32 @@ public class IndexController {
 
         Pageable pageable = new PageRequest(1, 25);
 
-       // Page<Photos> top50 = photosService.findTop50(pageable);
-
-      //  List<Photos> top10 = photosService.findTop10();
+        // Page<Photos> top50 = photosService.findTop50(pageable);
+        //  List<Photos> top10 = photosService.findTop10();
 //
-      //  model.addAttribute("top50", top50.getContent());
-      //  model.addAttribute("top10", top10);
+        //  model.addAttribute("top50", top50.getContent());
+        //  model.addAttribute("top10", top10);
         return "/index";
     }
+
+    /**
+     * 查看更多
+     *
+     * @param page
+     * @param model
+     * @return
+     */
+    @ResponseBody//作用是将返回的对象作为响应，发送给页面
+    @RequestMapping("index/next")
+    public ModelAndView displayIndexNext(ModelAndView model) {
+
+        Pageable pageable = new PageRequest(1, 25);
+
+        Page<Photos> pages = photosService.find(pageable);
+
+	model.setViewName("/portal/home/next");
+        model.addObject("pages", pages);
+        return model;
+    }
+
 }
