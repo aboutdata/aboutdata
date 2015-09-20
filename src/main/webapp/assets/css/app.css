@@ -3494,10 +3494,7 @@ fieldset[disabled] .i-checks input + i:before {
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
-.item{
-	width:200px;
-	/**float:left;**/
-}
+
 .item .top {
   position: absolute;
   top: 0;

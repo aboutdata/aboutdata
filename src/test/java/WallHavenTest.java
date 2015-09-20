@@ -16,14 +16,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  *
  * @author youyou
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/spring-context.xml")
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/spring-context.xml")
 public class WallHavenTest {
 
     @Resource
     WallhavenJobCrawler wallhavenJobCrawler;
 
-    @Test
+    //@Test
 //    @Ignore
     public void crawl() {
 

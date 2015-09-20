@@ -14,7 +14,6 @@
         <title>Musik | Web Application</title>
         <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jPlayer/jplayer.flat.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css" />
@@ -48,94 +47,171 @@
                         <!-- /.aside -->
                         <section id="content">
                             <section class="vbox">
-                                <section id="waterfall" class="scrollable" scrollpagination="enabled">
+                                <section class="scrollable">
                                     <div id="masonry" class="pos-rlt animated fadeInUpBig">
-                                        <div class="item">
-                                            <div class="item-overlay gd animated fadeInUp wrapper bg-info">
-                                                <p class="text-white">稍后查看</p>
-                                                <div class="center text-center m-t-n">
-                                                    <a href="#"><i class="icon-control-play i-2x"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="bottom gd bg-info wrapper">
-                                                <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Tincidunt</a></div>
-                                                <p class="hidden-xs">Vivamus vel tincidunt libero, lementum ligula vitae</p>
-                                            </div>
-                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m31.jpg" class="img-full"></a>
-                                    </div>
-                                    <c:forEach items="${top50}" var="photo" varStatus="idx">
-                                        <div class="item">
-                                            <div class="pos-rlt">
-                                                <div class="item-overlay opacity r r-2x bg-black">
-                                                    <div class="text-info padder m-t-sm text-sm">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o text-muted"></i>
-                                                    </div>
-                                                    <div class="center text-center m-t-n">
-                                                        <a href="#"><i class="icon-control-play i-2x"></i></a>
-                                                    </div>
-                                                    <div class="bottom padder m-b-sm">
-                                                        <a href="#" data-toggle="class" class="active">
-                                                            <i class="fa fa-heart-o text-muted text"></i>
-                                                            <i class="fa fa-heart text-danger text-active"></i> 
-                                                        </a>
-                                                    </div>
-                                                    <div class="top">
-                                                        <span class="pull-right m-t-sm m-r-sm badge bg-white">
-                                                            <i class="fa fa-star text-success"></i>
-                                                            12
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}"><img src="${photo.storageHost}/${photo.thumbnail}" alt="" class="r r-2x img-full"></a>
+                                    <div class="item">
+                                        <div class="item-overlay gd animated fadeInUp wrapper bg-info">
+                                            <p class="text-white">Watch later</p>
+                                            <div class="center text-center m-t-n">
+                                                <a href="#"><i class="icon-control-play i-2x"></i></a>
                                             </div>
                                         </div>
-                                        <c:if test="${idx.index mod 5 ==0}">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="text-info padder m-t-sm text-sm">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o text-muted"></i>
-                                                        </div>
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="icon-control-play i-2x"></i></a>
-                                                        </div>
-                                                        <div class="bottom padder m-b-sm">
-                                                            <a href="#" data-toggle="class" class="active">
-                                                                <i class="fa fa-heart-o text-muted text"></i>
-                                                                <i class="fa fa-heart text-danger text-active"></i> 
-                                                            </a>
-                                                        </div>
-                                                        <div class="top">
-                                                            <span class="pull-right m-t-sm m-r-sm badge bg-white">
-                                                                <i class="fa fa-star text-success"></i>
-                                                                12
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#"><img src="${pageContext.request.contextPath}/assets/images/p7.jpg" alt="" class="r r-2x img-full"></a>
-                                                </div>
-                                                <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Vivamus vel tincidunt libero</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Ligula H</a>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="bottom gd bg-info wrapper">
-                                                    <div class="m-t m-b"><a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}" class="b-b b-warning h4 text-u-c text-lt font-bold">Duis</a></div>
-                                                    <p class="hidden-xs">Tincidunt libero vitae elementum</p>
-                                                </div>
-                                                <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}"><img src="${pageContext.request.contextPath}/assets/images/p9.jpg" class="img-full"></a>
-                                            </div> 
-                                        </c:if>
-                                    </c:forEach>
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Tincidunt</a></div>
+                                            <p class="hidden-xs">Vivamus vel tincidunt libero, lementum ligula vitae</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m31.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-warning h4 text-u-c text-lt font-bold">Duis</a></div>
+                                            <p class="hidden-xs">Tincidunt libero vitae elementum</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m10.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="item-overlay active bg-primary dker wrapper text-center">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-white h4 text-u-c text-lt font-bold">lementum</a></div>
+                                            <p class="hidden-xs">lementum ligula vitae est quis congue ero</p>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Diam</a></div>
+                                            <p class="hidden-xs">Con malesuada est, quis congue nibhs</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m4.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Vivamus</a></div>
+                                            <p class="hidden-xs">Morbi id neque quam. Aliquam sollicitudin venenatis ipsum</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m13.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-warning h4 text-u-c text-lt font-bold">Libero</a></div>
+                                            <p class="hidden-xs">Aliquam sollicitudin venenatis ipsum</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m30.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">habitant</a></div>
+                                            <p class="hidden-xs">Vel tincidunt libero, vitae ligula tristique</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m19.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="item-overlay active bg-success dker wrapper text-center">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Ligula</a></div>
+                                            <p class="hidden-xs">Sesuada est, quis congue tincidunt libero nibh ligula</p>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Malesuada</a></div>
+                                            <p class="hidden-xs">Pellentesque habitant morbi tristique sodales</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m7.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Donec</a></div>
+                                            <p class="hidden-xs">Vestibulum ullamcorper</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m18.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-primary h4 text-u-c text-lt font-bold">Eleifend</a></div>
+                                            <p class="hidden-xs">Malesuada augue. Donec eleifend condimentum</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m32.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Sollicitudin </a></div>
+                                            <p class="hidden-xs">Mauris convallis mauris at pellentesque volutpat</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m40.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-warning h2 text-u-c text-lt font-bold">Senectus </a></div>
+                                            <p class="hidden-xs">Fermentum diam. Vivamus vel tincidunt libero, vitae elementum ligula</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m21.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Phasellus</a></div>
+                                            <p class="hidden-xs">Senectus et netus et malesuada fames</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m5.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-white h4 text-u-c text-lt font-bold">Neque</a></div>
+                                            <p class="hidden-xs">Consectetur adipiscing elit. Morbi id neque quam</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/a10.png" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Nisi ne</a></div>
+                                            <p class="hidden-xs">Orbi tristique senectus et netus et malesuada</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m4.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="item-overlay active bg-warning dker wrapper text-center">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-white h4 text-u-c text-lt font-bold">Morbi</a></div>
+                                            <p class="hidden-xs">Dolor sit amet, consectetur adipiscing elit.</p>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Congue</a></div>
+                                            <p class="hidden-xs">Malesuada est, quis congue nibh</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m6.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="item-overlay active bg-info lt wrapper text-center">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-white h4 text-u-c text-lt font-bold">Csesoi</a></div>
+                                            <p class="hidden-xs">Dolor sit ectetur elit senectus et malesuada</p>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Consectetur</a></div>
+                                            <p class="hidden-xs">Adipiscing elit senectus et netus mal.</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m42.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Morbi</a></div>
+                                            <p class="hidden-xs">Dolor sit amet, consectetur adipiscing elit.</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m9.jpg" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Soesle</a></div>
+                                            <p class="hidden-xs">Adipiscing elituis congue</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/a7.png" alt="" class="img-full"></a>
+                                    </div>
+                                    <div class="item">
+                                        <div class="bottom gd bg-info wrapper">
+                                            <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Congue</a></div>
+                                            <p class="hidden-xs">Malesuada est, congue nibh quis elituis</p>
+                                        </div>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m12.jpg" alt="" class="img-full"></a>
+                                    </div>
                                 </div>
                             </section>
                         </section>
@@ -150,69 +226,31 @@
         <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-        <!-- App -->
-        <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-        <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
-        <!--<script src="${pageContext.request.contextPath}/assets/js/masonry/masonry.pkgd.js"></script>-->
-       <!--<script src="${pageContext.request.contextPath}/assets/js/masonry/tiles.min.js"></script>-->
-       <!--<script src="${pageContext.request.contextPath}/assets/js/masonry/demo.js"></script>-->
-        <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.masonry.min.js" type="text/javascript"></script>
+      
+        <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.masonry.min.js"></script>
         <!--<script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.infinitescroll.min.js" type="text/javascript"></script>-->
-        <script src="${pageContext.request.contextPath}/assets/js/scrollpagination.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
         <script>
             $(document).ready(function () {
                 var $container = $('#masonry');
+                var gutter = 1;
+                var min_width = 200;
                 $container.imagesLoaded(function () {
                     $container.masonry({
                         itemSelector: '.item',
-                        gutterWidth: 1,
-                        isAnimated: true
+                        gutterWidth: gutter,
+                        isAnimated: true,
+                        columnWidth: function (containerWidth) {
+                            //计算 box和图片应该显示的比例 root@aboutdata.me
+                            var num_of_boxes = (containerWidth / min_width | 0);
+                            var box_width = (((containerWidth - (num_of_boxes - 1) * gutter) / num_of_boxes) | 0);
+                            if (containerWidth < min_width) {
+                                box_width = containerWidth;
+                            }
+                            $('#masonry .item').width(box_width);
+                            return box_width;
+                        }
                     });
                 });
-
-                //滚动条加载数据
-//                $('#masonry').infinitescroll({
-//                    navSelector: "#navigation", //导航的选择器，会被隐藏
-//                    nextSelector: "#navigation a", //包含下一页链接的选择器
-//                    itemSelector: ".item", //你将要取回的选项(内容块)
-//                    debug: true, //启用调试信息
-//                    animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
-//                    extraScrollPx: 150, //滚动条距离底部多少像素的时候开始加载，默认150
-//                    bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
-//                    errorCallback: function () {
-//                        alert('error');
-//                    }, //当出错的时候，比如404页面的时候执行的函数
-//                    localMode: true, //是否允许载入具有相同函数的页面，默认为false
-//                    dataType: 'html', //可以是json
-////                template: function(data) {
-////                    //data表示服务端返回的json格式数据，这里需要把data转换成瀑布流块的html格式，然后返回给回到函数
-////                    return '';
-////                },
-//                    loading: {
-//                        msgText: "加载中...",
-//                        finishedMsg: '没有新数据了...'
-//                                // selector: '.loading' // 显示loading信息的div
-//                    }
-//                }, function (newElems) {
-//                    //程序执行完的回调函数
-//                    var $newElems = $(newElems);
-//                    $('#masonry').masonry('appended', $newElems);
-//                });
-                var page = 1;
-//                $("#waterfall").scroll(function () {
-//                    alert("ddd");
-//                    // top 0 -1294  height 797
-//                    if ($("#waterfall").scrollTop() > ($("#waterfall").height() * page) {
-//                        page = page + 1;
-//                    }
-////                    alert($("#waterfall").scrollTop());
-////                    if ($("#waterfall").scrollTop() === $("#waterfall").height()) {
-////                        alert("dd");
-////                    }
-//                });
-
-
 
                 $("img").error(function () {
                     $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
