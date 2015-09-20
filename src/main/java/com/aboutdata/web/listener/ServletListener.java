@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aboutdata.web.controller.listener;
+package com.aboutdata.web.listener;
 
 import com.aboutdata.commons.application.ApplicationBean;
 import javax.servlet.ServletContext;
