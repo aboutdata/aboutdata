@@ -52,6 +52,13 @@ public class Photos extends BaseEntity {
      */
     @Column(length = 9)
     private String wallhaven;
+    
+    
+     /**
+     * 图片服务器地址
+     */
+    @Column(length = 20)
+    private String storageHost;
 
 
     /**
@@ -119,6 +126,14 @@ public class Photos extends BaseEntity {
 
     public Integer getOrder() {
         return order;
+    }
+
+    public String getStorageHost() {
+        return storageHost;
+    }
+
+    public void setStorageHost(String storageHost) {
+        this.storageHost = storageHost;
     }
 
     /**

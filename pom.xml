@@ -362,11 +362,11 @@
             <artifactId>jsoup</artifactId>
             <version>1.6.3</version>
         </dependency>
-        <!--        <dependency>
+        <dependency>
             <groupId>net.mikesu</groupId>
             <artifactId>FastdfsClient</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>

@@ -7,9 +7,8 @@ package com.aboutdata.service.bean;
 
 import com.aboutdata.service.StorageService;
 import java.io.File;
-//import net.mikesu.fastdfs.FastdfsClient;
-//import net.mikesu.fastdfs.FastdfsClientFactory;
-import org.apache.commons.io.FileUtils;
+import net.mikesu.fastdfs.FastdfsClient;
+import net.mikesu.fastdfs.FastdfsClientFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -23,23 +22,14 @@ import org.springframework.stereotype.Service;
 public class StorageServiceImpl implements StorageService {
 
     Logger logger = LoggerFactory.getLogger(StorageServiceImpl.class);
-
-    private static final String IMAGES_PATH = "/ProgramFiles/nginx-1.6.3-win/html";
-    private static final String STORAGE_PATH = "/group1/";
-
+    
     @Override
     public String upload(File file) {
         try {
-           // FastdfsClient fastdfsClient = FastdfsClientFactory.getFastdfsClient("FastdfsClient.properties");
-            // String fileId = fastdfsClient.upload(file);
-
-            // return fileId;//
-            String fileName = file.getName();
-            String fileId = STORAGE_PATH + fileName;
+            FastdfsClient fastdfsClient = FastdfsClientFactory.getFastdfsClient("FastdfsClient.properties");
+            String fileId = fastdfsClient.upload(file);
             
-            File image = new File(IMAGES_PATH +"/"+STORAGE_PATH+ fileName);
-            FileUtils.copyFile(file, image);
-
+            // return fileId;//
             logger.info("fastdfs upload file path : {}", fileId);
             return fileId;
         } catch (Exception ex) {

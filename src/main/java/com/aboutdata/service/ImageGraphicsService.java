@@ -14,5 +14,10 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public interface ImageGraphicsService {
 
+    /**
+     *
+     * @param photos
+     * @param file
+     */
     public void build(Photos photos,MultipartFile file);
 }

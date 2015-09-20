@@ -63,7 +63,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}"><img src="${photo.thumbnail}" alt="" class="r r-2x img-full"></a>
+                                    <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}"><img src="${photo.storageHost}/${photo.thumbnail}" alt="" class="r r-2x img-full"></a>
                                 </div>
                             </div>
                             <c:if test="${idx.index mod 11 ==0}">

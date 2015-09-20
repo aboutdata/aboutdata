@@ -92,7 +92,7 @@ public class PhotosServiceImpl implements PhotosService {
     @Override
     @Transactional
     public Photos create(Photos photos) {
-
+        
         return photosDao.save(photos);
     }
 

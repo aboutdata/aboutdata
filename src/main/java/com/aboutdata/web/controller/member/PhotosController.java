@@ -79,12 +79,6 @@ public class PhotosController {
         logger.info("file name {}", multipartFile.getOriginalFilename());
         logger.info("file name {}", multipartFile.getName());
 
-        Random r1 = new Random();
-        int num = r1.nextInt(19) + 1;
-
-        String thumbnail = "http://themes.mediacreed.com/html/synergy/assets/media/galleries/image_gallery/thumbs/thumb" + num + ".jpg";
-        String medium = "http://themes.mediacreed.com/html/synergy/assets/media/galleries/image_gallery/images/image" + num + ".jpg";
-
         Member m = new Member();
         m.setId("1");
 

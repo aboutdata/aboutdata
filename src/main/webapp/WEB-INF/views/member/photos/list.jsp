@@ -97,7 +97,7 @@
                                                         </div>
                                                     </div>
                                                     <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photos.id}">
-                                                        <img src="${photos.thumbnail}" alt="" class="r r-2x img-full">
+                                                        <img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r-2x img-full">
                                                     </a>
                                                 </div>
                                                 <div class="padder-v">

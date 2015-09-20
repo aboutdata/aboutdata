@@ -29,6 +29,10 @@ public final class SystemConfig extends BaseConfig {
     //后台用户开户默认密码，如果为null表示使用手机短信发送随机密码
     @XmlElement
     private String defaultPassword = "123456";
+    
+    @XmlElement
+    private String defaultStorageHost = "http://aboutdata.me";
+    
     /**
      * 各平台通用功能
      */
@@ -60,8 +64,17 @@ public final class SystemConfig extends BaseConfig {
         this.features = features;
     }
 
+    public String getDefaultStorageHost() {
+        return defaultStorageHost;
+    }
+
+    public void setDefaultStorageHost(String defaultStorageHost) {
+        this.defaultStorageHost = defaultStorageHost;
+    }
+
+    @Override
     public String toString() {
-        return "SystemConfig{" + "developMode=" + developMode + ", defaultPassword=" + defaultPassword + ", features=" + features + '}';
+        return "SystemConfig{" + "developMode=" + developMode + ", defaultPassword=" + defaultPassword + ", defaultStroageHost=" + defaultStorageHost + ", features=" + features + '}';
     }
 
 }
