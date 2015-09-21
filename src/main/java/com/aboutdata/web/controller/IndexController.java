@@ -38,11 +38,9 @@ public class IndexController {
 
         Pageable pageable = new PageRequest(1, 25);
 
-        // Page<Photos> top50 = photosService.findTop50(pageable);
-        //  List<Photos> top10 = photosService.findTop10();
-//
-        //  model.addAttribute("top50", top50.getContent());
-        //  model.addAttribute("top10", top10);
+         Page<Photos> list = photosService.find(pageable);
+
+          model.addAttribute("list", list);
         return "/index";
     }
 
