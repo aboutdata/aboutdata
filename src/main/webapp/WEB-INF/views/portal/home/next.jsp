@@ -6,19 +6,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<div class="item">
-    <div class="item-overlay gd animated fadeInUp wrapper bg-info">
-        <p class="text-white">稍后查看</p>
-        <div class="center text-center m-t-n">
-            <a href="#"><i class="icon-control-play i-2x"></i></a>
-        </div>
-    </div>
-    <div class="bottom gd bg-info wrapper">
-        <div class="m-t m-b"><a href="#" class="b-b b-info h4 text-u-c text-lt font-bold">Tincidunt</a></div>
-        <p class="hidden-xs">Vivamus vel tincidunt libero, lementum ligula vitae</p>
-    </div>
-    <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m31.jpg" class="img-full"></a>
-</div>
 <c:forEach items="${pages.content}" var="photo" varStatus="idx">
     <div class="item">
         <div class="pos-rlt">
@@ -46,7 +33,7 @@
                     </span>
                 </div>
             </div>
-            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/p7.jpg" alt="" class="r r-2x img-full"></a>
+            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m3.jpg" alt="" class="r r-2x img-full"></a>
         </div>
         <div class="padder-v">
             <a href="#" class="text-ellipsis">Vivamus vel tincidunt libero</a>

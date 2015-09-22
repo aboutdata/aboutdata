@@ -49,70 +49,70 @@
                             <section class="vbox">
                                 <section class="scrollable">
                                     <div id="masonry" class="pos-rlt animated fadeInUpBig">
-                                      <c:forEach items="${list.content}" var="photo" varStatus="idx">
-                            <div class="item">
-                                <div class="pos-rlt">
-                                    <div class="item-overlay opacity r r-2x bg-black">
-                                        <div class="text-info padder m-t-sm text-sm">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o text-muted"></i>
-                                        </div>
-                                        <div class="center text-center m-t-n">
-                                            <a href="#"><i class="icon-control-play i-2x"></i></a>
-                                        </div>
-                                        <div class="bottom padder m-b-sm">
-                                            <a href="#" data-toggle="class" class="active">
-                                                <i class="fa fa-heart-o text-muted text"></i>
-                                                <i class="fa fa-heart text-danger text-active"></i> 
-                                            </a>
-                                        </div>
-                                        <div class="top">
-                                            <span class="pull-right m-t-sm m-r-sm badge bg-white">
-                                                <i class="fa fa-star text-success"></i>
-                                                12
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}">
-                                        <img src="${photo.storageHost}/${photo.thumbnail}" alt="" class="r r-2x img-full">
-                                    </a>
-                                </div>
-                            </div>
-                            <c:if test="${idx.index mod 11 ==0}">
-                                <div class="item">
-                                    <div class="pos-rlt">
-                                        <div class="item-overlay opacity r r-2x bg-black">
-                                            <div class="text-info padder m-t-sm text-sm">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o text-muted"></i>
-                                            </div>
-                                            <div class="center text-center m-t-n">
-                                                <a href="#"><i class="icon-control-play i-2x"></i></a>
-                                            </div>
-                                            <div class="bottom padder m-b-sm">
-                                                <a href="#" data-toggle="class" class="active">
-                                                    <i class="fa fa-heart-o text-muted text"></i>
-                                                    <i class="fa fa-heart text-danger text-active"></i> 
+                                    <c:forEach items="${list.content}" var="photo" varStatus="idx">
+                                        <div class="item">
+                                            <div class="pos-rlt">
+                                                <div class="item-overlay opacity r r-2x bg-black">
+                                                    <div class="text-info padder m-t-sm text-sm">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o text-muted"></i>
+                                                    </div>
+                                                    <div class="center text-center m-t-n">
+                                                        <a href="#"><i class="icon-control-play i-2x"></i></a>
+                                                    </div>
+                                                    <div class="bottom padder m-b-sm">
+                                                        <a href="#" data-toggle="class" class="active">
+                                                            <i class="fa fa-heart-o text-muted text"></i>
+                                                            <i class="fa fa-heart text-danger text-active"></i> 
+                                                        </a>
+                                                    </div>
+                                                    <div class="top">
+                                                        <span class="pull-right m-t-sm m-r-sm badge bg-white">
+                                                            <i class="fa fa-star text-success"></i>
+                                                            12
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}">
+                                                    <img src="${photo.storageHost}/${photo.thumbnail}" alt="" class="r r-2x img-full">
                                                 </a>
                                             </div>
-                                            <div class="top">
-                                                <span class="pull-right m-t-sm m-r-sm badge bg-white">
-                                                    <i class="fa fa-star text-success"></i>
-                                                    12
-                                                </span>
-                                            </div>
                                         </div>
-                                        <a href="#"><img src="${pageContext.request.contextPath}/assets/images/082.jpeg" alt="" class="r r-2x img-full"></a>
-                                    </div>
-                                </div>
-                            </c:if>
-                        </c:forEach>  
+                                        <c:if test="${idx.index mod 11 ==0}">
+                                            <div class="item">
+                                                <div class="pos-rlt">
+                                                    <div class="item-overlay opacity r r-2x bg-black">
+                                                        <div class="text-info padder m-t-sm text-sm">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o text-muted"></i>
+                                                        </div>
+                                                        <div class="center text-center m-t-n">
+                                                            <a href="#"><i class="icon-control-play i-2x"></i></a>
+                                                        </div>
+                                                        <div class="bottom padder m-b-sm">
+                                                            <a href="#" data-toggle="class" class="active">
+                                                                <i class="fa fa-heart-o text-muted text"></i>
+                                                                <i class="fa fa-heart text-danger text-active"></i> 
+                                                            </a>
+                                                        </div>
+                                                        <div class="top">
+                                                            <span class="pull-right m-t-sm m-r-sm badge bg-white">
+                                                                <i class="fa fa-star text-success"></i>
+                                                                12
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <a href="#"><img src="${pageContext.request.contextPath}/assets/images/082.jpeg" alt="" class="r r-2x img-full"></a>
+                                                </div>
+                                            </div>
+                                        </c:if>
+                                    </c:forEach>  
                                 </div>
                                 <div class="text-center">
                                     <ul class="pagination pagination-lg">
@@ -146,6 +146,7 @@
                         itemSelector: '.item',
                         gutterWidth: gutter,
                         isAnimated: true,
+                        isFitWidth : true,
                         columnWidth: function (containerWidth) {
                             //计算 box和图片应该显示的比例 root@aboutdata.me
                             var num_of_boxes = (containerWidth / min_width | 0);
@@ -167,9 +168,11 @@
                         dataType: "html",
                         success: function (data) {
                             var $boxes = $(data);
-                            $container.append($boxes);
+                           
+                            //$container.append($boxes);
+                           
                             $container.masonry("appended", $boxes);
-                            $container.masonry();
+                           
                         },
                         error: function () {
                             //请求出错处理
