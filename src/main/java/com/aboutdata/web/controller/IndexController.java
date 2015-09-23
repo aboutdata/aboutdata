@@ -53,13 +53,13 @@ public class IndexController {
      */
     @ResponseBody//作用是将返回的对象作为响应，发送给页面
     @RequestMapping("index/next")
-    public ModelAndView displayIndexNext(ModelAndView model) {
-
-        Pageable pageable = new PageRequest(1, 25);
+    public ModelAndView displayIndexNext(int page,ModelAndView model) {
+    	logger.info("page now {}",page);
+        Pageable pageable = new PageRequest(0, 25);
 
         Page<Photos> pages = photosService.find(pageable);
-
-	model.setViewName("/portal/home/next");
+        logger.info("page size {}",pages.getContent().size());
+	    model.setViewName("/portal/home/next");
         model.addObject("pages", pages);
         return model;
     }

@@ -159,16 +159,18 @@
                         }
                     });
                 });
-
+				
+				var page = 1;
                 $("#next").click(function () {
                     $.ajax({
                         url: "${pageContext.request.contextPath}/index/next",
-                        // data: {page : 1},
+                        data: {page : page},
                         type: "get",
                         dataType: "html",
                         success: function (data) {
                             var $boxes = $(data);
                 			$container.append($boxes).masonry( 'appended', $boxes).masonry();
+                        	page= page+1;
                         },
                         error: function () {
                             //请求出错处理
