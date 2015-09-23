@@ -168,11 +168,7 @@
                         dataType: "html",
                         success: function (data) {
                             var $boxes = $(data);
-                           
-                            //$container.append($boxes);
-                           
-                            $container.masonry("appended", $boxes);
-                           
+                			$container.append($boxes).masonry( 'appended', $boxes).masonry();
                         },
                         error: function () {
                             //请求出错处理
