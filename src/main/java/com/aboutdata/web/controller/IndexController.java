@@ -55,7 +55,7 @@ public class IndexController {
     @RequestMapping("index/next")
     public ModelAndView displayIndexNext(int page,ModelAndView model) {
     	logger.info("page now {}",page);
-        Pageable pageable = new PageRequest(0, 25);
+        Pageable pageable = new PageRequest(page, 25);
 
         Page<Photos> pages = photosService.find(pageable);
         logger.info("page size {}",pages.getContent().size());

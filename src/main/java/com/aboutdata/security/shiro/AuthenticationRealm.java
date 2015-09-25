@@ -1,6 +1,5 @@
 package com.aboutdata.security.shiro;
 
-import com.aboutdata.commons.application.InjectLogger;
 import com.aboutdata.domain.Admin;
 import com.aboutdata.security.utils.SecurityUtils;
 import com.aboutdata.service.AdminService;
@@ -24,8 +23,8 @@ import org.slf4j.LoggerFactory;
  */
 public class AuthenticationRealm extends AuthorizingRealm {
 
-    @InjectLogger
-    private Logger logger;
+  
+    private Logger logger =LoggerFactory.getLogger(AuthenticationRealm.class);
 
     @Resource(name = "adminServiceImpl")
     private AdminService adminService;
@@ -49,7 +48,6 @@ public class AuthenticationRealm extends AuthorizingRealm {
                 throw new UnknownAccountException();
             }
             //密码验证
-            logger.info("not match");
             if (!SecurityUtils.matchPassphrase(admin.getPassword(), admin.getSalt(), password)) {
                 logger.info("password not match");
                 throw new IncorrectCredentialsException();

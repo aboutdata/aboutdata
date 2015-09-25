@@ -47,7 +47,7 @@ public class LoginController {
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         try {
             SecurityUtils.getSubject().login(token);
-
+            logger.info("redirect:/admin/dashboard ");
             return "redirect:/admin/dashboard";
         } catch (AuthenticationException e) {
              logger.info("login {}",e);

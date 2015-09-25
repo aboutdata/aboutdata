@@ -14,6 +14,23 @@
         <b class="arrow"></b>
     </li>
 
+	<li id="photos">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-book"></i>
+            <span class="menu-text"> 图片管理</span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <b class="arrow"></b>
+        <ul class="submenu">
+            <li>
+                <a href="${pageContext.request.contextPath}/admin/photosRequest/list">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                  	 图片上传列表
+                </a>
+                <b class="arrow"></b>
+            </li>
+        </ul>
+    </li>
     <li id="admin">
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon glyphicon glyphicon-user"></i>
