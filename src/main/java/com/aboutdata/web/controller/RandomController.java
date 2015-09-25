@@ -40,9 +40,9 @@ public class RandomController {
 //        }
         Pageable pageable = new PageRequest(1, 30);
 
-        Page<Photos> pages = photosService.find(pageable);
+        Page<Photos> list = photosService.find(pageable);
 
-        model.addAttribute("list", pages.getContent());
+        model.addAttribute("list", list);
         return "/portal/random";
     }
     

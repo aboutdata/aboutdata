@@ -3,7 +3,6 @@
     Created on : 2015-8-16, 13:41:17
     Author     : youyou
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -14,7 +13,6 @@
         <title>Musik | Web Application</title>
         <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jPlayer/jplayer.flat.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css" />
@@ -48,9 +46,9 @@
                         <!-- /.aside -->
                         <section id="content">
                             <section class="vbox">
-                                <section id="waterfall" class="scrollable" scrollpagination="enabled">
+                                <section class="scrollable">
                                     <div id="masonry" class="pos-rlt animated fadeInUpBig">
-                                    <c:forEach items="${list}" var="photo" varStatus="idx">
+                                    <c:forEach items="${list.content}" var="photo" varStatus="idx">
                                         <div class="item">
                                             <div class="pos-rlt">
                                                 <div class="item-overlay opacity r r-2x bg-black">
@@ -77,7 +75,9 @@
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}"><img src="${photo.storageHost}/${photo.thumbnail}" alt="" class="r r-2x img-full"></a>
+                                                <a href="${pageContext.request.contextPath}/member/photos/wallpaper/${photo.id}">
+                                                    <img src="${photo.storageHost}/${photo.thumbnail}" alt="" class="r r-2x img-full">
+                                                </a>
                                             </div>
                                         </div>
                                         <c:if test="${idx.index mod 11 ==0}">
@@ -111,9 +111,15 @@
                                                 </div>
                                             </div>
                                         </c:if>
-                                    </c:forEach>
+                                    </c:forEach>  
+                                </div>
+                                <div class="text-center">
+                                    <ul class="pagination pagination-lg">
+                                        <li><a id="next">查看更多...</a></li>
+                                    </ul>
                                 </div>
                             </section>
+
                         </section>
                         <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
                     </section>
@@ -126,70 +132,52 @@
         <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-        <!-- App -->
-        <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-        <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
-        <!--<script src="${pageContext.request.contextPath}/assets/js/masonry/masonry.pkgd.js"></script>-->
-       <!--<script src="${pageContext.request.contextPath}/assets/js/masonry/tiles.min.js"></script>-->
-       <!--<script src="${pageContext.request.contextPath}/assets/js/masonry/demo.js"></script>-->
-        <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.masonry.min.js" type="text/javascript"></script>
+
+        <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.masonry.min.js"></script>
         <!--<script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.infinitescroll.min.js" type="text/javascript"></script>-->
-        <script src="${pageContext.request.contextPath}/assets/js/scrollpagination.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
         <script>
             $(document).ready(function () {
                 var $container = $('#masonry');
+                var gutter = 1;
+                var min_width = 200;
                 $container.imagesLoaded(function () {
                     $container.masonry({
                         itemSelector: '.item',
-                        gutterWidth: 1,
-                        isAnimated: true
+                        gutterWidth: gutter,
+                        isAnimated: true,
+                        isFitWidth : true,
+                        columnWidth: function (containerWidth) {
+                            //计算 box和图片应该显示的比例 root@aboutdata.me
+                            var num_of_boxes = (containerWidth / min_width | 0);
+                            var box_width = (((containerWidth - (num_of_boxes - 1) * gutter) / num_of_boxes) | 0);
+                            if (containerWidth < min_width) {
+                                box_width = containerWidth;
+                            }
+                            $('#masonry .item').width(box_width);
+                            return box_width;
+                        }
                     });
                 });
-
-                //滚动条加载数据
-//                $('#masonry').infinitescroll({
-//                    navSelector: "#navigation", //导航的选择器，会被隐藏
-//                    nextSelector: "#navigation a", //包含下一页链接的选择器
-//                    itemSelector: ".item", //你将要取回的选项(内容块)
-//                    debug: true, //启用调试信息
-//                    animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
-//                    extraScrollPx: 150, //滚动条距离底部多少像素的时候开始加载，默认150
-//                    bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
-//                    errorCallback: function () {
-//                        alert('error');
-//                    }, //当出错的时候，比如404页面的时候执行的函数
-//                    localMode: true, //是否允许载入具有相同函数的页面，默认为false
-//                    dataType: 'html', //可以是json
-////                template: function(data) {
-////                    //data表示服务端返回的json格式数据，这里需要把data转换成瀑布流块的html格式，然后返回给回到函数
-////                    return '';
-////                },
-//                    loading: {
-//                        msgText: "加载中...",
-//                        finishedMsg: '没有新数据了...'
-//                                // selector: '.loading' // 显示loading信息的div
-//                    }
-//                }, function (newElems) {
-//                    //程序执行完的回调函数
-//                    var $newElems = $(newElems);
-//                    $('#masonry').masonry('appended', $newElems);
-//                });
-                var page = 1;
-//                $("#waterfall").scroll(function () {
-//                    alert("ddd");
-//                    // top 0 -1294  height 797
-//                    if ($("#waterfall").scrollTop() > ($("#waterfall").height() * page) {
-//                        page = page + 1;
-//                    }
-////                    alert($("#waterfall").scrollTop());
-////                    if ($("#waterfall").scrollTop() === $("#waterfall").height()) {
-////                        alert("dd");
-////                    }
-//                });
-
-
-
+				
+				var page = 1;
+                $("#next").click(function () {
+                    $.ajax({
+                        url: "${pageContext.request.contextPath}/index/next",
+                        data: {page : page},
+                        type: "get",
+                        dataType: "html",
+                        success: function (data) {
+                            var $boxes = $(data);
+                			$container.append($boxes).masonry( 'appended', $boxes).masonry();
+                        	page= page+1;
+                        },
+                        error: function () {
+                            //请求出错处理
+                            alert("请求出错处理");
+                        }
+                    });
+                });
+//                   
                 $("img").error(function () {
                     $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
                 });
@@ -197,3 +185,4 @@
         </script>
     </body>
 </html>
+

@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,11 +35,14 @@ public class LatestController {
     @RequestMapping
     public String list(HttpServletRequest request, Model model) {
 //        logger.info("page: {}", page);
-        Pageable pageable = new PageRequest(1, 100);
+        
+        Sort sort = new Sort(Sort.Direction.ASC, "createDate");
+        Pageable pageable = new PageRequest(1, 50,sort);
+        
+        
+        Page<Photos> list = photosService.find(pageable);
 
-        Page<Photos> pages = photosService.find(pageable);
-
-        model.addAttribute("list", pages.getContent());
+        model.addAttribute("list", list);
         return "/portal/latest";
     }
 }

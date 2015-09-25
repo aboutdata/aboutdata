@@ -168,7 +168,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     }
 
     @Test
-    @Ignore
+//    @Ignore
     public void wallHeaven() {
 
 //        try {
