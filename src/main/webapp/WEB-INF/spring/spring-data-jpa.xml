@@ -33,6 +33,12 @@
         <property name="jdbcUrl" value="${jdbc.url}" />
         <property name="user" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
+    	<property name="initialPoolSize" value="${connection_pools.initial_pool_size}" />
+        <property name="minPoolSize" value="${connection_pools.min_pool_size}" />
+        <property name="maxPoolSize" value="${connection_pools.max_pool_size}" />
+        <property name="maxIdleTime" value="${connection_pools.max_idle_time}" />
+        <property name="acquireIncrement" value="${connection_pools.acquire_increment}" />
+        <property name="checkoutTimeout" value="${connection_pools.checkout_timeout}" />
     </bean>
     
     <bean id="hibernateJpaVendorAdapter"

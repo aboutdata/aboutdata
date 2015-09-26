@@ -33,11 +33,7 @@
                     </span>
                 </div>
             </div>
-            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/m3.jpg" alt="" class="r r-2x img-full"></a>
-        </div>
-        <div class="padder-v">
-            <a href="#" class="text-ellipsis">Vivamus vel tincidunt libero</a>
-            <a href="#" class="text-ellipsis text-xs text-muted">Ligula H</a>
+            <a href="#"><img src="${photo.storageHost}/${photo.thumbnail}" alt="" class="r r-2x img-full"></a>
         </div>
     </div>
 </c:forEach>
