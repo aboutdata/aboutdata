@@ -66,7 +66,7 @@ public class AdminController {
         Pageable pageable = new PageRequest(0, 25);
         Page<Admin> list = adminService.find(pageable);
         logger.info("list {}", list.getContent());
-        return new TableData<Admin>(list, sEcho);
+        return new TableData<Admin>(list, sEcho,false);
     }
     
 }
