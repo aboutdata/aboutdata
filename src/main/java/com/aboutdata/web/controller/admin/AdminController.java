@@ -5,6 +5,8 @@ import com.aboutdata.domain.Admin;
 import com.aboutdata.service.AdminService;
 import com.aboutdata.service.RoleService;
 import javax.annotation.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,10 +23,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/admin/employee")
 public class AdminController {
-
+    
+    Logger logger = LoggerFactory.getLogger(getClass());
+    
     @Resource(name = "adminServiceImpl")
     private AdminService adminService;
-
+    
     @Resource(name = "roleServiceImpl")
     private RoleService roleService;
 
@@ -36,7 +40,7 @@ public class AdminController {
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String displayList(ModelMap model) {
-
+        
         return "/admin/employee/list";
     }
 
@@ -61,8 +65,8 @@ public class AdminController {
             int sEcho) {
         Pageable pageable = new PageRequest(0, 25);
         Page<Admin> list = adminService.find(pageable);
-
+        logger.info("list {}", list.getContent());
         return new TableData(list, sEcho);
     }
-
+    
 }
