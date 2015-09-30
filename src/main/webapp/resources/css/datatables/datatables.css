@@ -1,0 +1,54 @@
+/* TABLES */
+.table-bordered {
+  border: 1px solid #EBEBEB;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  background-color: #ffffff;
+  border-bottom-width: 1px;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+ /** border: 1px solid #e7e7e7;**/
+}
+.table > thead > tr > th {
+  border-bottom: 1px solid #DDDDDD;
+  vertical-align: bottom;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  border-top: 1px solid #e7eaec;
+  line-height: 1.42857;
+  padding: 8px;
+  vertical-align: top;
+}
+
+.dataTables_wrapper .row:first-child{
+	padding-top:12px;
+	padding-bottom:12px;
+}
+.dataTables_wrapper .row:first-child+.dataTable{
+	border-top:1px solid #ddd;
+	border-bottom:1px solid #ddd
+}
+
+.dataTables_wrapper .row:last-child{
+	border-bottom:1px solid #e0e0e0;
+	padding-top:12px;
+	padding-bottom:12px;
+}
+
+.dataTables_wrapper .dataTables_scroll+.row{
+	border-top:1px solid #e0e0e0
+}
+/*
+ * Control feature layout
+ */
