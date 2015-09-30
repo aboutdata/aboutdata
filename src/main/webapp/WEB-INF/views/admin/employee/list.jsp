@@ -116,72 +116,17 @@
                                     <thead>
                                         <tr>
                                             <th>编号</th>
-                                            <th>病人姓名</th>
-                                            <th>申请医生</th>
-                                            <th>会诊医院</th>
-                                            <th>会诊科室</th>
-                                            <th>会诊医生</th>
-                                            <th>安排医生</th>
-                                            <th>申请时间</th>
-                                            <th>安排时间</th>
-                                            <th>状态</th>
-                                            <th>操作</th>
+                                            <th>用户名</th>
+                                            <th>电子邮件</th>
+                                            <th>姓名</th>
+                                            <th>部门</th>
+                                            <th>最后登录日期</th>
+                                            <th>最后登录IP</th>
+                                            <th>是否启用</th>
+                                            <th>创建时间</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>编号</td>
-                                            <td>病人姓名</td>
-                                            <td>申请医生</td>
-                                            <td>会诊医院</td>
-                                            <td>会诊科室</td>
-                                            <td>会诊医生</td>
-                                            <td>安排医生</td>
-                                            <td>申请时间</td>
-                                            <td>安排时间</td>
-                                            <td>状态</td>
-                                            <td>操作</td>
-                                        </tr>
-                                    <tr>
-                                            <td>编号</td>
-                                            <td>病人姓名</td>
-                                            <td>申请医生</td>
-                                            <td>会诊医院</td>
-                                            <td>会诊科室</td>
-                                            <td>会诊医生</td>
-                                            <td>安排医生</td>
-                                            <td>申请时间</td>
-                                            <td>安排时间</td>
-                                            <td>状态</td>
-                                            <td>操作</td>
-                                        </tr>
-                                        <tr>
-                                            <td>编号</td>
-                                            <td>病人姓名</td>
-                                            <td>申请医生</td>
-                                            <td>会诊医院</td>
-                                            <td>会诊科室</td>
-                                            <td>会诊医生</td>
-                                            <td>安排医生</td>
-                                            <td>申请时间</td>
-                                            <td>安排时间</td>
-                                            <td>状态</td>
-                                            <td>操作</td>
-                                        </tr>
-                                        <tr>
-                                            <td>编号</td>
-                                            <td>病人姓名</td>
-                                            <td>申请医生</td>
-                                            <td>会诊医院</td>
-                                            <td>会诊科室</td>
-                                            <td>会诊医生</td>
-                                            <td>安排医生</td>
-                                            <td>申请时间</td>
-                                            <td>安排时间</td>
-                                            <td>状态</td>
-                                            <td>操作</td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody></tbody>
                                 </table>
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->
@@ -228,13 +173,61 @@
         <%@include file="/WEB-INF/views/admin/common/footer.jsp" %>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/datatables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/datatables/jquery.dataTables.bootstrap.js"></script>
-        <script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/js/dateFormat.js"></script>
         <!-- inline scripts related to this page -->
         <script type="text/javascript">
-            $(document).ready(function () {
-                //=============================设置datatables数据=======================================================================
-                var myDataTable = $('#myDatatbles').dataTable();
-            });
+                            $(document).ready(function () {
+                                //=============================设置datatables数据=======================================================================
+                                var myDataTable = $('#myDatatbles').dataTable({
+                                    "bProcessing": true,
+                                    "bServerSide": true,
+                                    "bPaginate": true, //翻页功能
+                                    "searching": false,
+                                    "dom": 'rtlip',
+                                    "sAjaxSource": "${pageContext.request.contextPath}/admin/employee/getDatatables",
+                                    "aoColumns": [
+                                        {"mData": "id"},
+                                        {"mData": "username"},
+                                        {"mData": "email"},
+                                        {"mData": "name"},
+                                        {"mData": "department"},
+                                        {"mData": "loginDate"},
+                                        {"mData": "loginIp"},
+                                        {"mData": "isAccountEnabled"},
+                                        {"mData": "createDate"}
+                                    ],
+                                    "aoColumnDefs": [
+                                            
+                                    ],
+                                    "fnServerData": function (sSource, aoData, fnCallback, oSettings) {
+                                        oSettings.jqXHR = $.ajax({
+                                            "dataType": 'json',
+                                            "type": "POST",
+                                            "url": sSource,
+                                            "data": aoData,
+                                            "success": fnCallback,
+                                            "error": function () {
+                                                console.log('error');
+                                            }
+                                        });
+                                    },
+                                    "language": {
+                                        "processing": "正在努力加载中...",
+                                        "lengthMenu": "显示 _MENU_ 项结果 ",
+                                        "zeroRecords": "没有匹配结果",
+                                        "info": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                                        "infoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                                        "infoFiltered": "(由 _MAX_ 项结果过滤)",
+                                        "infoPostFix": "",
+                                        "url": "",
+                                        "paginate": {
+                                            "first": "首页",
+                                            "previous": "上一页",
+                                            "next": "下一页",
+                                            "last": "末页"
+                                        }
+                                    }
+                                });
+                            });
         </script>
     </body>
 </html>

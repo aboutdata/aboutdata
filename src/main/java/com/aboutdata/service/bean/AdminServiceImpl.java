@@ -16,6 +16,8 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -84,6 +86,11 @@ public class AdminServiceImpl implements AdminService {
             }
         }
         return null;
+    }
+
+    @Override
+    public Page<Admin> find(Pageable pageable) {
+        return adminDao.findAll(pageable);
     }
 
 }

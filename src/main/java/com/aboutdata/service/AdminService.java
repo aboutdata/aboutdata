@@ -2,6 +2,8 @@ package com.aboutdata.service;
 
 import com.aboutdata.domain.Admin;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * Service - 管理员
@@ -11,6 +13,8 @@ import java.util.List;
  */
 public interface AdminService {
 
+    
+    public Page<Admin> find(Pageable pageable);
     /**
      * 判断用户名是否存在
      *
