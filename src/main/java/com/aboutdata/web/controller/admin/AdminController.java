@@ -57,7 +57,7 @@ public class AdminController {
      */
     @RequestMapping(value = "/getDatatables")
     @ResponseBody
-    public TableData getByDatatables(int iDisplayLength,
+    public TableData<Admin> getByDatatables(int iDisplayLength,
             int iDisplayStart,
             String sColName,
             String sSortDir_0,
@@ -66,7 +66,7 @@ public class AdminController {
         Pageable pageable = new PageRequest(0, 25);
         Page<Admin> list = adminService.find(pageable);
         logger.info("list {}", list.getContent());
-        return new TableData(list, sEcho);
+        return new TableData<Admin>(list, sEcho);
     }
     
 }
