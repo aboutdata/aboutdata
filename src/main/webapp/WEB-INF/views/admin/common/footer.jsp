@@ -23,5 +23,5 @@ window.jQuery || document.write("<script src='${pageContext.request.contextPath}
 <script src="${pageContext.request.contextPath}/resources/js/ace-elements.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/ace.min.js"></script>
 
-<!--这是用来控制菜单选中后高亮的-->
-<script src="${pageContext.request.contextPath}/resources/js/mycommon/common.js" type="text/javascript"></script>
+<!--这是用来控制菜单选中后高亮的
+<script src="${pageContext.request.contextPath}/resources/js/mycommon/common.js" type="text/javascript"></script>-->

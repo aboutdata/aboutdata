@@ -11,8 +11,7 @@
         <meta charset="utf-8" />
         <title>Dashboard - ${cloudSystemName}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-        <%@include file="/WEB-INF/views/admin/common/css-ace.jsp" %>
-           <![endif]-->
+        <%@include file="/WEB-INF/views/admin/common/css-ace.jsp"%>
         <link href="${pageContext.request.contextPath}/resources/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="${pageContext.request.contextPath}/resources/css/datatables/datatables.css" rel="stylesheet" type="text/css" />
     </head>
