@@ -12,14 +12,10 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.groups.Default;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
@@ -27,7 +23,6 @@ import org.hibernate.annotations.GenericGenerator;
 /**
  * Entity - 基类
  */
-@JsonAutoDetect(fieldVisibility = Visibility.NONE, getterVisibility = Visibility.NONE, setterVisibility = Visibility.NONE, isGetterVisibility = Visibility.NONE, creatorVisibility = Visibility.NONE)
 @EntityListeners(EntityListener.class)
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
@@ -66,7 +61,6 @@ public abstract class BaseEntity implements Serializable {
     /**
      * ID
      */
-    @JsonProperty
     @Id
     @GenericGenerator(name = "UUID_GEN", strategy = "uuid")
     @GeneratedValue(generator = "UUID_GEN")
@@ -75,7 +69,6 @@ public abstract class BaseEntity implements Serializable {
     /**
      * 创建日期
      */
-    @JsonProperty
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
@@ -83,7 +76,6 @@ public abstract class BaseEntity implements Serializable {
     /**
      * 修改日期
      */
-    @JsonProperty
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifyDate;

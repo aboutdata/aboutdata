@@ -192,7 +192,7 @@
                                         {"mData": "department"},
                                         {"mData": "loginDate"},
                                         {"mData": "loginIp"},
-                                        {"mData": "isAccountEnabled"},
+                                        {"mData": "isEnabled"},
                                         {"mData": "createDate"}
                                     ],
                                     "fnServerData": function (sSource, aoData, fnCallback, oSettings) {
