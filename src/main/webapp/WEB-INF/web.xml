@@ -38,7 +38,7 @@
     
     <filter-mapping>
         <filter-name>shiroFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
     
     <!-- spring mvc servlet spring mvc 配置文件 -->

@@ -43,7 +43,7 @@
 
         <ul class="submenu">
             <li>
-                <a href="${pageContext.request.contextPath}/admin/list">
+                <a href="${pageContext.request.contextPath}/admin/employee/list">
                     <i class="menu-icon fa fa-caret-right"></i>
                     管理员列表
                 </a>
