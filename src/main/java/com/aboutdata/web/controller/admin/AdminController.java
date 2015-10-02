@@ -23,12 +23,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/admin/employee")
 public class AdminController {
-    
+
     Logger logger = LoggerFactory.getLogger(getClass());
-    
+
     @Resource(name = "adminServiceImpl")
     private AdminService adminService;
-    
+
     @Resource(name = "roleServiceImpl")
     private RoleService roleService;
 
@@ -40,7 +40,7 @@ public class AdminController {
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String displayList(ModelMap model) {
-        
+
         return "/admin/employee/list";
     }
 
@@ -66,7 +66,10 @@ public class AdminController {
         Pageable pageable = new PageRequest(0, 25);
         Page<Admin> list = adminService.find(pageable);
         logger.info("list {}", list.getContent());
-        return new TableData<Admin>(list, sEcho,false);
+
+        TableData<Admin> table = new TableData(list, sEcho, false);
+        logger.info("table {}", table);
+        return table;
     }
-    
+
 }
