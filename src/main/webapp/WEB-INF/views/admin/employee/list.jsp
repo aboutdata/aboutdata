@@ -195,9 +195,6 @@
                                         {"mData": "isAccountEnabled"},
                                         {"mData": "createDate"}
                                     ],
-                                    "aoColumnDefs": [
-                                            
-                                    ],
                                     "fnServerData": function (sSource, aoData, fnCallback, oSettings) {
                                         oSettings.jqXHR = $.ajax({
                                             "dataType": 'json',
