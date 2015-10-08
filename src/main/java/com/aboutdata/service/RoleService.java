@@ -1,5 +1,7 @@
 package com.aboutdata.service;
 
+import com.aboutdata.domain.Role;
+import java.util.List;
 
 /**
  * Service - 角色
@@ -9,4 +11,7 @@ package com.aboutdata.service;
  */
 public interface RoleService {
 
+    public List<Role> findAll();
+
+    public void save(Role role);
 }

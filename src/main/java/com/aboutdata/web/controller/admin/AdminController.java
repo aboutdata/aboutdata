@@ -2,8 +2,10 @@ package com.aboutdata.web.controller.admin;
 
 import com.aboutdata.commons.TableData;
 import com.aboutdata.domain.Admin;
+import com.aboutdata.domain.Role;
 import com.aboutdata.service.AdminService;
 import com.aboutdata.service.RoleService;
+import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,12 +25,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/admin/employee")
 public class AdminController {
-
+    
     Logger logger = LoggerFactory.getLogger(getClass());
-
+    
     @Resource(name = "adminServiceImpl")
     private AdminService adminService;
-
+    
     @Resource(name = "roleServiceImpl")
     private RoleService roleService;
 
@@ -38,9 +40,23 @@ public class AdminController {
      * @param model
      * @return
      */
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String displayAdd(ModelMap model) {
+        List<Role> roles = roleService.findAll();
+        logger.info("roles {}", roles);
+        model.addAttribute("roles", roles);
+        return "/admin/employee/add";
+    }
+
+    /**
+     * 列表
+     *
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String displayList(ModelMap model) {
-
+        
         return "/admin/employee/list";
     }
 
@@ -66,10 +82,10 @@ public class AdminController {
         Pageable pageable = new PageRequest(0, 25);
         Page<Admin> list = adminService.find(pageable);
         logger.info("list {}", list.getContent());
-
+        
         TableData<Admin> table = new TableData(list, sEcho, false);
         logger.info("table {}", table);
         return table;
     }
-
+    
 }

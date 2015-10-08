@@ -102,4 +102,10 @@ public class Role extends BaseEntity {
         this.admins = admins;
     }
 
+    @Override
+    public String toString() {
+        return "Role{" + "name=" + name + ", isSystem=" + isSystem + ", description=" + description + ", authorities=" + authorities + ", admins=" + admins + '}';
+    }
+    
+
 }

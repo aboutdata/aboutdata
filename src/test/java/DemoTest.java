@@ -43,9 +43,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = "classpath:application-Context.xml")
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/spring-context.xml")
-public class DemoTest extends AbstractJUnit4SpringContextTests {
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/spring-context.xml")
+public class DemoTest{
+/**
+    public class DemoTest extends AbstractJUnit4SpringContextTests {
 
     @InjectLogger
     private Logger log;
@@ -71,9 +73,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     @Resource
     private MemberService memberService;
 
-    /**
-     * 默认提供测试方法
-     */
+  
     public void empty() {
 
     }
@@ -123,10 +123,6 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
         log.info("#######################dd###########################" + minfo);
     }
 
-    /**
-     * *
-     * 测试 查询所有管理员
-     */
     @Test
     @Ignore
     public void findByIdTest() {
@@ -199,5 +195,6 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 //            java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
 //        }
     }
+**/
 
 }
