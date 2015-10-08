@@ -103,26 +103,26 @@
                                         <div id="profile" class="tab-pane active in">
 
                                             <!-- PAGE CONTENT BEGINS -->
-                                            <form class="form-horizontal" role="form">
+                                            <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/employee/save" method="post">
                                                 <!-- #section:elements.form -->
                                                 <div class="form-group">
-                                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">用户名</label>
+                                                    <label class="col-sm-3 control-label no-padding-right" for="username">用户名</label>
                                                     <div class="col-sm-9">
-                                                        <input id="form-field-1" placeholder="用户名" class="col-xs-10 col-sm-5" type="text">
+                                                        <input id="username" name="username" placeholder="用户名" class="col-xs-10 col-sm-5" type="text">
                                                     </div>
                                                 </div>
                                                 <div class="hr"></div>
                                                 <div class="form-group">
-                                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">密码</label>
+                                                    <label class="col-sm-3 control-label no-padding-right" for="password">密码</label>
                                                     <div class="col-sm-9">
-                                                        <input id="form-field-1" placeholder="密码" class="col-xs-10 col-sm-5" type="password">
+                                                        <input id="password" name="password" placeholder="密码" class="col-xs-10 col-sm-5" type="password">
                                                     </div>
                                                 </div>
                                                 <div class="hr"></div>
                                                 <div class="form-group">
-                                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">电子邮件</label>
+                                                    <label class="col-sm-3 control-label no-padding-right" for="email">电子邮件</label>
                                                     <div class="col-sm-9">
-                                                        <input id="form-field-1" placeholder="电子邮件" class="col-xs-10 col-sm-5" type="text">
+                                                        <input id="email" name="email" placeholder="电子邮件" class="col-xs-10 col-sm-5" type="text">
                                                     </div>
                                                 </div>
                                                 <div class="hr"></div>
@@ -135,8 +135,8 @@
                                                             <c:forEach items="${roles}" var="role" varStatus="idx">
                                                                 <div class="col-xs-3">
                                                                     <label>
-                                                                        <input name="form-field-checkbox" class="ace ace-checkbox-2" type="checkbox">
-                                                                        <span class="lbl"> 超级管理员</span>
+                                                                        <input name="roles" class="ace ace-checkbox-2" value="${role.id}" type="checkbox">
+                                                                        <span class="lbl"> ${role.name}</span>
                                                                     </label>
                                                                 </div>
                                                             </c:forEach><!--循环 结束-->
@@ -166,7 +166,7 @@
 
                                                 <div class="clearfix form-actions">
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        <button class="btn btn-info" type="button">
+                                                        <button class="btn btn-info" type="submit">
                                                             <i class="ace-icon fa fa-check bigger-110"></i>
                                                             保存
                                                         </button>

@@ -5,7 +5,12 @@ import com.aboutdata.domain.Admin;
 import com.aboutdata.domain.Role;
 import com.aboutdata.service.AdminService;
 import com.aboutdata.service.RoleService;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,12 +30,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/admin/employee")
 public class AdminController {
-    
+
     Logger logger = LoggerFactory.getLogger(getClass());
-    
+
     @Resource(name = "adminServiceImpl")
     private AdminService adminService;
-    
+
     @Resource(name = "roleServiceImpl")
     private RoleService roleService;
 
@@ -48,6 +53,27 @@ public class AdminController {
         return "/admin/employee/add";
     }
 
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(String username, String password, String email, String[] roles) {
+
+        Admin admin = new Admin();
+        admin.setEmail(email);
+        admin.setIsEnabled(Boolean.TRUE);
+        admin.setIsLocked(Boolean.FALSE);
+        admin.setLockedDate(new Date());
+        admin.setLoginFailureCount(0);
+        admin.setName("王坤");
+        admin.setDepartment("计算机");
+        admin.setUsername(username);
+        admin.setPassword(password);
+        admin.setRoles(new HashSet(roleService.findList(roles)));
+        admin.setSalt("ddddd");
+
+        adminService.save(admin);
+
+        return "redirect:/admin/role/add";
+    }
+
     /**
      * 列表
      *
@@ -56,7 +82,7 @@ public class AdminController {
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String displayList(ModelMap model) {
-        
+
         return "/admin/employee/list";
     }
 
@@ -82,10 +108,10 @@ public class AdminController {
         Pageable pageable = new PageRequest(0, 25);
         Page<Admin> list = adminService.find(pageable);
         logger.info("list {}", list.getContent());
-        
+
         TableData<Admin> table = new TableData(list, sEcho, false);
         logger.info("table {}", table);
         return table;
     }
-    
+
 }

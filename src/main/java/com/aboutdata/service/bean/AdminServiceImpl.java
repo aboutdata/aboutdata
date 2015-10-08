@@ -33,6 +33,11 @@ public class AdminServiceImpl implements AdminService {
     @Resource
     private AdminDao adminDao;
 
+    @Transactional
+    public void save(Admin admin) {
+        adminDao.save(admin);
+    }
+
     @Transactional(readOnly = true)
     public boolean usernameExists(String username) {
         return adminDao.usernameExists(username) > 0;

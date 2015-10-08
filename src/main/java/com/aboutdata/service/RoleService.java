@@ -11,7 +11,11 @@ import java.util.List;
  */
 public interface RoleService {
 
+    public Role find(String id);
+
     public List<Role> findAll();
 
     public void save(Role role);
+
+    public List<Role> findList(String... ids);
 }
