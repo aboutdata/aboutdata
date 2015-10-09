@@ -123,6 +123,7 @@
                                             <th>排序</th>
                                             <th>状态</th>
                                             <th>创建时间</th>
+                                            <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -192,34 +193,38 @@
                                         {"mData": "storageHost"},
                                         {"mData": "order"},
                                         {"mData": "status"},
-                                        {"mData": "createDate"}
+                                        {"mData": "createDate"},
+                                        {"mData": "id"}
                                     ],
                                     "aoColumnDefs": [{
                                             "aTargets": [1],
                                             "mRender": function (thumbnail, type, row) {
-//                                                return "<ul class=\"ace-thumbnails clearfix\"><img alt=\"80x80\" src="+row['storageHost']+"/"+thumbnail+">"+
-//											"<div class=\"text\">"+
-//												"<div class=\"inner\">"+
-//													"<span>Some Title!</span>"+
-//													"<br>"+
-//													"<a class=\"cboxElement\" href=\"../assets/images/gallery/image-5.jpg\" data-rel=\"colorbox\">"+
-//														"<i class=\"ace-icon fa fa-search-plus\"></i>"+
-//													"</a>"+
-//													"<a href=\"#\">"+
-//														"<i class=\"ace-icon fa fa-user\"></i>"+
-//													"</a>"+
-//													"<a href=\"#\">"+
-//														"<i class=\"ace-icon fa fa-share\"></i>"+
-//													"</a>"+
-//												"</div>"+
-//											"</div>"+
-//										"</ul>";
-                                                return "<img alt=\"Image 4\" src="+row['storageHost']+"/"+thumbnail+" width=\"128\" class=\"img-rounded\">";
+                                                return "<img alt=\"Image 4\" src=" + row['storageHost'] + "/" + thumbnail + " width=\"128\" class=\"img-rounded\">";
+                                            }
+                                        },{
+                                            "aTargets": [2],
+                                            "mRender": function (title, type, row) {
+                                                return "<a href=\"#\">"+title+"</a>";
                                             }
                                         }, {
                                             "aTargets": [7],
                                             "mRender": function (createDate, type, row) {
                                                 return new Date(createDate).Format("yyyy-MM-dd hh:mm:ss");
+                                            }
+                                        }, {
+                                            "aTargets": [8],
+                                            "mRender": function (id, type, row) {
+                                                return "<div class=\"hidden-sm hidden-xs btn-group\">" +
+                                                        "<button class=\"btn btn-xs btn-success\">" +
+                                                        "    <i class=\"ace-icon fa fa-search-plus bigger-130\"></i>" +
+                                                        "</button>" +
+                                                        "<button class=\"btn btn-xs btn-info\">" +
+                                                        "    <i class=\"ace-icon fa fa-pencil bigger-120\"></i>" +
+                                                        "</button>" +
+                                                        "<button data-id=" + id + " class=\"btn btn-xs btn-danger delete-photos-btn\" >" +
+                                                        "    <i class=\"ace-icon fa fa-trash-o bigger-120\"></i>" +
+                                                        "</button>" +
+                                                        "</div>";
                                             }
                                         }],
                                     "fnServerData": function (sSource, aoData, fnCallback, oSettings) {

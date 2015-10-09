@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class PhotosRequestController {
 
     Logger logger = LoggerFactory.getLogger(getClass());
-    
+
     @Resource
     private PhotosService photosService;
 
@@ -62,7 +62,19 @@ public class PhotosRequestController {
             int sEcho) {
         Pageable pageable = new PageRequest(iDisplayStart, iDisplayLength);
         Page<PhotosModel> list = photosService.find(pageable);
-        
+
         return new TableData(list, sEcho, false);
+    }
+
+    /**
+     * 查看申请
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/single", method = RequestMethod.GET)
+    public String single(ModelMap model) {
+
+        return "/admin/photos/request/single";
     }
 }
