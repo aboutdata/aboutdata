@@ -4,6 +4,8 @@
     Author     : Administrator
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -180,7 +182,7 @@
                                                         <span>${photos.wallhaven}</span>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="profile-info-row">
                                                     <div class="profile-info-name"> 浏览次数 </div>
 
@@ -188,7 +190,7 @@
                                                         <span>${photos.wallhaven}</span>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="profile-info-row">
                                                     <div class="profile-info-name"> 审批通过时间 </div>
 
@@ -231,24 +233,42 @@
 
                                     <div class="widget-body">
                                         <div class="widget-main">
-                                            <div>
-                                                <textarea class="form-control" placeholder="请输入您的评论..." id="form-field-8" placeholder="Default Text"></textarea>
-                                            </div>
-
-                                            <div class="clearfix form-actions">
-                                                <div class="col-md-offset-3 col-md-9">
-                                                    <button class="btn btn-info" type="button">
-                                                        <i class="ace-icon fa fa-check bigger-110"></i>
-                                                        审核通过
-                                                    </button>
-
-                                                    &nbsp; &nbsp; &nbsp;
-                                                    <button class="btn btn-danger">
-                                                        <i class="ace-icon fa fa-undo bigger-110"></i>
-                                                        拒绝申请
-                                                    </button>
-                                                </div>
-                                            </div>
+                                            <c:choose>
+                                                <c:when test="${photos.status == 'APPROVED'}">
+                                                    <div class="space-10"></div>
+                                                    <div class="alert alert-block alert-success successMessage">
+                                                        <i class="icon-ok bigger-130 green"></i> 
+                                                        本申请已经被批准！
+                                                    </div>
+                                                </c:when>
+                                                <c:when test="${photos.status == 'REJECTED'}">
+                                                    <div class="space-10"></div>
+                                                    <div class="alert alert-block alert-error">
+                                                        <i class="icon-remove bigger-130 red"></i> 
+                                                        本申请已经被驳回！
+                                                    </div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <form action="${pageContext.request.contextPath}/admin/photosRequest/approve/${photos.id}" method="post">
+                                                        <div>
+                                                            <textarea class="form-control" name="comment" placeholder="请输入您的评论..." id="form-field-8"></textarea>
+                                                        </div>
+                                                        <div class="clearfix form-actions">
+                                                            <div class="col-md-offset-3 col-md-9">
+                                                                <button class="btn btn-info" type="submit">
+                                                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                                                    审核通过
+                                                                </button>
+                                                                &nbsp; &nbsp; &nbsp;
+                                                                <button class="btn btn-danger">
+                                                                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                                    拒绝申请
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </div>
                                     </div>
                                 </div>

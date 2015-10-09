@@ -123,7 +123,6 @@
                                             <th>排序</th>
                                             <th>状态</th>
                                             <th>创建时间</th>
-                                            <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -193,8 +192,7 @@
                                         {"mData": "storageHost"},
                                         {"mData": "order"},
                                         {"mData": "status"},
-                                        {"mData": "createDate"},
-                                        {"mData": "id"}
+                                        {"mData": "createDate"}
                                     ],
                                     "aoColumnDefs": [{
                                             "aTargets": [1],
@@ -210,21 +208,6 @@
                                             "aTargets": [7],
                                             "mRender": function (createDate, type, row) {
                                                 return new Date(createDate).Format("yyyy-MM-dd hh:mm:ss");
-                                            }
-                                        }, {
-                                            "aTargets": [8],
-                                            "mRender": function (id, type, row) {
-                                                return "<div class=\"hidden-sm hidden-xs btn-group\">" +
-                                                        "<button class=\"btn btn-xs btn-success\">" +
-                                                        "    <i class=\"ace-icon fa fa-search-plus bigger-130\"></i>" +
-                                                        "</button>" +
-                                                        "<button class=\"btn btn-xs btn-info\">" +
-                                                        "    <i class=\"ace-icon fa fa-pencil bigger-120\"></i>" +
-                                                        "</button>" +
-                                                        "<button data-id=" + id + " class=\"btn btn-xs btn-danger delete-photos-btn\" >" +
-                                                        "    <i class=\"ace-icon fa fa-trash-o bigger-120\"></i>" +
-                                                        "</button>" +
-                                                        "</div>";
                                             }
                                         }],
                                     "fnServerData": function (sSource, aoData, fnCallback, oSettings) {

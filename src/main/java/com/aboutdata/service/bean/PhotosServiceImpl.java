@@ -1,5 +1,6 @@
 package com.aboutdata.service.bean;
 
+import com.aboutdata.commons.enums.PhotoStatus;
 import com.aboutdata.dao.PhotosDao;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.Tag;
@@ -40,6 +41,19 @@ public class PhotosServiceImpl implements PhotosService {
         Photos photo = photosDao.findOne(id);
 
         return photo;
+    }
+
+    @Override
+    public Page<PhotosModel> findByStatus(PhotoStatus status, Pageable pageable) {
+
+        Page<Photos> page = photosDao.findByStatus(status, pageable);
+
+        List<Photos> photos = page.getContent();
+
+        List<PhotosModel> models = PhotosDTO.getPhotosModeslDTO(photos);
+        Page<PhotosModel> result = new PageImpl(models, pageable, page.getTotalElements());
+
+        return result;
     }
 
     @Override
@@ -92,7 +106,7 @@ public class PhotosServiceImpl implements PhotosService {
     @Override
     public PhotosModel findById(String id) {
         Photos photos = photosDao.findOne(id);
-        return  PhotosDTO.getPhotosModelDTO(photos);
+        return PhotosDTO.getPhotosModelDTO(photos);
     }
 
     @Override
@@ -100,6 +114,12 @@ public class PhotosServiceImpl implements PhotosService {
     public Photos create(Photos photos) {
 
         return photosDao.save(photos);
+    }
+
+    @Override
+    @Transactional
+    public int makrStatus(String id, PhotoStatus status) {
+        return photosDao.makrStatus(id, status);
     }
 
 }
