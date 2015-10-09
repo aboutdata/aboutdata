@@ -1,22 +1,18 @@
 package com.aboutdata.service;
 
 import com.aboutdata.domain.Admin;
-import com.aboutdata.domain.Role;
+import com.aboutdata.model.AdminModel;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
 /**
  * Service - 管理员
- *
- *
- *
  */
 public interface AdminService {
 
     public void save(Admin admin);
 
-    public Page<Admin> find(Pageable pageable);
+    public Page<AdminModel> find(Pageable pageable);
 
     /**
      * 判断用户名是否存在

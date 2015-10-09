@@ -257,7 +257,9 @@ public class Admin extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Admin{" + "username=" + username + ", password=" + password + ", email=" + email + ", name=" + name + ", department=" + department + ", isEnabled=" + isEnabled + ", isLocked=" + isLocked + ", loginFailureCount=" + loginFailureCount + ", lockedDate=" + lockedDate + ", loginDate=" + loginDate + ", loginIp=" + loginIp + '}';
+        return "Admin{" + "username=" + username + ", password=" + password + ", salt=" + salt + ", email=" + email + ", name=" + name + ", department=" + department + ", isEnabled=" + isEnabled + ", isLocked=" + isLocked + ", loginFailureCount=" + loginFailureCount + ", lockedDate=" + lockedDate + ", loginDate=" + loginDate + ", loginIp=" + loginIp + ", roles=" + roles + '}';
     }
+
+   
 
 }

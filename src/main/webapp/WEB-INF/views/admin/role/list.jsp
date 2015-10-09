@@ -1,9 +1,11 @@
 <%-- 
     Document   : list
-    Created on : 2015-8-15, 10:35:40
+    Created on : 2015-10-15, 10:16:40
     Author     : youyou
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -87,7 +89,7 @@
                                     会诊申请列表
                                 </small>
                                 <label class="pull-right inline">
-                                    <button class="btn btn-success" id="gritter-error"><i class="glyphicon glyphicon-plus"></i>  添加管理员</button>
+                                    <button class="btn btn-success" id="gritter-error"><i class="glyphicon glyphicon-plus"></i>  添加角色</button>
                                 </label>
                             </h1>
 
@@ -95,42 +97,51 @@
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <!-- PAGE CONTENT BEGINS -->
-                                <div class="row">
-                                    <div class="col-xs-4">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                申请日期  <i class="fa fa-calendar bigger-110"></i>
-                                            </span>
-                                            <input class="form-control" name="date-range-picker" id="id-date-range-picker" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2">
-                                        <div class="input-group">
-                                            <span class="input-group-btn">
-                                                <button type="button" id="searchByDateRange" class="btn btn-info btn-sm">
-                                                    查询
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
                                 <!--</form>-->
                                 <table id="myDatatbles" class="table table-striped table-bordered table-hover dataTables-example dataTable" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th>编号</th>
-                                            <th>用户名</th>
-                                            <th>电子邮件</th>
-                                            <th>姓名</th>
-                                            <th>部门</th>
-                                            <th>最后登录日期</th>
-                                            <th>最后登录IP</th>
-                                            <th>是否启用</th>
+                                            <th>名称</th>
+                                            <th>是否内置</th>
+                                            <th>描述</th>
                                             <th>创建时间</th>
+                                            <th>操作</th>
                                         </tr>
                                     </thead>
-                                    <tbody></tbody>
+                                    <tbody>
+                                        <c:forEach items="${roles}" var="role" varStatus="idx">
+                                            <tr>
+                                                <td>${idx.index+1}</td>
+                                                <td>${role.name}</td>
+                                                <td>
+                                                    <c:if test="${role.isSystem}">
+                                                        <span class="label label-sm label-warning">是</span>
+                                                    </c:if>
+                                                    <c:if test="${!role.isSystem}">
+                                                        <span class="label label-sm label-sucess">否</span>
+                                                    </c:if>
+                                                </td>
+                                                <td>${role.description}</th>
+                                                <td><fmt:formatDate value="${role.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                                                <td>
+                                                    <div class="hidden-sm hidden-xs btn-group">
+                                                        <button class="btn btn-xs btn-success">
+                                                            <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                                                        </button>
+
+                                                        <button class="btn btn-xs btn-info">
+                                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                        </button>
+
+                                                        <button class="btn btn-xs btn-danger">
+                                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr> 
+                                        </c:forEach>
+                                    </tbody>
                                 </table>
                                 <!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->
@@ -175,63 +186,16 @@
 
         <!-- basic scripts -->
         <%@include file="/WEB-INF/views/admin/common/footer.jsp" %>
-        <script src="${pageContext.request.contextPath}/resources/js/datatables/jquery.dataTables.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/js/datatables/jquery.dataTables.bootstrap.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/js/mycommon/format.js" type="text/javascript"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/datatables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/datatables/jquery.dataTables.bootstrap.js"></script>
         <!-- inline scripts related to this page -->
         <script type="text/javascript">
                             $(document).ready(function () {
                                 //=============================设置datatables数据=======================================================================
                                 var myDataTable = $('#myDatatbles').dataTable({
-                                    "bProcessing": true,
-                                    "bServerSide": true,
                                     "bPaginate": true, //翻页功能
                                     "searching": false,
                                     "dom": 'rtlip',
-                                    "sAjaxSource": "${pageContext.request.contextPath}/admin/employee/getDatatables",
-                                    "aoColumns": [
-                                        {"mData": "id"},
-                                        {"mData": "username"},
-                                        {"mData": "email"},
-                                        {"mData": "name"},
-                                        {"mData": "department"},
-                                        {"mData": "loginDate"},
-                                        {"mData": "loginIp"},
-                                        {"mData": "isEnabled"},
-                                        {"mData": "createDate"}
-                                    ],
-                                    "aoColumnDefs": [{
-                                            "aTargets": [5],
-                                            "mRender": function (loginDate, type, row) {
-                                                return new Date(loginDate).Format("yyyy-MM-dd hh:mm:ss");
-                                            }
-                                        }, {
-                                            "aTargets": [7],
-                                            "mRender": function (isEnabled, type, row) {
-                                                if (isEnabled) {
-                                                    return     "<span class=\"label label-sm label-warning\">是</span>";
-                                                } else {
-                                                    return    "<span class=\"label label-sm label-sucess\">否</span>";
-                                                }
-                                            }
-                                        }, {
-                                            "aTargets": [8],
-                                            "mRender": function (createDate, type, row) {
-                                                return new Date(createDate).Format("yyyy-MM-dd hh:mm:ss");
-                                            }
-                                        }],
-                                    "fnServerData": function (sSource, aoData, fnCallback, oSettings) {
-                                        oSettings.jqXHR = $.ajax({
-                                            "dataType": 'json',
-                                            "type": "POST",
-                                            "url": sSource,
-                                            "data": aoData,
-                                            "success": fnCallback,
-                                            "error": function () {
-                                                console.log('error');
-                                            }
-                                        });
-                                    },
                                     "language": {
                                         "processing": "正在努力加载中...",
                                         "lengthMenu": "显示 _MENU_ 项结果 ",

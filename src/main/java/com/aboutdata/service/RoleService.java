@@ -1,6 +1,7 @@
 package com.aboutdata.service;
 
 import com.aboutdata.domain.Role;
+import com.aboutdata.model.RoleModel;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ public interface RoleService {
 
     public Role find(String id);
 
-    public List<Role> findAll();
+    public List<RoleModel> findAll();
 
     public void save(Role role);
 
