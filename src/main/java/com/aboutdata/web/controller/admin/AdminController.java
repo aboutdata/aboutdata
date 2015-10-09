@@ -56,7 +56,11 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(String username, String password, String email, String[] roles) {
+    public String save(String username, String password, String email, String name, String department, boolean isEnabled, String[] roles) {
+
+        logger.info("department {}", department);
+        logger.info("name {}", name);
+        logger.info("isEnabled {}", isEnabled);
 
         Admin admin = new Admin();
         admin.setEmail(email);
