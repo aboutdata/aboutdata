@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.aboutdata.domain.Photos;
+import com.aboutdata.model.PhotosModel;
 import com.aboutdata.service.PhotosService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller("adminPhotosRequestController")
@@ -23,7 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class PhotosRequestController {
 
     Logger logger = LoggerFactory.getLogger(getClass());
-    
+
     @Resource
     private PhotosService photosService;
 
@@ -53,15 +55,29 @@ public class PhotosRequestController {
      */
     @RequestMapping(value = "/getDatatables")
     @ResponseBody
-    public TableData getByDatatables(int iDisplayLength,
+    public TableData<PhotosModel> getByDatatables(int iDisplayLength,
             int iDisplayStart,
             String sColName,
             String sSortDir_0,
             String sSearch,
             int sEcho) {
-        Pageable pageable = new PageRequest(0, 1);
-        Page<Photos> list = photosService.find(pageable);
-        
-        return new TableData<Photos>(list, sEcho, false);
+        Pageable pageable = new PageRequest(iDisplayStart, iDisplayLength);
+        Page<PhotosModel> list = photosService.find(pageable);
+
+        return new TableData(list, sEcho, false);
+    }
+
+    /**
+     * 查看申请
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/single/{id}", method = RequestMethod.GET)
+    public String single(@PathVariable("id") String id, ModelMap model) {
+        PhotosModel photos = photosService.findById(id);
+        model.addAttribute("photos", photos);
+        logger.info(id);
+        return "/admin/photos/request/single";
     }
 }

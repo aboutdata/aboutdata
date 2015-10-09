@@ -49,27 +49,17 @@
                 </a>
                 <b class="arrow"></b>
             </li>
-        </ul>
-    </li>
-    <li id="role">
-        <a href="#" class="dropdown-toggle">
-            <i class="menu-icon glyphicon glyphicon-user"></i>
-            <span class="menu-text"> 系统角色</span>
-            <b class="arrow fa fa-angle-down"></b>
-        </a>
-        <b class="arrow"></b>
-        <ul class="submenu">
             <li>
-                <a href="${pageContext.request.contextPath}/role/add">
+                <a href="${pageContext.request.contextPath}/admin/role/list">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    添加角色
+                    角色列表
                 </a>
                 <b class="arrow"></b>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/role/list">
+                <a href="${pageContext.request.contextPath}/admin/role/list">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    角色列表
+                    权限列表
                 </a>
                 <b class="arrow"></b>
             </li>

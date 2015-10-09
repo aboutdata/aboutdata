@@ -126,6 +126,34 @@
                                                     </div>
                                                 </div>
                                                 <div class="hr"></div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label no-padding-right" for="name">姓名</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="email" name="name" placeholder="姓名" class="col-xs-10 col-sm-5" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="hr"></div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label no-padding-right" for="department">所在部门</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="email" name="department" placeholder="所在部门" class="col-xs-10 col-sm-5" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="hr"></div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label no-padding-right">是否启用</label>
+                                                    <div class="col-sm-9">
+                                                        <label class="inline">
+                                                            <input name="isEnabled" class="ace" type="radio" value="true">
+                                                            <span class="lbl middle"> 是</span>
+                                                        </label>
+                                                        <label class="inline">
+                                                            <input name="isEnabled" class="ace" type="radio" value="false">
+                                                            <span class="lbl middle"> 否</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="hr"></div>
                                                 <!-- #section:角色列表循序 -->
                                                 <div class="form-group">
                                                     <label class="control-label col-xs-12 col-sm-3">角色</label>
@@ -144,22 +172,6 @@
                                                         <!-- /section:custom/checkbox.switch -->
                                                     </div>
                                                     <!-- #section:角色列表循序 -->
-                                                </div>
-                                                <div class="hr"></div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label no-padding-right">是否启用</label>
-                                                    <div class="col-sm-9">
-                                                        <label class="inline">
-                                                            <input name="form-field-radio" class="ace" type="radio">
-                                                            <span class="lbl middle"> 是</span>
-                                                        </label>
-
-                                                        &nbsp; &nbsp; &nbsp;
-                                                        <label class="inline">
-                                                            <input name="form-field-radio" class="ace" type="radio">
-                                                            <span class="lbl middle"> 否</span>
-                                                        </label>
-                                                    </div>
                                                 </div>
                                                 <div class="hr"></div>
                                                 <!-- /section:elements.form -->

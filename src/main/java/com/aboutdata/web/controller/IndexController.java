@@ -5,9 +5,8 @@
  */
 package com.aboutdata.web.controller;
 
-import com.aboutdata.domain.Photos;
+import com.aboutdata.model.PhotosModel;
 import com.aboutdata.service.PhotosService;
-import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +37,7 @@ public class IndexController {
 
         Pageable pageable = new PageRequest(1, 25);
 
-         Page<Photos> list = photosService.find(pageable);
+         Page<PhotosModel> list = photosService.find(pageable);
 
           model.addAttribute("list", list);
         return "/index";
@@ -57,7 +56,7 @@ public class IndexController {
     	logger.info("page now {}",page);
         Pageable pageable = new PageRequest(page, 25);
 
-        Page<Photos> pages = photosService.find(pageable);
+        Page<PhotosModel> pages = photosService.find(pageable);
         logger.info("page size {}",pages.getContent().size());
 	    model.setViewName("/portal/home/next");
         model.addObject("pages", pages);

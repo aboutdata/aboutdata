@@ -71,6 +71,7 @@ public class AdminDTO {
                 model.setLockedDate(admin.getLockedDate());
                 model.setLoginFailureCount(admin.getLoginFailureCount());
                 model.setLoginDate(admin.getLoginDate());
+                model.setLoginIp(admin.getLoginIp());
                 model.setDepartment(admin.getDepartment());
                 model.setCreateDate(admin.getCreateDate());
                 model.setModifyDate(admin.getModifyDate());

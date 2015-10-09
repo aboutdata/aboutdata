@@ -87,7 +87,7 @@
                                     会诊申请列表
                                 </small>
                                 <label class="pull-right inline">
-                                    <button class="btn btn-success" id="gritter-error"><i class="glyphicon glyphicon-plus"></i>  添加管理员</button>
+                                    <a href="${pageContext.request.contextPath}/admin/employee/add" class="btn btn-success" id="gritter-error"><i class="glyphicon glyphicon-plus"></i>  添加管理员</a>
                                 </label>
                             </h1>
 
