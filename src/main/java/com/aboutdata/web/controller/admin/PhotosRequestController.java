@@ -17,6 +17,7 @@ import com.aboutdata.model.PhotosModel;
 import com.aboutdata.service.PhotosService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller("adminPhotosRequestController")
@@ -72,9 +73,11 @@ public class PhotosRequestController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/single", method = RequestMethod.GET)
-    public String single(ModelMap model) {
-
+    @RequestMapping(value = "/single/{id}", method = RequestMethod.GET)
+    public String single(@PathVariable("id") String id, ModelMap model) {
+        PhotosModel photos = photosService.findById(id);
+        model.addAttribute("photos", photos);
+        logger.info(id);
         return "/admin/photos/request/single";
     }
 }

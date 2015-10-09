@@ -57,19 +57,19 @@ public class PhotosController {
 
     @RequestMapping(value = "/wallpaper/{photosId}", method = RequestMethod.GET)
     public String wallpaper(@PathVariable("photosId") String photosId, ModelMap model) {
-        Photos photos = photosService.findById(photosId);
-
-        String tagString = "";
-        if (photos != null) {
-            for (Tag tag : photos.getTags()) {
-                tagString += tag.getName() + ",";
-            }
-            tagString = tagString.substring(0, tagString.length());
-        }
-
-        model.addAttribute("photos", photos);
-
-        model.addAttribute("tagString", tagString);
+//        Photos photos = photosService.findById(photosId);
+//
+//        String tagString = "";
+//        if (photos != null) {
+//            for (Tag tag : photos.getTags()) {
+//                tagString += tag.getName() + ",";
+//            }
+//            tagString = tagString.substring(0, tagString.length());
+//        }
+//
+//        model.addAttribute("photos", photos);
+//
+//        model.addAttribute("tagString", tagString);
 
         return "/member/photos/wallpaper";
     }

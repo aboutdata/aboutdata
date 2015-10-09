@@ -29,7 +29,7 @@ public interface PhotosService {
 
     public List<Photos> findByAlbumId(String albumId);
 
-    public Photos findById(String id);
+    public PhotosModel findById(String id);
 
     public Photos create(Photos photos);
 

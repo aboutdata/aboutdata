@@ -90,8 +90,9 @@ public class PhotosServiceImpl implements PhotosService {
     }
 
     @Override
-    public Photos findById(String id) {
-        return photosDao.findOne(id);
+    public PhotosModel findById(String id) {
+        Photos photos = photosDao.findOne(id);
+        return  PhotosDTO.getPhotosModelDTO(photos);
     }
 
     @Override

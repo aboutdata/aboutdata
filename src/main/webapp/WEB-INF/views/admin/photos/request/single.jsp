@@ -88,11 +88,11 @@
                         </div><!-- /.page-header -->
 
                         <div class="row">
-                            <div class="col-xs-9">
+                            <div class="col-xs-6">
                                 <!-- PAGE CONTENT BEGINS -->
                                 <div class="widget-box transparent">
                                     <div class="widget-header">
-                                        <h4> 图片审核</h4>
+                                        <h4> 图片预览<small> (双击可以缩放图片)</small></h4>
                                     </div>
                                 </div>
                                 <div>
@@ -105,60 +105,157 @@
                                     </ul>
                                 </div><!-- PAGE CONTENT ENDS -->
                             </div><!-- /.col -->
-                            <div class="col-sm-3">
+                            <div class="col-sm-6">
+                                <div class="tabbable">
+                                    <ul class="nav nav-tabs padding-12 tab-color-blue background-blue">
+                                        <li class="active">
+                                            <a data-toggle="tab" href="#home4">基本信息</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div id="home4" class="tab-pane active">
+                                            <div class="profile-user-info">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> 唯一号 </div>
+                                                    <div class="profile-info-value">
+                                                        <span>${photos.id}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> 标题 </div>
+
+                                                    <div class="profile-info-value">
+                                                        <i class="fa fa-map-marker light-orange bigger-110"></i>
+                                                        <span>${photos.title}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> wallhaven ID </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>${photos.wallhaven}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> 服务器地址 </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>${photos.storageHost}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> 状态 </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>${photos.status}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> 缩略图 </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>${photos.thumbnail}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> 相册 </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>${photos.wallhaven}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> up主 </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>${photos.wallhaven}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> 标签 </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>${photos.wallhaven}</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> 浏览次数 </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>${photos.wallhaven}</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> 审批通过时间 </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>${photos.modifyDate}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> 创建时间 </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>${photos.createDate}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> 修改时间 </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>${photos.modifyDate}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!---tabbable //-->
+                            </div>
+                        </div><!-- /.row -->
+                        <div class="row">
+
+                            <div class="col-xs-12">
                                 <div class="widget-box transparent">
                                     <div class="widget-header">
-                                        <h4>Draggable events</h4>
-                                    </div>
+                                        <h4>
+                                            <i class="ace-icon fa fa-arrows"></i>
+                                            图片审核
+                                        </h4>
+                                    </div> 
+
 
                                     <div class="widget-body">
-                                        <div class="widget-main no-padding">
-                                            <div id="external-events">
-                                                <div style="position: relative;" class="external-event label-grey ui-draggable" data-class="label-grey">
-                                                    <i class="ace-icon fa fa-arrows"></i>
-                                                    My Event 1
-                                                </div>
+                                        <div class="widget-main">
+                                            <div>
+                                                <textarea class="form-control" placeholder="请输入您的评论..." id="form-field-8" placeholder="Default Text"></textarea>
+                                            </div>
 
-                                                <div style="position: relative;" class="external-event label-success ui-draggable" data-class="label-success">
-                                                    <i class="ace-icon fa fa-arrows"></i>
-                                                    My Event 2
-                                                </div>
+                                            <div class="clearfix form-actions">
+                                                <div class="col-md-offset-3 col-md-9">
+                                                    <button class="btn btn-info" type="button">
+                                                        <i class="ace-icon fa fa-check bigger-110"></i>
+                                                        审核通过
+                                                    </button>
 
-                                                <div style="position: relative;" class="external-event label-danger ui-draggable" data-class="label-danger">
-                                                    <i class="ace-icon fa fa-arrows"></i>
-                                                    My Event 3
+                                                    &nbsp; &nbsp; &nbsp;
+                                                    <button class="btn btn-danger">
+                                                        <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                        拒绝申请
+                                                    </button>
                                                 </div>
-
-                                                <div style="position: relative;" class="external-event label-purple ui-draggable" data-class="label-purple">
-                                                    <i class="ace-icon fa fa-arrows"></i>
-                                                    My Event 4
-                                                </div>
-
-                                                <div style="position: relative;" class="external-event label-yellow ui-draggable" data-class="label-yellow">
-                                                    <i class="ace-icon fa fa-arrows"></i>
-                                                    My Event 5
-                                                </div>
-
-                                                <div style="position: relative;" class="external-event label-pink ui-draggable" data-class="label-pink">
-                                                    <i class="ace-icon fa fa-arrows"></i>
-                                                    My Event 6
-                                                </div>
-
-                                                <div style="position: relative;" class="external-event label-info ui-draggable" data-class="label-info">
-                                                    <i class="ace-icon fa fa-arrows"></i>
-                                                    My Event 7
-                                                </div>
-
-                                                <label>
-                                                    <input class="ace ace-checkbox" id="drop-remove" type="checkbox">
-                                                    <span class="lbl"> Remove after drop</span>
-                                                </label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+
                             </div>
-                        </div><!-- /.row -->
+                        </div><!--//ROW -->
                     </div><!-- /.page-content -->
                 </div><!-- /.main-content -->
 
