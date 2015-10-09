@@ -89,7 +89,7 @@
                                     会诊申请列表
                                 </small>
                                 <label class="pull-right inline">
-                                    <button class="btn btn-success" id="gritter-error"><i class="glyphicon glyphicon-plus"></i>  添加角色</button>
+                                    <a href="${pageContext.request.contextPath}/admin/role/add" class="btn btn-success" id="gritter-error"><i class="glyphicon glyphicon-plus"></i>  添加角色</a>
                                 </label>
                             </h1>
 
