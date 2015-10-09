@@ -116,13 +116,12 @@
                                     <thead>
                                         <tr>
                                             <th>编号</th>
-                                            <th>用户名</th>
-                                            <th>电子邮件</th>
-                                            <th>姓名</th>
-                                            <th>部门</th>
-                                            <th>最后登录日期</th>
-                                            <th>最后登录IP</th>
-                                            <th>是否启用</th>
+                                            <th>阅览</th>
+                                            <th>标题</th>
+                                            <th>wallhaven</th>
+                                            <th>服务器地址</th>
+                                            <th>排序</th>
+                                            <th>状态</th>
                                             <th>创建时间</th>
                                         </tr>
                                     </thead>
@@ -173,6 +172,7 @@
         <%@include file="/WEB-INF/views/admin/common/footer.jsp" %>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/datatables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/datatables/jquery.dataTables.bootstrap.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/mycommon/format.js" type="text/javascript"></script>
         <!-- inline scripts related to this page -->
         <script type="text/javascript">
                             $(document).ready(function () {
@@ -186,15 +186,42 @@
                                     "sAjaxSource": "${pageContext.request.contextPath}/admin/photosRequest/getDatatables",
                                     "aoColumns": [
                                         {"mData": "id"},
-                                        {"mData": "username"},
-                                        {"mData": "email"},
-                                        {"mData": "name"},
-                                        {"mData": "department"},
-                                        {"mData": "loginDate"},
-                                        {"mData": "loginIp"},
-                                        {"mData": "isEnabled"},
+                                        {"mData": "thumbnail"},
+                                        {"mData": "title"},
+                                        {"mData": "wallhaven"},
+                                        {"mData": "storageHost"},
+                                        {"mData": "order"},
+                                        {"mData": "status"},
                                         {"mData": "createDate"}
                                     ],
+                                    "aoColumnDefs": [{
+                                            "aTargets": [1],
+                                            "mRender": function (thumbnail, type, row) {
+//                                                return "<ul class=\"ace-thumbnails clearfix\"><img alt=\"80x80\" src="+row['storageHost']+"/"+thumbnail+">"+
+//											"<div class=\"text\">"+
+//												"<div class=\"inner\">"+
+//													"<span>Some Title!</span>"+
+//													"<br>"+
+//													"<a class=\"cboxElement\" href=\"../assets/images/gallery/image-5.jpg\" data-rel=\"colorbox\">"+
+//														"<i class=\"ace-icon fa fa-search-plus\"></i>"+
+//													"</a>"+
+//													"<a href=\"#\">"+
+//														"<i class=\"ace-icon fa fa-user\"></i>"+
+//													"</a>"+
+//													"<a href=\"#\">"+
+//														"<i class=\"ace-icon fa fa-share\"></i>"+
+//													"</a>"+
+//												"</div>"+
+//											"</div>"+
+//										"</ul>";
+                                                return "<img alt=\"Image 4\" src="+row['storageHost']+"/"+thumbnail+" width=\"128\" class=\"img-rounded\">";
+                                            }
+                                        }, {
+                                            "aTargets": [7],
+                                            "mRender": function (createDate, type, row) {
+                                                return new Date(createDate).Format("yyyy-MM-dd hh:mm:ss");
+                                            }
+                                        }],
                                     "fnServerData": function (sSource, aoData, fnCallback, oSettings) {
                                         oSettings.jqXHR = $.ajax({
                                             "dataType": 'json',

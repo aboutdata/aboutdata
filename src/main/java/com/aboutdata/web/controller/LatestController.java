@@ -6,6 +6,7 @@
 package com.aboutdata.web.controller;
 
 import com.aboutdata.domain.Photos;
+import com.aboutdata.model.PhotosModel;
 import com.aboutdata.service.PhotosService;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +41,7 @@ public class LatestController {
         Pageable pageable = new PageRequest(1, 50,sort);
         
         
-        Page<Photos> list = photosService.find(pageable);
+        Page<PhotosModel> list = photosService.find(pageable);
 
         model.addAttribute("list", list);
         return "/portal/latest";

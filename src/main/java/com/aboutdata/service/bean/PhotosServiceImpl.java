@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.aboutdata.service.bean;
 
 import com.aboutdata.dao.PhotosDao;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.Tag;
+import com.aboutdata.model.PhotosModel;
+import com.aboutdata.model.dto.PhotosDTO;
 import com.aboutdata.service.PhotosService;
 import com.aboutdata.service.TagService;
 import java.util.List;
@@ -16,6 +13,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -44,8 +42,15 @@ public class PhotosServiceImpl implements PhotosService {
         return photo;
     }
 
-    public Page<Photos> find(Pageable pageable) {
-        return photosDao.findAll(pageable);
+    @Override
+    public Page<PhotosModel> find(Pageable pageable) {
+        Page<Photos> page = photosDao.findAll(pageable);
+        List<Photos> photos = page.getContent();
+
+        List<PhotosModel> models = PhotosDTO.getPhotosModeslDTO(photos);
+        Page<PhotosModel> result = new PageImpl(models, pageable, page.getTotalElements());
+
+        return result;
     }
 
     public List<Photos> findTop10() {

@@ -6,6 +6,7 @@
 package com.aboutdata.service;
 
 import com.aboutdata.domain.Photos;
+import com.aboutdata.model.PhotosModel;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +19,7 @@ public interface PhotosService {
 
     public Photos get(String id);
 
-    public Page<Photos> find(Pageable pageable);
+    public Page<PhotosModel> find(Pageable pageable);
 
     public List<Photos> findTop10();
 
