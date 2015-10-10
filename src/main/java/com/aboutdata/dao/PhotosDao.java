@@ -27,13 +27,15 @@ public interface PhotosDao extends JpaRepository<Photos, String> {
     @Query("select photos from Photos photos where photos.album.id =:albumId order by photos.order asc")
     public List<Photos> findByAlbumId(@Param("albumId") String albumId);
 
+    /**
+     * Modifying 跟新语句 必须加上
+     * @param id
+     * @param status
+     * @return 
+     */
     @Modifying
     @Query(value = "update Photos photos set photos.status =:status where photos.id=:id")
     public int makrStatus(@Param("id") String id, @Param("status") PhotoStatus status);
 
-    // @Query(value = "select photos from Photos photos where photos.status=:status order by photos.order asc ")
     public Page<Photos> findByStatus(@Param("status") PhotoStatus status, Pageable pageable);
-
-//    @Query(value = "select count(photos) from Photos photos where photos.status=:status")
-//    public Long countByStatus(@Param("status") PhotoStatus status);
 }

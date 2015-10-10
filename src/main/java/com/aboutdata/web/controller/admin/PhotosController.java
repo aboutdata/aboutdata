@@ -1,6 +1,7 @@
 package com.aboutdata.web.controller.admin;
 
 import com.aboutdata.commons.TableData;
+import com.aboutdata.commons.enums.PhotoStatus;
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.service.PhotosService;
 import javax.annotation.Resource;
@@ -17,25 +18,28 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 图片
+ *
  * @author Administrator
  */
 @Controller("adminPhotosController")
 @RequestMapping("/admin/photos")
 public class PhotosController {
-     Logger logger = LoggerFactory.getLogger(getClass());
+
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     @Resource
     private PhotosService photosService;
 
     /**
      * 列表
+     *
      * @param model
      * @return
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(ModelMap model) {
 
-        return "/admin/photos/request/list";
+        return "/admin/photos/list";
     }
 
     /**
@@ -58,7 +62,8 @@ public class PhotosController {
             String sSearch,
             int sEcho) {
         Pageable pageable = new PageRequest(iDisplayStart, iDisplayLength);
-        Page<PhotosModel> list = photosService.find(pageable);
+        //审核已通过才显示出来
+        Page<PhotosModel> list = photosService.findByStatus(PhotoStatus.APPROVED, pageable);
 
         return new TableData(list, sEcho, false);
     }

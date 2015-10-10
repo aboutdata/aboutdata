@@ -25,7 +25,14 @@
             <li>
                 <a href="${pageContext.request.contextPath}/admin/photosRequest/list">
                     <i class="menu-icon fa fa-caret-right"></i>
-                  	 图片上传列表
+                  	 图片审核
+                </a>
+                <b class="arrow"></b>
+            </li>
+             <li>
+                <a href="${pageContext.request.contextPath}/admin/photos/list">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                  	 图片列表
                 </a>
                 <b class="arrow"></b>
             </li>
