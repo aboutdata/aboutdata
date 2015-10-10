@@ -1,6 +1,7 @@
 package com.aboutdata.web.controller.admin;
 
 import com.aboutdata.commons.TableData;
+import com.aboutdata.commons.enums.PhotoStatus;
 import com.aboutdata.domain.Admin;
 import javax.annotation.Resource;
 
@@ -62,7 +63,8 @@ public class PhotosRequestController {
             String sSearch,
             int sEcho) {
         Pageable pageable = new PageRequest(iDisplayStart, iDisplayLength);
-        Page<PhotosModel> list = photosService.find(pageable);
+       
+        Page<PhotosModel> list = photosService.findByStatus(PhotoStatus.UNASSIGNED, pageable);
 
         return new TableData(list, sEcho, false);
     }
@@ -70,6 +72,7 @@ public class PhotosRequestController {
     /**
      * 查看申请
      *
+     * @param id
      * @param model
      * @return
      */
@@ -80,4 +83,41 @@ public class PhotosRequestController {
         logger.info(id);
         return "/admin/photos/request/single";
     }
+
+    /**
+     * 审核通过
+     *
+     * @param id
+     * @param comment
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/approve/{id}", method = RequestMethod.POST)
+    public String approve(@PathVariable("id") String id, String comment, ModelMap model) {
+
+        photosService.makrStatus(id, PhotoStatus.APPROVED);
+        PhotosModel photos = photosService.findById(id);
+        model.addAttribute("photos", photos);
+        logger.info("comment", comment);
+        return "/admin/photos/request/single";
+    }
+
+    /**
+     * 拒绝 拒绝原因暂时没写 20151009
+     *
+     * @param id
+     * @param comment
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/reject/{id}", method = RequestMethod.POST)
+    public String reject(@PathVariable("id") String id, String comment, ModelMap model) {
+
+        photosService.makrStatus(id, PhotoStatus.REJECTED);
+        PhotosModel photos = photosService.findById(id);
+        model.addAttribute("photos", photos);
+        logger.info("comment", comment);
+        return "/admin/photos/request/single";
+    }
+
 }

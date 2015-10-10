@@ -35,10 +35,14 @@ public class EmailServiceImpl implements EmailService {
         String contentTemplate = resourceBundle.getString(emailType.getKey());
         String content = "";
         switch (emailType) {
+            case ADMIN_RESET_PASSWORD:
+                content = String.format(contentTemplate, contents[0]);
+                break;
             case MARKET_REGISTER_ACTIVE:
                 content = String.format(contentTemplate, contents[0]);
                 break;
             default:
+                content = "请设置邮件模板";
             // nothing todo...
         }
         sendEmail(toMail, subject, content);

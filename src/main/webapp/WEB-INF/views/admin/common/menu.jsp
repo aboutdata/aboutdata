@@ -4,6 +4,7 @@
     Author     : youyou
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <ul class="nav nav-list" id="menu">
     <li class="active" id="dashboard">
         <a href="${pageContext.request.contextPath}/dashboard">
@@ -25,7 +26,14 @@
             <li>
                 <a href="${pageContext.request.contextPath}/admin/photosRequest/list">
                     <i class="menu-icon fa fa-caret-right"></i>
-                  	 图片上传列表
+                  	 图片审核
+                </a>
+                <b class="arrow"></b>
+            </li>
+             <li>
+                <a href="${pageContext.request.contextPath}/admin/photos/list">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                  	 图片列表
                 </a>
                 <b class="arrow"></b>
             </li>

@@ -1,6 +1,7 @@
 
 import com.aboutdata.commons.application.InjectLogger;
 import com.aboutdata.commons.enums.EmailType;
+import com.aboutdata.commons.enums.PhotoStatus;
 import com.aboutdata.dao.AdminDao;
 import com.aboutdata.dao.MemberInfomationDao;
 import com.aboutdata.dao.PhotosAlbumDao;
@@ -10,6 +11,7 @@ import com.aboutdata.domain.MemberInfomation;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.domain.Tag;
+import com.aboutdata.model.PhotosModel;
 import com.aboutdata.security.utils.SecurityUtils;
 import com.aboutdata.service.EmailService;
 import com.aboutdata.service.MemberRankService;
@@ -32,6 +34,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -43,11 +48,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = "classpath:application-Context.xml")
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/spring-context.xml")
-public class DemoTest{
-/**
-    public class DemoTest extends AbstractJUnit4SpringContextTests {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/spring-context.xml")
+public class DemoTest extends AbstractJUnit4SpringContextTests {
 
     @InjectLogger
     private Logger log;
@@ -73,7 +76,6 @@ public class DemoTest{
     @Resource
     private MemberService memberService;
 
-  
     public void empty() {
 
     }
@@ -124,47 +126,14 @@ public class DemoTest{
     }
 
     @Test
-    @Ignore
     public void findByIdTest() {
-
-//        try {
-//            Member m = new Member();
-//            m.setId("1");
-////            PhotosAlbum photosAlbum = new PhotosAlbum();
-////            photosAlbum.setName("哈哈");
-////            photosAlbum.setGrade(1);
-////            photosAlbum.setMember(m);
-////            photosAlbumService.create(photosAlbum);
-//            File dir = new File("E:\\photos");
-//            if (dir.isDirectory()) {
-//                for (File file : dir.listFiles()) {
-//                    if (!file.isDirectory()) {
-//                        String fileId = storageService.upload(file);
-//                        String path = "http://localhost" + fileId;
-//
-//                        Photos photos = new Photos();
-//                        // photos.setAlbumId("3c3c81104f6da37f014f6da38d8a0000");
-//                        photos.setOrder(1);
-//                        photos.setTitle(file.getName());
-//                        photos.setThumbnail(path);
-//                        photos.setMedium(path);
-//                        photos.setLarge(path);
-//                        photos.setSource(path);
-//
-//                        photos.setMember(m);
-//
-//                        photosService.create(photos);
-//                    }
-//                }
-//            }
-//
-//        } catch (Exception ex) {
-//            java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        Pageable pageable = new PageRequest(0, 10);
+        Page<PhotosModel> page = photosService.findByStatus(PhotoStatus.ASSIGNED, pageable);
+        log.info("#######################dd###########################" + page.getContent().size());
     }
 
     @Test
-//    @Ignore
+    @Ignore
     public void wallHeaven() {
 
 //        try {
@@ -195,6 +164,5 @@ public class DemoTest{
 //            java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
 //        }
     }
-**/
 
 }

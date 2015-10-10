@@ -5,6 +5,7 @@
  */
 package com.aboutdata.service;
 
+import com.aboutdata.commons.enums.PhotoStatus;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.model.PhotosModel;
 import java.util.List;
@@ -32,5 +33,9 @@ public interface PhotosService {
     public PhotosModel findById(String id);
 
     public Photos create(Photos photos);
+
+    public int makrStatus(String id, PhotoStatus status);
+
+    public Page<PhotosModel> findByStatus(PhotoStatus status, Pageable pageable);
 
 }

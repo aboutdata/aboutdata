@@ -9,7 +9,7 @@ import com.aboutdata.commons.enums.BaseEnum;
  *
  * @author youyou
  */
-public enum SecurityLevel implements BaseEnum {
+public enum SecurityPasswordLevel implements BaseEnum {
 
     KIDDING("极弱"),
     WEAK("弱"),
@@ -21,7 +21,7 @@ public enum SecurityLevel implements BaseEnum {
 
     private final String key;
 
-    private SecurityLevel(String key) {
+    private SecurityPasswordLevel(String key) {
         this.key = key;
     }
 

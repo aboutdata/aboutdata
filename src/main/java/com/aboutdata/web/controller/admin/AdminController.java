@@ -21,6 +21,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -118,6 +119,56 @@ public class AdminController {
         TableData<AdminModel> table = new TableData(list, sEcho, false);
         logger.info("table {}", table);
         return table;
+    }
+
+    @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
+    public String displayAdminDetails(@PathVariable("id") String id, ModelMap model) {
+        logger.info("displayAdminDetails {}", id);
+        AdminModel admin = adminService.findById(id);
+        model.addAttribute("admin", admin);
+        return "/admin/employee/details";
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String displayAdminEdit(@PathVariable("id") String id, ModelMap model) {
+        logger.info("displayAdminDetails {}", id);
+        List<RoleModel> roles = roleService.findAll();
+        logger.info("roles {}", roles);
+        model.addAttribute("roles", roles);
+        AdminModel admin = adminService.findById(id);
+        model.addAttribute("admin", admin);
+        return "/admin/employee/edit";
+    }
+
+    /**
+     * 修改管理员信息
+     *
+     * @param id
+     * @param email
+     * @param name
+     * @param department
+     * @param isEnabled
+     * @param roles
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(String id, String email, String name, String department, boolean isEnabled, String[] roles, ModelMap model) {
+        adminService.update(id, email, name, department, isEnabled, roles);
+        return "redirect:/admin/employee/edit/" + id;
+    }
+
+    /**
+     * resetPassword 密码重置
+     *
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/resetPassword/{id}", method = RequestMethod.GET)
+    public String resetPassword(@PathVariable("id")String id, ModelMap model) {
+        adminService.resetPassword(id);
+        return "redirect:/admin/employee/edit/" + id;
     }
 
 }

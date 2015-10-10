@@ -3,7 +3,7 @@ package com.aboutdata.web.controller;
 import com.aboutdata.domain.Member;
 
 import com.aboutdata.security.shiro.Principal;
-import com.aboutdata.security.utils.SecurityUtils;
+import com.aboutdata.security.utils.SecurityPasswordUtils;
 import com.aboutdata.service.MemberAttributeService;
 import com.aboutdata.service.MemberRankService;
 import com.aboutdata.service.MemberService;
@@ -92,8 +92,8 @@ public class RegisterController {
             return "/register";
         }
         //密码
-        String salt = SecurityUtils.getSalt();
-        String passphrase = SecurityUtils.getPassphrase(salt, password);
+        String salt = SecurityPasswordUtils.getSalt();
+        String passphrase = SecurityPasswordUtils.getPassphrase(salt, password);
 
         member.setUsername(username.toLowerCase());
 

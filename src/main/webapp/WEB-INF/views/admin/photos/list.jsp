@@ -9,7 +9,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>Dashboard - ${cloudSystemName}</title>
+        <title>控制面板 - lockbur.com</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <%@include file="/WEB-INF/views/admin/common/css-ace.jsp"%>
         <link href="${pageContext.request.contextPath}/resources/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
@@ -183,7 +183,7 @@
                                     "bPaginate": true, //翻页功能
                                     "searching": false,
                                     "dom": 'rtlip',
-                                    "sAjaxSource": "${pageContext.request.contextPath}/admin/photosRequest/getDatatables",
+                                    "sAjaxSource": "${pageContext.request.contextPath}/admin/photos/getDatatables",
                                     "aoColumns": [
                                         {"mData": "id"},
                                         {"mData": "thumbnail"},
@@ -199,10 +199,10 @@
                                             "mRender": function (thumbnail, type, row) {
                                                 return "<img alt=\"Image 4\" src=" + row['storageHost'] + "/" + thumbnail + " width=\"128\" class=\"img-rounded\">";
                                             }
-                                        },{
+                                        }, {
                                             "aTargets": [2],
                                             "mRender": function (title, type, row) {
-                                                return "<a href=\"${pageContext.request.contextPath}/admin/photosRequest/single/"+row['id']+"\">"+title+"</a>";
+                                                return "<a href=\"${pageContext.request.contextPath}/admin/photosRequest/single/" + row['id'] + "\">" + title + "</a>";
                                             }
                                         }, {
                                             "aTargets": [6],

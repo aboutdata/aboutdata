@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <nav id="column-left">
-    <jsp:include page="shortcut.jsp"/>
+    <%--<jsp:include page="shortcut.jsp"/>--%>
     <!-- #sidebar-shortcuts -->
     <jsp:include page="menu.jsp"/>
 </nav>

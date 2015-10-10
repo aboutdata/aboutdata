@@ -1,16 +1,33 @@
 package com.aboutdata.service;
 
 import com.aboutdata.domain.Admin;
+import com.aboutdata.domain.Role;
 import com.aboutdata.model.AdminModel;
 import java.util.List;
+import java.util.Set;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
 /**
  * Service - 管理员
  */
 public interface AdminService {
 
+    public AdminModel findById(String id);
+
     public void save(Admin admin);
+
+    /**
+     * 修改管理员信息
+     * @param id
+     * @param email
+     * @param name
+     * @param department
+     * @param isEnabled
+     * @param roles
+     * @return 
+     */
+    public Admin update(String id, String email, String name, String department, boolean isEnabled,String[] roles);
 
     public Page<AdminModel> find(Pageable pageable);
 
@@ -59,4 +76,6 @@ public interface AdminService {
      */
     String getCurrentUsername();
 
+    
+    public void resetPassword(String id);
 }

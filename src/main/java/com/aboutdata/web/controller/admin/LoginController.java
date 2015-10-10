@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author aboutdata.me
  */
 @Controller("adminLoginContrller")
-@RequestMapping("/admin/login")
+@RequestMapping("/admin")
 public class LoginController {
 
     Logger logger = LoggerFactory.getLogger(getClass());
@@ -30,27 +30,44 @@ public class LoginController {
     @Resource
     private CaptchaService captchaService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    /**
+     * 登录页面
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String displayLogin(Model model) {
         logger.info("displayLogin ");
         return "/admin/login";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    /**
+     * *
+     * 登录处理
+     *
+     * @param username
+     * @param password
+     * @param captcha
+     * @param request
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(String username, String password, String captcha, HttpServletRequest request, Model model) {
 //        boolean captchaValid = captchaService.isValid(request.getSession().getId(), captcha);
 //        if (!captchaValid) {
 //            model.addAttribute("errorMessage", "验证码错误");
 //            return "/login";
 //        }
-         logger.info("login ");
+        logger.info("login ");
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         try {
             SecurityUtils.getSubject().login(token);
             logger.info("redirect:/admin/dashboard ");
             return "redirect:/admin/dashboard";
         } catch (AuthenticationException e) {
-             logger.info("login {}",e);
+            logger.info("login {}", e);
             if (e instanceof UnknownAccountException) {
                 model.addAttribute("errorMessage", "账号不存在");
             }
@@ -64,6 +81,19 @@ public class LoginController {
 //            model.addAttribute("errorMessage", e.getMessage());
             return "/admin/login";
         }
+    }
+
+    /**
+     * 退出登录
+     *
+     * @param request
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request, Model model) {
+        SecurityUtils.getSubject().logout();
+        return "redirect:/admin/login";
     }
 
 }

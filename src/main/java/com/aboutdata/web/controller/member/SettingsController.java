@@ -19,7 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.aboutdata.security.utils.SecurityUtils;
+import com.aboutdata.security.utils.SecurityPasswordUtils;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -110,7 +110,7 @@ public class SettingsController {
         }
 
         if (!StringUtils.isEmpty(password) && StringUtils.endsWith(password, confirmPassword)) {
-            member.setPassword(SecurityUtils.getPassphrase(member.getSalt(), password));
+            member.setPassword(SecurityPasswordUtils.getPassphrase(member.getSalt(), password));
         } else {
             logger.debug("update password({}) not equals comfirmPassword({}) ", password, confirmPassword);
         }
