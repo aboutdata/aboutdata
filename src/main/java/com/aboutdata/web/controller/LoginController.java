@@ -2,7 +2,7 @@ package com.aboutdata.web.controller;
 
 import com.aboutdata.domain.Member;
 import com.aboutdata.security.shiro.Principal;
-import com.aboutdata.security.utils.SecurityUtils;
+import com.aboutdata.security.utils.SecurityPasswordUtils;
 import com.aboutdata.service.CaptchaService;
 import com.aboutdata.service.MemberService;
 import java.util.Date;
@@ -103,7 +103,7 @@ public class LoginController {
 //        }
         System.out.println("DigestUtils.md5Hex(password)" + DigestUtils.md5Hex("123456"));
 
-        boolean phraseMatch = SecurityUtils.matchPassphrase(member.getPassword(), member.getSalt(), password);
+        boolean phraseMatch = SecurityPasswordUtils.matchPassphrase(member.getPassword(), member.getSalt(), password);
         if (!phraseMatch) {
             int loginFailureCount = member.getLoginFailureCount() + 1;
             if (loginFailureCount >= 5) {

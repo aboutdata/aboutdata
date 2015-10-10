@@ -140,17 +140,35 @@ public class AdminController {
         return "/admin/employee/edit";
     }
 
+    /**
+     * 修改管理员信息
+     *
+     * @param id
+     * @param email
+     * @param name
+     * @param department
+     * @param isEnabled
+     * @param roles
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(String id, String email, String name, String department, boolean isEnabled, String[] roles, ModelMap model) {
-        logger.info("id {}", id);
-        logger.info("email {}", email);
-        logger.info("name {}", name);
-        logger.info("department {}", department);
-        logger.info("isEnabled {}", isEnabled);
-
         adminService.update(id, email, name, department, isEnabled, roles);
+        return "redirect:/admin/employee/edit/" + id;
+    }
 
-        return "redirect:/admin/employee/edit/"+id;
+    /**
+     * resetPassword 密码重置
+     *
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/resetPassword/{id}", method = RequestMethod.GET)
+    public String resetPassword(@PathVariable("id")String id, ModelMap model) {
+        adminService.resetPassword(id);
+        return "redirect:/admin/employee/edit/" + id;
     }
 
 }

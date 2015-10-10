@@ -17,6 +17,16 @@ public interface AdminService {
 
     public void save(Admin admin);
 
+    /**
+     * 修改管理员信息
+     * @param id
+     * @param email
+     * @param name
+     * @param department
+     * @param isEnabled
+     * @param roles
+     * @return 
+     */
     public Admin update(String id, String email, String name, String department, boolean isEnabled,String[] roles);
 
     public Page<AdminModel> find(Pageable pageable);
@@ -66,4 +76,6 @@ public interface AdminService {
      */
     String getCurrentUsername();
 
+    
+    public void resetPassword(String id);
 }
