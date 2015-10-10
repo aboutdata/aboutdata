@@ -7,12 +7,17 @@ package com.aboutdata.service.bean;
 
 import com.aboutdata.dao.MemberDao;
 import com.aboutdata.domain.Member;
+import com.aboutdata.model.MemberModel;
+import com.aboutdata.model.dto.MemberDTO;
 import com.aboutdata.security.shiro.Principal;
 import com.aboutdata.service.MemberService;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestAttributes;
@@ -32,15 +37,18 @@ public class MemberServiceImpl implements MemberService {
     private MemberDao memberDao;
 
     @Transactional(readOnly = true)
+    @Override
     public boolean usernameExists(String username) {
         return memberDao.usernameExists(username) > 0;
     }
 
+    @Override
     @Transactional(readOnly = true)
     public boolean emailExists(String email) {
         return memberDao.emailExists(email) > 0;
     }
 
+    @Override
     @Transactional(readOnly = true)
     public boolean emailUnique(String previousEmail, String currentEmail) {
         if (StringUtils.equalsIgnoreCase(previousEmail, currentEmail)) {
@@ -54,16 +62,19 @@ public class MemberServiceImpl implements MemberService {
         }
     }
 
+    @Override
     @Transactional(readOnly = true)
     public Member findByUsername(String username) {
         return memberDao.findByUsername(username);
     }
 
+    @Override
     @Transactional(readOnly = true)
     public List<Member> findListByEmail(String email) {
         return memberDao.findListByEmail(email);
     }
 
+    @Override
     @Transactional(readOnly = true)
     public boolean isAuthenticated() {
         RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
@@ -77,6 +88,7 @@ public class MemberServiceImpl implements MemberService {
         return false;
     }
 
+    @Override
     @Transactional(readOnly = true)
     public Member getCurrent() {
         RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
@@ -90,6 +102,7 @@ public class MemberServiceImpl implements MemberService {
         return null;
     }
 
+    @Override
     @Transactional(readOnly = true)
     public String getCurrentUsername() {
         RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
@@ -111,6 +124,15 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member create(Member member) {
         return memberDao.save(member);
+    }
+
+    @Override
+    public Page<MemberModel> find(Pageable pageable) {
+        Page<Member> page = memberDao.findAll(pageable);
+        List<Member> members = page.getContent();
+        List<MemberModel> models = MemberDTO.getMemberModelsDTO(members);
+        Page<MemberModel> result = new PageImpl(models, pageable, page.getTotalElements());
+        return result;
     }
 
 }

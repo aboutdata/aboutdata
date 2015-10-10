@@ -2,8 +2,11 @@ package com.aboutdata.service;
 
 import com.aboutdata.domain.Admin;
 import com.aboutdata.domain.Member;
+import com.aboutdata.model.MemberModel;
 import java.math.BigDecimal;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * Service - 会员
@@ -78,5 +81,7 @@ public interface MemberService {
     public Member update(Member member);
 
     public Member create(Member member);
+
+    public Page<MemberModel> find(Pageable pageable);
 
 }
