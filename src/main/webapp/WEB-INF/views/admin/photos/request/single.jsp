@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>Dashboard - ${cloudSystemName}</title>
+        <title>图片审核 - lockbur.com</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <%@include file="/WEB-INF/views/admin/common/css-ace.jsp"%>
     </head>
@@ -101,7 +101,7 @@
                                     <ul class="ace-thumbnails clearfix">
                                         <li >
                                             <div>
-                                                <img id="imageFullScreen" style="cursor:zoom-in" alt="150x150" src="${pageContext.request.contextPath}/resources/images/gallery/image-1.jpg">
+                                                <img id="imageFullScreen" style="cursor:zoom-in" class="col-xs-6" alt="150x150" src="${photos.storageHost}/${photos.large}">
                                             </div>
                                         </li>
                                     </ul>
@@ -149,7 +149,35 @@
                                                     <div class="profile-info-name"> 状态 </div>
 
                                                     <div class="profile-info-value">
-                                                        <span>${photos.status}</span>
+                                                        <c:choose> 
+                                                            <c:when test="${photos.status == 'UNASSIGNED'}">   
+                                                                <span class="badge badge-grey">未处理</span>
+                                                            </c:when> 
+                                                            <c:when test="${photos.status == 'ASSIGNED'}">   
+                                                                <span class="badge badge-warning">处理中</span>
+                                                            </c:when>
+                                                            <c:when test="${photos.status == 'CANCELED'}">   
+                                                                <span class="badge badge-grey">已取消</span>
+                                                            </c:when> 
+                                                            <c:when test="${photos.status == 'PENDING_APPORVE'}">   
+                                                                <span class="badge badge-pink">待批准</span>
+                                                            </c:when>
+                                                            <c:when test="${photos.status == 'APPROVED'}">   
+                                                                <span class="badge badge-success">已批准</span>
+                                                            </c:when> 
+                                                            <c:when test="${photos.status == 'REJECTED'}">   
+                                                                <span class="badge badge-inverse">已驳回</span>
+                                                            </c:when>
+                                                            <c:when test="${photos.status == 'ARCHIVED'}">   
+                                                                <span class="badge badge-purple">已存档</span>
+                                                            </c:when>
+                                                            <c:when test="${photos.status == 'DELETED'}">   
+                                                                <span class="badge badge-important">已删除</span>
+                                                            </c:when>  
+                                                            <c:otherwise>   
+                                                                <span class="badge badge-grey">未处理</span>
+                                                            </c:otherwise> 
+                                                        </c:choose> 
                                                     </div>
                                                 </div>
 
@@ -171,7 +199,7 @@
                                                     <div class="profile-info-name"> up主 </div>
 
                                                     <div class="profile-info-value">
-                                                        <span>${photos.wallhaven}</span>
+                                                        <span>${photos.member.username}</span>
                                                     </div>
                                                 </div>
 

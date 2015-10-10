@@ -1,5 +1,6 @@
 package com.aboutdata.domain;
 
+import com.aboutdata.commons.enums.Gender;
 import com.aboutdata.web.interceptor.MemberInterceptor;
 import java.util.Date;
 import java.util.Set;
@@ -31,22 +32,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Member extends BaseEntity {
 
     private static final long serialVersionUID = 1533130686714725835L;
-
-    /**
-     * 性别
-     */
-    public enum Gender {
-
-        /**
-         * 男
-         */
-        male,
-        /**
-         * 女
-         */
-        female
-    }
-
     /**
      * "身份信息"参数名称
      */

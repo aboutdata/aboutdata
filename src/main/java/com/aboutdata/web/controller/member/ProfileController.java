@@ -5,8 +5,8 @@
  */
 package com.aboutdata.web.controller.member;
 
+import com.aboutdata.commons.enums.Gender;
 import com.aboutdata.domain.Member;
-import com.aboutdata.domain.Member.Gender;
 import com.aboutdata.service.AreaService;
 import com.aboutdata.service.MemberAttributeService;
 import com.aboutdata.service.MemberService;

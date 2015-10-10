@@ -59,7 +59,7 @@ public class PhotosModel extends BaseModel {
 
     private PhotosAlbum album;
 
-    private Member member;
+    private MemberModel member;
 
     public String getTitle() {
         return title;
@@ -141,11 +141,11 @@ public class PhotosModel extends BaseModel {
         this.album = album;
     }
 
-    public Member getMember() {
+    public MemberModel getMember() {
         return member;
     }
 
-    public void setMember(Member member) {
+    public void setMember(MemberModel member) {
         this.member = member;
     }
 
