@@ -1,7 +1,7 @@
 package com.aboutdata.security.shiro;
 
 import com.aboutdata.domain.Admin;
-import com.aboutdata.security.utils.SecurityUtils;
+import com.aboutdata.security.utils.SecurityPasswordUtils;
 import com.aboutdata.service.AdminService;
 import java.util.Date;
 import javax.annotation.Resource;
@@ -48,7 +48,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
                 throw new UnknownAccountException();
             }
             //密码验证
-            if (!SecurityUtils.matchPassphrase(admin.getPassword(), admin.getSalt(), password)) {
+            if (!SecurityPasswordUtils.matchPassphrase(admin.getPassword(), admin.getSalt(), password)) {
                 logger.info("password not match");
                 throw new IncorrectCredentialsException();
             }

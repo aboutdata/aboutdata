@@ -13,9 +13,9 @@ import org.slf4j.LoggerFactory;
  *
  * @author youyou
  */
-public final class SecurityUtils {
+public final class SecurityPasswordUtils {
 
-    static Logger logger = LoggerFactory.getLogger(SecurityUtils.class);
+    static Logger logger = LoggerFactory.getLogger(SecurityPasswordUtils.class);
 
     private static final DateFormat df = DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.SHORT);
 
@@ -61,7 +61,7 @@ public final class SecurityUtils {
      * @param level
      * @return
      */
-    public static String randomPassword(SecurityLevel level) {
+    public static String randomPassword(SecurityPasswordLevel level) {
         switch (level) {
             case EXTREME:
                 return RandomStringUtils.random(12, randomChars);
@@ -88,7 +88,7 @@ public final class SecurityUtils {
      * @return
      */
     public static String randomPassword() {
-        return randomPassword(SecurityLevel.MEDIUM);
+        return randomPassword(SecurityPasswordLevel.MEDIUM);
     }
 
     /**
