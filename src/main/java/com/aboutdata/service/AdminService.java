@@ -5,10 +5,13 @@ import com.aboutdata.model.AdminModel;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
 /**
  * Service - 管理员
  */
 public interface AdminService {
+
+    public AdminModel findById(String id);
 
     public void save(Admin admin);
 

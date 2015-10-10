@@ -201,6 +201,11 @@
                                         {"mData": "createDate"}
                                     ],
                                     "aoColumnDefs": [{
+                                            "aTargets": [1],
+                                            "mRender": function (username, type, row) {
+                                                return "<a href='${pageContext.request.contextPath}/admin/employee/details/"+row['id'] +"'>"+username+"</a>";
+                                            }
+                                        },{
                                             "aTargets": [5],
                                             "mRender": function (loginDate, type, row) {
                                                 return new Date(loginDate).Format("yyyy-MM-dd hh:mm:ss");

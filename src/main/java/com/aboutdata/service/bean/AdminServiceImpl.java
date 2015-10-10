@@ -36,12 +36,21 @@ public class AdminServiceImpl implements AdminService {
     @Resource
     private AdminDao adminDao;
 
+    @Override
+    @Transactional(readOnly = true)
+    public AdminModel findById(String id) {
+        Admin admin = adminDao.findOne(id);
+        return AdminDTO.getAdminModelDTO(admin);
+    }
+
     @Transactional
+    @Override
     public void save(Admin admin) {
         adminDao.save(admin);
     }
 
     @Transactional(readOnly = true)
+    @Override
     public boolean usernameExists(String username) {
         return adminDao.usernameExists(username) > 0;
     }
@@ -55,7 +64,7 @@ public class AdminServiceImpl implements AdminService {
     @Transactional(readOnly = true)
     @Override
     public List<String> findAuthorities(String id) {
-        List<String> authorities = new ArrayList<String>();
+        List<String> authorities = new ArrayList<>();
         Admin admin = adminDao.findOne(id);
         if (admin != null) {
             for (Role role : admin.getRoles()) {
@@ -66,6 +75,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Transactional(readOnly = true)
+    @Override
     public boolean isAuthenticated() {
         Subject subject = SecurityUtils.getSubject();
         if (subject != null) {
@@ -75,6 +85,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Transactional(readOnly = true)
+    @Override
     public Admin getCurrent() {
         Subject subject = SecurityUtils.getSubject();
         if (subject != null) {
@@ -87,6 +98,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Transactional(readOnly = true)
+    @Override
     public String getCurrentUsername() {
         Subject subject = SecurityUtils.getSubject();
         if (subject != null) {

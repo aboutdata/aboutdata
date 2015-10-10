@@ -205,6 +205,27 @@
                                                 return "<a href=\"${pageContext.request.contextPath}/admin/photosRequest/single/"+row['id']+"\">"+title+"</a>";
                                             }
                                         }, {
+                                            "aTargets": [6],
+                                            "mRender": function (status, type, row) {
+                                                if (status === "UNASSIGNED") {
+                                                    return '<span class="badge badge-grey">未处理</span>';
+                                                } else if (status === "ASSIGNED") {
+                                                    return '<span class="badge badge-warning">处理中</span>';
+                                                } else if (status === "CANCELED") {
+                                                    return '<span class="badge badge-grey">已取消</span>';
+                                                } else if (status === "PENDING_APPORVE") {
+                                                    return '<span class="badge badge-pink">待批准</span>';
+                                                } else if (status === "APPROVED") {
+                                                    return '<span class="badge badge-success">已批准</span>';
+                                                } else if (status === "REJECTED") {
+                                                    return '<span class="badge badge-inverse">已驳回</span>';
+                                                } else if (status === "ARCHIVED") {
+                                                    return '<span class="badge badge-purple">已存档</span>';
+                                                } else if (status === "DELETED") {
+                                                    return '<span class="badge badge-important">已删除</span>';
+                                                }
+                                            }
+                                        }, {
                                             "aTargets": [7],
                                             "mRender": function (createDate, type, row) {
                                                 return new Date(createDate).Format("yyyy-MM-dd hh:mm:ss");

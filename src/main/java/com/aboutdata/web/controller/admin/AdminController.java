@@ -21,6 +21,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -118,6 +119,14 @@ public class AdminController {
         TableData<AdminModel> table = new TableData(list, sEcho, false);
         logger.info("table {}", table);
         return table;
+    }
+
+    @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
+    public String displayAdminDetails(@PathVariable("id") String id, ModelMap model) {
+        logger.info("displayAdminDetails {}", id);
+        AdminModel admin = adminService.findById(id);
+        model.addAttribute("admin", admin);
+        return "/admin/employee/details";
     }
 
 }
