@@ -109,13 +109,13 @@
 
                                                     <div class="space space-4"></div>
 
-                                                    <a href="#" class="btn btn-sm btn-success">
+                                                    <a href="${pageContext.request.contextPath}/admin/employee/edit/${admin.id}" class="btn btn-sm btn-success">
                                                         <i class="ace-icon fa fa-pencil-square-o"></i>
                                                         <span class="bigger-110">编辑信息</span>
                                                     </a>
 
                                                     <a href="#" class="btn btn-sm btn-primary">
-                                                       <i class="ace-icon fa fa-cog"></i>
+                                                        <i class="ace-icon fa fa-cog"></i>
                                                         <span class="bigger-110">重置密码</span>
                                                     </a>
                                                 </div><!-- /.col -->
@@ -176,6 +176,21 @@
                                                             <div class="profile-info-name"> 电子邮件 </div>
                                                             <div class="profile-info-value">
                                                                 ${admin.email}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="profile-user-info">
+                                                        <div class="profile-info-row">
+                                                            <div class="profile-info-name"> 角色 </div>
+                                                            <div class="profile-info-value">
+                                                                <ul class="list-unstyled spaced">
+                                                                    <c:forEach items="${admin.roles}" var="role" varStatus="idx">
+                                                                        <li>
+                                                                            <i class="ace-icon fa fa-check bigger-110 green"></i>
+                                                                            ${role.name}
+                                                                        </li>
+                                                                    </c:forEach><!--循环 结束-->
+                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </div>

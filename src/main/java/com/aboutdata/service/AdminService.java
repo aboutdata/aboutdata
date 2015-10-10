@@ -1,8 +1,10 @@
 package com.aboutdata.service;
 
 import com.aboutdata.domain.Admin;
+import com.aboutdata.domain.Role;
 import com.aboutdata.model.AdminModel;
 import java.util.List;
+import java.util.Set;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -14,6 +16,8 @@ public interface AdminService {
     public AdminModel findById(String id);
 
     public void save(Admin admin);
+
+    public Admin update(String id, String email, String name, String department, boolean isEnabled,String[] roles);
 
     public Page<AdminModel> find(Pageable pageable);
 

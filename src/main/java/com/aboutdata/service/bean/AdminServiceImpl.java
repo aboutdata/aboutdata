@@ -3,12 +3,14 @@ package com.aboutdata.service.bean;
 import com.aboutdata.dao.AdminDao;
 import com.aboutdata.domain.Admin;
 import com.aboutdata.domain.Role;
+import com.aboutdata.exception.AdminNotFound;
 import com.aboutdata.model.AdminModel;
 import com.aboutdata.model.RoleModel;
 import com.aboutdata.model.dto.AdminDTO;
 import com.aboutdata.model.dto.RoleDTO;
 import com.aboutdata.security.shiro.Principal;
 import com.aboutdata.service.AdminService;
+import com.aboutdata.service.RoleService;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -36,6 +38,9 @@ public class AdminServiceImpl implements AdminService {
     @Resource
     private AdminDao adminDao;
 
+    @Resource(name = "roleServiceImpl")
+    private RoleService roleService;
+
     @Override
     @Transactional(readOnly = true)
     public AdminModel findById(String id) {
@@ -47,6 +52,20 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void save(Admin admin) {
         adminDao.save(admin);
+    }
+
+    @Transactional(rollbackFor = AdminNotFound.class)
+    @Override
+    public Admin update(String id, String email, String name, String department, boolean isEnabled, String[] roles) {
+        Admin admin = adminDao.findOne(id);
+
+        admin.setEmail(email);
+        admin.setName(name);
+        admin.setDepartment(department);
+        admin.setIsEnabled(isEnabled);
+        admin.setRoles(new HashSet(roleService.findList(roles)));
+
+        return admin;
     }
 
     @Transactional(readOnly = true)

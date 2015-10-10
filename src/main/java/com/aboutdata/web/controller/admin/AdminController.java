@@ -129,4 +129,28 @@ public class AdminController {
         return "/admin/employee/details";
     }
 
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String displayAdminEdit(@PathVariable("id") String id, ModelMap model) {
+        logger.info("displayAdminDetails {}", id);
+        List<RoleModel> roles = roleService.findAll();
+        logger.info("roles {}", roles);
+        model.addAttribute("roles", roles);
+        AdminModel admin = adminService.findById(id);
+        model.addAttribute("admin", admin);
+        return "/admin/employee/edit";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(String id, String email, String name, String department, boolean isEnabled, String[] roles, ModelMap model) {
+        logger.info("id {}", id);
+        logger.info("email {}", email);
+        logger.info("name {}", name);
+        logger.info("department {}", department);
+        logger.info("isEnabled {}", isEnabled);
+
+        adminService.update(id, email, name, department, isEnabled, roles);
+
+        return "redirect:/admin/employee/edit/"+id;
+    }
+
 }
