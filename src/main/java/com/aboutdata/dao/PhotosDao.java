@@ -31,10 +31,9 @@ public interface PhotosDao extends JpaRepository<Photos, String> {
     @Query(value = "update Photos photos set photos.status =:status where photos.id=:id")
     public int makrStatus(@Param("id") String id, @Param("status") PhotoStatus status);
 
-//    @Query(value = "select photos from Photos photos where photos.status=:status order by photos.order asc ")
-    public Page<Photos> findByStatus(PhotoStatus status, Pageable pageable);
+    // @Query(value = "select photos from Photos photos where photos.status=:status order by photos.order asc ")
+    public Page<Photos> findByStatus(@Param("status") PhotoStatus status, Pageable pageable);
 
 //    @Query(value = "select count(photos) from Photos photos where photos.status=:status")
 //    public Long countByStatus(@Param("status") PhotoStatus status);
-
 }

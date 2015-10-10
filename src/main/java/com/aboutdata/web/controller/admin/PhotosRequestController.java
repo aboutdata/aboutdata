@@ -63,7 +63,8 @@ public class PhotosRequestController {
             String sSearch,
             int sEcho) {
         Pageable pageable = new PageRequest(iDisplayStart, iDisplayLength);
-        Page<PhotosModel> list = photosService.find(pageable);
+        
+        Page<PhotosModel> list = photosService.findByStatus(PhotoStatus.UNASSIGNED, pageable);
 
         return new TableData(list, sEcho, false);
     }

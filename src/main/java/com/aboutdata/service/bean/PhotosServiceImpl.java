@@ -26,26 +26,26 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service("photosServiceImpl")
 public class PhotosServiceImpl implements PhotosService {
-
+    
     Logger logger = LoggerFactory.getLogger(PhotosServiceImpl.class);
-
+    
     @Resource
     private PhotosDao photosDao;
-
+    
     @Resource
     private TagService tagService;
-
+    
     @Override
     @Transactional
     public Photos get(String id) {
         Photos photo = photosDao.findOne(id);
-
+        
         return photo;
     }
-
+    
     @Override
     public Page<PhotosModel> findByStatus(PhotoStatus status, Pageable pageable) {
-
+     
         Page<Photos> page = photosDao.findByStatus(status, pageable);
 
         List<Photos> photos = page.getContent();
@@ -55,39 +55,39 @@ public class PhotosServiceImpl implements PhotosService {
 
         return result;
     }
-
+    
     @Override
     public Page<PhotosModel> find(Pageable pageable) {
         Page<Photos> page = photosDao.findAll(pageable);
         List<Photos> photos = page.getContent();
-
+        
         List<PhotosModel> models = PhotosDTO.getPhotosModeslDTO(photos);
         Page<PhotosModel> result = new PageImpl(models, pageable, page.getTotalElements());
-
+        
         return result;
     }
-
+    
     public List<Photos> findTop10() {
-
+        
         int pageNow = 1;
         int pageSize = 10;
-
+        
         Pageable pageable = new PageRequest((pageNow - 1) * pageSize, pageSize);
         Page<Photos> page = photosDao.findAll(pageable);
-
+        
         for (Photos p : page.getContent()) {
             logger.info("top10 {}", p);
         }
-
+        
         return page.getContent();
     }
-
+    
     @Override
     public List<Photos> findPhotosAndTags() {
         List<Photos> all = photosDao.findAll();
         return all;
     }
-
+    
     @Override
     @Transactional
     public void addTags(String id, String tagString) {
@@ -97,29 +97,29 @@ public class PhotosServiceImpl implements PhotosService {
         photos.setTags(tags);
         photosDao.save(photos);
     }
-
+    
     @Override
     public List<Photos> findByAlbumId(String albumId) {
         return photosDao.findByAlbumId(albumId);
     }
-
+    
     @Override
     public PhotosModel findById(String id) {
         Photos photos = photosDao.findOne(id);
         return PhotosDTO.getPhotosModelDTO(photos);
     }
-
+    
     @Override
     @Transactional
     public Photos create(Photos photos) {
-
+        
         return photosDao.save(photos);
     }
-
+    
     @Override
     @Transactional
     public int makrStatus(String id, PhotoStatus status) {
         return photosDao.makrStatus(id, status);
     }
-
+    
 }
