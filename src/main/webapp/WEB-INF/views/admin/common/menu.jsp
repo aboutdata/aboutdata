@@ -4,6 +4,7 @@
     Author     : youyou
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <ul class="nav nav-list" id="menu">
     <li class="active" id="dashboard">
         <a href="${pageContext.request.contextPath}/dashboard">
