@@ -31,7 +31,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<RoleModel> findAll() {
         List<Role> roles = roleDao.findAll();
-        return RoleDTO.getRoleModelslDTO(roles);
+        return RoleDTO.getRoleModelsDTO(roles);
     }
 
     @Override
