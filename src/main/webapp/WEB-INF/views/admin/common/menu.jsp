@@ -77,7 +77,7 @@
 
         <ul class="submenu">
             <li>
-                <a href="${pageContext.request.contextPath}/user/list">
+                <a href="${pageContext.request.contextPath}/admin/member/list">
                     <i class="menu-icon fa fa-caret-right"></i>
                     用户列表
                 </a>
@@ -108,7 +108,7 @@
                 <b class="arrow"></b>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/tag/list">
+                <a href="${pageContext.request.contextPath}/admin/tag/list">
                     <i class="menu-icon fa fa-caret-right"></i>
                     标签列表
                 </a>
