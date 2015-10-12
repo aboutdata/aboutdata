@@ -11,7 +11,9 @@ import com.aboutdata.domain.MemberInfomation;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.domain.Tag;
+import com.aboutdata.model.AdminModel;
 import com.aboutdata.model.PhotosModel;
+import com.aboutdata.service.AdminService;
 import com.aboutdata.service.EmailService;
 import com.aboutdata.service.MemberRankService;
 import com.aboutdata.service.MemberService;
@@ -58,7 +60,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     private PhotosAlbumService photosAlbumService;
 
     @Resource
-    private EmailService emailService;
+    private AdminDao adminDao;
 
     @Resource
     private TagService tagService;
@@ -127,7 +129,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     @Test
     public void findByIdTest() {
         Pageable pageable = new PageRequest(0, 10);
-        Page<PhotosModel> page = photosService.findByStatus(PhotoStatus.ASSIGNED, pageable);
+        Page<Admin> page = adminDao.findByUsernameLike("%ad%", pageable);
         log.info("#######################dd###########################" + page.getContent().size());
     }
 

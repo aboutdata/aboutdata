@@ -95,27 +95,6 @@
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <!-- PAGE CONTENT BEGINS -->
-                                <div class="row">
-                                    <div class="col-xs-4">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                申请日期  <i class="fa fa-calendar bigger-110"></i>
-                                            </span>
-                                            <input class="form-control" name="date-range-picker" id="id-date-range-picker" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2">
-                                        <div class="input-group">
-                                            <span class="input-group-btn">
-                                                <button type="button" id="searchByDateRange" class="btn btn-info btn-sm">
-                                                    查询
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--</form>-->
                                 <table id="myDatatbles" class="table table-striped table-bordered table-hover dataTables-example dataTable" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
