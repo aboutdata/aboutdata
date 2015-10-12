@@ -12,7 +12,6 @@ import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.domain.Tag;
 import com.aboutdata.model.PhotosModel;
-import com.aboutdata.security.utils.SecurityUtils;
 import com.aboutdata.service.EmailService;
 import com.aboutdata.service.MemberRankService;
 import com.aboutdata.service.MemberService;
