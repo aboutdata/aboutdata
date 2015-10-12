@@ -84,4 +84,6 @@ public interface MemberService {
 
     public Page<MemberModel> find(Pageable pageable);
 
+    public MemberModel findById(String id);
+
 }

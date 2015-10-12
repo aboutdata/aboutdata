@@ -6,9 +6,7 @@
 package com.aboutdata.model;
 
 import com.aboutdata.commons.enums.PhotoStatus;
-import com.aboutdata.domain.Member;
 import com.aboutdata.domain.PhotosAlbum;
-
 /**
  *
  * @author Administrator

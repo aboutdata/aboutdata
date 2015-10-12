@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * 列表和单独model字段 根据实际需要取
  * @author Memberistrator
  */
 public class MemberDTO {
@@ -25,10 +25,13 @@ public class MemberDTO {
             result.setId(member.getId());
             result.setUsername(member.getUsername());
             result.setName(member.getName());
+            result.setGender(member.getGender());
             result.setEmail(member.getEmail());
+            result.setMobile(member.getMobile());
             result.setIsEnabled(member.getIsEnabled());
             result.setIsLocked(member.getIsLocked());
             result.setLockedDate(member.getLockedDate());
+            result.setRegisterIp(member.getRegisterIp());
             result.setLoginFailureCount(member.getLoginFailureCount());
             result.setLoginDate(member.getLoginDate());
             result.setCreateDate(member.getCreateDate());
@@ -57,6 +60,7 @@ public class MemberDTO {
                 model.setIsEnabled(member.getIsEnabled());
                 model.setIsLocked(member.getIsLocked());
                 model.setLockedDate(member.getLockedDate());
+                model.setRegisterIp(member.getRegisterIp());
                 model.setLoginFailureCount(member.getLoginFailureCount());
                 model.setLoginDate(member.getLoginDate());
                 model.setCreateDate(member.getCreateDate());
