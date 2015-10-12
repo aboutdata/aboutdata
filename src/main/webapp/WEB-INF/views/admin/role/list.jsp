@@ -106,14 +106,13 @@
                                             <th>是否内置</th>
                                             <th>描述</th>
                                             <th>创建时间</th>
-                                            <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${roles}" var="role" varStatus="idx">
                                             <tr>
                                                 <td>${idx.index+1}</td>
-                                                <td>${role.name}</td>
+                                                <td><a href="${pageContext.request.contextPath}/admin/role/edit/${role.id}">${role.name}</a></td>
                                                 <td>
                                                     <c:if test="${role.isSystem}">
                                                         <span class="label label-sm label-warning">是</span>
@@ -124,21 +123,6 @@
                                                 </td>
                                                 <td>${role.description}</th>
                                                 <td><fmt:formatDate value="${role.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                                                <td>
-                                                    <div class="hidden-sm hidden-xs btn-group">
-                                                        <button class="btn btn-xs btn-success">
-                                                            <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                                                        </button>
-
-                                                        <button class="btn btn-xs btn-info">
-                                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                                        </button>
-
-                                                        <button class="btn btn-xs btn-danger">
-                                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
                                             </tr> 
                                         </c:forEach>
                                     </tbody>

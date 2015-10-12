@@ -44,7 +44,7 @@ public class RoleDTO {
      * @param roles
      * @return
      */
-    public static List<RoleModel> getRoleModeslDTO(List<Role> roles) {
+    public static List<RoleModel> getRoleModelslDTO(List<Role> roles) {
         List<RoleModel> result = null;
         if (roles != null && roles.size() > 0) {
             result = new ArrayList(roles.size());
