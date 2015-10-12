@@ -64,13 +64,6 @@
                 </a>
                 <b class="arrow"></b>
             </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/admin/role/list">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    权限列表
-                </a>
-                <b class="arrow"></b>
-            </li>
         </ul>
     </li>
     <li id="user">
