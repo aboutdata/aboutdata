@@ -81,7 +81,7 @@ public class PhotosController {
         PhotosModel photos = photosService.findById(id);
         model.addAttribute("photos", photos);
         logger.info(id);
-        return "/admin/photos/request/single";
+        return "/admin/photos/details";
     }
 
 }

@@ -205,9 +205,10 @@
 
                                                 <div class="profile-info-row">
                                                     <div class="profile-info-name"> 标签 </div>
-
                                                     <div class="profile-info-value">
-                                                        <span>${photos.wallhaven}</span>
+                                                        <c:forEach items="${photos.tags}" var="tag">
+                                                            <span>${tag.name}</span>
+                                                        </c:forEach>
                                                     </div>
                                                 </div>
 

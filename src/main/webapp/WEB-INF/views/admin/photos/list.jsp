@@ -202,7 +202,7 @@
                                         }, {
                                             "aTargets": [2],
                                             "mRender": function (title, type, row) {
-                                                return "<a href=\"${pageContext.request.contextPath}/admin/photosRequest/single/" + row['id'] + "\">" + title + "</a>";
+                                                return "<a href=\"${pageContext.request.contextPath}/admin/photos/details/" + row['id'] + "\">" + title + "</a>";
                                             }
                                         }, {
                                             "aTargets": [6],
