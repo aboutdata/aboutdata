@@ -79,7 +79,7 @@ public class AdminController {
         logger.info("admin {}", admin);
         adminService.save(admin);
 
-        return "redirect:/admin/role/add";
+        return "redirect:/admin/employee/list";
     }
 
     /**
