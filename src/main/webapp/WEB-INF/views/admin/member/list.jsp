@@ -86,9 +86,6 @@
                                     <i class="ace-icon fa fa-angle-double-right"></i>
                                     会诊申请列表
                                 </small>
-                                <label class="pull-right inline">
-                                    <a href="${pageContext.request.contextPath}/admin/employee/add" class="btn btn-success" id="gritter-error"><i class="glyphicon glyphicon-plus"></i>  添加管理员</a>
-                                </label>
                             </h1>
 
                         </div><!-- /.page-header -->
@@ -100,9 +97,9 @@
                                         <tr>
                                             <th>编号</th>
                                             <th>用户名</th>
-                                            <th>电子邮件</th>
+                                            <th>手机号码</th>
+                                            <th>邮件</th>
                                             <th>姓名</th>
-                                            <th>部门</th>
                                             <th>最后登录日期</th>
                                             <th>最后登录IP</th>
                                             <th>是否启用</th>
@@ -167,13 +164,13 @@
                                     "bPaginate": true, //翻页功能
                                     "searching": false,
                                     "dom": 'rtlip',
-                                    "sAjaxSource": "${pageContext.request.contextPath}/admin/employee/getDatatables",
+                                    "sAjaxSource": "${pageContext.request.contextPath}/admin/member/getDatatables",
                                     "aoColumns": [
                                         {"mData": "id"},
                                         {"mData": "username"},
+                                        {"mData": "mobile"},
                                         {"mData": "email"},
                                         {"mData": "name"},
-                                        {"mData": "department"},
                                         {"mData": "loginDate"},
                                         {"mData": "loginIp"},
                                         {"mData": "isEnabled"},
@@ -182,7 +179,7 @@
                                     "aoColumnDefs": [{
                                             "aTargets": [1],
                                             "mRender": function (username, type, row) {
-                                                return "<a href='${pageContext.request.contextPath}/admin/employee/details/"+row['id'] +"'>"+username+"</a>";
+                                                return "<a href='${pageContext.request.contextPath}/admin/member/details/"+row['id'] +"'>"+username+"</a>";
                                             }
                                         },{
                                             "aTargets": [5],

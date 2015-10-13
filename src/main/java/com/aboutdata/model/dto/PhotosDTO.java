@@ -30,6 +30,10 @@ public class PhotosDTO {
             result.setTitle(photos.getTitle());
 //              model.setAlbum(album);
             result.setMember(MemberDTO.getMemberModelDTO(photos.getMember()));
+            //tags
+       
+            result.setTags(TagDTO.getTagModelsDTO(photos.getTags()));
+            
             result.setStatus(photos.getStatus());
             result.setOrder(photos.getOrder());
             result.setStorageHost(photos.getStorageHost());

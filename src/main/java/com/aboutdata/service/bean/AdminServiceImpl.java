@@ -142,8 +142,18 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<AdminModel> find(Pageable pageable) {
         Page<Admin> page = adminDao.findAll(pageable);
+        List<Admin> admins = page.getContent();
+        List<AdminModel> models = AdminDTO.getAdminModeslDTO(admins);
+        Page<AdminModel> result = new PageImpl(models, pageable, page.getTotalElements());
+        return result;
+    }
+
+    @Override
+    public Page<AdminModel> findByUsernameLike(String username, Pageable pageable) {
+        Page<Admin> page = adminDao.findByUsernameLike("%"+username+"%", pageable);
         List<Admin> admins = page.getContent();
         List<AdminModel> models = AdminDTO.getAdminModeslDTO(admins);
         Page<AdminModel> result = new PageImpl(models, pageable, page.getTotalElements());
@@ -161,9 +171,9 @@ public class AdminServiceImpl implements AdminService {
         if (!StringUtils.isEmpty(admin.getEmail())) {
             admin.setPassword(passphrase);
             //发送邮件
-            emailService.send(EmailType.ADMIN_RESET_PASSWORD, admin.getEmail(), "密码重置",password);
+            emailService.send(EmailType.ADMIN_RESET_PASSWORD, admin.getEmail(), "密码重置", password);
         } else {
-            logger.error("重置密码失败,{}用户邮箱不存在.",id);
+            logger.error("重置密码失败,{}用户邮箱不存在.", id);
         }
     }
 

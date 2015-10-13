@@ -6,6 +6,7 @@
 package com.aboutdata.service;
 
 import com.aboutdata.domain.Tag;
+import com.aboutdata.model.TagModel;
 import java.util.List;
 import java.util.Set;
 import org.springframework.data.domain.Page;
@@ -25,5 +26,5 @@ public interface TagService {
 
     public Set<Tag> getTagsFromString(String tagString);
 
-    public Page<Tag> findPage(Pageable pageable);
+    public Page<TagModel> find(Pageable pageable);
 }

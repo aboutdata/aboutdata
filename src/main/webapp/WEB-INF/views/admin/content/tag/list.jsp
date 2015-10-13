@@ -9,7 +9,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>Dashboard - ${cloudSystemName}</title>
+        <title>标签列表 - lockbur.com</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <%@include file="/WEB-INF/views/admin/common/css-ace.jsp"%>
         <link href="${pageContext.request.contextPath}/resources/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
@@ -86,9 +86,6 @@
                                     <i class="ace-icon fa fa-angle-double-right"></i>
                                     会诊申请列表
                                 </small>
-                                <label class="pull-right inline">
-                                    <a href="${pageContext.request.contextPath}/admin/employee/add" class="btn btn-success" id="gritter-error"><i class="glyphicon glyphicon-plus"></i>  添加管理员</a>
-                                </label>
                             </h1>
 
                         </div><!-- /.page-header -->
@@ -99,13 +96,8 @@
                                     <thead>
                                         <tr>
                                             <th>编号</th>
-                                            <th>用户名</th>
-                                            <th>电子邮件</th>
-                                            <th>姓名</th>
-                                            <th>部门</th>
-                                            <th>最后登录日期</th>
-                                            <th>最后登录IP</th>
-                                            <th>是否启用</th>
+                                            <th>标签名</th>
+                                            <th>UP主</th>
                                             <th>创建时间</th>
                                         </tr>
                                     </thead>
@@ -167,39 +159,20 @@
                                     "bPaginate": true, //翻页功能
                                     "searching": false,
                                     "dom": 'rtlip',
-                                    "sAjaxSource": "${pageContext.request.contextPath}/admin/employee/getDatatables",
+                                    "sAjaxSource": "${pageContext.request.contextPath}/admin/tag/getDatatables",
                                     "aoColumns": [
                                         {"mData": "id"},
-                                        {"mData": "username"},
-                                        {"mData": "email"},
                                         {"mData": "name"},
-                                        {"mData": "department"},
-                                        {"mData": "loginDate"},
-                                        {"mData": "loginIp"},
-                                        {"mData": "isEnabled"},
+                                        {"mData": "member"},
                                         {"mData": "createDate"}
                                     ],
                                     "aoColumnDefs": [{
-                                            "aTargets": [1],
-                                            "mRender": function (username, type, row) {
-                                                return "<a href='${pageContext.request.contextPath}/admin/employee/details/"+row['id'] +"'>"+username+"</a>";
-                                            }
-                                        },{
-                                            "aTargets": [5],
-                                            "mRender": function (loginDate, type, row) {
-                                                return new Date(loginDate).Format("yyyy-MM-dd hh:mm:ss");
+                                            "aTargets": [2],
+                                            "mRender": function (member, type, row) {
+                                                return  "<a href='${pageContext.request.contextPath}/admin/member/details/" +  member.id + "'>" + member.username + "</a>";
                                             }
                                         }, {
-                                            "aTargets": [7],
-                                            "mRender": function (isEnabled, type, row) {
-                                                if (isEnabled) {
-                                                    return     "<span class=\"label label-sm label-warning\">是</span>";
-                                                } else {
-                                                    return    "<span class=\"label label-sm label-sucess\">否</span>";
-                                                }
-                                            }
-                                        }, {
-                                            "aTargets": [8],
+                                            "aTargets": [3],
                                             "mRender": function (createDate, type, row) {
                                                 return new Date(createDate).Format("yyyy-MM-dd hh:mm:ss");
                                             }

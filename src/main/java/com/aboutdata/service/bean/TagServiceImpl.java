@@ -7,6 +7,8 @@ package com.aboutdata.service.bean;
 
 import com.aboutdata.dao.TagDao;
 import com.aboutdata.domain.Tag;
+import com.aboutdata.model.TagModel;
+import com.aboutdata.model.dto.TagDTO;
 import com.aboutdata.service.TagService;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.Set;
 import javax.annotation.Resource;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -79,7 +82,11 @@ public class TagServiceImpl implements TagService {
      * @return
      */
     @Override
-    public Page<Tag> findPage(Pageable pageable) {
-        return tagDao.findAll(pageable);
+    public Page<TagModel> find(Pageable pageable){
+        Page<Tag> page = tagDao.findAll(pageable);
+        List<Tag> tags = page.getContent();
+        List<TagModel> models = TagDTO.getTagModelsDTO(tags);
+        Page<TagModel> result = new PageImpl(models, pageable, page.getTotalElements());
+        return result;
     }
 }

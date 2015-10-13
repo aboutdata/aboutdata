@@ -6,9 +6,8 @@
 package com.aboutdata.model;
 
 import com.aboutdata.commons.enums.PhotoStatus;
-import com.aboutdata.domain.Member;
 import com.aboutdata.domain.PhotosAlbum;
-
+import java.util.List;
 /**
  *
  * @author Administrator
@@ -60,6 +59,8 @@ public class PhotosModel extends BaseModel {
     private PhotosAlbum album;
 
     private MemberModel member;
+    
+    private List<TagModel> tags;
 
     public String getTitle() {
         return title;
@@ -148,5 +149,14 @@ public class PhotosModel extends BaseModel {
     public void setMember(MemberModel member) {
         this.member = member;
     }
+
+    public List<TagModel> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<TagModel> tags) {
+        this.tags = tags;
+    }
+    
 
 }

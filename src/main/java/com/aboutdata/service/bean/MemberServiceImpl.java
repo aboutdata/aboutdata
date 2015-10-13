@@ -135,4 +135,10 @@ public class MemberServiceImpl implements MemberService {
         return result;
     }
 
+    @Override
+    public MemberModel findById(String id) {
+        Member member = memberDao.findOne(id);
+        return MemberDTO.getMemberModelDTO(member);
+    }
+
 }

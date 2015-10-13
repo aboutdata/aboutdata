@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -67,4 +68,20 @@ public class PhotosController {
 
         return new TableData(list, sEcho, false);
     }
+
+    /**
+     * 查看详情
+     *
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
+    public String single(@PathVariable("id") String id, ModelMap model) {
+        PhotosModel photos = photosService.findById(id);
+        model.addAttribute("photos", photos);
+        logger.info(id);
+        return "/admin/photos/details";
+    }
+
 }

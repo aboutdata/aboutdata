@@ -19,17 +19,33 @@ public interface AdminService {
 
     /**
      * 修改管理员信息
+     *
      * @param id
      * @param email
      * @param name
      * @param department
      * @param isEnabled
      * @param roles
-     * @return 
+     * @return
      */
-    public Admin update(String id, String email, String name, String department, boolean isEnabled,String[] roles);
+    public Admin update(String id, String email, String name, String department, boolean isEnabled, String[] roles);
 
+    /**
+     * *spring data jpa 分页查询
+     *
+     * @param pageable
+     * @return
+     */
     public Page<AdminModel> find(Pageable pageable);
+
+    /**
+     * 根据用户名模糊查找
+     *
+     * @param username
+     * @param pageable
+     * @return
+     */
+    public Page<AdminModel> findByUsernameLike(String username, Pageable pageable);
 
     /**
      * 判断用户名是否存在
@@ -76,6 +92,5 @@ public interface AdminService {
      */
     String getCurrentUsername();
 
-    
     public void resetPassword(String id);
 }

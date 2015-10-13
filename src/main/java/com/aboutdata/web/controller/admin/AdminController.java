@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import javax.annotation.Resource;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -78,7 +79,7 @@ public class AdminController {
         logger.info("admin {}", admin);
         adminService.save(admin);
 
-        return "redirect:/admin/role/add";
+        return "redirect:/admin/employee/list";
     }
 
     /**
@@ -113,11 +114,13 @@ public class AdminController {
             String sSearch,
             int sEcho) {
         Pageable pageable = new PageRequest(0, 25);
-        Page<AdminModel> list = adminService.find(pageable);
-        logger.info("list {}", list.getContent());
-
+        Page<AdminModel> list = null;
+        if (StringUtils.isEmpty(sSearch)) {
+            list = adminService.find(pageable);
+        } else {
+            list = adminService.findByUsernameLike(sSearch, pageable);
+        }
         TableData<AdminModel> table = new TableData(list, sEcho, false);
-        logger.info("table {}", table);
         return table;
     }
 
@@ -166,7 +169,7 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/resetPassword/{id}", method = RequestMethod.GET)
-    public String resetPassword(@PathVariable("id")String id, ModelMap model) {
+    public String resetPassword(@PathVariable("id") String id, ModelMap model) {
         adminService.resetPassword(id);
         return "redirect:/admin/employee/edit/" + id;
     }

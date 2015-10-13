@@ -7,6 +7,7 @@ package com.aboutdata.web.controller;
 
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.Tag;
+import com.aboutdata.model.TagModel;
 import com.aboutdata.service.TagService;
 import java.util.List;
 import javax.annotation.Resource;
@@ -44,7 +45,7 @@ public class TagController {
     @RequestMapping(method = RequestMethod.GET)
     public String displayTags(String name, HttpServletRequest request, Model model) {
         Pageable pageable = new PageRequest(1, 50);
-        Page<Tag> pages = tagService.findPage(pageable);
+        Page<TagModel> pages = tagService.find(pageable);
         model.addAttribute("page", pages);
         return "/portal/tags";
     }
