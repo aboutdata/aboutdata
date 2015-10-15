@@ -25,6 +25,10 @@
         <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/respond.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
       <![endif]-->
+       <!-- ////////////////////////////////// -->
+	    <!-- //        Favicon Files         // -->
+	    <!-- ////////////////////////////////// -->
+	    <link rel="shortcut icon" href="favicon.ico" />
     </head>
     <body class="container">
         <section class="vbox">
