@@ -5,7 +5,6 @@
  */
 package com.aboutdata.web.controller;
 
-import com.aboutdata.domain.Photos;
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.service.PhotosService;
 import javax.annotation.Resource;
@@ -21,7 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- *
+ * 最新圖片 lastest
  * @author youyou
  */
 @Controller
@@ -33,17 +32,21 @@ public class LatestController {
     @Resource
     private PhotosService photosService;
 
+    /**
+     * 每次加载24张图片
+     * @param request
+     * @param model
+     * @return
+     */
     @RequestMapping
     public String list(HttpServletRequest request, Model model) {
-//        logger.info("page: {}", page);
         
         Sort sort = new Sort(Sort.Direction.ASC, "createDate");
-        Pageable pageable = new PageRequest(1, 50,sort);
+        Pageable pageable = new PageRequest(1, 24,sort);
         
+        Page<PhotosModel> pages = photosService.find(pageable);
         
-        Page<PhotosModel> list = photosService.find(pageable);
-
-        model.addAttribute("list", list);
+        model.addAttribute("pages", pages);
         return "/portal/latest";
     }
 }

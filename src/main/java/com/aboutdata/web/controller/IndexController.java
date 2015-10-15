@@ -35,7 +35,7 @@ public class IndexController {
     @RequestMapping("/index")
     public String displayIndex(Model model) {
 
-        Pageable pageable = new PageRequest(1, 25);
+        Pageable pageable = new PageRequest(1, 24);
 
          Page<PhotosModel> list = photosService.find(pageable);
 
@@ -54,12 +54,12 @@ public class IndexController {
     @RequestMapping("index/next")
     public ModelAndView displayIndexNext(int page,ModelAndView model) {
     	logger.info("page now {}",page);
-        Pageable pageable = new PageRequest(page, 25);
-
+        Pageable pageable = new PageRequest(page, 24);
         Page<PhotosModel> pages = photosService.find(pageable);
         logger.info("page size {}",pages.getContent().size());
 	    model.setViewName("/portal/home/next");
         model.addObject("pages", pages);
+        model.addObject("page", page);
         return model;
     }
 

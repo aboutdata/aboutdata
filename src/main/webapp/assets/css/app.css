@@ -1,5 +1,5 @@
 html {
-  background-color: #f2f4f8;
+ /* background-color: #f2f4f8;*/
   overflow-x: hidden;
 }
 body {
@@ -610,13 +610,13 @@ body.container {
   body.container {
     -webkit-box-shadow: 0 3px 60px rgba(0,0,0,0.3);
     box-shadow: 0 3px 60px rgba(0,0,0,0.3);
-    border-left: 1px solid #cbd5dd;
-    border-right: 1px solid #cbd5dd;
+    /*border-left: 1px solid #cbd5dd;
+    border-right: 1px solid #cbd5dd;*/
   }
   .app,
   .app body {
     height: 100%;
-    /**overflow: hidden;**/
+    overflow: hidden;
   }
   .app .hbox.stretch {
     height: 100%;
@@ -3494,7 +3494,6 @@ fieldset[disabled] .i-checks input + i:before {
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
-
 .item .top {
   position: absolute;
   top: 0;
@@ -3536,6 +3535,10 @@ fieldset[disabled] .i-checks input + i:before {
 .item:hover .item-overlay {
   display: block;
 }
+.item img{
+    height :200px;
+}
+
 .backdrop {
   position: absolute;
   top: 0;
@@ -3915,3 +3918,17 @@ fieldset[disabled] .i-checks input + i:before {
     height: 65%;
   }
 }
+#searchbar {
+    display: none;
+    position:fixed;
+    top:60px;
+    left:0;
+    right:0;
+    padding:4px 0 2px;
+    font-size:.9em;
+    text-align:center;
+}
+/*
+body.blur{
+    background: #DFE0E2 url("../images/background1.jpg") repeat scroll 0% 0%;
+}*/
