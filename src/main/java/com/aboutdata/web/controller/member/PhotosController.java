@@ -11,6 +11,8 @@ import com.aboutdata.domain.Member;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.domain.Tag;
+import com.aboutdata.model.PhotosModel;
+import com.aboutdata.model.TagModel;
 import com.aboutdata.service.ImageGraphicsService;
 import com.aboutdata.service.PhotosAlbumService;
 import com.aboutdata.service.PhotosService;
@@ -57,19 +59,16 @@ public class PhotosController {
 
     @RequestMapping(value = "/wallpaper/{photosId}", method = RequestMethod.GET)
     public String wallpaper(@PathVariable("photosId") String photosId, ModelMap model) {
-//        Photos photos = photosService.findById(photosId);
-//
-//        String tagString = "";
-//        if (photos != null) {
-//            for (Tag tag : photos.getTags()) {
-//                tagString += tag.getName() + ",";
-//            }
-//            tagString = tagString.substring(0, tagString.length());
-//        }
-//
-//        model.addAttribute("photos", photos);
-//
-//        model.addAttribute("tagString", tagString);
+        PhotosModel photos = photosService.findById(photosId);
+        String tagString = "";
+        if (photos != null) {
+            for (TagModel tag : photos.getTags()) {
+                tagString += tag.getName() + ",";
+            }
+            tagString = tagString.substring(0, tagString.length());
+        }
+        model.addAttribute("photos", photos);
+        model.addAttribute("tagString", tagString);
 
         return "/member/photos/wallpaper";
     }
