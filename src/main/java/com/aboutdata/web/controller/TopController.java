@@ -1,66 +1,73 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.aboutdata.web.controller;
 
-import com.aboutdata.model.PhotosModel;
-import com.aboutdata.service.PhotosService;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.aboutdata.model.PhotosModel;
+import com.aboutdata.service.PhotosService;
+
 /**
+ * 排行榜 初步使用查看最多来排名
+ * @author Administrator
  *
- * @author youyou
  */
 @Controller
-@RequestMapping("/")
-public class IndexController {
-
-    Logger logger = LoggerFactory.getLogger(IndexController.class);
-
-    @Resource
+@RequestMapping("/top")
+public class TopController {
+	Logger logger = LoggerFactory.getLogger(TopController.class);
+   
+	@Resource
     private PhotosService photosService;
 
-    @RequestMapping("/index")
-    public String displayIndex(Model model) {
-
-        Pageable pageable = new PageRequest(1, 24);
-
-         Page<PhotosModel> list = photosService.find(pageable);
-
-          model.addAttribute("list", list);
-        return "/index";
-    }
-
     /**
-     * 查看更多
+     * 每次加载24张图片
+     * @param request
+     * @param model
+     * @return
+     */
+    @RequestMapping
+    public String list(HttpServletRequest request, Model model) {
+        
+        Sort sort = new Sort(Sort.Direction.ASC, "createDate");
+        Pageable pageable = new PageRequest(1, 24,sort);
+        
+        Page<PhotosModel> pages = photosService.find(pageable);
+        
+        model.addAttribute("pages", pages);
+        return "/portal/top";
+    }
+    
+    /**
+     * 查看更多 无限加载
      *
      * @param page
      * @param model
      * @return
      */
     @ResponseBody//作用是将返回的对象作为响应，发送给页面
-    @RequestMapping("index/next")
+    @RequestMapping("/next")
     public ModelAndView infinitescroll(int page,ModelAndView model) {
     	logger.info("page now {}",page);
         Pageable pageable = new PageRequest(page, 24);
         Page<PhotosModel> pages = photosService.find(pageable);
         logger.info("page size {}",pages.getContent().size());
-	    model.setViewName("/portal/home/next");
+	    model.setViewName("/portal/common/next");
         model.addObject("pages", pages);
         model.addObject("page", page);
         return model;
     }
 
+    
 }

@@ -877,7 +877,7 @@
                                     
                                 </div>
                                 <div id="navigation">
-                                    <a href="${pageContext.request.contextPath}/index/next?page=1"></a>
+                                    <a href="${pageContext.request.contextPath}/latest/next?page=1"></a>
                                 </div>
                             </div>
                         </section>

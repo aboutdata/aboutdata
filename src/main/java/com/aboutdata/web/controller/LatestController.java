@@ -18,6 +18,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 最新圖片 lastest
@@ -27,7 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/latest")
 public class LatestController {
 
-    Logger logger = LoggerFactory.getLogger(RandomController.class);
+    Logger logger = LoggerFactory.getLogger(LatestController.class);
 
     @Resource
     private PhotosService photosService;
@@ -48,5 +50,25 @@ public class LatestController {
         
         model.addAttribute("pages", pages);
         return "/portal/latest";
+    }
+    
+    /**
+     * 查看更多
+     *
+     * @param page
+     * @param model
+     * @return
+     */
+    @ResponseBody//作用是将返回的对象作为响应，发送给页面
+    @RequestMapping("/next")
+    public ModelAndView infinitescroll(int page,ModelAndView model) {
+    	logger.info("page now {}",page);
+        Pageable pageable = new PageRequest(page, 24);
+        Page<PhotosModel> pages = photosService.find(pageable);
+        logger.info("page size {}",pages.getContent().size());
+	    model.setViewName("/portal/common/next");
+        model.addObject("pages", pages);
+        model.addObject("page", page);
+        return model;
     }
 }

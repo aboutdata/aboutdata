@@ -1,5 +1,5 @@
 <%-- 
-    Document   : random
+    Document   : top
     Created on : 2015-8-16, 13:41:17
     Author     : youyou
 --%>
@@ -10,7 +10,7 @@
 <html lang="zh">
     <head>  
         <meta charset="utf-8"/>
-        <title>随机显示  - 更多壁纸，更多分享</title>
+        <title>排行榜 - 更多壁纸，更多分享</title>
         <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
@@ -877,7 +877,7 @@
                                     
                                 </div>
                                 <div id="navigation">
-                                    <a href="${pageContext.request.contextPath}/random/next?page=1"></a>
+                                    <a href="${pageContext.request.contextPath}/top/next?page=1"></a>
                                 </div>
                             </div>
                         </section>
