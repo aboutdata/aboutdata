@@ -29,11 +29,13 @@
               <i class="icon-speedometer"></i>
           </a>
       </li>
+      <c:if test="${appBean.features.enableSearch}">
       <li>
           <a href="#" id="search" title="搜索">
               <i class="fa fa-search"></i>
           </a>
       </li>
+      </c:if>
   </ul>
 <!-- nav right--> 
  
@@ -133,7 +135,6 @@
 </c:choose>                
 </div>
 <!--search bar-->
- <c:if test="${appBean.features.enableSearch}">
  <div id="searchbar" class="bg-black lter">
      <div class="container">
          <form class="form-inline" role="form">
@@ -197,5 +198,4 @@
          </form>
      </div>
  </div>
-</c:if>
 
