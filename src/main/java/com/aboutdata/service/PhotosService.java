@@ -37,5 +37,8 @@ public interface PhotosService {
     public int makrStatus(String id, PhotoStatus status);
 
     public Page<PhotosModel> findByStatus(PhotoStatus status, Pageable pageable);
+    
+    
+    public List<PhotosModel> random();
 
 }

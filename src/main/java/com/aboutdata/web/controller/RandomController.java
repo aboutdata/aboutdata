@@ -5,7 +5,6 @@
  */
 package com.aboutdata.web.controller;
 
-import com.aboutdata.domain.Photos;
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.service.PhotosService;
 import java.util.List;
@@ -13,13 +12,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 /**
  *
  * @author Administrator
@@ -35,27 +30,21 @@ public class RandomController {
 
     @RequestMapping
     public String list(HttpServletRequest request, Model model) {
-//        logger.info("page: {}", page);
-//        if (page == 0) {
-//            page = 1;
-//        }
-        Pageable pageable = new PageRequest(1, 30);
 
-        Page<PhotosModel> list = photosService.find(pageable);
+    	List<PhotosModel> list = photosService.random();
 
         model.addAttribute("list", list);
-        return "/portal/random";
+        return "/portal/random/random";
     }
     
-    @RequestMapping("/list")
-    public String listByInfinitescroll(int page,HttpServletRequest request, Model model) {
-        logger.info("page: {}", page);
-        Pageable pageable = new PageRequest(page, 5);
-
-        Page<PhotosModel> pages = photosService.find(pageable);
-
+    @RequestMapping("/next")
+    public String infinitescroll(Model model) {
+    	
+        List<PhotosModel> pages = photosService.random();
+        
         model.addAttribute("pages", pages);
-        return "/portal/random_page";
+        
+        return "/portal/random/next";
     }
 
 }

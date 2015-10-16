@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author Administrator
  */
-@Controller("photosController")
+@Controller("wallpaperController")
 @RequestMapping("/wallpaper")
 public class WallpaperController {
      Logger logger = LoggerFactory.getLogger(WallpaperController.class);

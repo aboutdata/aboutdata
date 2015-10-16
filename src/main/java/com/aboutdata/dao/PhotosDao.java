@@ -8,7 +8,6 @@ package com.aboutdata.dao;
 import com.aboutdata.commons.enums.PhotoStatus;
 import java.util.List;
 import com.aboutdata.domain.Photos;
-import com.aboutdata.model.PhotosModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
@@ -38,4 +37,17 @@ public interface PhotosDao extends JpaRepository<Photos, String> {
     public int makrStatus(@Param("id") String id, @Param("status") PhotoStatus status);
 
     public Page<Photos> findByStatus(@Param("status") PhotoStatus status, Pageable pageable);
+    
+    @Query("SELECT photos.id FROM Photos photos")
+    public List<String> findAllIds();
+    
+    
+    /**
+     * 根据id 列表查询
+     * @param ids
+     * @return
+     */
+    @Query("SELECT photos FROM Photos photos where photos.id in :ids")
+    public List<Photos> findByIds(@Param("ids")List<String> ids);
+    
 }

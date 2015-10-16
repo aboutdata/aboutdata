@@ -41,7 +41,6 @@
                     <section>
                         <section class="vbox">
                             <section id="waterfall" class="scrollable padder-md">
-                                <h3 class="pull-right text-muted m-t-lg" >1/${pages.totalPages}</h3>
                                 <h2 class="font-thin m-b">Discover 
                                     <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
                                         <span class="bar1 a1 bg-primary lter"></span>
@@ -919,7 +918,7 @@
                     animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
                     extraScrollPx: 150, //滚动条距离底部多少像素的时候开始加载，默认150
                     bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
-                    maxPage: ${pages.totalPages},//公有多少页
+                    //maxPage: ${pages.totalPages},//公有多少页
                     errorCallback: function () {
                         alert('error');
                     }, //当出错的时候，比如404页面的时候执行的函数
