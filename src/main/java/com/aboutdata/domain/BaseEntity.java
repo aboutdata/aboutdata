@@ -64,6 +64,7 @@ public abstract class BaseEntity implements Serializable {
     @Id
     @GenericGenerator(name = "UUID_GEN", strategy = "uuid")
     @GeneratedValue(generator = "UUID_GEN")
+    @Column(length=36)
     private String id;
 
     /**
