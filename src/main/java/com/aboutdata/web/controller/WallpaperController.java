@@ -9,11 +9,8 @@ package com.aboutdata.web.controller;
 import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.model.TagModel;
-import com.aboutdata.service.ImageGraphicsService;
 import com.aboutdata.service.PhotosAlbumService;
 import com.aboutdata.service.PhotosService;
-import com.aboutdata.web.controller.member.PhotosController;
-import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,11 +35,11 @@ public class WallpaperController {
     @Resource
     private PhotosAlbumService photosAlbumService;
     
-    @RequestMapping(value = "/wallpaper/{photosId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{photosId}", method = RequestMethod.GET)
     public String wallpaper(@PathVariable("photosId") String photosId, ModelMap model) {
         PhotosModel photos = photosService.findById(photosId);
         String tagString = "";
-        if (photos != null) {
+        if (photos.getTags() != null) {
             for (TagModel tag : photos.getTags()) {
                 tagString += tag.getName() + ",";
             }

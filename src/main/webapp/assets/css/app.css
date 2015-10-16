@@ -5,7 +5,7 @@ html {
 body {
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  color: #788188;
+  color: #FFF;
   background-color: transparent;
   -webkit-font-smoothing: antialiased;
   line-height: 1.40;
@@ -19,7 +19,7 @@ body {
   margin: 0;
 }
 a {
-  color: #545a5f;
+  color: #FFF;
   text-decoration: none;
 }
 a:hover,
