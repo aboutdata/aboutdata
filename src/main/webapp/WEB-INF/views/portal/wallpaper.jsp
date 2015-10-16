@@ -15,7 +15,7 @@
 <html lang="zh">
     <head>  
         <meta charset="utf-8"/>
-        <title>最新壁纸 - 更多壁纸，更多分享</title>
+        <title>查看壁纸 - 更多壁纸，更多分享</title>
         <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
@@ -91,8 +91,10 @@
               <section class="scrollable wrapper">
                <h4 class="font-thin m-b">Random Wallpapers</h4>
                
-               <div class="row wrapper">
-                <img src="${photos.storageHost}/${photos.large}" class="img-full">
+               <div class="row wrapper r r-2x ">
+               	<a href="${photos.storageHost}/${photos.large}" target="_blank" >
+                	<img src="${photos.storageHost}/${photos.large}" class="r r-2x img-full" style="cursor: zoom-in">
+                </a>
                </div>
                <div class="row">
                 <div class="col-sm-6">
