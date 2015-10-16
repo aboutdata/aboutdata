@@ -22,8 +22,6 @@ public interface PhotosService {
 
     public Page<PhotosModel> find(Pageable pageable);
 
-    public List<Photos> findTop10();
-
     public List<Photos> findPhotosAndTags();
 
     public void addTags(String id, String tagString);
@@ -40,5 +38,12 @@ public interface PhotosService {
     
     
     public List<PhotosModel> random();
-
+    
+    /**
+     * 查看壁纸 详情
+     * @param id
+     * @return
+     */
+    public PhotosModel views(String id);
+    
 }

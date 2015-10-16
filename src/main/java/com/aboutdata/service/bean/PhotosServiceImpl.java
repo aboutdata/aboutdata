@@ -69,20 +69,6 @@ public class PhotosServiceImpl implements PhotosService {
 		return result;
 	}
 
-	public List<Photos> findTop10() {
-
-		int pageNow = 1;
-		int pageSize = 10;
-
-		Pageable pageable = new PageRequest((pageNow - 1) * pageSize, pageSize);
-		Page<Photos> page = photosDao.findAll(pageable);
-
-		for (Photos p : page.getContent()) {
-			logger.info("top10 {}", p);
-		}
-
-		return page.getContent();
-	}
 
 	@Override
 	public List<Photos> findPhotosAndTags() {
@@ -141,4 +127,15 @@ public class PhotosServiceImpl implements PhotosService {
 		
 		return result;
 	}
+	
+	
+	@Override
+	@Transactional
+	public PhotosModel views(String id) {
+		Photos photos = photosDao.findOne(id);
+		//如果访问一次 就把该访问次数加1
+		photos.setOrder(photos.getOrder()+1);
+		return PhotosDTO.getPhotosModelDTO(photos);
+	}
+	
 }

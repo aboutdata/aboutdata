@@ -38,7 +38,7 @@
       </c:if>
   </ul>
 <!-- nav right--> 
- 
+<c:if test="${appBean.features.enableLogin}">
 <c:choose>
 <c:when test="${appBean.getCurrentUser() != null}">
         <div class="navbar-right ">
@@ -132,7 +132,8 @@
             </ul>
         </div>  
     </c:otherwise>
-</c:choose>                
+</c:choose>
+</c:if>          
 </div>
 <!--search bar-->
  <div id="searchbar" class="bg-black lter">

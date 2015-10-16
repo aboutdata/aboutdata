@@ -31,7 +31,7 @@
         <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/respond.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
       <![endif]-->
-       <link rel="shortcut icon" href="favicon.ico" />
+      <link rel="shortcut icon" href="favicon.ico"/>
     </head>
     <body>
         <section class="vbox">
@@ -61,9 +61,15 @@
 	                    <h5 class="lt m-n wrapper">Resolution ==</h5>
 	                    <h5 class="m-n wrapper">Size 335.88 KB</h5>
 	                    <h5 class="dk m-n wrapper">Type image/jpeg</h5>
-	                    <h5 class="dker m-n wrapper">Uploaded by john3</h5>
-	                    <h5 class="dk m-n wrapper">Posted 1 year ago</h5>
-	                    <h5 class="m-n wrapper">Views 14</h5>
+	                    <h5 class="dker m-n wrapper">Posted 
+	                    	<p><a href="#">${photos.member.username}</a></p>
+	                    </h5>
+	                    <h5 class="dk m-n wrapper">Date 
+	                    	<p>${photos.createDate}</p>
+	                    </h5>
+	                    <h5 class="m-n wrapper">Views 
+	                    	<p>${photos.order}</p>
+	                    </h5>
 	                    <h5 class="lt m-n wrapper">Comments 1</h5>
 	                    <h5 class="lter m-n wrapper">Downloads 1</h5>
 	                  </div>
@@ -74,12 +80,9 @@
 		             
 		             <h4 class="font-thin m-b">Tags</h4>
 					<div class="m-b-lg l-h-2x">
-                      <a href="#" class="label bg-primary">Bootstrap</a>
-                      <a href="#" class="label bg-primary">Application</a>
-                      <a href="#" class="label bg-primary">Apple</a> 
-                      <a href="#" class="label bg-primary">Less</a> 
-                      <a href="#" class="label bg-primary">Theme</a> 
-                      <a href="#" class="label bg-primary">Wordpress</a>
+					  <c:forEach items="${photos.tags}" var="tag">
+                             <lable class="label bg-primary">${tag.name}</lable> 
+                      </c:forEach>
                     </div>			            
 			        
 			        </section>
@@ -89,7 +92,7 @@
               
               
               <section class="scrollable wrapper">
-               <h4 class="font-thin m-b">Random Wallpapers</h4>
+               <h4 class="font-thin m-b">Wallpaper Source</h4>
                
                <div class="row wrapper r r-2x ">
                	<a href="${photos.storageHost}/${photos.large}" target="_blank" >

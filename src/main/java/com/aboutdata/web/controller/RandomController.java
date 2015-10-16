@@ -40,9 +40,9 @@ public class RandomController {
     @RequestMapping("/next")
     public String infinitescroll(Model model) {
     	
-        List<PhotosModel> pages = photosService.random();
+        List<PhotosModel> list = photosService.random();
         
-        model.addAttribute("pages", pages);
+        model.addAttribute("list", list);
         
         return "/portal/random/next";
     }

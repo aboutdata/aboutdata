@@ -37,7 +37,7 @@ public class WallpaperController {
     
     @RequestMapping(value = "/{photosId}", method = RequestMethod.GET)
     public String wallpaper(@PathVariable("photosId") String photosId, ModelMap model) {
-        PhotosModel photos = photosService.findById(photosId);
+        PhotosModel photos = photosService.views(photosId);
         String tagString = "";
         if (photos.getTags() != null) {
             for (TagModel tag : photos.getTags()) {
@@ -47,7 +47,9 @@ public class WallpaperController {
         }
         model.addAttribute("photos", photos);
         model.addAttribute("tagString", tagString);
-
+        
         return "/portal/wallpaper";
+        
+        
     }
 }

@@ -65,7 +65,7 @@ public class Photos extends BaseEntity {
 
 
     /**
-     * 排序
+     * 排序 暂时用orders用来存储访问次数
      */
     @Min(0)
     @Column(name = "orders")

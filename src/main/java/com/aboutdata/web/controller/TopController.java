@@ -40,9 +40,8 @@ public class TopController {
     @RequestMapping
     public String list(HttpServletRequest request, Model model) {
         
-        Sort sort = new Sort(Sort.Direction.ASC, "createDate");
-        Pageable pageable = new PageRequest(1, 24,sort);
-        
+        Sort sort = new Sort(Sort.Direction.DESC, "order");
+        Pageable pageable = new PageRequest(0, 24,sort);
         Page<PhotosModel> pages = photosService.find(pageable);
         
         model.addAttribute("pages", pages);
@@ -60,11 +59,16 @@ public class TopController {
     @RequestMapping("/next")
     public ModelAndView infinitescroll(int page,ModelAndView model) {
     	logger.info("page now {}",page);
-        Pageable pageable = new PageRequest(page, 24);
+    	Sort sort = new Sort(Sort.Direction.DESC, "order");
+        Pageable pageable = new PageRequest(page, 24,sort);
         Page<PhotosModel> pages = photosService.find(pageable);
+        
         logger.info("page size {}",pages.getContent().size());
-	    model.setViewName("/portal/common/next");
+	   
+        model.setViewName("/portal/common/next");
+	    
         model.addObject("pages", pages);
+        
         model.addObject("page", page);
         return model;
     }
