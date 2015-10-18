@@ -38,17 +38,17 @@
                         <section id="content" >
                             <section class="vbox">
                                 <section id="waterfall" class="scrollable padder-md">
-                                <h2 class="font-thin m-b">Discover 
-                                    <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
-                                        <span class="bar1 a1 bg-primary lter"></span>
-                                        <span class="bar2 a2 bg-info lt"></span>
-                                        <span class="bar3 a3 bg-success"></span>
-                                        <span class="bar4 a4 bg-warning dk"></span>
-                                        <span class="bar5 a5 bg-danger dker"></span>
-                                    </span>
-                                </h2>
+                                    <h2 class="font-thin m-b">Discover 
+                                        <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
+                                            <span class="bar1 a1 bg-primary lter"></span>
+                                            <span class="bar2 a2 bg-info lt"></span>
+                                            <span class="bar3 a3 bg-success"></span>
+                                            <span class="bar4 a4 bg-warning dk"></span>
+                                            <span class="bar5 a5 bg-danger dker"></span>
+                                        </span>
+                                    </h2>
 
-                                <div class="row row-sm">
+                                    <div class="row row-sm">
                                     <c:forEach items="${three}" var="photos" varStatus="idx">
                                         <div class="col-sm-4">
                                             <div class="item">
