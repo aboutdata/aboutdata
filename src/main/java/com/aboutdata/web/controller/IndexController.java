@@ -7,12 +7,14 @@ package com.aboutdata.web.controller;
 
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.service.PhotosService;
+import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,32 +37,23 @@ public class IndexController {
     @RequestMapping("/index")
     public String displayIndex(Model model) {
 
-        Pageable pageable = new PageRequest(1, 24);
+        Sort sort = new Sort(Sort.Direction.DESC, "order");
+        Pageable pageable = new PageRequest(0, 13, sort);
+        Page<PhotosModel> pages = photosService.find(pageable);
 
-         Page<PhotosModel> list = photosService.find(pageable);
+        List<PhotosModel> content = pages.getContent();
 
-          model.addAttribute("list", list);
+        List<PhotosModel> three = content.subList(0, 3);
+
+        List<PhotosModel> four = content.subList(3, 7);
+
+        List<PhotosModel> five = content.subList(7, 13);
+
+        model.addAttribute("three", three);
+        model.addAttribute("four", four);
+        model.addAttribute("five", five);
+
+        //model.addAttribute("list", list.getContent());
         return "/index";
     }
-
-    /**
-     * 查看更多
-     *
-     * @param page
-     * @param model
-     * @return
-     */
-    @ResponseBody//作用是将返回的对象作为响应，发送给页面
-    @RequestMapping("index/next")
-    public ModelAndView infinitescroll(int page,ModelAndView model) {
-    	logger.info("page now {}",page);
-        Pageable pageable = new PageRequest(page, 24);
-        Page<PhotosModel> pages = photosService.find(pageable);
-        logger.info("page size {}",pages.getContent().size());
-	    model.setViewName("/portal/home/next");
-        model.addObject("pages", pages);
-        model.addObject("page", page);
-        return model;
-    }
-
 }
