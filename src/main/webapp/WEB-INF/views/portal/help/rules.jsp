@@ -50,12 +50,16 @@
         </div>
 
         <div class="container main-container">
-            <h2 class="page-header text-primary">帮助文档</small></h2>
+            <h2 class="page-header text-primary">使用规则</small></h2>
             <h4 class="text-success">该文档旨在能更好让您了解和反馈Lockbur.com的网站信息</h4>
             <div class="row">
                 <div class="col-xs-12">
-                   <h3 id="overview" class="page-header">概览</h3>
-                   <p><strong>variables.less</strong> 文件中定义的两个 Less 变量决定了排版尺寸：<code>@font-size-base</code> 和 <code>@line-height-base</code>。第一个变量定义了全局 font-size 基准，第二个变量是 line-height 基准。我们使用这些变量和一些简单的公式计算出其它所有页面元素的 margin、 padding 和 line-height。自定义这些变量即可改变 Bootstrap 的默认样式。</p>
+                    <h3 id="overview" class="page-header">上传</h3>
+                    <p>上传规则说明</p>
+                    <h3 id="overview" class="page-header">标签</h3>
+                    <p>标签规则说明</p>
+                    <h3 id="overview" class="page-header">评论</h3>
+                    <p>评论规则说明</p>
                 </div>
             </div>
         </div>
