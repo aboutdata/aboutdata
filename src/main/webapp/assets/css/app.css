@@ -3932,3 +3932,17 @@ fieldset[disabled] .i-checks input + i:before {
 body.blur{
     background: #DFE0E2 url("../images/background1.jpg") repeat scroll 0% 0%;
 }*/
+
+.alltags {
+    margin-top: 20px;
+}
+.alltags a {
+    padding: 5px 10px;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 2px;
+}
+.alltags a:hover {
+    color:#FFF;
+    background: rgba(0, 0, 0, 0.4);
+}
