@@ -106,8 +106,7 @@
                 $('body').vegas({
                     timer: false,
                     slides: [
-                        {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'},
-                        {src: '${pageContext.request.contextPath}/assets/images/background2.jpg'}
+                        {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
                     ]
                 });
                 $('body').infinitescroll({
