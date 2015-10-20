@@ -19,8 +19,8 @@
 	<!-- project default level -->
 	<logger name="com.aboutdata" level="INFO" />
 
-	<!--log4jdbc -->
-	<logger name="jdbc.sqltiming" level="INFO"/>
+	<!--log4jdbc 
+	<logger name="jdbc.sqltiming" level="INFO"/>-->
 
 	<root level="WARN">
 		<appender-ref ref="console" />
