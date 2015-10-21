@@ -51,22 +51,13 @@ public class BuildIndexSchedule {
     public void execute() {
         logger.info("=============================================");
         logger.info("ActiveCount :" + taskExecutor.getActiveCount());
-        logger.info("=============================================");
-
         if (taskExecutor.getActiveCount() < 10) {
-            logger.info("当前页 : {}", page);
             Pageable pageable = new PageRequest(page, pagesize);
             Page<Photos> pages = photosDao.findByStatus(PhotoStatus.APPROVED, pageable);
             logger.info("solrServer : {}", solrServer);
             for (Photos photo : pages.getContent()) {
                 taskExecutor.execute(new BuildIndexTask(photo, photosService, solrServer));
             }
-//            if (page <= pages.getTotalPages()) {
-//
-//                page = page + 1;
-//            } else {
-//                logger.info("索引页码结束 {}", page);
-//            }
         }
     }
 
