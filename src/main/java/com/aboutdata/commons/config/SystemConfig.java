@@ -32,7 +32,7 @@ public final class SystemConfig extends BaseConfig {
     private String defaultPassword = "123456";
 
     @XmlElement
-    private String solrServer;
+    private String solrServer="http://localhost:9090/solr";
 
     @XmlElement
     private String defaultStorageHost = "http://aboutdata.me";
