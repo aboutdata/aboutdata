@@ -5,6 +5,7 @@
  */
 package com.aboutdata.service;
 
+import com.aboutdata.domain.Photos;
 import com.aboutdata.model.PhotosModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,8 +18,9 @@ public interface SearchService {
 
     /**
      * 创建索引
+     * @param photo
      */
-    public void buildAll();
+    public void build(Photos photo);
 
     /**
      * 搜索

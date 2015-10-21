@@ -23,17 +23,17 @@
         http://www.springframework.org/schema/task/spring-task-3.0.xsd">
     <context:annotation-config/>
     
-    <bean id="appBean" class="com.aboutdata.commons.application.ApplicationBean"/>
+    <!-- <bean id="appBean" class="com.aboutdata.commons.application.ApplicationBean"/>-->
     
-    <!--wallhaven 同步使用-->
+    <!--wallhaven 同步使用
     <bean id="wallhavenJobCrawler" class="com.aboutdata.wallheaven.WallhavenJobCrawler"/>
     
     <bean id="loggerPostProcessor" class="com.aboutdata.commons.application.LoggerPostProcessor"/>
     
-    <bean id="buildIndexSchedule" class="com.aboutdata.schedule.BuildIndexSchedule"/>  
+    <bean id="buildIndexSchedule" class="com.aboutdata.schedule.BuildIndexSchedule"/>  -->
     
     
-    <context:component-scan base-package="com.aboutdata.service">
+    <context:component-scan base-package="com.aboutdata">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
 

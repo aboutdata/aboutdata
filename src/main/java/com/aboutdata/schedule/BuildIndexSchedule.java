@@ -5,10 +5,12 @@
  */
 package com.aboutdata.schedule;
 
+import com.aboutdata.commons.enums.PhotoStatus;
 import com.aboutdata.dao.PhotosDao;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.schedule.task.BuildIndexTask;
-import com.aboutdata.service.TagService;
+import com.aboutdata.service.ConfigService;
+import com.aboutdata.service.PhotosService;
 import javax.annotation.Resource;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.client.solrj.impl.XMLResponseParser;
@@ -20,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -30,56 +33,51 @@ public class BuildIndexSchedule {
 
     Logger logger = LoggerFactory.getLogger(BuildIndexSchedule.class);
 
-    private int page = 1;
-    private int pagesize = 20;
-    private int totalpages=2600;
-    
+    private int page = 0;
+    private int pagesize = 24;
+
     @Resource
     private PhotosDao photosDao;
 
     @Resource
-    private TagService tagService;
+    private PhotosService photosService;
 
     private static HttpSolrServer solrServer = null;
 
     @Resource
     private ThreadPoolTaskExecutor taskExecutor;
 
-//    @Scheduled(cron = "*/1 * * * * ?")
+    @Scheduled(cron = "*/10 * * * * ?")
     public void execute() {
-       // recordcount = (int) photosDao.count();
-       // int totalpages = (recordcount + pagesize - 1) / pagesize;
-        
-        System.out.println("=============================================");
-        System.out.println("ActiveCount :" + taskExecutor.getActiveCount());
-        System.out.println("PoolSize :" + taskExecutor.getPoolSize());
-        System.out.println("CorePoolSize :" + taskExecutor.getCorePoolSize());
-        System.out.println("=============================================");
+        logger.info("=============================================");
+        logger.info("ActiveCount :" + taskExecutor.getActiveCount());
+        logger.info("=============================================");
 
         if (taskExecutor.getActiveCount() < 10) {
             logger.info("当前页 : {}", page);
-            if (page <= totalpages) {
-                Pageable pageable = new PageRequest(page, pagesize);
-                Page<Photos> pages = photosDao.findAll(pageable);
-                for (Photos photo : pages.getContent()) {
-                    taskExecutor.execute(new BuildIndexTask(photo, solrServer));
-                }
-                page = page + 1;
-            } else {
-                logger.info("抓取页码结束 {}", page);
+            Pageable pageable = new PageRequest(page, pagesize);
+            Page<Photos> pages = photosDao.findByStatus(PhotoStatus.APPROVED, pageable);
+            logger.info("solrServer : {}", solrServer);
+            for (Photos photo : pages.getContent()) {
+                taskExecutor.execute(new BuildIndexTask(photo, photosService, solrServer));
             }
+//            if (page <= pages.getTotalPages()) {
+//
+//                page = page + 1;
+//            } else {
+//                logger.info("索引页码结束 {}", page);
+//            }
         }
     }
 
     //初始化slor连接器
     public BuildIndexSchedule() {
-        
-        
-        
         if (solrServer == null) {
             try {
+//                logger.info("configService.getSystemConfig().getSolrServer() : {}", configService.getSystemConfig().getSolrServer());
+                String url = "http://localhost:9090/solr";
                 // configure a server object with actual solr values.
-                solrServer = new HttpSolrServer("http://123.57.240.11:9090/solr");
+                solrServer = new HttpSolrServer(url);
                 solrServer.setParser(new XMLResponseParser());
                 solrServer.setSoTimeout(5000);
                 solrServer.setConnectionTimeout(5000);

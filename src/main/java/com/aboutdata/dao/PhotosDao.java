@@ -50,4 +50,6 @@ public interface PhotosDao extends JpaRepository<Photos, String> {
     @Query("SELECT photos FROM Photos photos where photos.id in :ids")
     public List<Photos> findByIds(@Param("ids")List<String> ids);
     
+    
+    
 }

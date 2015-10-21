@@ -5,14 +5,14 @@
  */
 package com.aboutdata.service.bean;
 
-import com.aboutdata.dao.PhotosDao;
+import com.aboutdata.commons.application.ApplicationBean;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.Tag;
 import com.aboutdata.model.MemberModel;
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.model.TagModel;
 import com.aboutdata.model.dto.TagDTO;
-import com.aboutdata.schedule.task.BuildIndexTask;
+import com.aboutdata.service.ConfigService;
 import com.aboutdata.service.SearchService;
 import com.aboutdata.service.TagService;
 import java.util.ArrayList;
@@ -32,9 +32,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,22 +48,21 @@ public class SearchServiceImpl implements SearchService {
     Logger logger = LoggerFactory.getLogger(SearchServiceImpl.class);
 
     @Resource
-    private PhotosDao photosDao;
-
-    @Resource
     private TagService tagService;
 
-    private static HttpSolrServer solrServer = null;
-
     @Resource
-    private ThreadPoolTaskExecutor taskExecutor;
+    private ConfigService configService;
+    
+    private static HttpSolrServer solrServer = null;
 
     //初始化slor连接器
     public SearchServiceImpl() {
         if (solrServer == null) {
             try {
                 // configure a server object with actual solr values.
-                solrServer = new HttpSolrServer("http://localhost:9090/solr");
+                 String url ="http://localhost:9090/solr";
+                // configure a server object with actual solr values.
+                solrServer = new HttpSolrServer(url);
                 solrServer.setParser(new XMLResponseParser());
                 solrServer.setSoTimeout(5000);
                 solrServer.setConnectionTimeout(5000);
@@ -84,11 +81,43 @@ public class SearchServiceImpl implements SearchService {
      * 构建索引
      */
     @Override
-    public void buildAll() {
-
-    }
-
     public void build(Photos photo) {
+        logger.info("photo {}", photo.getId());
+        SolrInputDocument doc = new SolrInputDocument();
+
+        doc.addField("id", photo.getId());
+        doc.addField("title", photo.getTitle());
+
+        StringBuilder tags = new StringBuilder();
+        //拼装tags 便于搜索
+        if (photo.getTags() != null & photo.getTags().size() > 0) {
+            for (Tag tag : photo.getTags()) {
+                tags.append(tag.getName()).append(",");
+            }
+            //删除最后一个逗号
+            tags.deleteCharAt(tags.length() - 1);
+            logger.debug("solr tags {}", tags.toString());
+            doc.addField("tags", tags.toString());
+        } else {
+            //没有标签 则显示空
+            doc.addField("tags", "");
+        }
+
+        doc.addField("large", photo.getLarge());
+        doc.addField("medium", photo.getMedium());
+        doc.addField("thumbnail", photo.getThumbnail());
+        doc.addField("source", photo.getSource());
+        doc.addField("member_id", photo.getMember().getId());
+        doc.addField("member_name", photo.getMember().getUsername());
+        doc.addField("wallhaven", photo.getWallhaven());
+        doc.addField("create_date", photo.getCreateDate());
+        doc.addField("modify_date", photo.getModifyDate());
+        try {
+            solrServer.add(doc);
+            solrServer.commit();
+        } catch (Exception ex) {
+            logger.error("build index error {}", ex);
+        }
 
     }
 

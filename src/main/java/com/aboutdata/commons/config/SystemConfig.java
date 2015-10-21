@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * 系统配置信息
  *
@@ -24,15 +25,18 @@ public final class SystemConfig extends BaseConfig {
      * 是否是开发者模式
      */
     @XmlElement(required = true)
-    private boolean developMode=false;
+    private boolean developMode = false;
 
     //后台用户开户默认密码，如果为null表示使用手机短信发送随机密码
     @XmlElement
     private String defaultPassword = "123456";
-    
+
+    @XmlElement
+    private String solrServer;
+
     @XmlElement
     private String defaultStorageHost = "http://aboutdata.me";
-    
+
     /**
      * 各平台通用功能
      */
@@ -72,9 +76,17 @@ public final class SystemConfig extends BaseConfig {
         this.defaultStorageHost = defaultStorageHost;
     }
 
+    public String getSolrServer() {
+        return solrServer;
+    }
+
+    public void setSolrServer(String solrServer) {
+        this.solrServer = solrServer;
+    }
+
     @Override
     public String toString() {
-        return "SystemConfig{" + "developMode=" + developMode + ", defaultPassword=" + defaultPassword + ", defaultStroageHost=" + defaultStorageHost + ", features=" + features + '}';
+        return "SystemConfig{" + "developMode=" + developMode + ", defaultPassword=" + defaultPassword + ", solrServer=" + solrServer + ", defaultStorageHost=" + defaultStorageHost + ", features=" + features + '}';
     }
 
 }

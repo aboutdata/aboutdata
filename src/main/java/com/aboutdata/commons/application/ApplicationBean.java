@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
  *
  * @author youyou
  */
-@Component
+@Component("appBean")
 @Scope("singleton")
 public class ApplicationBean {
 

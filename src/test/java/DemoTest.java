@@ -86,7 +86,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 
     @Test
     public void findByIdTest() {
-        searchService.buildAll();
+      //  searchService.buildAll();
     }
 
  
