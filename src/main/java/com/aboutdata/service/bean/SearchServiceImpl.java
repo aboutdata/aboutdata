@@ -12,6 +12,7 @@ import com.aboutdata.model.MemberModel;
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.model.TagModel;
 import com.aboutdata.model.dto.TagDTO;
+import com.aboutdata.schedule.task.BuildIndexTask;
 import com.aboutdata.service.SearchService;
 import com.aboutdata.service.TagService;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -54,6 +56,9 @@ public class SearchServiceImpl implements SearchService {
     private TagService tagService;
 
     private static HttpSolrServer solrServer = null;
+
+    @Resource
+    private ThreadPoolTaskExecutor taskExecutor;
 
     //初始化slor连接器
     public SearchServiceImpl() {
@@ -80,58 +85,11 @@ public class SearchServiceImpl implements SearchService {
      */
     @Override
     public void buildAll() {
-        int pagesize = 20;
-        int recordcount = (int) photosDao.count();
-        logger.info("photosDao.count: {}", photosDao.count());
-        int totalpages = (recordcount + pagesize - 1) / pagesize;
-        //每次构建20条数据
-        for (int i = 0; i < totalpages; i++) {
-            logger.info("当前页 : {}", i);
-            Pageable pageable = new PageRequest(i, pagesize);
-            Page<Photos> pages = photosDao.findAll(pageable);
-            for (Photos photo : pages.getContent()) {
-                build(photo);
-            }
-        }
+
     }
 
     public void build(Photos photo) {
-        logger.info("photo {}", photo.getId());
-        SolrInputDocument doc = new SolrInputDocument();
 
-        doc.addField("id", photo.getId());
-        doc.addField("title", photo.getTitle());
-
-        StringBuilder tags = new StringBuilder();
-        //拼装tags 便于搜索
-        if (photo.getTags() != null & photo.getTags().size() > 0) {
-            for (Tag tag : photo.getTags()) {
-                tags.append(tag.getName()).append(",");
-            }
-            //删除最后一个逗号
-            tags.deleteCharAt(tags.length() - 1);
-            logger.debug("solr tags {}", tags.toString());
-            doc.addField("tags", tags.toString());
-        } else {
-            //没有标签 则显示空
-            doc.addField("tags", "");
-        }
-
-        doc.addField("large", photo.getLarge());
-        doc.addField("medium", photo.getMedium());
-        doc.addField("thumbnail", photo.getThumbnail());
-        doc.addField("source", photo.getSource());
-        doc.addField("member_id", photo.getMember().getId());
-        doc.addField("member_name", photo.getMember().getUsername());
-        doc.addField("wallhaven", photo.getWallhaven());
-        doc.addField("create_date", photo.getCreateDate());
-        doc.addField("modify_date", photo.getModifyDate());
-        try {
-            solrServer.add(doc);
-            solrServer.commit();
-        } catch (Exception ex) {
-            logger.error("build index error {}", ex);
-        }
     }
 
     /**
