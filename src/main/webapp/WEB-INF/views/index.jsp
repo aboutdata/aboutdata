@@ -26,6 +26,15 @@
         <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
       <![endif]-->
         <link rel="shortcut icon" href="favicon.ico" />
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
     </head>
     <body class="container">
         <section class="vbox">
@@ -76,7 +85,7 @@
                                         <div class="col-sm-3">
                                             <div class="item">
                                                 <div class="pos-rlt">
-                                                   <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}" class="item-overlay opacity r r-2x bg-black">
+                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}" class="item-overlay opacity r r-2x bg-black">
                                                         <div class="text-info padder m-t-sm text-sm">
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
@@ -127,7 +136,7 @@
             <footer id="footer">
                 <div class="text-center text-muted">
                     <p>
-                       <small>所有图片同步于<a href="http://alpha.wallhaven.cc/" target="_blank">alpha.wallhaven.cc</a>©lockbur.com2015  京ICP备15054053号</small>
+                        <small>所有图片同步于<a href="http://alpha.wallhaven.cc/" target="_blank">alpha.wallhaven.cc</a>©lockbur.com2015  京ICP备15054053号</small>
                     </p>
                 </div>
             </footer>
