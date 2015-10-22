@@ -7,43 +7,43 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="en" class="app">
+<html lang="zh">
     <head>  
         <meta charset="utf-8" />
-        <title>Musik | Web Application</title>
-        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <title>Lockbur-更多壁纸，更多分享</title>
+        <meta name="description" content="高清壁纸,桌面壁纸" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/vegas/vegas.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/simple-line-icons.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css" type="text/css" />  
         <!--[if lt IE 9]>
-        <script src="${pageContext.request.contextPath}/assets/js/ie/html5shiv.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/ie/respond.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/html5shiv.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/respond.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
       <![endif]-->
+        <link rel="shortcut icon" href="favicon.ico" />
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
     </head>
-    <body class="">
+    <body class="container">
         <section class="vbox">
-            <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
-                <jsp:include page="/WEB-INF/views/member/include/header.jsp"></jsp:include>
+            <header class="bg-black dk header header-md navbar navbar-fixed-top">
+                <jsp:include page="/WEB-INF/views/portal/common/header.jsp"></jsp:include>
                 </header>
+
                 <section>
                     <section class="hbox stretch">
-                        <!-- .aside -->
-                        <aside class="bg-black dk nav-xs aside hidden-print" id="nav">          
-                            <section class="vbox">
-                                <section class="w-f-md scrollable">
-                                    <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
-                                        <!-- nav -->                 
-                                    <jsp:include page="/WEB-INF/views/member/include/siderbar.jsp"></jsp:include>
-                                        <!-- / nav -->
-                                    </div>
-                                </section>
-                        </aside>
-                        <!-- /.aside -->
                         <section id="content">
                             <section class="vbox">
                                 <section class="scrollable">
@@ -68,7 +68,7 @@
                                                                 <i class="fa fa-eye"></i> Follow
                                                             </span>
                                                         </a>
-                                                        <a class="btn btn-dark btn-rounded">
+                                                        <a href="${pageContext.request.contextPath}/member/settings/account" class="btn btn-dark btn-rounded">
                                                             <i class="fa fa-comment-o"></i>修改资料
                                                         </a>
                                                     </div>
@@ -91,72 +91,58 @@
                                     </aside>
                                     <aside class="bg-white">
                                         <section class="panel panel-default">
-                                            <header class="panel-heading bg-light">
-                                                <ul class="nav nav-justified">
-                                                    <li class="active">
-                                                        <a href="${pageContext.request.contextPath}/member/settings/profile">
-                                                            <span class="m-b-xs h4 block"> 
-                                                                <i class="fa fa-user text-muted"></i>
-                                                            </span>
-                                                            <span class="text-muted">个人资料</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="bg-light">
-                                                            <span class="m-b-xs h4 block"> 
-                                                                <i class="icon-eyeglasses"></i>
-                                                            </span>
-                                                            <span class="text-muted">头像修改</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="${pageContext.request.contextPath}/member/settings/browsing">
-                                                            <span class="m-b-xs h4 block"> 
-                                                                <i class="fa fa-cog text-muted"></i>
-                                                            </span>
-                                                            <span class="text-muted">个人设置</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="${pageContext.request.contextPath}/member/settings/account" class="bg-light">
-                                                            <span class="m-b-xs h4 block"> 
-                                                                <i class="fa fa-css3"></i>
-                                                            </span>
-                                                            <span class="text-muted">账户</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
+                                            <header class="panel-heading">
+                                                最新消息
                                             </header>
-                                            <div class="panel-body">
-                                                <div class="tab-pane" id="home">
-                                                    <form class="form-horizontal" data-validate="parsley" action="${pageContext.request.contextPath}/member/settings/profile" method="post">
-                                                        <section class="panel panel-default">
-                                                            <header class="panel-heading">
-                                                                <strong>个人资料</strong>
-                                                            </header>
-                                                            <div class="panel-body">
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label">描述一下自己</label>
-                                                                    <div class="col-sm-6">
-                                                                        <textarea class="form-control parsley-validated" name="description" rows="6" data-minwords="6" data-required="true" placeholder="Type your message">${memberInfomation.description}</textarea>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="line line-dashed b-b line-lg pull-in"></div>
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label">首页背景ID</label>
-                                                                    <div class="col-sm-6">
-                                                                        <input type="text" name="backgroundId" class="form-control parsley-validated" placeholder="url" value="${memberInfomation.backgroundId}">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="line line-dashed b-b line-lg pull-in"></div>
-                                                            </div>
-                                                            <footer class="panel-footer text-right bg-light lter">
-                                                                <button type="submit" class="btn btn-success btn-s-xs">保存</button>
-                                                            </footer>
-                                                        </section>
-                                                    </form>
+                                            <section class="scrollable">
+                                                <div class="tab-pane active" id="activity">
+                                                    <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+                                                        <li class="list-group-item">
+                                                            <a href="#" class="thumb-sm pull-left m-r-sm">
+                                                                <img src="${pageContext.request.contextPath}/assets/images/a0.png" class="img-circle">
+                                                            </a>
+                                                            <a href="#" class="clear">
+                                                                <small class="pull-right">3 minuts ago</small>
+                                                                <strong class="block">Drew Wllon</strong>
+                                                                <small>Wellcome and play this web application template ... </small>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
                                                 </div>
-                                            </div>
+                                            </section>
+                                        </section>
+                                    </aside>
+                                    <aside class="col-lg-3 b-l">
+                                        <section class="panel panel-default">
+                                            <header class="panel-heading">
+                                                用户统计信息
+                                            </header>
+                                            <div class="list-group no-radius alt">
+                                                <a class="list-group-item" href="#">
+                                                    <span class="badge bg-success">25</span>
+                                                    <i class="fa fa-comment icon-muted"></i> 
+                                                    访问
+                                                </a>
+                                                <a class="list-group-item" href="#">
+                                                    <span class="badge bg-info">16</span>
+                                                    <i class="fa fa-envelope icon-muted"></i> 
+                                                    评论
+                                                </a>
+                                                <a class="list-group-item" href="#">
+                                                    <span class="badge bg-light">5</span>
+                                                    <i class="fa fa-eye icon-muted"></i> 
+                                                    标签
+                                                </a>
+                                                <a class="list-group-item" href="#">
+                                                    <span class="badge bg-light">5</span>
+                                                    <i class="fa fa-eye icon-muted"></i> 
+                                                    上传
+                                                </a>
+                                                <a class="list-group-item" href="#">
+                                                    <span class="badge bg-light">5</span>
+                                                    <i class="fa fa-eye icon-muted"></i> 
+                                                    收藏
+                                                </a>
                                             </div>
                                         </section>
                                     </aside>
@@ -166,28 +152,36 @@
                         <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
                     </section>
                 </section>
-            </section>    
+            </section>   
+            <footer id="footer">
+                <div class="text-center text-muted">
+                    <p>
+                        <small>所有图片同步于<a href="http://alpha.wallhaven.cc/" target="_blank">alpha.wallhaven.cc</a>©lockbur.com2015  京ICP备15054053号</small>
+                    </p>
+                </div>
+            </footer>
         </section>
         <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-        <!-- Bootstrap 验证框架-->
-        <script src="${pageContext.request.contextPath}/assets/js/parsley/parsley.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/parsley/i18n/zh_cn.js"></script>
-
         <!-- App -->
         <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
         <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/masonry/tiles.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/masonry/demo.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-        <script>
+        <script type="text/javascript">
             $(document).ready(function () {
-//                var $loginForm = $("#loginForm");
-//                var $username = $("#username");
-//                var $password = $("#password");
+                $("#search").click(function () {
+                    $("#searchbar").toggle("slow");
+                });
+                $('body').vegas({
+                    timer: false,
+                    slides: [
+                        {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
+                    ]
+                });
             });
         </script>
     </body>
 </html>
+

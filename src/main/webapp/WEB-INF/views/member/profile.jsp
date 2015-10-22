@@ -7,43 +7,43 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="en" class="app">
+<html lang="zh">
     <head>  
         <meta charset="utf-8" />
-        <title>Musik | Web Application</title>
-        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <title>Lockbur-更多壁纸，更多分享</title>
+        <meta name="description" content="高清壁纸,桌面壁纸" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/vegas/vegas.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/simple-line-icons.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css" type="text/css" />  
         <!--[if lt IE 9]>
-        <script src="${pageContext.request.contextPath}/assets/js/ie/html5shiv.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/ie/respond.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/html5shiv.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/respond.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
       <![endif]-->
+        <link rel="shortcut icon" href="favicon.ico" />
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
     </head>
-    <body class="">
+    <body class="container">
         <section class="vbox">
-            <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
-                <jsp:include page="/WEB-INF/views/member/include/header.jsp"></jsp:include>
+            <header class="bg-black dk header header-md navbar navbar-fixed-top">
+                <jsp:include page="/WEB-INF/views/portal/common/header.jsp"></jsp:include>
                 </header>
+
                 <section>
                     <section class="hbox stretch">
-                        <!-- .aside -->
-                        <aside class="bg-black dk nav-xs aside hidden-print" id="nav">          
-                            <section class="vbox">
-                                <section class="w-f-md scrollable">
-                                    <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
-                                        <!-- nav -->                 
-                                    <jsp:include page="/WEB-INF/views/member/include/siderbar.jsp"></jsp:include>
-                                        <!-- / nav -->
-                                    </div>
-                                </section>
-                        </aside>
-                        <!-- /.aside -->
                         <section id="content">
                             <section class="vbox">
                                 <section class="scrollable">
@@ -61,7 +61,7 @@
                                                             <small class="text-muted"><i class="fa fa-map-marker"></i>中国,北京</small>
                                                         </div>                
                                                     </div>
-                                                    
+
                                                     <div class="btn-group btn-group-justified m-b">
                                                         <a class="btn btn-success btn-rounded">
                                                             <span class="text">
@@ -138,7 +138,7 @@
                                                     <i class="fa fa-eye icon-muted"></i> 
                                                     上传
                                                 </a>
-                                                 <a class="list-group-item" href="#">
+                                                <a class="list-group-item" href="#">
                                                     <span class="badge bg-light">5</span>
                                                     <i class="fa fa-eye icon-muted"></i> 
                                                     收藏
@@ -152,28 +152,36 @@
                         <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
                     </section>
                 </section>
-            </section>    
+            </section>   
+            <footer id="footer">
+                <div class="text-center text-muted">
+                    <p>
+                        <small>所有图片同步于<a href="http://alpha.wallhaven.cc/" target="_blank">alpha.wallhaven.cc</a>©lockbur.com2015  京ICP备15054053号</small>
+                    </p>
+                </div>
+            </footer>
         </section>
         <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-        <!-- Bootstrap 验证框架-->
-        <script src="${pageContext.request.contextPath}/assets/js/parsley/parsley.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/parsley/i18n/zh_cn.js"></script>
-
         <!-- App -->
         <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
         <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/masonry/tiles.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/masonry/demo.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-        <script>
+        <script type="text/javascript">
             $(document).ready(function () {
-//                var $loginForm = $("#loginForm");
-//                var $username = $("#username");
-//                var $password = $("#password");
+                $("#search").click(function () {
+                    $("#searchbar").toggle("slow");
+                });
+                $('body').vegas({
+                    timer: false,
+                    slides: [
+                        {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
+                    ]
+                });
             });
         </script>
     </body>
 </html>
+
