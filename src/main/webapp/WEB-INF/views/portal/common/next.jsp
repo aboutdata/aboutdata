@@ -21,7 +21,7 @@
         <div class="col-xs-6 col-sm-4 col-md-3">
             <div class="item">
                 <div class="pos-rlt">
-                    <div class="item-overlay opacity r r-2x bg-black">
+                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}" class="item-overlay opacity r r-2x bg-black">
                         <div class="text-info padder m-t-sm text-sm">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -29,19 +29,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-o text-muted"></i>
                         </div>
-                        <div class="center text-center m-t-n">
-                            <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-screen-smartphone i-2x"></i></a>
-                        </div>
-                        <div class="bottom padder m-b-sm">
-                            <a href="#" class="pull-right">
-                                <i class="fa fa-heart-o"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa fa-plus-circle"></i>
-                            </a>
-                        </div>
-                    </div>
-
+                    </a>
                     <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
                 </div>
                 <div class="wrapper-sm" ></div>

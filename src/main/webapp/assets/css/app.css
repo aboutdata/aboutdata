@@ -3521,7 +3521,7 @@ fieldset[disabled] .i-checks input + i:before {
   background-repeat: no-repeat;
 }
 .item .opacity {
-  background-color: rgba(0,0,0,0.75);
+  background-color: rgba(255,255,255,0.45);
 }
 .item-overlay {
   display: none;

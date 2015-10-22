@@ -25,61 +25,57 @@
         <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/respond.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
       <![endif]-->
-      <!-- ////////////////////////////////// -->
-	    <!-- //        Favicon Files         // -->
-	    <!-- ////////////////////////////////// -->
-	    <link rel="shortcut icon" href="favicon.ico" />
+        <!-- ////////////////////////////////// -->
+        <!-- //        Favicon Files         // -->
+        <!-- ////////////////////////////////// -->
+        <link rel="shortcut icon" href="favicon.ico" />
     </head>
     <body class="container">
         <section class="vbox">
             <header class="bg-black dk header header-md navbar navbar-fixed-top">
-              <jsp:include page="/WEB-INF/views/portal/common/header.jsp"></jsp:include>
-            </header>
-            <!--main page-->
-            <section id="content">
-                <section class="hbox stretch">
-                    <section>
-                        <section class="vbox">
-                            <section id="waterfall" class="scrollable padder-md">
-                                <h2 class="font-thin m-b">Discover 
-                                    <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
-                                        <span class="bar1 a1 bg-primary lter"></span>
-                                        <span class="bar2 a2 bg-info lt"></span>
-                                        <span class="bar3 a3 bg-success"></span>
-                                        <span class="bar4 a4 bg-warning dk"></span>
-                                        <span class="bar5 a5 bg-danger dker"></span>
-                                    </span>
-                                </h2>
-                                <div class="row row-sm">
-	                              <c:forEach items="${list}" var="photos" varStatus="idx">
-	    								<div class="col-xs-6 col-sm-4 col-md-3">
-	                                        <div class="item">
-	                                            <div class="pos-rlt">
-	                                                <div class="item-overlay opacity r r-2x bg-black">
-	                                                    <div class="text-info padder m-t-sm text-sm">
-	                                                        <i class="fa fa-star"></i>
-	                                                        <i class="fa fa-star"></i>
-	                                                        <i class="fa fa-star"></i>
-	                                                        <i class="fa fa-star"></i>
-	                                                        <i class="fa fa-star-o text-muted"></i>
-	                                                    </div>
-	                                                    <div class="center text-center m-t-n">
-	                                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-screen-smartphone i-2x"></i></a>
-	                                                    </div>
-	                                                </div>
-	
-	                                                <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
-	                                            </div>
-	                                            <div class="wrapper-sm" ></div>
-	                                        </div>
-	                                    </div>
-	                                     <!--gallery end first// old-->
-								  </c:forEach>
-								</div>
+                <jsp:include page="/WEB-INF/views/portal/common/header.jsp"></jsp:include>
+                </header>
+                <!--main page-->
+                <section id="content">
+                    <section class="hbox stretch">
+                        <section>
+                            <section class="vbox">
+                                <section id="waterfall" class="scrollable padder-md">
+                                    <h2 class="font-thin m-b">Discover 
+                                        <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
+                                            <span class="bar1 a1 bg-primary lter"></span>
+                                            <span class="bar2 a2 bg-info lt"></span>
+                                            <span class="bar3 a3 bg-success"></span>
+                                            <span class="bar4 a4 bg-warning dk"></span>
+                                            <span class="bar5 a5 bg-danger dker"></span>
+                                        </span>
+                                    </h2>
+                                    <div class="row row-sm">
+                                    <c:forEach items="${list}" var="photos" varStatus="idx">
+                                        <div class="col-xs-6 col-sm-4 col-md-3">
+                                            <div class="item">
+                                                <div class="pos-rlt">
+                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}" class="item-overlay opacity r r-2x bg-black">
+                                                        <div class="text-info padder m-t-sm text-sm">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o text-muted"></i>
+                                                        </div>
+                                                    </a>
+                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
+                                                </div>
+                                                <div class="wrapper-sm" ></div>
+                                            </div>
+                                        </div>
+                                        <!--gallery end first// old-->
+                                    </c:forEach>
+                                </div>
                             </section>
-                             <div class="row row-sm">
+                            <div class="row row-sm">
                                 <div class="loading text-center">
-                                    
+
                                 </div>
                                 <div id="navigation">
                                     <a href="${pageContext.request.contextPath}/random/next?page=1"></a>
@@ -128,7 +124,7 @@
                     loading: {
                         msgText: "",
                         finishedMsg: '没有新数据了...',
-                        img :"${pageContext.request.contextPath}/assets/images/loading.gif",
+                        img: "${pageContext.request.contextPath}/assets/images/loading.gif",
                         selector: '.loading' // 显示loading信息的div
                     }
                 }, function (newElems) {
@@ -136,7 +132,7 @@
                     var $newElems = $(newElems);
                     $('#waterfall').append($newElems);
                 });
-                
+
                 $("img").error(function () {
                     $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
                 });

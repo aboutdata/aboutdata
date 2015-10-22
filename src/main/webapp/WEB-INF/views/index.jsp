@@ -53,7 +53,7 @@
                                         <div class="col-sm-4">
                                             <div class="item">
                                                 <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
+                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}" class="item-overlay opacity r r-2x bg-black">
                                                         <div class="text-info padder m-t-sm text-sm">
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
@@ -61,12 +61,8 @@
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star-o text-muted"></i>
                                                         </div>
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-screen-smartphone i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-
-                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
+                                                    </a>
+                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="wrapper-sm" ></div>
                                             </div>
@@ -80,7 +76,7 @@
                                         <div class="col-sm-3">
                                             <div class="item">
                                                 <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
+                                                   <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}" class="item-overlay opacity r r-2x bg-black">
                                                         <div class="text-info padder m-t-sm text-sm">
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
@@ -88,12 +84,9 @@
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star-o text-muted"></i>
                                                         </div>
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-screen-smartphone i-2x"></i></a>
-                                                        </div>
-                                                    </div>
+                                                    </a>
 
-                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
+                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="wrapper-sm" ></div>
                                             </div>
@@ -107,7 +100,7 @@
                                         <div class="col-sm-2">
                                             <div class="item">
                                                 <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
+                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}" class="item-overlay opacity r r-2x bg-black">
                                                         <div class="text-info padder m-t-sm text-sm">
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
@@ -115,12 +108,8 @@
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star-o text-muted"></i>
                                                         </div>
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-screen-smartphone i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-
-                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
+                                                    </a>
+                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="wrapper-sm" ></div>
                                             </div>
@@ -134,7 +123,14 @@
                         <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
                     </section>
                 </section>
-            </section>    
+            </section>   
+            <footer id="footer">
+                <div class="text-center text-muted">
+                    <p>
+                       <small>所有图片同步于<a href="http://alpha.wallhaven.cc/" target="_blank">alpha.wallhaven.cc</a>©lockbur.com2015  京ICP备15054053号</small>
+                    </p>
+                </div>
+            </footer>
         </section>
         <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
         <!-- Bootstrap -->
@@ -147,8 +143,8 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
         <script type="text/javascript">
-            $(document).ready(function() {
-                $("#search").click(function() {
+            $(document).ready(function () {
+                $("#search").click(function () {
                     $("#searchbar").toggle("slow");
                 });
                 $('body').vegas({
@@ -157,7 +153,7 @@
                         {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
                     ]
                 });
-                $("img").error(function() {
+                $("img").error(function () {
                     $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
                 });
             });
