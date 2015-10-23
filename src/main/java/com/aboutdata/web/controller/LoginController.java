@@ -123,7 +123,7 @@ public class LoginController {
 
         session.setAttribute(Member.PRINCIPAL_ATTRIBUTE_NAME, new Principal(member.getId(), username));
 
-        return "/index";
+        return "redirect:/";
     }
 
 }

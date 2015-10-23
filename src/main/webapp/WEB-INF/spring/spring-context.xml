@@ -5,6 +5,7 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:task="http://www.springframework.org/schema/task"  
        xmlns:oscache="http://www.springmodules.org/schema/oscache"
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans.xsd 
@@ -17,17 +18,22 @@
         http://www.springframework.org/schema/cache 
         http://www.springframework.org/schema/cache/spring-cache.xsd
         http://www.springmodules.org/schema/oscache 
-        http://www.springmodules.org/schema/cache/springmodules-oscache.xsd">
+        http://www.springmodules.org/schema/cache/springmodules-oscache.xsd
+        http://www.springframework.org/schema/task 
+        http://www.springframework.org/schema/task/spring-task-3.0.xsd">
     <context:annotation-config/>
     
-    <bean id="appBean" class="com.aboutdata.commons.application.ApplicationBean"/>
+    <!-- <bean id="appBean" class="com.aboutdata.commons.application.ApplicationBean"/>-->
     
-    <!--wallhaven 同步使用-->
+    <!--wallhaven 同步使用
     <bean id="wallhavenJobCrawler" class="com.aboutdata.wallheaven.WallhavenJobCrawler"/>
     
     <bean id="loggerPostProcessor" class="com.aboutdata.commons.application.LoggerPostProcessor"/>
-      
-    <context:component-scan base-package="com.aboutdata.service">
+    
+    <bean id="buildIndexSchedule" class="com.aboutdata.schedule.BuildIndexSchedule"/>  -->
+    
+    
+    <context:component-scan base-package="com.aboutdata">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
 
@@ -65,9 +71,11 @@
         task.queue_capacity=1000
         task.keep_alive_seconds=60
     -->
+    <!-- Spring定时器注解开关-->  
+    <task:annotation-driven />  
     <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-        <property name="corePoolSize" value="5" />
-        <property name="maxPoolSize" value="50" />
+        <property name="corePoolSize" value="50" />
+        <property name="maxPoolSize" value="150" />
         <property name="queueCapacity" value="1000" />
         <property name="keepAliveSeconds" value="60" />
     </bean>

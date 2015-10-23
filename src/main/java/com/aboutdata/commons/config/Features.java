@@ -21,6 +21,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Features implements Serializable{
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3824825356562068350L;
+
+	/**
      * 用户信息是否显示完整 实际情况是开发这模式需要开启此项 设置flase
      *
      */
@@ -35,6 +40,12 @@ public class Features implements Serializable{
     
     @XmlElement
     private boolean enableSearch = false;  //默认值
+    
+    /**
+     * 是否启用用户注册和登录功能
+     */
+    @XmlElement
+    private boolean enableLogin = false;  //默认值
     
     
     
@@ -62,8 +73,20 @@ public class Features implements Serializable{
     public void setEnableSearch(boolean enableSearch) {
         this.enableSearch = enableSearch;
     }
+    
+    public boolean isEnableLogin() {
+		return enableLogin;
+	}
 
-    @Override
+	public void setEnableLogin(boolean enableLogin) {
+		this.enableLogin = enableLogin;
+	}
+
+	public void setEnableSMS(boolean enableSMS) {
+		this.enableSMS = enableSMS;
+	}
+
+	@Override
     public String toString() {
         return "Features{" + "dimPrivacy=" + dimPrivacy + ", enableSMS=" + enableSMS + '}';
     }

@@ -19,6 +19,7 @@ import com.aboutdata.service.MemberRankService;
 import com.aboutdata.service.MemberService;
 import com.aboutdata.service.PhotosAlbumService;
 import com.aboutdata.service.PhotosService;
+import com.aboutdata.service.SearchService;
 import com.aboutdata.service.StorageService;
 import com.aboutdata.service.TagService;
 import java.io.File;
@@ -58,6 +59,8 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 
     @Resource
     private PhotosAlbumService photosAlbumService;
+    @Resource
+    private SearchService searchService;
 
     @Resource
     private AdminDao adminDao;
@@ -82,88 +85,10 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     }
 
     @Test
-    @Ignore
-    public void createMember() {
-        Member member = new Member();
-//
-//        //密码
-//        String salt = SecurityUtils.getSalt();
-//        String passphrase = SecurityUtils.getPassphrase(salt, "123456");
-//
-//        member.setUsername("test3".toLowerCase());
-//
-//        member.setSalt(salt);
-//        member.setPassword(passphrase);
-//        member.setEmail("84588d5222@qq.com");
-//        member.setPoint(1l);
-//
-//        member.setIsEnabled(true);
-//        member.setIsLocked(false);
-//        member.setLoginFailureCount(0);
-//        member.setLockedDate(null);
-////        member.setRegisterIp(request.getRemoteAddr());
-////        member.setLoginIp(request.getRemoteAddr());
-//        member.setLoginDate(new Date());
-//        member.setMemberRank(memberRankService.findDefault());
-//
-//        if (member.getMemberInfomation() == null) {
-//            MemberInfomation minfo = new MemberInfomation();
-//            minfo.setDescription("setDescription setDescription");
-//            member.setMemberInfomation(minfo);
-//        } else {
-//            MemberInfomation minfo = member.getMemberInfomation();
-//            minfo.setDescription("setDescription setDescription222222222");
-//            member.setMemberInfomation(minfo);
-//        }
-        MemberInfomation minfo = new MemberInfomation();
-        minfo.setDescription("setDescription setDescription");
-//        member.setMemberInfomation(minfo);
-        member.setId("ff8081814f7cac97014f7cacec510000");
-        minfo.setMember(member);
-        memberInfomationDao.save(minfo);
-
-        //MemberInfomation minfo = memberInfomationDao.findByMember(member);
-        log.info("#######################dd###########################" + minfo);
-    }
-
-    @Test
     public void findByIdTest() {
-        Pageable pageable = new PageRequest(0, 10);
-        Page<Admin> page = adminDao.findByUsernameLike("%ad%", pageable);
-        log.info("#######################dd###########################" + page.getContent().size());
+      //  searchService.buildAll();
     }
 
-    @Test
-    @Ignore
-    public void wallHeaven() {
-
-//        try {
-//            Member m = new Member();
-//            m.setId("1");
-//            PhotosAlbum photosAlbum = new PhotosAlbum();
-//            photosAlbum.setId("1");
-//
-//            for (int i = 2, end = 10000; i < end; i++) {
-//                Photos photos = new Photos();
-//
-//                String small = "http://alpha.wallhaven.cc/wallpapers/thumb/small/th-" + i + ".jpg";
-//                String full = "http://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-" + i + ".jpg";
-//                photos.setOrder(1);
-//                photos.setTitle(i + "_wallHeaven");
-//                photos.setThumbnail(small);
-//                photos.setMedium(small);
-//                photos.setLarge(full);
-//                photos.setSource(full);
-//
-//                photos.setMember(m);
-//                photos.setAlbum(photosAlbum);
-//                photosService.create(photos);
-//
-//            }
-//
-//        } catch (Exception ex) {
-//            java.util.logging.Logger.getLogger(DemoTest.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
+ 
 
 }

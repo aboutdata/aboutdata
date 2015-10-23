@@ -366,6 +366,13 @@
             <artifactId>FastdfsClient</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        
+         <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>4.3.1</version>
+        </dependency>
+        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>

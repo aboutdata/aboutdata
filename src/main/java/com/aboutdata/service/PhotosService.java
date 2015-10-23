@@ -22,8 +22,6 @@ public interface PhotosService {
 
     public Page<PhotosModel> find(Pageable pageable);
 
-    public List<Photos> findTop10();
-
     public List<Photos> findPhotosAndTags();
 
     public void addTags(String id, String tagString);
@@ -37,5 +35,22 @@ public interface PhotosService {
     public int makrStatus(String id, PhotoStatus status);
 
     public Page<PhotosModel> findByStatus(PhotoStatus status, Pageable pageable);
+
+    public List<PhotosModel> random();
+
+    /**
+     * 查看壁纸 详情
+     *
+     * @param id
+     * @return
+     */
+    public PhotosModel views(String id);
+
+    /**
+     * 统计所有 壁纸数量
+     *
+     * @return
+     */
+    public long count();
 
 }
