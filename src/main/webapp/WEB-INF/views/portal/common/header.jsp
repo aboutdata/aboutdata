@@ -103,7 +103,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="docs.html">收藏</a>
+                            <a href="${pageContext.request.contextPath}/member/favorite">收藏</a>
                         </li>
                         <li class="divider"></li>
                         <li>
