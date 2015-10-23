@@ -47,8 +47,10 @@
                                     <c:forEach items="${collections}" var="collection">
                                         <li class="list-group-item">
                                             <span class="pull-right" >
-                                                <a href="#"><i class="fa fa-pencil icon-muted fa-fw m-r-xs"></i></a>
-                                                <a href="#"><i class="fa fa-times icon-muted fa-fw"></i></a>                  
+                                                <c:if test="${not collection.isDefault}">
+                                                    <a href="#"><i class="fa fa-pencil icon-muted fa-fw m-r-xs"></i></a>
+                                                    <a href="#"><i class="fa fa-times icon-muted fa-fw"></i></a>  
+                                                </c:if>
                                             </span>
                                             <span class="pull-left media-xs">
                                                 <c:if test="${collection.isDefault}">
