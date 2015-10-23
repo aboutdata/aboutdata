@@ -7,6 +7,7 @@ package com.aboutdata.service.bean;
 
 import com.aboutdata.dao.CollectionsDao;
 import com.aboutdata.domain.Collections;
+import com.aboutdata.domain.Photos;
 import com.aboutdata.service.CollectionsService;
 import java.util.List;
 import javax.annotation.Resource;
@@ -38,6 +39,15 @@ public class CollectionsServiceImpl implements CollectionsService {
     @Override
     public void create(Collections collections) {
         collectionsDao.save(collections);
+    }
+
+    @Transactional
+    @Override
+    public void addFavorite(String photoId, String collectionsId) {
+        Collections collections = collectionsDao.findOne(collectionsId);
+        Photos photos = new Photos();
+        photos.setId(photoId);
+        collections.getPhotos().add(photos);
     }
 
 }

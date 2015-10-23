@@ -37,4 +37,12 @@ public interface CollectionsService {
      * @param collections
      */
     public void create(Collections collections);
+
+    /**
+     * 添加到收藏夹
+     *
+     * @param photoId
+     * @param collectionsId
+     */
+    public void addFavorite(String photoId, String collectionsId);
 }

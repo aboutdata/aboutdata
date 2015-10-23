@@ -69,4 +69,20 @@ public class FavoriteController {
         return ResponseMessage.success("创建收藏夹成功");
     }
 
+    /**
+     * 添加到收藏夹
+     *
+     * @param photosId
+     * @param collectionsId
+     * @return
+     */
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseMessage add(String photosId, String collectionsId) {
+        Member member = memberService.getCurrent();
+        Collections collections = collectionsService.findDefaultByMember(member.getId());
+        collectionsService.addFavorite(photosId, collections.getId());
+        return ResponseMessage.success("添加到收藏夹");
+    }
+
 }
