@@ -10,6 +10,7 @@
         <div>
             <a id="logo" class="navbar-brand" href="${pageContext.request.contextPath}">
                 <img src="${pageContext.request.contextPath}/assets/images/logo.png">
+                <strong class="text-white">LockBur</strong>
             </a>
         </div>
         <nav id="topmenu">

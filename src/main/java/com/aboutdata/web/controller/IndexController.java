@@ -18,8 +18,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -38,7 +36,7 @@ public class IndexController {
     public String displayIndex(Model model) {
 
         Sort sort = new Sort(Sort.Direction.DESC, "order");
-        Pageable pageable = new PageRequest(0, 13, sort);
+        Pageable pageable = new PageRequest(0, 24, sort);
         Page<PhotosModel> pages = photosService.find(pageable);
 
         List<PhotosModel> content = pages.getContent();
@@ -51,7 +49,8 @@ public class IndexController {
 
         model.addAttribute("three", three);
         model.addAttribute("four", four);
-        model.addAttribute("five", five);
+        
+        model.addAttribute("content", content);
 
         //model.addAttribute("list", list.getContent());
         return "/index";

@@ -9,7 +9,6 @@ import com.aboutdata.commons.enums.PhotoStatus;
 import com.aboutdata.dao.PhotosDao;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.schedule.task.BuildIndexTask;
-import com.aboutdata.service.ConfigService;
 import com.aboutdata.service.PhotosService;
 import javax.annotation.Resource;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
@@ -22,8 +21,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
 /**
  *
  * @author Administrator
