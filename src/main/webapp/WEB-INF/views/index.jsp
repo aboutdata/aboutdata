@@ -876,11 +876,11 @@
                 $('body').vegas({
                     timer: false,
                     slides: [
-                        {src: '${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/images/background1.jpg'}
+                        {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
                     ]
                 });
                 $("img").error(function () {
-                    $(this).attr("src", "${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/images/image20.jpg");
+                    $(this).attr("src", "${pageContext.request.contextPath}/assetsimages/image20.jpg");
                 });
             });
         </script>

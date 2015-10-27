@@ -28,9 +28,7 @@
     </head>
     <body class="">
         <section class="vbox">
-            <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
                 <jsp:include page="/WEB-INF/views/member/include/header.jsp"></jsp:include>
-                </header>
                 <section>
                     <section class="hbox stretch">
                         <!-- .aside -->
