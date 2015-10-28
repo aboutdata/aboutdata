@@ -36,9 +36,9 @@
             </c:otherwise>
         </c:choose>
         <!--[if lt IE 9]>
-        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/html5shiv.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/respond.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
+        <script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/html5shiv.js"></script>
+        <script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/respond.min.js"></script>
+        <script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/excanvas.js"></script>
       <![endif]-->
         <link rel="shortcut icon" href="favicon.ico" />
         <script>
@@ -58,7 +58,7 @@
                 <!---header //END-->
                 <section class="w-f-md">
                     <section class="container scrollable padder-lg">
-                        <h2 class="font-thin m-b">Acoustic</h2>
+                        <h2 class="font-thin m-b">Home</h2>
                         <div class="row row-sm">
                         <c:forEach items="${content}" var="photos" varStatus="idx">
                             <div class="col-xs-6 col-sm-4 col-md-3">
@@ -93,6 +93,7 @@
         <script src="${appBean.systemConfig.assetsUrl}/assets/js/bootstrap.js"></script>
         <script src="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.js"></script>
         <script src="${appBean.systemConfig.assetsUrl}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
+        
         <!-- App -->
         <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
@@ -108,7 +109,7 @@
                     ]
                 });
                 $("img").error(function () {
-                    $(this).attr("src", "${pageContext.request.contextPath}/assetsimages/image20.jpg");
+                    $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
                 });
             });
         </script>
