@@ -16,7 +16,7 @@
         <nav id="topmenu">
             <ul>
                 <li>
-                    <a class="discover" href="${pageContext.request.contextPath}/top"  title="发现">
+                    <a class="discover" href="${pageContext.request.contextPath}"  title="发现">
                         <i class="icon icon-disc"></i>
                         <span> Discover</span>
                     </a>
