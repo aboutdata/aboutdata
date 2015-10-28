@@ -23,13 +23,15 @@
                 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font.css" type="text/css" />
                 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css" type="text/css" />  
             </c:when>
+            <!--生产模式 使用css和常用js直接走nginx-->
             <c:otherwise>
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/bootstrap.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/js/vegas/vegas.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/animate.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/font-awesome.min.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/simple-line-icons.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/font.css" type="text/css" />
+                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/bootstrap.css" type="text/css" />
+                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.css" type="text/css" />
+                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/animate.css" type="text/css" />
+                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/font-awesome.min.css" type="text/css" />
+                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/simple-line-icons.css" type="text/css" />
+                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/font.css" type="text/css" />
+                
                 <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/app.css" type="text/css" />
             </c:otherwise>
         </c:choose>
@@ -41,7 +43,7 @@
         <link rel="shortcut icon" href="favicon.ico" />
         <script>
             var _hmt = _hmt || [];
-            (function() {
+            (function () {
                 var hm = document.createElement("script");
                 hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
                 var s = document.getElementsByTagName("script")[0];
@@ -86,19 +88,17 @@
                 </div>
             </footer>
         </section>
-        <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+        <script src="${appBean.systemConfig.assetsUrl}/assets/js/jquery.min.js"></script>
         <!-- Bootstrap -->
-        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+        <script src="${appBean.systemConfig.assetsUrl}/assets/js/bootstrap.js"></script>
+        <script src="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.js"></script>
+        <script src="${appBean.systemConfig.assetsUrl}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
         <!-- App -->
         <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-        <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/masonry/tiles.min.js"></script>
-
-        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
         <script type="text/javascript">
-            $(document).ready(function() {
-                $("#search").click(function() {
+            $(document).ready(function () {
+                $("#search").click(function () {
                     $("#searchbar").toggle("slow");
                 });
                 $('body').vegas({
@@ -107,7 +107,7 @@
                         {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
                     ]
                 });
-                $("img").error(function() {
+                $("img").error(function () {
                     $(this).attr("src", "${pageContext.request.contextPath}/assetsimages/image20.jpg");
                 });
             });
