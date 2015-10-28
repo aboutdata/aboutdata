@@ -23,8 +23,8 @@
                 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font.css" type="text/css" />
                 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css" type="text/css" />  
             </c:when>
-            <!--生产模式 使用css和常用js直接走nginx-->
             <c:otherwise>
+                <!--生产模式 使用css和常用js直接走nginx-->
                 <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/bootstrap.css" type="text/css" />
                 <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.css" type="text/css" />
                 <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/animate.css" type="text/css" />
