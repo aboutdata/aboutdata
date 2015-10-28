@@ -18,6 +18,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -32,7 +33,7 @@ public class IndexController {
     @Resource
     private PhotosService photosService;
 
-    @RequestMapping("/index")
+    @RequestMapping(method = RequestMethod.GET)
     public String displayIndex(Model model) {
 
         Sort sort = new Sort(Sort.Direction.DESC, "order");
