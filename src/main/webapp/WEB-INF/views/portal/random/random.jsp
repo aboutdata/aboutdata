@@ -30,61 +30,45 @@
         <!-- ////////////////////////////////// -->
         <link rel="shortcut icon" href="favicon.ico" />
     </head>
-    <body class="container">
+    <body>
         <section class="vbox">
-            <header class="bg-black dk header header-md navbar navbar-fixed-top">
-                <jsp:include page="/WEB-INF/views/portal/common/header.jsp"></jsp:include>
-                </header>
+            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"></jsp:include>
                 <!--main page-->
-                <section id="content">
-                    <section class="hbox stretch">
-                        <section>
-                            <section class="vbox">
-                                <section id="waterfall" class="scrollable padder-md">
-                                    <h2 class="font-thin m-b">Discover 
-                                        <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
-                                            <span class="bar1 a1 bg-primary lter"></span>
-                                            <span class="bar2 a2 bg-info lt"></span>
-                                            <span class="bar3 a3 bg-success"></span>
-                                            <span class="bar4 a4 bg-warning dk"></span>
-                                            <span class="bar5 a5 bg-danger dker"></span>
-                                        </span>
-                                    </h2>
-                                    <div class="row row-sm">
-                                    <c:forEach items="${list}" var="photos" varStatus="idx">
-                                        <div class="col-xs-6 col-sm-4 col-md-3">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}" class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="text-info padder m-t-sm text-sm">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o text-muted"></i>
-                                                        </div>
-                                                    </a>
-                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
-                                                </div>
-                                                <div class="wrapper-sm" ></div>
+                <section>
+                    <section id="waterfall"  class="container scrollable padder-lg">
+                        <h2 class="font-thin m-b">Acoustic</h2>
+                        <div class="row row-sm">
+                        <c:forEach items="${list}" var="photos" varStatus="idx">
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                                <div class="item">
+                                    <div class="pos-rlt">
+                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}" class="item-overlay opacity r r-2x bg-black">
+                                            <div class="text-info padder m-t-sm text-sm">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o text-muted"></i>
                                             </div>
-                                        </div>
-                                        <!--gallery end first// old-->
-                                    </c:forEach>
-                                </div>
-                            </section>
-                            <div class="row row-sm">
-                                <div class="loading text-center">
-
-                                </div>
-                                <div id="navigation">
-                                    <a href="${pageContext.request.contextPath}/random/next?page=1"></a>
+                                        </a>
+                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
+                                    </div>
+                                    <div class="wrapper-sm" ></div>
                                 </div>
                             </div>
-                        </section>
-                    </section>
+                            <!--gallery end first// old-->
+                        </c:forEach>
+                    </div>
+
+                    <div class="row row-sm">
+                        <div class="loading text-center">
+
+                        </div>
+                        <div id="navigation">
+                            <a href="${pageContext.request.contextPath}/latest/next?page=1"></a>
+                        </div>
+                    </div>
                 </section>
-                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
             </section>
             <!--main page //END-->
         </section>

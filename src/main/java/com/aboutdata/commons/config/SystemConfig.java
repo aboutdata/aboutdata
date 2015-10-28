@@ -31,8 +31,12 @@ public final class SystemConfig extends BaseConfig {
     @XmlElement
     private String defaultPassword = "123456";
 
+    //静态资源服务器(css js 等)
     @XmlElement
-    private String solrServer="http://localhost:9090/solr";
+    private String assetsUrl = "http://assets.lockbur.com";
+
+    @XmlElement
+    private String solrServer = "http://localhost:9090/solr";
 
     @XmlElement
     private String defaultStorageHost = "http://aboutdata.me";
@@ -84,9 +88,17 @@ public final class SystemConfig extends BaseConfig {
         this.solrServer = solrServer;
     }
 
-    @Override
-    public String toString() {
-        return "SystemConfig{" + "developMode=" + developMode + ", defaultPassword=" + defaultPassword + ", solrServer=" + solrServer + ", defaultStorageHost=" + defaultStorageHost + ", features=" + features + '}';
+    public String getAssetsUrl() {
+        return assetsUrl;
     }
 
+    public void setAssetsUrl(String assetsUrl) {
+        this.assetsUrl = assetsUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "SystemConfig{" + "developMode=" + developMode + ", defaultPassword=" + defaultPassword + ", assetsUrl=" + assetsUrl + ", solrServer=" + solrServer + ", defaultStorageHost=" + defaultStorageHost + ", features=" + features + '}';
+    }
+    
 }

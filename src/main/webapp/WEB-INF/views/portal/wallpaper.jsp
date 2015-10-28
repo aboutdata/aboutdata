@@ -35,9 +35,7 @@
     </head>
     <body>
         <section class="vbox">
-            <header class="bg-black dk header header-md navbar navbar-fixed-top">
               <jsp:include page="/WEB-INF/views/portal/common/header.jsp"></jsp:include>
-            </header>
             <!--main page-->
             <section id="content">
               <section class="hbox">
