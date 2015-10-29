@@ -51,7 +51,7 @@ public class ProfileController {
     public String profile(ModelMap model) {
         Member member = memberService.getCurrent();
         model.addAttribute("member", member);
-        return "/member/profile";
+        return "/member/dashboard";
     }
 
     /**
