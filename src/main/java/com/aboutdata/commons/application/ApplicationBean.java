@@ -12,12 +12,11 @@ import com.aboutdata.service.ConfigService;
 import com.aboutdata.service.MemberService;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * 全局配置信息
  * @author youyou
  */
 @Component("appBean")
@@ -30,6 +29,10 @@ public class ApplicationBean {
     private Features features;
 
     private SystemConfig systemConfig;
+
+    private String assetsUrl;
+
+    private boolean developMode;
 
     @Resource
     private MemberService memberService;
@@ -52,6 +55,24 @@ public class ApplicationBean {
 
     public SystemConfig getSystemConfig() {
         return configService.getSystemConfig();
+    }
+
+    /**
+     * css js 资源服务器
+     *
+     * @return
+     */
+    public String getAssetsUrl() {
+        return configService.getSystemConfig().getAssetsUrl();
+    }
+
+    /**
+     * 是否是开发者模式
+     *
+     * @return
+     */
+    public boolean isDevelopMode() {
+        return configService.getSystemConfig().isDevelopMode();
     }
 
 }
