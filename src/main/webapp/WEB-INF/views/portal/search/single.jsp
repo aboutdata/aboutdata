@@ -34,8 +34,8 @@
                 <section>
                     <div class="m-t-xxs">
                         <div class="modal-center animated fadeInUp text-center" style="width:200px;margin:-80px 0 0 -100px;">
-                            <div class="thumb-md"><img src="${pageContext.request.contextPath}/assets/images/logo.png" class="img-circle"></div>
-                        <p class="text-white h4 m-t m-b">lockbur.com</p>
+                            <div class="thumb-lg"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" class="img-circle b-a b-light b-2x"></div>
+                        <p class="text-white h4 m-t m-b">I Am Dangerous</p>
                         <div class="input-group">
                             <input type="text" id="keywords" class="form-control text-sm btn-rounded" placeholder="keywords">
                             <span class="input-group-btn">
