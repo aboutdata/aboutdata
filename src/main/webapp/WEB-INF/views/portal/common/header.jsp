@@ -13,6 +13,61 @@
                 <strong class="text-white">LockBur</strong>
             </a>
         </div>
+        <c:choose>
+            <c:when test="${appBean.getCurrentUser() != null}">
+                <div class="navbar-right ">
+                    <ul class="nav navbar-nav nav-user user">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+                                <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                                    <img src="${pageContext.request.contextPath}/assets/images/user.jpg" alt="...">
+                                </span>
+                                ${appBean.getCurrentUser().username} <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight">            
+                                <li>
+                                    <span class="arrow top"></span>
+                                    <a href="#">设置</a>
+                                </li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/member/profile">个人资料</a>
+                                </li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/member/photos/album">
+                                        我的相册
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="docs.html">收藏</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/logout">注销登录</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>  
+            </c:when>
+            <c:otherwise>
+                <div class="navbar-right ">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/login">
+                                <i class="fa fa-user"></i>
+                                登录
+                            </a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/register" >
+                                <i class="icon-user-follow"></i>
+                                注册
+                            </a>
+                        </li>
+                    </ul>
+                </div>  
+            </c:otherwise>
+        </c:choose> 
         <nav id="topmenu">
             <ul>
                 <li>
@@ -49,60 +104,6 @@
                 </c:if>
             </ul>
         </nav>
-        <c:choose>
-            <c:when test="${appBean.getCurrentUser() != null}">
-                <div class="navbar-right ">
-                    <ul class="nav navbar-nav m-n hidden-xs nav-user user">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
-                                <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                                    <img src="${pageContext.request.contextPath}/assets/images/user.jpg" alt="...">
-                                </span>
-                                ${appBean.getCurrentUser().username} <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu animated fadeInRight">            
-                                <li>
-                                    <span class="arrow top"></span>
-                                    <a href="#">设置</a>
-                                </li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/member/profile">个人资料</a>
-                                </li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/member/photos/album">
-                                        我的相册
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="docs.html">收藏</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/logout">注销登录</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>  
-            </c:when>
-            <c:otherwise>
-                <div class="navbar-right ">
-                    <ul class="nav navbar-nav m-n hidden-xs nav-user user">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/login">
-                                <i class="fa fa-user"></i>
-                                登录
-                            </a>
-                        </li>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/register" >
-                                <i class="icon-user-follow"></i>
-                                注册
-                            </a>
-                        </li>
-                    </ul>
-                </div>  
-            </c:otherwise>
-        </c:choose> 
+
     </div>
 </header>

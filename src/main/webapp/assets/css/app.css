@@ -3917,6 +3917,7 @@ fieldset[disabled] .i-checks input + i:before {
 
 /**导航列表 2015-10-26**/
 #header {
+        float:left;
 	font-size:1.1em;
 	line-height:50px;
 	text-align:left;
