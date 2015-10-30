@@ -41,8 +41,8 @@ public class FavoriteController {
     @RequestMapping(method = RequestMethod.GET)
     public String displaFavorite(ModelMap model) {
         Member member = memberService.getCurrent();
-        List<Collections> collections = collectionsService.findByMember(member.getId());
-
+        Collections collections = collectionsService.findDefaultByMember(member.getId());
+        
         model.addAttribute("collections", collections);
         return "/member/favorite/single";
     }

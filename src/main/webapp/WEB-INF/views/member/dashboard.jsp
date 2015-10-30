@@ -47,8 +47,9 @@
                                 <section class="scrollable">
                                     <div class="wrapper">
                                         <div class="text-center m-b m-t">
-                                            <a href="#" class="thumb-lg">
-                                                <img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" class="img-circle">
+                                            <a href="#" class="thumb-lg avatar">
+                                                <img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="...">
+                                                <i class="fa fa-edit md b-white bottom"></i>
                                             </a>
                                             <div>
                                                 <div class="h3 m-t-xs m-b-xs">${member.username}</div>
