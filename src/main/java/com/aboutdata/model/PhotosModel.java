@@ -157,6 +157,11 @@ public class PhotosModel extends BaseModel {
     public void setTags(List<TagModel> tags) {
         this.tags = tags;
     }
+
+    @Override
+    public String toString() {
+        return "PhotosModel{" + "title=" + title + ", source=" + source + ", large=" + large + ", medium=" + medium + ", thumbnail=" + thumbnail + ", wallhaven=" + wallhaven + ", storageHost=" + storageHost + ", order=" + order + ", status=" + status + ", album=" + album + ", member=" + member + ", tags=" + tags + '}';
+    }
     
 
 }

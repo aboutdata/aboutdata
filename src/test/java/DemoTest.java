@@ -86,9 +86,12 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 
     @Test
     public void findByIdTest() {
-      //  searchService.buildAll();
+        Pageable pageable = new PageRequest(1, 10);
+        Page<PhotosModel> pages = searchService.search("astronaut", pageable);
+        System.out.println("pages.getContent() "+pages.getContent().size());
+        for (PhotosModel photo : pages.getContent()) {
+            System.out.println("photo "+photo);
+        }
     }
-
- 
 
 }
