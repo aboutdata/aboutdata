@@ -27,18 +27,18 @@
                             <ul class="dropdown-menu animated fadeInRight">            
                                 <li>
                                     <span class="arrow top"></span>
-                                    <a href="#">设置</a>
+                                    <a href="${pageContext.request.contextPath}/member/settings/account">设置</a>
                                 </li>
                                 <li>
                                     <a href="${pageContext.request.contextPath}/member/profile">个人资料</a>
                                 </li>
-                                <li>
+<!--                                <li>
                                     <a href="${pageContext.request.contextPath}/member/photos/album">
                                         我的相册
                                     </a>
-                                </li>
+                                </li>-->
                                 <li>
-                                    <a href="docs.html">收藏</a>
+                                    <a href="${pageContext.request.contextPath}/member/favorite">收藏</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>

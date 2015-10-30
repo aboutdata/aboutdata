@@ -39,14 +39,14 @@
         <section class="vbox">
             <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
             <section>
-                <section class="container scrollable m-b m-t">
+                <section class="container m-b m-t">
                     <section class="hbox stretch">
                         <aside class="aside bg-light dk" id="sidebar">
                             <section class="vbox animated fadeInUp">
                                 <header>
                                     <h3 class="font-thin m-l">Collections</h3>
                                 </header>
-                                <section class="scrollable hover">
+                                <section class="hover">
                                     <div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none auto">
                                         <a href="#" class="list-group-item active">
                                             <i class="icon icon-lock"></i> Default
@@ -57,7 +57,7 @@
                         </aside>
                         <aside class="bg-white">
                             <section class="vbox">
-                                <section class="scrollable padder-lg">
+                                <section class="padder-lg">
                                     <h2 class="font-thin m-b">Default Collections</h2>
                                     <div class="row row-sm">
                                         <c:forEach items="${collections.photos}" var="photos">
