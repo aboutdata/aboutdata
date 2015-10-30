@@ -21,9 +21,9 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css" type="text/css" />  
         <!--[if lt IE 9]>
-        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/html5shiv.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/respond.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/ie/html5shiv.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/ie/respond.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
       <![endif]-->
         <link rel="shortcut icon" href="favicon.ico" />
     </head>

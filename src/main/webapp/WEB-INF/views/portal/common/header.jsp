@@ -96,14 +96,12 @@
                         <span> Upload</span>
                     </a>
                 </li>
-                <c:if test="${appBean.features.enableSearch}">
-                    <li>
-                        <a href="http://alpha.wallhaven.cc/random" class="search">
-                            <i class="fa fa-lg fa-search"></i>
-                            <span> Search</span>
-                        </a>
-                    </li>
-                </c:if>
+                <li>
+                    <a href="${pageContext.request.contextPath}/search" class="search">
+                        <i class="fa fa-lg fa-search"></i>
+                        <span> Search</span>
+                    </a>
+                </li>
             </ul>
         </nav>
 

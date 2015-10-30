@@ -5,10 +5,10 @@
  */
 package com.aboutdata.web.controller;
 
-
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.service.SearchService;
 import javax.annotation.Resource;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -36,11 +36,15 @@ public class SearchController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String displaySearch(String keywords, Model model) {
+        if (StringUtils.isEmpty(keywords)) {
+            //如果没有参数 就所搜索框的页面
+            return "/portal/search/single";
+        }
         Pageable pageable = new PageRequest(1, 24);
         Page<PhotosModel> pages = searchService.search(keywords, pageable);
         model.addAttribute("pages", pages);
         model.addAttribute("keywords", keywords);
-        return "/portal/search/search";
+        return "/portal/search/result";
     }
 
     /**
