@@ -73,7 +73,7 @@
                                                 </a>
                                             </div>
                                             <div class="center text-center m-t-n">
-                                                <a href="#"><i class="icon-control-play i-2x"></i></a>
+                                                <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-control-play i-2x"></i></a>
                                             </div>
                                         </div>
                                         <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>

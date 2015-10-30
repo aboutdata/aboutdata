@@ -119,6 +119,9 @@
                         {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
                     ]
                 });
+                $("img").error(function () {
+                    $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
+                });
             });
     </script>
 </html>
