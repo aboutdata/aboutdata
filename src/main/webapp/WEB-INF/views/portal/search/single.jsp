@@ -37,7 +37,7 @@
                             <div class="thumb-lg"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" class="img-circle b-a b-light b-2x"></div>
                         <p class="text-white h4 m-t m-b">I Am Dangerous</p>
                         <div class="input-group">
-                            <input type="text" id="keywords" class="form-control text-sm btn-rounded" placeholder="keywords">
+                            <input type="text" id="keywords" class="form-control text-sm btn-rounded" value="china">
                             <span class="input-group-btn">
                                 <button id="search" class="btn btn-success btn-rounded" type="button">
                                     <i class="fa fa-search"></i>
