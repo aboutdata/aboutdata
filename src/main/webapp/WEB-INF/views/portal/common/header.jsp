@@ -8,7 +8,7 @@
 <header id="header" class="navbar navbar-fixed-top">
     <div class="container">
         <div>
-            <a id="logo" class="navbar-brand" href="${pageContext.request.contextPath}">
+            <a id="logo" class="navbar-brand" href="${pageContext.request.contextPath}/">
                 <img src="${pageContext.request.contextPath}/assets/images/logo.png">
                 <strong class="text-white">LockBur</strong>
             </a>
@@ -73,7 +73,7 @@
         <nav id="topmenu">
             <ul>
                 <li>
-                    <a class="discover" href="${pageContext.request.contextPath}"  title="发现">
+                    <a class="discover" href="${pageContext.request.contextPath}/top"  title="发现">
                         <i class="icon icon-disc"></i>
                         <span> Discover</span>
                     </a>
