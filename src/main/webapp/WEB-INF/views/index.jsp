@@ -12,7 +12,7 @@
         <meta charset="utf-8" />
         <title>Lockbur-更多壁纸，更多分享</title>
         <meta name="description" content="高清壁纸,桌面壁纸" />
-        <meta name="baidu-site-verification" content="EnQQvcajMO" />
+        <meta name="baidu-site-verification" content="bB5uKKGWVi" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <c:choose>
             <c:when test="${appBean.systemConfig.developMode}">
