@@ -130,7 +130,7 @@
 
                                         <section class="panel panel-default">
                                             <header class="panel-heading">
-                                                <strong>账户</strong>
+                                                <strong>个人资料(Profile)</strong>
                                             </header>
                                             <form class="form-horizontal" action="${pageContext.request.contextPath}/member/settings/profile" method="post">
                                                 <div class="panel-body">

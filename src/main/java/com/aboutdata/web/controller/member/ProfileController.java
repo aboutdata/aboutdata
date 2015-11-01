@@ -7,8 +7,10 @@ package com.aboutdata.web.controller.member;
 
 import com.aboutdata.commons.enums.Gender;
 import com.aboutdata.domain.Member;
+import com.aboutdata.domain.MemberInfomation;
 import com.aboutdata.service.AreaService;
 import com.aboutdata.service.MemberAttributeService;
+import com.aboutdata.service.MemberInfomationService;
 import com.aboutdata.service.MemberService;
 import java.text.ParseException;
 import java.util.Arrays;
@@ -39,8 +41,13 @@ public class ProfileController {
 
     @Resource(name = "memberServiceImpl")
     private MemberService memberService;
+    
+    @Resource
+    private MemberInfomationService memberInfomationService;
+
     @Resource(name = "memberAttributeServiceImpl")
     private MemberAttributeService memberAttributeService;
+    
     @Resource(name = "areaServiceImpl")
     private AreaService areaService;
 
@@ -50,7 +57,10 @@ public class ProfileController {
     @RequestMapping(method = RequestMethod.GET)
     public String profile(ModelMap model) {
         Member member = memberService.getCurrent();
+        MemberInfomation memberInfomation = memberInfomationService.findByMember(member);
+
         model.addAttribute("member", member);
+        model.addAttribute("memberInfomation", memberInfomation);
         return "/member/dashboard";
     }
 

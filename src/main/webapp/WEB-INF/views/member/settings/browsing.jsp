@@ -75,105 +75,11 @@
                                             <a href="${pageContext.request.contextPath}/member/settings/account" class="btn btn-primary">
                                                 <i class="fa fa-edit"></i> 修改资料
                                             </a>
-                                            <a href="#" class="btn btn-info"><i class="fa fa-upload"></i> 上传图片</a>
-                                            <a href="#" class="btn btn-success"><i class="fa fa-star"></i> 收藏列表</a>
+                                            <a href="${pageContext.request.contextPath}/member/favorite" class="btn btn-success"><i class="fa fa-star"></i> 收藏列表</a>
                                         </div>
                                         <div>
                                             <h4 class="text-uc text-xs text-muted">用户描述信息</h4>
-                                            <p>本站主要涉及内容为对自己看到的互联网知识的总结，有些内容很可能引用了你的观点，但没有注明出处，请未注明出处的朋友发邮件至我邮箱。</p>
-                                        </div>
-                                        <div>    
-                                            <h4 class="text-uc text-xs text-muted">我的关注</h4> 
-                                            <div class="row row-sm">
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Spring rain</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Hope</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Miya</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Listen wind</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Soyia Jess</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Breaking me</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Pett JA</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Nothing</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Willion</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Panda Style</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Lionie</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Hook Me</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Gossi</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/user.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Tempered Song</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                             <p>${memberInfomation.description}</p>
                                         </div>
                                     </div>
                                 </section>
@@ -204,7 +110,7 @@
                                                 <span class="m-b-xs h4 block"> 
                                                     <i class="fa fa-cog text-muted"></i>
                                                 </span>
-                                                <span class="text-muted">个人设置</span>
+                                                <span class="text-muted">浏览设置</span>
                                             </a>
                                         </li>
                                         <li>
@@ -222,7 +128,7 @@
                                         <form class="form-horizontal" data-validate="parsley" action="${pageContext.request.contextPath}/member/settings/#" method="post">
                                             <section class="panel panel-default">
                                                 <header class="panel-heading">
-                                                    <strong>账户</strong>
+                                                    <strong>浏览设置(Browsing)</strong>
                                                 </header>
                                                 <div class="panel-body">
                                                     <div class="form-group">

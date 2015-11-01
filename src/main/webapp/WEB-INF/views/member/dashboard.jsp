@@ -26,15 +26,6 @@
         <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
       <![endif]-->
         <link rel="shortcut icon" href="favicon.ico" />
-        <script>
-            var _hmt = _hmt || [];
-            (function() {
-                var hm = document.createElement("script");
-                hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();
-        </script>
     </head>
     <body>
         <section class="vbox">
@@ -82,7 +73,7 @@
                                         </div>
                                         <div>
                                             <h4 class="text-uc text-xs text-muted">用户描述信息</h4>
-                                            <p>本站主要涉及内容为对自己看到的互联网知识的总结，有些内容很可能引用了你的观点，但没有注明出处，请未注明出处的朋友发邮件至我邮箱。</p>
+                                            <p>${memberInfomation.description}</p>
                                         </div>
                                         <!--                                        <div>    
                                                                                     <h4 class="text-uc text-xs text-muted">我的关注</h4> 
@@ -227,17 +218,17 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
     <script type="text/javascript">
-            $(document).ready(function() {
-                $("#search").click(function() {
-                    $("#searchbar").toggle("slow");
-                });
-                $('body').vegas({
-                    timer: false,
-                    slides: [
-                        {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
-                    ]
-                });
+        $(document).ready(function() {
+            $("#search").click(function() {
+                $("#searchbar").toggle("slow");
             });
+            $('body').vegas({
+                timer: false,
+                slides: [
+                    {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
+                ]
+            });
+        });
     </script>
 </html>
 

@@ -97,7 +97,10 @@ public class SettingsController {
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String displayEditAccount(ModelMap model) {
         Member member = memberService.getCurrent();
+        MemberInfomation memberInfomation = memberInfomationService.findByMember(member);
+
         model.addAttribute("member", member);
+        model.addAttribute("memberInfomation", memberInfomation);
         return "/member/settings/account";
     }
 
@@ -130,10 +133,11 @@ public class SettingsController {
     @RequestMapping(value = "/browsing", method = RequestMethod.GET)
     public String displaEditBrowsing(ModelMap model) {
         Member member = memberService.getCurrent();
-        model.addAttribute("member", member);
+        MemberInfomation memberInfomation = memberInfomationService.findByMember(member);
 
-//        model.addAttribute("browsing", browsing);
-        
+        model.addAttribute("member", member);
+        model.addAttribute("memberInfomation", memberInfomation);
+
         return "/member/settings/browsing";
     }
 
