@@ -41,12 +41,11 @@
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header pull-left">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/help">
                         &nbsp;<img src="${pageContext.request.contextPath}/assets/images/logo.png" alt=".">&nbsp;
                         更多壁纸，更多分享</span>
                     </a>
                 </div>
-
             </div>
         </div>
 

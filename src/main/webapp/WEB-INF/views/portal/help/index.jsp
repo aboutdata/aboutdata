@@ -41,7 +41,7 @@
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header pull-left">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/help">
                         &nbsp;<img src="${pageContext.request.contextPath}/assets/images/logo.png" alt=".">&nbsp;
                         更多壁纸，更多分享</span>
                     </a>
@@ -68,7 +68,10 @@
                         </a>
                         <hr />
                         <a href="${pageContext.request.contextPath}/help/team" class="list-group-item">
-                           团队成员
+                            团队成员
+                        </a>
+                        <a href="${pageContext.request.contextPath}/help/join" class="list-group-item">
+                            如果你认为我们的努力会给你带来快乐和方便,请加入我们
                         </a>
                     </div>
                 </div>
