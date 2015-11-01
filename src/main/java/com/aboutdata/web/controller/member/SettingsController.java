@@ -81,7 +81,7 @@ public class SettingsController {
         mInfo.setBackgroundId(backgroundId);
         mInfo.setMember(member);
 
-        memberInfomationService.create(mInfo);
+        memberInfomationService.update(mInfo);
 
         model.addAttribute("member", member);
 

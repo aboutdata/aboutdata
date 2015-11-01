@@ -28,7 +28,7 @@
         <link rel="shortcut icon" href="favicon.ico" />
         <script>
             var _hmt = _hmt || [];
-            (function () {
+            (function() {
                 var hm = document.createElement("script");
                 hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
                 var s = document.getElementsByTagName("script")[0];
@@ -76,106 +76,107 @@
                                             <a href="${pageContext.request.contextPath}/member/settings/account" class="btn btn-primary">
                                                 <i class="fa fa-edit"></i> 修改资料
                                             </a>
-                                            <a href="#" class="btn btn-info"><i class="fa fa-upload"></i> 上传图片</a>
-                                            <a href="#" class="btn btn-success"><i class="fa fa-star"></i> 收藏列表</a>
+                                            <a href="${pageContext.request.contextPath}/member/favorite" class="btn btn-success">
+                                                <i class="fa fa-star"></i> 收藏列表
+                                            </a>
                                         </div>
                                         <div>
                                             <h4 class="text-uc text-xs text-muted">用户描述信息</h4>
                                             <p>本站主要涉及内容为对自己看到的互联网知识的总结，有些内容很可能引用了你的观点，但没有注明出处，请未注明出处的朋友发邮件至我邮箱。</p>
                                         </div>
-                                        <div>    
-                                            <h4 class="text-uc text-xs text-muted">我的关注</h4> 
-                                            <div class="row row-sm">
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Spring rain</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Hope</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Miya</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Listen wind</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Soyia Jess</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Breaking me</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Pett JA</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Nothing</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Willion</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Panda Style</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Lionie</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Hook Me</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Gossi</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/user.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Tempered Song</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <!--                                        <div>    
+                                                                                    <h4 class="text-uc text-xs text-muted">我的关注</h4> 
+                                                                                    <div class="row row-sm">
+                                                                                        <div class="col-xs-6 col-sm-3">
+                                                                                            <div class="item">
+                                                                                                <div class="pos-rlt">
+                                                                                                    <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
+                                                                                                </div>
+                                                                                                <div class="padder-v">
+                                                                                                    <a href="#" class="text-ellipsis">Spring rain</a>
+                                                                                                    <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-xs-6 col-sm-3">
+                                                                                            <div class="item">
+                                                                                                <div class="pos-rlt">
+                                                                                                    <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
+                                                                                                </div>
+                                                                                                <div class="padder-v">
+                                                                                                    <a href="#" class="text-ellipsis">Hope</a>
+                                                                                                    <a href="#" class="text-ellipsis text-xs text-muted">Miya</a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-xs-6 col-sm-3">
+                                                                                            <div class="item">
+                                                                                                <div class="pos-rlt">
+                                                                                                    <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
+                                                                                                </div>
+                                                                                                <div class="padder-v">
+                                                                                                    <a href="#" class="text-ellipsis">Listen wind</a>
+                                                                                                    <a href="#" class="text-ellipsis text-xs text-muted">Soyia Jess</a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-xs-6 col-sm-3">
+                                                                                            <div class="item">
+                                                                                                <div class="pos-rlt">
+                                                                                                    <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
+                                                                                                </div>
+                                                                                                <div class="padder-v">
+                                                                                                    <a href="#" class="text-ellipsis">Breaking me</a>
+                                                                                                    <a href="#" class="text-ellipsis text-xs text-muted">Pett JA</a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-xs-6 col-sm-3">
+                                                                                            <div class="item">
+                                                                                                <div class="pos-rlt">
+                                                                                                    <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
+                                                                                                </div>
+                                                                                                <div class="padder-v">
+                                                                                                    <a href="#" class="text-ellipsis">Nothing</a>
+                                                                                                    <a href="#" class="text-ellipsis text-xs text-muted">Willion</a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-xs-6 col-sm-3">
+                                                                                            <div class="item">
+                                                                                                <div class="pos-rlt">
+                                                                                                    <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
+                                                                                                </div>
+                                                                                                <div class="padder-v">
+                                                                                                    <a href="#" class="text-ellipsis">Panda Style</a>
+                                                                                                    <a href="#" class="text-ellipsis text-xs text-muted">Lionie</a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-xs-6 col-sm-3">
+                                                                                            <div class="item">
+                                                                                                <div class="pos-rlt">
+                                                                                                    <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
+                                                                                                </div>
+                                                                                                <div class="padder-v">
+                                                                                                    <a href="#" class="text-ellipsis">Hook Me</a>
+                                                                                                    <a href="#" class="text-ellipsis text-xs text-muted">Gossi</a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-xs-6 col-sm-3">
+                                                                                            <div class="item">
+                                                                                                <div class="pos-rlt">
+                                                                                                    <a href="#"><img src="${pageContext.request.contextPath}/assets/images/user.jpg" alt="" class="img-circle img-full"></a>
+                                                                                                </div>
+                                                                                                <div class="padder-v">
+                                                                                                    <a href="#" class="text-ellipsis">Tempered Song</a>
+                                                                                                    <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>-->
                                     </div>
                                 </section>
                             </section>
@@ -226,8 +227,8 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
     <script type="text/javascript">
-            $(document).ready(function () {
-                $("#search").click(function () {
+            $(document).ready(function() {
+                $("#search").click(function() {
                     $("#searchbar").toggle("slow");
                 });
                 $('body').vegas({

@@ -18,6 +18,8 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/simple-line-icons.css" type="text/css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/summernote/summernote.css"/>" />
+
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css" type="text/css" />  
         <!--[if lt IE 9]>
@@ -28,7 +30,7 @@
         <link rel="shortcut icon" href="favicon.ico" />
         <script>
             var _hmt = _hmt || [];
-            (function () {
+            (function() {
                 var hm = document.createElement("script");
                 hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
                 var s = document.getElementsByTagName("script")[0];
@@ -80,100 +82,7 @@
                                         </div>
                                         <div>
                                             <h4 class="text-uc text-xs text-muted">用户描述信息</h4>
-                                            <p>本站主要涉及内容为对自己看到的互联网知识的总结，有些内容很可能引用了你的观点，但没有注明出处，请未注明出处的朋友发邮件至我邮箱。</p>
-                                        </div>
-                                        <div>    
-                                            <h4 class="text-uc text-xs text-muted">我的关注</h4> 
-                                            <div class="row row-sm">
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Spring rain</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Hope</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Miya</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Listen wind</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Soyia Jess</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Breaking me</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Pett JA</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Nothing</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Willion</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Panda Style</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Lionie</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Hook Me</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Gossi</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-3">
-                                                    <div class="item">
-                                                        <div class="pos-rlt">
-                                                            <a href="#"><img src="${pageContext.request.contextPath}/assets/images/user.jpg" alt="" class="img-circle img-full"></a>
-                                                        </div>
-                                                        <div class="padder-v">
-                                                            <a href="#" class="text-ellipsis">Tempered Song</a>
-                                                            <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <p>${memberInfomation.description}</p>
                                         </div>
                                     </div>
                                 </section>
@@ -219,92 +128,39 @@
                                 </header>
                                 <div class="panel-body">
                                     <div class="tab-pane" id="home">
-                                        <form class="form-horizontal" data-validate="parsley" action="${pageContext.request.contextPath}/member/settings/#" method="post">
-                                            <section class="panel panel-default">
-                                                <header class="panel-heading">
-                                                    <strong>账户</strong>
-                                                </header>
-                                                <div class="panel-body">
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">个人描述信息</label>
-                                                        <div class="col-sm-8">
-                                                            <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
-                                                                <div class="btn-group">
-                                                                    <a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" title="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
-                                                                    <ul class="dropdown-menu">
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="btn-group">
-                                                                    <a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-                                                                    <ul class="dropdown-menu">
-                                                                        <li><a data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
-                                                                        <li><a data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
-                                                                        <li><a data-edit="fontSize 1" style="font-size:14px">Small</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="btn-group">
-                                                                    <a class="btn btn-default btn-sm" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
-                                                                    <a class="btn btn-default btn-sm" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-                                                                    <a class="btn btn-default btn-sm" data-edit="strikethrough" title="Strikethrough"><i class="fa fa-strikethrough"></i></a>
-                                                                    <a class="btn btn-default btn-sm" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
-                                                                </div>
-                                                                <div class="btn-group">
-                                                                    <a class="btn btn-default btn-sm" data-edit="insertunorderedlist" title="Bullet list"><i class="fa fa-list-ul"></i></a>
-                                                                    <a class="btn btn-default btn-sm" data-edit="insertorderedlist" title="Number list"><i class="fa fa-list-ol"></i></a>
-                                                                    <a class="btn btn-default btn-sm" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
-                                                                    <a class="btn btn-default btn-sm" data-edit="indent" title="Indent (Tab)"><i class="fa fa-indent"></i></a>
-                                                                </div>
-                                                                <div class="btn-group">
-                                                                    <a class="btn btn-default btn-sm" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
-                                                                    <a class="btn btn-default btn-sm" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
-                                                                    <a class="btn btn-default btn-sm" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
-                                                                    <a class="btn btn-default btn-sm" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
-                                                                </div>
-                                                                <div class="btn-group">
-                                                                    <a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="fa fa-link"></i></a>
-                                                                    <div class="dropdown-menu">
-                                                                        <div class="input-group m-l-xs m-r-xs">
-                                                                            <input class="form-control input-sm" placeholder="URL" type="text" data-edit="createLink"/>
-                                                                            <div class="input-group-btn">
-                                                                                <button class="btn btn-default btn-sm" type="button">Add</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <a class="btn btn-default btn-sm" data-edit="unlink" title="Remove Hyperlink"><i class="fa fa-cut"></i></a>
-                                                                </div>
 
-                                                                <div class="btn-group hide">
-                                                                    <a class="btn btn-default btn-sm" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-                                                                    <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
-                                                                </div>
-                                                                <div class="btn-group">
-                                                                    <a class="btn btn-default btn-sm" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
-                                                                    <a class="btn btn-default btn-sm" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div id="editor" class="form-control" style="overflow:scroll;height:150px;max-height:150px">
-                                                                Go ahead&hellip;
-                                                            </div>
+                                        <section class="panel panel-default">
+                                            <header class="panel-heading">
+                                                <strong>账户</strong>
+                                            </header>
+                                            <form class="form-horizontal" action="${pageContext.request.contextPath}/member/settings/profile" method="post">
+                                                <div class="panel-body">
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">背景图片</label>
+                                                        <div class="col-sm-6">
+                                                            <select data-required="true" id="thumbsPer" name="backgroundId" class="form-control">
+                                                                <option value="background1">background1</option>
+                                                                <option value="background2">background2</option>
+                                                                <option value="background3">background3</option>
+                                                                <option value="background4">background4</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="line line-dashed b-b line-lg pull-in"></div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label">背景图片</label>
-                                                        <div class="col-sm-6">
-                                                            <select data-required="true" id="thumbsPer" name="background" class="form-control">
-                                                                <option value="background1">background1</option>
-                                                                <option value="background1">background2</option>
-                                                                <option value="background1">background3</option>
-                                                                <option value="background1">background4</option>
-                                                            </select>
+                                                        <label class="col-sm-2 control-label">个人描述信息</label>
+                                                        <div class="col-sm-10">
+                                                            <textarea id="summernote" name="description">${memberInfomation.description}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <footer class="panel-footer text-right bg-light lter">
                                                     <button type="submit" class="btn btn-success btn-s-xs">保存</button>
                                                 </footer>
-                                            </section>
-                                        </form>
+                                            </form>
+                                        </section>
+
 
                                     </div>
                                 </div>
@@ -325,9 +181,8 @@
     <!-- Bootstrap -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
     <!-- wysiwyg -->
-    <script src="${pageContext.request.contextPath}/assets/js/wysiwyg/jquery.hotkeys.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/wysiwyg/bootstrap-wysiwyg.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/wysiwyg/demo.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/summernote/summernote.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/summernote/summernote-zh-CN.js"></script>
 
     <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
@@ -335,9 +190,16 @@
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
     <script type="text/javascript">
-            $(document).ready(function () {
-                $("#search").click(function () {
+            $(document).ready(function() {
+                $("#search").click(function() {
                     $("#searchbar").toggle("slow");
+                });
+                $("#summernote").summernote({
+                    height: 150,
+                    lang: 'zh-CN',
+                    onImageUpload: function(files, editor, welEditable) {
+                        sendFile(files[0], editor, welEditable);
+                    }
                 });
                 $('body').vegas({
                     timer: false,
@@ -345,6 +207,27 @@
                         {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
                     ]
                 });
+                // Upload image in the editor
+                function sendFile(file, editor, welEditable) {
+                    data = new FormData();
+                    data.append("file", file);
+                    $.ajax({
+                        data: data,
+                        type: "POST",
+                        url: 'uploadimage',
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            if (/^images/.test(response)) {
+                                editor.insertImage(welEditable, response);
+                                $("#resp").hide();
+                            } else {
+                                $("#resp").text(response).show();
+                            }
+                        }
+                    });
+                }
             });
     </script>
 </html>
