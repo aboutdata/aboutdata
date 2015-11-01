@@ -77,8 +77,7 @@
                                             <a href="${pageContext.request.contextPath}/member/settings/account" class="btn btn-primary">
                                                 <i class="fa fa-edit"></i> 修改资料
                                             </a>
-                                            <a href="#" class="btn btn-info"><i class="fa fa-upload"></i> 上传图片</a>
-                                            <a href="#" class="btn btn-success"><i class="fa fa-star"></i> 收藏列表</a>
+                                            <a href="${pageContext.request.contextPath}/member/favorite" class="btn btn-success"><i class="fa fa-star"></i> 收藏列表</a>
                                         </div>
                                         <div>
                                             <h4 class="text-uc text-xs text-muted">用户描述信息</h4>
@@ -160,8 +159,6 @@
                                                 </footer>
                                             </form>
                                         </section>
-
-
                                     </div>
                                 </div>
                                 </div>
@@ -198,7 +195,8 @@
                     height: 150,
                     lang: 'zh-CN',
                     onImageUpload: function(files, editor, welEditable) {
-                        sendFile(files[0], editor, welEditable);
+                        //个人描述信息不能上传图片
+                        //sendFile(files[0], editor, welEditable);
                     }
                 });
                 $('body').vegas({
@@ -207,7 +205,7 @@
                         {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
                     ]
                 });
-                // Upload image in the editor
+                // Upload image in the editor summernote 
                 function sendFile(file, editor, welEditable) {
                     data = new FormData();
                     data.append("file", file);
