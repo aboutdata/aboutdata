@@ -57,4 +57,9 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     <!-- 配置session超时时间，单位分钟 -->
+    
+    <error-page>
+        <error-code>404</error-code>
+        <location>/common/resource_not_found</location>
+    </error-page>
 </web-app>
