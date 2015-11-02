@@ -12,6 +12,7 @@
         <meta charset="utf-8" />
         <title>Lockbur-更多壁纸，更多分享</title>
         <jsp:include page="/WEB-INF/views/portal/common/head_and_css.jsp"/>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/bootstrap-fileupload/bootstrap-fileupload.min.css">
         <!--百度统计-->
         <script>
             var _hmt = _hmt || [];
@@ -112,33 +113,48 @@
                                 </header>
                                 <div class="panel-body">
                                     <div class="tab-pane" id="home">
-                                        <form class="form-horizontal" data-validate="parsley" action="${pageContext.request.contextPath}/member/settings/account" method="post">
+                                        <form class="form-horizontal" action="${pageContext.request.contextPath}/member/settings/avatar" method="post">
                                             <section class="panel panel-default">
                                                 <header class="panel-heading">
                                                     <strong>头像修改</strong>
                                                 </header>
-                                                <div class="panel-body"> <div class="line line-dashed b-b line-lg pull-in"></div>
+                                                <div class="panel-body"> 
+                                                    <div class="line line-dashed b-b line-lg pull-in"></div>
                                                     <div class="form-group">
-                                                        <div class="col-sm-3 text-center">
-                                                            <div class="b-a b-dashed b-danger">
-                                                                <img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" class="img-full">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-9">
-                                                            <div class="clearfix m-b-lg">
-                                                                <div class="clear">
-                                                                    <small class="block text-muted">你头像上传为. 200x200 px.如果不符合尺寸,系统将自动裁剪.</small>
-                                                                    <a href="#" class="text-info">头像大小限制: 200KB</a>
-                                                                    <small class="block text-muted">上传类型限制: *.png *.jpg *.gif</small>
+                                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                            <div class="col-sm-3">
+                                                                <div class="fileupload-new thumbnail b-a b-dashed b-danger">
+                                                                    <img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-full">
+                                                                </div>
+                                                                <div class="fileupload-preview fileupload-exists thumbnail  b-a b-dashed b-danger">
+
                                                                 </div>
                                                             </div>
-                                                            <div class="m-b-lg">
-                                                                <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
-
+                                                            <div class="col-sm-9">
+                                                                <div class="clearfix m-b-lg">
+                                                                    <div class="clear">
+                                                                        <small class="block text-muted">你头像上传为. 200x200 px.如果不符合尺寸,系统将自动裁剪.</small>
+                                                                        <small class="text-danger">头像大小限制: 200KB</small>
+                                                                        <small class="block text-muted">上传类型限制: *.png *.jpg *.gif</small>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span class="btn btn-file">
+                                                                            <span class="fileupload-new btn btn-success btn-s-xs">
+                                                                                <i class="fa fa-picture"></i>选择图片
+                                                                            </span>
+                                                                            <span class="fileupload-exists btn btn-success btn-s-xs">
+                                                                                <i class="fa fa-picture"></i> 修改
+                                                                            </span>
+                                                                            <input type="file" name="avatar">
+                                                                        </span>
+                                                                        <a href="#" class="btn btn-danger btn-s-xs fileupload-exists" data-dismiss="fileupload">
+                                                                            <i class="fa fa-times"></i> 删除
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="line line-dashed b-b line-lg pull-in"></div>
                                                 </div>
                                                 <footer class="panel-footer text-center bg-light lter">
                                                     <button type="submit" class="btn btn-success btn-s-xs">确认修改</button>
@@ -162,11 +178,14 @@
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-    <!-- App -->
-    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
     <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
+    <!-- App -->
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+
     <script type="text/javascript">
             $(document).ready(function () {
                 $("#search").click(function () {

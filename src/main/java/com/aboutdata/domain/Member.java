@@ -79,6 +79,13 @@ public class Member extends BaseEntity {
     private String salt;
 
     /**
+     * 会员头像文件名
+     */
+    @Length(max = 40)
+    @Column(length = 40)
+    private String avatar;
+
+    /**
      * E-mail
      */
     @NotEmpty
@@ -185,7 +192,7 @@ public class Member extends BaseEntity {
      * 会员等级
      */
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(nullable = false)
     private MemberRank memberRank;
 
@@ -206,6 +213,14 @@ public class Member extends BaseEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getEmail() {
@@ -367,6 +382,11 @@ public class Member extends BaseEntity {
 
     public void setPhotosAlbums(Set<PhotosAlbum> photosAlbums) {
         this.photosAlbums = photosAlbums;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" + "username=" + username + ", password=" + password + ", salt=" + salt + ", avatar=" + avatar + ", email=" + email + ", point=" + point + ", isEnabled=" + isEnabled + ", isLocked=" + isLocked + ", loginFailureCount=" + loginFailureCount + ", lockedDate=" + lockedDate + ", registerIp=" + registerIp + ", loginIp=" + loginIp + ", loginDate=" + loginDate + ", name=" + name + ", gender=" + gender + ", birth=" + birth + ", address=" + address + ", zipCode=" + zipCode + ", phone=" + phone + ", mobile=" + mobile + ", area=" + area + ", memberRank=" + memberRank + ", photosAlbums=" + photosAlbums + '}';
     }
     
 }
