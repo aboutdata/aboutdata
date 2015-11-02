@@ -12,6 +12,7 @@
         <meta charset="utf-8" />
         <title>Lockbur-更多壁纸，更多分享</title>
         <jsp:include page="/WEB-INF/views/portal/common/head_and_css.jsp"/>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/summernote/summernote.css">
         <!--百度统计-->
         <script>
             var _hmt = _hmt || [];
