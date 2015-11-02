@@ -35,7 +35,7 @@
                                     <div class="wrapper">
                                         <div class="text-center m-b m-t">
                                             <a href="#" class="thumb-lg avatar">
-                                                <img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="...">
+                                                <img src="${pageContext.request.contextPath}/avatars/${appBean.getCurrentUser().id}?t=${appBean.getCurrentUser().avatarType}&v=2" alt="${appBean.getCurrentUser().username}头像">
                                                 <i class="fa fa-edit md b-white bottom"></i>
                                             </a>
                                             <div>

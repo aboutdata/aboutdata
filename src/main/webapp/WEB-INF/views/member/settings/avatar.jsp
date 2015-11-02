@@ -36,7 +36,7 @@
                                     <div class="wrapper">
                                         <div class="text-center m-b m-t">
                                             <a href="#" class="thumb-lg">
-                                                <img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" class="img-circle">
+                                                <img src="${pageContext.request.contextPath}/avatars/${appBean.getCurrentUser().id}?t=${appBean.getCurrentUser().avatarType}&v=2" class="img-circle" alt="${appBean.getCurrentUser().username}头像">
                                             </a>
                                             <div>
                                                 <div class="h3 m-t-xs m-b-xs">${member.username}</div>
@@ -113,7 +113,7 @@
                                 </header>
                                 <div class="panel-body">
                                     <div class="tab-pane" id="home">
-                                        <form class="form-horizontal" action="${pageContext.request.contextPath}/member/settings/avatar" method="post">
+                                        <form class="form-horizontal" action="${pageContext.request.contextPath}/member/settings/avatar" method="post" enctype="multipart/form-data">
                                             <section class="panel panel-default">
                                                 <header class="panel-heading">
                                                     <strong>头像修改</strong>
@@ -124,7 +124,7 @@
                                                         <div class="fileupload fileupload-new" data-provides="fileupload">
                                                             <div class="col-sm-3">
                                                                 <div class="fileupload-new thumbnail b-a b-dashed b-danger">
-                                                                    <img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" alt="" class="img-full">
+                                                                    <img src="${pageContext.request.contextPath}/avatars/${appBean.getCurrentUser().id}?t=${appBean.getCurrentUser().avatarType}&v=2" alt="" class="img-full">
                                                                 </div>
                                                                 <div class="fileupload-preview fileupload-exists thumbnail  b-a b-dashed b-danger">
 
@@ -145,7 +145,7 @@
                                                                             <span class="fileupload-exists btn btn-success btn-s-xs">
                                                                                 <i class="fa fa-picture"></i> 修改
                                                                             </span>
-                                                                            <input type="file" name="avatar">
+                                                                            <input type="file" name="multipartFile">
                                                                         </span>
                                                                         <a href="#" class="btn btn-danger btn-s-xs fileupload-exists" data-dismiss="fileupload">
                                                                             <i class="fa fa-times"></i> 删除

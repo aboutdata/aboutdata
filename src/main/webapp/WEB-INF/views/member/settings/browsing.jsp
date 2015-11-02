@@ -35,7 +35,7 @@
                                     <div class="wrapper">
                                         <div class="text-center m-b m-t">
                                             <a href="#" class="thumb-lg">
-                                                <img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" class="img-circle">
+                                                <img src="${pageContext.request.contextPath}/avatars/${appBean.getCurrentUser().id}?t=${appBean.getCurrentUser().avatarType}&v=2" class="img-circle" alt="${appBean.getCurrentUser().username}头像">
                                             </a>
                                             <div>
                                                 <div class="h3 m-t-xs m-b-xs">${member.username}</div>

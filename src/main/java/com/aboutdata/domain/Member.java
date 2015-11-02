@@ -79,11 +79,19 @@ public class Member extends BaseEntity {
     private String salt;
 
     /**
+     * @ 会员头像文件名
+     * @ 这里虽然有Avatar 字段但只是保留上传的文件名 真正获取头像是跟会员id和s(大小)来确定
+     */
+    @Length(max = 120)
+    @Column(length = 120)
+    private String avatar;
+
+    /**
      * 会员头像文件名
      */
-    @Length(max = 40)
-    @Column(length = 40)
-    private String avatar;
+    @Length(max = 10)
+    @Column(length = 10)
+    private String avatarType;
 
     /**
      * E-mail
@@ -221,6 +229,14 @@ public class Member extends BaseEntity {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public String getAvatarType() {
+        return avatarType;
+    }
+
+    public void setAvatarType(String avatarType) {
+        this.avatarType = avatarType;
     }
 
     public String getEmail() {
@@ -386,7 +402,7 @@ public class Member extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Member{" + "username=" + username + ", password=" + password + ", salt=" + salt + ", avatar=" + avatar + ", email=" + email + ", point=" + point + ", isEnabled=" + isEnabled + ", isLocked=" + isLocked + ", loginFailureCount=" + loginFailureCount + ", lockedDate=" + lockedDate + ", registerIp=" + registerIp + ", loginIp=" + loginIp + ", loginDate=" + loginDate + ", name=" + name + ", gender=" + gender + ", birth=" + birth + ", address=" + address + ", zipCode=" + zipCode + ", phone=" + phone + ", mobile=" + mobile + ", area=" + area + ", memberRank=" + memberRank + ", photosAlbums=" + photosAlbums + '}';
+        return "Member{" + "username=" + username + ", password=" + password + ", salt=" + salt + ", avatar=" + avatar + ", avatarType=" + avatarType + ", email=" + email + ", point=" + point + ", isEnabled=" + isEnabled + ", isLocked=" + isLocked + ", loginFailureCount=" + loginFailureCount + ", lockedDate=" + lockedDate + ", registerIp=" + registerIp + ", loginIp=" + loginIp + ", loginDate=" + loginDate + ", name=" + name + ", gender=" + gender + ", birth=" + birth + ", address=" + address + ", zipCode=" + zipCode + ", phone=" + phone + ", mobile=" + mobile + ", area=" + area + ", memberRank=" + memberRank + ", photosAlbums=" + photosAlbums + '}';
     }
-    
+
 }

@@ -7,7 +7,6 @@ package com.aboutdata.web.controller;
 
 import java.io.File;
 import java.io.IOException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -27,37 +26,40 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller("shopAvatarsController")
 @RequestMapping("/avatars")
 public class AvatarsController {
-    
+
     Logger logger = LoggerFactory.getLogger(AvatarsController.class);
 
     /**
      * Get download from file-system
      *
-     * @param id
+     * @param avatar
+     * @param t type 如png jpg等
      * @param v 版本号 预留使用必须带上v=1
      * @param s
      * @param response {@link HttpServletResponse}
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public void download(@PathVariable("id") String id, String v, String s, HttpServletResponse response) {
+    @RequestMapping(value = "/{avatar}", method = RequestMethod.GET)
+    public void download(@PathVariable("avatar") String avatar, String t, String v, String s, HttpServletResponse response) {
         if (StringUtils.isEmpty(s)) {
-            File file = new File("/var/avatars/scarlet.png");
+            File file = new File("/var/avatars/" + avatar + "." + t);
             try {
                 FileUtils.copyFile(file, response.getOutputStream());
             } catch (IOException ex) {
-                 response.setHeader("message", "改文件不存在或者已被删除");
+                logger.error("error {}", ex);
+                response.setHeader("message", "改文件不存在或者已被删除");
                 response.setStatus(404);
             }
         } else {
-            File file = new File("/var/avatars/scarlet-" + s + ".png");
+            File file = new File("/var/avatars/" + avatar + "-" + s + "." + t);
             try {
                 FileUtils.copyFile(file, response.getOutputStream());
             } catch (IOException ex) {
-              response.setHeader("message", "改文件不存在或者已被删除");
-              response.setStatus(404);
+                logger.error("error {}", ex);
+                response.setHeader("message", "改文件不存在或者已被删除");
+                response.setStatus(404);
             }
         }
-        
+
     }
-    
+
 }
