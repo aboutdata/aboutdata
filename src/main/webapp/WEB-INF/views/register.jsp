@@ -21,9 +21,9 @@
                 <section class="padder">
                     <div class="m-lg"></div>
                     <div class="row">
-                        <div class="col-sm-3 b-r"></div>
+                        <div class="col-sm-3"></div>
                         <div class="col-sm-3 b-r">
-                            <h3 class="m-t-none m-b">用户注册</h3>
+                            <h3 class="m-t-none m-b">新用户注册</h3>
                             <c:if test="${not empty errorMessage}">
                                 <div class="alert alert-danger">
                                     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -33,7 +33,6 @@
                             <c:if test="${empty errorMessage}">
                                 <p>登录可以获得更好的服务</p>
                             </c:if>
-
                             <form role="form" data-validate="parsley" action="${pageContext.request.contextPath}/register/submit" method="post">
                                 <div class="form-group">
                                     <label>用户名</label>
@@ -61,13 +60,13 @@
                         </div>
                         <div class="col-sm-3">
                             <h4>如果已有账号?</h4>
-                            <p>You can create an account <a href="#" class="text-info">here</a></p>
-                            <p>OR</p>
+                            <p>点击<a href="${pageContext.request.contextPath}/login" class="text-info">登录</a></p>
+                            <p>或者使用第三方账号登录</p>
                             <a href="#" class="btn btn-primary btn-block m-b-sm"><i class="fa fa-facebook pull-left"></i>Sign in with Facebook</a>
                             <a href="#" class="btn btn-info btn-block m-b-sm"><i class="fa fa-twitter pull-left"></i>Sign in with Twitter</a>
                             <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google-plus pull-left"></i>Sign in with Google+</a>
                         </div>
-                        <div class="col-sm-3 b-r"></div>
+                        <div class="col-sm-3"></div>
                     </div>
                 </section>
                 <!--content//end-->
@@ -83,8 +82,6 @@
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
         <!-- App -->
         <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-        <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/masonry/tiles.min.js"></script>
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>

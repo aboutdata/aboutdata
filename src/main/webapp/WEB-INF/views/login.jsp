@@ -21,8 +21,8 @@
                     <section class="padder">
                         <div class="m-lg"></div>
                         <div class="row">
-                            <div class="col-sm-3 b-r"></div>
-                            <div class="col-sm-3 b-r">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3">
                                 <h3 class="m-t-none m-b">用户登录</h3>
                             <c:if test="${not empty errorMessage}">
                                 <div class="alert alert-danger">
@@ -59,7 +59,7 @@
                             <a href="#" class="btn btn-info btn-block m-b-sm"><i class="fa fa-twitter pull-left"></i>Sign in with Twitter</a>
                             <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google-plus pull-left"></i>Sign in with Google+</a>
                         </div>
-                        <div class="col-sm-3 b-r"></div>
+                        <div class="col-sm-3"></div>
                     </div>
                 </section>
                 <!--content//end-->
