@@ -10,38 +10,9 @@
 <html lang="zh">
     <head>  
         <meta charset="utf-8" />
-        <title>Lockbur-更多壁纸，更多分享</title>
-        <meta name="description" content="高清壁纸,桌面壁纸" />
-        <meta name="baidu-site-verification" content="bB5uKKGWVi" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <c:choose>
-            <c:when test="${appBean.systemConfig.developMode}">
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/vegas/vegas.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/simple-line-icons.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css" type="text/css" />  
-            </c:when>
-            <c:otherwise>
-                <!--生产模式 使用css和常用js直接走nginx-->
-                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/bootstrap.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/animate.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/font-awesome.min.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/simple-line-icons.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/font.css" type="text/css" />
-
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/app.css" type="text/css" />
-            </c:otherwise>
-        </c:choose>
-        <!--[if lt IE 9]>
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/html5shiv.js"></script>
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/respond.min.js"></script>
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/excanvas.js"></script>
-      <![endif]-->
-        <link rel="shortcut icon" href="favicon.ico" />
+        <title>Lockbur - 更多壁纸，更多分享</title>
+        <jsp:include page="/WEB-INF/views/portal/common/head_and_css.jsp"/>
+        <!--百度统计-->
         <script>
             var _hmt = _hmt || [];
             (function () {
@@ -55,12 +26,12 @@
     <body>
         <section class="vbox">
             <!---header-->
-            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"></jsp:include>
-                <!---header //END-->
-                <section class="w-f-md">
-                    <section class="container scrollable padder-lg">
-                        <h2 class="font-thin m-b">Home</h2>
-                        <div class="row row-sm">
+            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
+            <!---header //END-->
+            <section class="w-f-md">
+                <section class="container scrollable padder-lg">
+                    <h2 class="font-thin m-b">Home</h2>
+                    <div class="row row-sm">
                         <c:forEach items="${content}" var="photos" varStatus="idx">
                             <div class="col-xs-6 col-sm-4 col-md-3">
                                 <div class="item">
@@ -107,7 +78,7 @@
                     $.ajax({
                         type: "post",
                         url: "${pageContext.request.contextPath}/member/favorite/add",
-                        data: {photosId : _photo_id},
+                        data: {photosId: _photo_id},
                         dataType: "json",
                         success: function (data) {
                             alert("添加成功");

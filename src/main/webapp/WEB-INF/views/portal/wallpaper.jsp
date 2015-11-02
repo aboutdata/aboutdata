@@ -11,36 +11,17 @@
     <head>  
         <meta charset="utf-8"/>
         <title>查看壁纸原图 - 更多壁纸，更多分享</title>
-        <meta name="description" content="高清壁纸,桌面壁纸" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <c:choose>
-            <c:when test="${appBean.developMode}">
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/vegas/vegas.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/simple-line-icons.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css" type="text/css" />  
-            </c:when>
-            <c:otherwise>
-                <!--生产模式 使用css和常用js直接走nginx-->
-                <link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/bootstrap.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.assetsUrl}/assets/js/vegas/vegas.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/animate.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/font-awesome.min.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/simple-line-icons.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/font.css" type="text/css" />
-
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/app.css" type="text/css" />
-            </c:otherwise>
-        </c:choose>
-        <!--[if lt IE 9]>
-        <script src="${appBean.assetsUrl}/assets/js/ie/html5shiv.js"></script>
-        <script src="${appBean.assetsUrl}/assets/js/ie/respond.min.js"></script>
-        <script src="${appBean.assetsUrl}/assets/js/ie/excanvas.js"></script>
-        <![endif]-->
-        <link rel="shortcut icon" href="favicon.ico"/>
+        <jsp:include page="/WEB-INF/views/portal/common/head_and_css.jsp"/>
+        <!--百度统计-->
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
     </head>
     <body>
         <section class="vbox">
@@ -134,7 +115,7 @@
         </c:when>
         <c:otherwise>
             <!--生产模式 使用css和常用js直接走nginx-->
-           <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
+            <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
             <!-- Bootstrap -->
             <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
             <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
@@ -145,14 +126,14 @@
         </c:otherwise>
     </c:choose>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('body').vegas({
-                timer: false,
-                slides: [
-                    {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
-                ]
+            $(document).ready(function () {
+                $('body').vegas({
+                    timer: false,
+                    slides: [
+                        {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
+                    ]
+                });
             });
-        });
     </script>
 </html>
 

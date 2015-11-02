@@ -9,20 +9,17 @@
     <head>  
         <meta charset="utf-8" />
         <title>Lockbur-更多壁纸，更多分享</title>
-        <meta name="description" content="高清壁纸,桌面壁纸" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/simple-line-icons.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css" type="text/css" />  
-        <!--[if lt IE 9]>
-        <script src="${pageContext.request.contextPath}/assets/js/ie/html5shiv.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/ie/respond.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
-      <![endif]-->
-        <link rel="shortcut icon" href="favicon.ico" />
+        <jsp:include page="/WEB-INF/views/portal/common/head_and_css.jsp"/>
+        <!--百度统计-->
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
     </head>
     <body class="">
         <section class="hbox stretch">
