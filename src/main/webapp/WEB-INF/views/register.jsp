@@ -44,11 +44,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>密码</label>
-                                    <input type="password" class="form-control" id="password" name="password"  placeholder="Password" data-required="true">
+                                    <input type="password" class="form-control" id="password" name="password"  placeholder="密码" data-required="true">
                                 </div>
                                 <div class="form-group">
                                     <label>确认密码</label>
-                                    <input type="password" class="form-control" name="confirmpassword" data-equalto="#password"  placeholder="Password" data-required="true">
+                                    <input type="password" class="form-control" name="confirmpassword" data-equalto="#password"  placeholder="确认密码" data-required="true">
                                 </div>
                                 <div class="checkbox m-t-lg">
                                     <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs"><strong>注册</strong></button>
@@ -62,9 +62,9 @@
                             <h4>如果已有账号?</h4>
                             <p>点击<a href="${pageContext.request.contextPath}/login" class="text-info">登录</a></p>
                             <p>或者使用第三方账号登录</p>
-                            <a href="#" class="btn btn-primary btn-block m-b-sm"><i class="fa fa-facebook pull-left"></i>Sign in with Facebook</a>
-                            <a href="#" class="btn btn-info btn-block m-b-sm"><i class="fa fa-twitter pull-left"></i>Sign in with Twitter</a>
-                            <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google-plus pull-left"></i>Sign in with Google+</a>
+                            <a href="#" class="btn btn-primary btn-block m-b-sm"><i class="fa fa-pinterest-square pull-left"></i>qq登录</a>
+                            <a href="#" class="btn btn-info btn-block m-b-sm"><i class="fa fa-weibo pull-left"></i>微博登录</a>
+                            <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google-plus pull-left"></i>百度账号登录</a>
                         </div>
                         <div class="col-sm-3"></div>
                     </div>

@@ -16,14 +16,14 @@
     <body>
         <section class="vbox">
             <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
-                <section class="w-f-md m-t">
-                    <!--content-->
-                    <section class="padder">
-                        <div class="m-lg"></div>
-                        <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-3">
-                                <h3 class="m-t-none m-b">用户登录</h3>
+            <section class="w-f-md m-t">
+                <!--content-->
+                <section class="padder">
+                    <div class="m-lg"></div>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-3">
+                            <h3 class="m-t-none m-b">用户登录</h3>
                             <c:if test="${not empty errorMessage}">
                                 <div class="alert alert-danger">
                                     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -37,16 +37,16 @@
                             <form role="form" data-validate="parsley" action="${pageContext.request.contextPath}/login/submit" method="post">
                                 <div class="form-group">
                                     <label>用户名</label>
-                                    <input type="text" class="form-control" name="username" value="aboutdata" placeholder="Enter email" data-required="true">
+                                    <input type="text" class="form-control" name="username" data-required="true">
                                 </div>
                                 <div class="form-group">
                                     <label>密码</label>
-                                    <input type="password" class="form-control" name="password" placeholder="Password" data-required="true">
+                                    <input type="password" class="form-control" name="password" data-required="true">
                                 </div>
                                 <div class="checkbox m-t-lg">
                                     <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs"><strong>登录</strong></button>
                                     <label>
-                                        <input type="checkbox" name="rememberme" checked data-required="true"> Remember me
+                                        <input type="checkbox" name="rememberme" checked data-required="true">记住一个月
                                     </label>
                                 </div>                
                             </form>
@@ -55,9 +55,9 @@
                             <h4>没有账号?</h4>
                             <p>点击<a href="${pageContext.request.contextPath}/register" class="text-info">注册新用户</a></p>
                             <p>OR</p>
-                            <a href="#" class="btn btn-primary btn-block m-b-sm"><i class="fa fa-facebook pull-left"></i>Sign in with Facebook</a>
-                            <a href="#" class="btn btn-info btn-block m-b-sm"><i class="fa fa-twitter pull-left"></i>Sign in with Twitter</a>
-                            <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google-plus pull-left"></i>Sign in with Google+</a>
+                            <a href="#" class="btn btn-primary btn-block m-b-sm"><i class="fa fa-pinterest-square pull-left"></i>qq登录</a>
+                            <a href="#" class="btn btn-info btn-block m-b-sm"><i class="fa fa-weibo pull-left"></i>微博登录</a>
+                            <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google-plus pull-left"></i>百度账号登录</a>
                         </div>
                         <div class="col-sm-3"></div>
                     </div>
