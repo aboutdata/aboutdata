@@ -140,9 +140,7 @@
                                                 </footer>
                                             </section>
                                         </form>
-
                                     </div>
-                                </div>
                                 </div>
                             </section>
                         </aside>
