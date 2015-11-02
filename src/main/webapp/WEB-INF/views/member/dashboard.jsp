@@ -46,7 +46,7 @@
                                         <div class="panel wrapper">
                                             <div class="row text-center">
                                                 <div class="col-xs-6">
-                                                    <a href="#">
+                                                    <a href="${pageContext.request.contextPath}/member/settings/avatar">
                                                         <span class="m-b-xs h4 block"><i class="fa fa-camera"></i></span>
                                                         <small class="text-muted">头像</small>
                                                     </a>

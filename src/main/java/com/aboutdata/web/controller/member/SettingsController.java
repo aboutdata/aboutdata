@@ -104,6 +104,15 @@ public class SettingsController {
         return "/member/settings/account";
     }
 
+    /**
+     * post 保存修改
+     *
+     * @param email
+     * @param password
+     * @param confirmPassword
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/account", method = RequestMethod.POST)
     public String updateAccount(String email, String password, String confirmPassword, ModelMap model) {
         Member member = memberService.getCurrent();
@@ -122,6 +131,23 @@ public class SettingsController {
         model.addAttribute("member", member);
 
         return "redirect:/member/settings/account";
+    }
+
+    /**
+     * 账户修改该页面
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/avatar", method = RequestMethod.GET)
+    public String displaEditAvatar(ModelMap model) {
+        Member member = memberService.getCurrent();
+        MemberInfomation memberInfomation = memberInfomationService.findByMember(member);
+
+        model.addAttribute("member", member);
+        model.addAttribute("memberInfomation", memberInfomation);
+
+        return "/member/settings/avatar";
     }
 
     /**

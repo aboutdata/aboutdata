@@ -85,7 +85,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#" class="bg-light">
+                                            <a href="${pageContext.request.contextPath}/member/settings/avatar" class="bg-light">
                                                 <span class="m-b-xs h4 block"> 
                                                     <i class="icon-eyeglasses"></i>
                                                 </span>

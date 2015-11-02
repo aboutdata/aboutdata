@@ -1,13 +1,13 @@
 <%-- 
-    Document   : profile
-    Created on : 2015-8-30, 18:32:26
-    Author     : youyou
+    Document   : avartar
+    Created on : 2015-11-2, 13:08:14
+    Author     : Administrator
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="zh">
+<html>
     <head>  
         <meta charset="utf-8" />
         <title>Lockbur-更多壁纸，更多分享</title>
@@ -112,40 +112,40 @@
                                 </header>
                                 <div class="panel-body">
                                     <div class="tab-pane" id="home">
-
-                                        <section class="panel panel-default">
-                                            <header class="panel-heading">
-                                                <strong>个人资料(Profile)</strong>
-                                            </header>
-                                            <form class="form-horizontal" action="${pageContext.request.contextPath}/member/settings/profile" method="post">
-                                                <div class="panel-body">
-
+                                        <form class="form-horizontal" data-validate="parsley" action="${pageContext.request.contextPath}/member/settings/account" method="post">
+                                            <section class="panel panel-default">
+                                                <header class="panel-heading">
+                                                    <strong>头像修改</strong>
+                                                </header>
+                                                <div class="panel-body"> <div class="line line-dashed b-b line-lg pull-in"></div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-2 control-label">背景图片</label>
-                                                        <div class="col-sm-6">
-                                                            <select data-required="true" id="thumbsPer" name="backgroundId" class="form-control">
-                                                                <option value="background1">background1</option>
-                                                                <option value="background2">background2</option>
-                                                                <option value="background3">background3</option>
-                                                                <option value="background4">background4</option>
-                                                            </select>
+                                                        <div class="col-sm-3 text-center">
+                                                            <div class="b-a b-dashed b-danger">
+                                                                <img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" class="img-full">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-9">
+                                                            <div class="clearfix m-b-lg">
+                                                                <div class="clear">
+                                                                    <small class="block text-muted">你头像上传为. 200x200 px.如果不符合尺寸,系统将自动裁剪.</small>
+                                                                    <a href="#" class="text-info">头像大小限制: 200KB</a>
+                                                                    <small class="block text-muted">上传类型限制: *.png *.jpg *.gif</small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="m-b-lg">
+                                                                <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="line line-dashed b-b line-lg pull-in"></div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">个人描述信息</label>
-                                                        <div class="col-sm-10">
-                                                            <textarea id="summernote" name="description">${memberInfomation.description}</textarea>
-                                                        </div>
-                                                    </div>
                                                 </div>
-                                                <footer class="panel-footer text-right bg-light lter">
-                                                    <button type="submit" class="btn btn-success btn-s-xs">保存</button>
+                                                <footer class="panel-footer text-center bg-light lter">
+                                                    <button type="submit" class="btn btn-success btn-s-xs">确认修改</button>
                                                 </footer>
-                                            </form>
-                                        </section>
+                                            </section>
+                                        </form>
                                     </div>
-                                </div>
                                 </div>
                             </section>
                         </aside>
@@ -162,27 +162,15 @@
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-    <!-- wysiwyg -->
-    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/summernote/summernote.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/summernote/summernote-zh-CN.js"></script>
-
-    <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
     <!-- App -->
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
+    <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
     <script type="text/javascript">
             $(document).ready(function () {
                 $("#search").click(function () {
                     $("#searchbar").toggle("slow");
-                });
-                $("#summernote").summernote({
-                    height: 150,
-                    lang: 'zh-CN',
-                    onImageUpload: function (files, editor, welEditable) {
-                        //个人描述信息不能上传图片
-                        //sendFile(files[0], editor, welEditable);
-                    }
                 });
                 $('body').vegas({
                     timer: false,
@@ -190,28 +178,8 @@
                         {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
                     ]
                 });
-                // Upload image in the editor summernote 
-                function sendFile(file, editor, welEditable) {
-                    data = new FormData();
-                    data.append("file", file);
-                    $.ajax({
-                        data: data,
-                        type: "POST",
-                        url: 'uploadimage',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        success: function (response) {
-                            if (/^images/.test(response)) {
-                                editor.insertImage(welEditable, response);
-                                $("#resp").hide();
-                            } else {
-                                $("#resp").text(response).show();
-                            }
-                        }
-                    });
-                }
             });
     </script>
 </html>
+
 
