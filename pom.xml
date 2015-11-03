@@ -367,6 +367,13 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         
+        <!--图片颜色截取-->
+        <dependency>
+            <groupId>me.croma</groupId>
+            <artifactId>colors</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        
         <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr-solrj</artifactId>
