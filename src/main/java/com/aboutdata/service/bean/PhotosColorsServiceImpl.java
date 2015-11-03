@@ -49,8 +49,8 @@ public class PhotosColorsServiceImpl implements PhotosColorsService {
     public void generateColors(String photosID) {
         Photos photos = photosDao.findOne(photosID);
         try {
-            File file = getImages("" + photos.getSource(), "/tmp/full" + photos.getWallhaven() + ".jpg");
-
+            File file = getImages(photos.getStorageHost()+"/"+ photos.getSource(), "/tmp/full" + photos.getWallhaven() + ".jpg");
+            // /data
             //File file = new File("D:\\workspace\\GitHub\\croma\\images\\lockbur-com.jpg");
             Image img = new AWTImage(file);
 

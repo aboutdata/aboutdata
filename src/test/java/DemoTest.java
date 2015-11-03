@@ -60,7 +60,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 
     @Resource
     private PhotosColorsService PhotosColorsService;
-    
+
     @Resource
     private SearchService searchService;
 
@@ -88,7 +88,14 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 
     @Test
     public void findByIdTest() {
-       PhotosColorsService.generateColors("000b6d44-5390-4077-a919-681b58b51b06");
+        int totalPages = 0;
+        Pageable pageable = new PageRequest(0, 24);
+        Page<PhotosModel> page = photosService.find(pageable);
+        totalPages = page.getTotalPages();
+        
+        
+
+        PhotosColorsService.generateColors("000b6d44-5390-4077-a919-681b58b51b06");
     }
 
 }
