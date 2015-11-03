@@ -50,7 +50,9 @@
                                                 <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-control-play i-2x"></i></a>
                                             </div>
                                         </div>
-                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
+                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}">
+                                            <img data-original="${photos.storageHost}/${photos.thumbnail}" width="765" height="574"  alt="" class="lazy r r- img-full">
+                                        </a>
                                     </div>
                                     <div class="wrapper-sm" ></div>
                                 </div>
@@ -70,8 +72,9 @@
         <script src="${appBean.systemConfig.assetsUrl}/assets/js/bootstrap.js"></script>
         <script src="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.js"></script>
         <script src="${appBean.systemConfig.assetsUrl}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
-
+       
         <!-- App -->
+         <script src="${pageContext.request.contextPath}/assets/js/lazyload/jquery.lazyload.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
         <script type="text/javascript">
@@ -102,6 +105,8 @@
                 $("img").error(function () {
                     $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
                 });
+                
+                $("img .lazy").lazyload();
             });
         </script>
     </body>
