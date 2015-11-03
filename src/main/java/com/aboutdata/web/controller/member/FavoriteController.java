@@ -10,8 +10,9 @@ import com.aboutdata.domain.Collections;
 import com.aboutdata.domain.Member;
 import com.aboutdata.service.CollectionsService;
 import com.aboutdata.service.MemberService;
-import java.util.List;
 import javax.annotation.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +26,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller("shopFavoriteController")
 @RequestMapping("/member/favorite")
 public class FavoriteController {
-
+    
+    Logger logger = LoggerFactory.getLogger(FavoriteController.class);
+    
     @Resource(name = "memberServiceImpl")
     private MemberService memberService;
-
+    
     @Resource(name = "collectionsServiceImpl")
     private CollectionsService collectionsService;
 
@@ -58,14 +61,14 @@ public class FavoriteController {
     @ResponseBody
     public ResponseMessage create(String name, boolean isPrivate) {
         Member member = memberService.getCurrent();
-
+        
         Collections collections = new Collections();
         collections.setName(name);
         collections.setIsDefault(isPrivate);
         collections.setMember(member);
-
+        
         collectionsService.create(collections);
-
+        
         return ResponseMessage.success("创建收藏夹成功");
     }
 
@@ -80,8 +83,18 @@ public class FavoriteController {
     public ResponseMessage add(String photosId) {
         Member member = memberService.getCurrent();
         Collections collections = collectionsService.findDefaultByMember(member.getId());
+        if (collections == null) {
+            logger.info("默认收藏 会员ID {}", member.getId());
+            //默认收藏
+            collections = new Collections();
+            collections.setIsDefault(Boolean.TRUE);
+            collections.setName("默认收藏夹");
+            collections.setMember(member);
+            collectionsService.create(collections);
+        }
+        collections = collectionsService.findDefaultByMember(member.getId());
         collectionsService.addFavorite(photosId, collections.getId());
         return ResponseMessage.success("添加到收藏夹");
     }
-
+    
 }

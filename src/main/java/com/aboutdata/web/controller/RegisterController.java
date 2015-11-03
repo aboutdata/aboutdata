@@ -82,6 +82,14 @@ public class RegisterController {
 
     /**
      * 注册提交
+     * @param username
+     * @param email
+     * @param password
+     * @param request
+     * @param response
+     * @param session
+     * @param model
+     * @return 
      */
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     public String submit(String username, String email, String password, HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap model) {
@@ -115,7 +123,7 @@ public class RegisterController {
 
         session.setAttribute(Member.PRINCIPAL_ATTRIBUTE_NAME, new Principal(member.getId(), member.getUsername()));
 
-        return "redirect:/index";
+        return "redirect:/";
     }
 
 }
