@@ -50,9 +50,7 @@
                                                 <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-control-play i-2x"></i></a>
                                             </div>
                                         </div>
-                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}">
-                                            <img data-original="${photos.storageHost}/${photos.thumbnail}" width="765" height="574"  alt="" class="lazy r r- img-full">
-                                        </a>
+                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="lazy r r- img-full"></a>
                                     </div>
                                     <div class="wrapper-sm" ></div>
                                 </div>
@@ -106,7 +104,7 @@
                     $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
                 });
                 
-                $("img .lazy").lazyload();
+             
             });
         </script>
     </body>
