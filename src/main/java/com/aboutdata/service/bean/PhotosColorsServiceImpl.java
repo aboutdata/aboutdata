@@ -23,6 +23,7 @@ import me.croma.image.Image;
 import me.croma.image.KMeansColorPicker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 图片颜色截取
@@ -41,6 +42,7 @@ public class PhotosColorsServiceImpl implements PhotosColorsService {
     private PhotosColorsDao photosColorsDao;
 
     @Override
+    @Transactional
     public void generateColors(String photosID) {
         try {
             File file = new File("D:\\workspace\\GitHub\\croma\\images\\lockbur-com.jpg");

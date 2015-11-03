@@ -18,6 +18,7 @@ import com.aboutdata.service.EmailService;
 import com.aboutdata.service.MemberRankService;
 import com.aboutdata.service.MemberService;
 import com.aboutdata.service.PhotosAlbumService;
+import com.aboutdata.service.PhotosColorsService;
 import com.aboutdata.service.PhotosService;
 import com.aboutdata.service.SearchService;
 import com.aboutdata.service.StorageService;
@@ -58,7 +59,8 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     private Logger log;
 
     @Resource
-    private PhotosAlbumService photosAlbumService;
+    private PhotosColorsService PhotosColorsService;
+    
     @Resource
     private SearchService searchService;
 
@@ -86,12 +88,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 
     @Test
     public void findByIdTest() {
-        Pageable pageable = new PageRequest(1, 10);
-        Page<PhotosModel> pages = searchService.search("astronaut", pageable);
-        System.out.println("pages.getContent() "+pages.getContent().size());
-        for (PhotosModel photo : pages.getContent()) {
-            System.out.println("photo "+photo);
-        }
+       PhotosColorsService.generateColors("000b6d44-5390-4077-a919-681b58b51b06");
     }
 
 }
