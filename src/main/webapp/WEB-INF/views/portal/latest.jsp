@@ -26,32 +26,26 @@
     <body>
         <section class="vbox">
             <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
-                <!--main page-->
-                <section>
-                    <section id="waterfall"  class="container scrollable padder-lg">
-                        <h2 class="font-thin m-b">Acoustic</h2>
-                        <div class="row row-sm">
+            <!--main page-->
+            <section>
+                <section id="waterfall"  class="container scrollable padder-lg">
+                    <h2 class="font-thin m-b">Acoustic</h2>
+                    <div class="row row-sm">
                         <c:forEach items="${pages.content}" var="photos" varStatus="idx">
                             <div class="col-xs-6 col-sm-4 col-md-3">
                                 <div class="item">
                                     <div class="pos-rlt">
-<!--                                                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}" class="item-overlay opacity r r-2x bg-black">
-                                            <div class="text-info padder m-t-sm text-sm">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o text-muted"></i>
+                                        <div class="item-overlay opacity r r-2x bg-black">
+                                            <c:if test="${appBean.getCurrentUser() != null}">
+                                                <div class="text-info padder m-t-sm text-sm">
+                                                    <button data-photos-id="${photos.id}" class="pull-right addFavorite" >
+                                                        <i class="fa fa-heart-o text-danger"></i>
+                                                    </button>
+                                                </div>
+                                            </c:if>
+                                            <div class="center text-center m-t-n">
+                                                <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-control-play i-2x"></i></a>
                                             </div>
-
-                                        </a>-->
-                                        <div class="bottom padder m-b-sm">
-                                            <a href="#" class="pull-right addFav" data-id="${photos.id}">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                            <a href="#" i>
-                                                <i class="fa fa-plus-circle"></i>
-                                            </a>
                                         </div>
                                         <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
                                     </div>
@@ -83,10 +77,25 @@
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.infinitescroll.min.js" type="text/javascript"></script>
         <script type="text/javascript">
+
             $(document).ready(function () {
-                $("#search").click(function () {
-                    $("#searchbar").toggle("slow");
+                //添加到收藏夹
+                $(document).on("click", ".addFavorite", function () {
+                    var _photo_id = $(this).data("photos-id");
+                    $.ajax({
+                        type: "post",
+                        url: "${pageContext.request.contextPath}/member/favorite/add",
+                        data: {photosId: _photo_id},
+                        dataType: "json",
+                        success: function (data) {
+                            alert("添加成功");
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert(errorThrown);
+                        }
+                    });
                 });
+                //背景图片
                 $('body').vegas({
                     timer: false,
                     slides: [
@@ -119,36 +128,6 @@
                     $('#waterfall').append($newElems);
                 });
 
-                $(".addFav").click(function () {
-                    var id = $(this).data("id");
-                    alert(id);
-                    $.ajax({
-                        //提交数据的类型 POST GET
-                        type: "POST",
-                        //提交的网址
-                        url: "${pageContext.request.contextPath}/member/favorite/add",
-                        //提交的数据
-                        data: {photosId: id, collectionsId: "1111"},
-                        //返回数据的格式
-                        datatype: "json", //"xml", "html", "script", "json", "jsonp", "text".
-                        //在请求之前调用的函数
-                        beforeSend: function () {
-                            // $("#msg").html("logining");
-                        },
-                        //成功返回之后调用的函数            
-                        success: function (data) {
-                            alert(data);
-                        },
-                        //调用执行后调用的函数
-                        complete: function (XMLHttpRequest, textStatus) {
-
-                        },
-                        //调用出错执行的函数
-                        error: function () {
-                            //请求出错处理
-                        }
-                    });
-                });
             });
         </script>
 

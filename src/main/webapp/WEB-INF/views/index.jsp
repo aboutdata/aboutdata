@@ -39,12 +39,13 @@
                                 <div class="item">
                                     <div class="pos-rlt">
                                         <div class="item-overlay opacity r r-2x bg-black">
-                                            <div class="text-info padder m-t-sm text-sm">
-                                                <a href="#" data-photos-id="${photos.id}" class="pull-right addFavorite" data-toggle="class">
-                                                    <i class="fa fa-heart text-active text-danger"></i>
-                                                    <i class="fa fa-heart-o text"></i>
-                                                </a>
-                                            </div>
+                                            <c:if test="${appBean.getCurrentUser() != null}">
+                                                <div class="text-info padder m-t-sm text-sm">
+                                                    <button data-photos-id="${photos.id}" class="pull-right addFavorite" >
+                                                        <i class="fa fa-heart-o text-danger"></i>
+                                                    </button>
+                                                </div>
+                                            </c:if>
                                             <div class="center text-center m-t-n">
                                                 <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-control-play i-2x"></i></a>
                                             </div>
@@ -75,7 +76,8 @@
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $(".addFavorite").click(function () {
+                //添加到收藏夹
+                $(document).on("click", ".addFavorite", function () {
                     var _photo_id = $(this).data("photos-id");
                     $.ajax({
                         type: "post",
@@ -90,7 +92,7 @@
                         }
                     });
                 });
-
+                //背景图片
                 $('body').vegas({
                     timer: false,
                     slides: [

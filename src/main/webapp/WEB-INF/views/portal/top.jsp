@@ -26,22 +26,26 @@
     <body>
         <section class="vbox">
             <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
-                <!--main page-->
-                <section>
-                    <section id="waterfall"  class="container scrollable padder-lg">
-                        <h2 class="font-thin m-b">Acoustic</h2>
-                        <div class="row row-sm">
+            <!--main page-->
+            <section>
+                <section id="waterfall"  class="container scrollable padder-lg">
+                    <h2 class="font-thin m-b">Acoustic</h2>
+                    <div class="row row-sm">
                         <c:forEach items="${pages.content}" var="photos" varStatus="idx">
                             <div class="col-xs-6 col-sm-4 col-md-3">
                                 <div class="item">
                                     <div class="pos-rlt">
-                                        <div class="bottom padder m-b-sm">
-                                            <a href="#" class="pull-right addFav" data-id="${photos.id}">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                            <a href="#" i>
-                                                <i class="fa fa-plus-circle"></i>
-                                            </a>
+                                        <div class="item-overlay opacity r r-2x bg-black">
+                                            <c:if test="${appBean.getCurrentUser() != null}">
+                                                <div class="text-info padder m-t-sm text-sm">
+                                                    <button data-photos-id="${photos.id}" class="pull-right addFavorite" >
+                                                        <i class="fa fa-heart-o text-danger"></i>
+                                                    </button>
+                                                </div>
+                                            </c:if>
+                                            <div class="center text-center m-t-n">
+                                                <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-control-play i-2x"></i></a>
+                                            </div>
                                         </div>
                                         <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
                                     </div>
@@ -74,9 +78,23 @@
         <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.infinitescroll.min.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $("#search").click(function () {
-                    $("#searchbar").toggle("slow");
+                //添加到收藏夹
+                $(document).on("click", ".addFavorite", function () {
+                    var _photo_id = $(this).data("photos-id");
+                    $.ajax({
+                        type: "post",
+                        url: "${pageContext.request.contextPath}/member/favorite/add",
+                        data: {photosId: _photo_id},
+                        dataType: "json",
+                        success: function (data) {
+                            alert("添加成功");
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert(errorThrown);
+                        }
+                    });
                 });
+                //背景图片
                 $('body').vegas({
                     timer: false,
                     slides: [
