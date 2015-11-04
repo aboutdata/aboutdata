@@ -51,6 +51,7 @@ public class WallpaperController {
             }
             tagString = tagString.substring(0, tagString.length());
         }
+        //壁纸的主要颜色
         List<PhotosColors> colors = photosColorsService.findByPhotosId(photosId);
         
         model.addAttribute("photos", photos);
