@@ -60,7 +60,7 @@ public class PhotosColorsServiceImpl implements PhotosColorsService {
                 // ColorPicker km = new MedianCutColorPicker();
                 //6 取出6种颜色
                 List<Color> list = km.getUsefulColors(img, 6);
-                file.delete();
+                //file.delete();
                 for (Color c : list) {
                     PhotosColors colors = new PhotosColors();
                     colors.setBlue(c.getBlue());
@@ -71,10 +71,7 @@ public class PhotosColorsServiceImpl implements PhotosColorsService {
                     colors.setPhotos(photos);
                     photosColorsDao.save(colors);
                 }
-            } else {
-                logger.info("download error message: Read timed out :{}", photosID);
             }
-
         } catch (IOException ex) {
             logger.error("cut images color error inf :{}", ex);
         }
@@ -87,11 +84,10 @@ public class PhotosColorsServiceImpl implements PhotosColorsService {
      * @return
      */
     public File getImages(String urlPath, String fileName) {
-        // System.out.println("urlPath: " + urlPath);
+        logger.info("urlPath: " + urlPath);
         Connection conn = Jsoup
                 .connect(urlPath)
-                .userAgent(
-                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36");
+                .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36");
         try {
             Connection.Response response = conn.ignoreContentType(true).execute();
             if (response.statusCode() == 200) {

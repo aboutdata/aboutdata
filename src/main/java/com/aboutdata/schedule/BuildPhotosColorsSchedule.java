@@ -5,10 +5,7 @@
  */
 package com.aboutdata.schedule;
 
-import com.aboutdata.commons.enums.PhotoStatus;
-import com.aboutdata.domain.Photos;
 import com.aboutdata.model.PhotosModel;
-import com.aboutdata.schedule.task.BuildIndexTask;
 import com.aboutdata.schedule.task.BuildPhotosColorsTask;
 import com.aboutdata.service.PhotosColorsService;
 import com.aboutdata.service.PhotosService;
@@ -23,6 +20,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 /**
+ * 截取图片颜色多线程
  *
  * @author Administrator
  */
@@ -32,7 +30,7 @@ public class BuildPhotosColorsSchedule {
     private int pageNow = 0;
     private int pagesize = 24;
 
-    private int totalPages = 2167;
+    private int totalPages = 2;
 
     Logger logger = LoggerFactory.getLogger(BuildPhotosColorsSchedule.class);
 
@@ -45,7 +43,7 @@ public class BuildPhotosColorsSchedule {
     @Resource
     private ThreadPoolTaskExecutor taskExecutor;
 
-    @Scheduled(cron = "*/1 * * * * ?")
+    //@Scheduled(cron = "*/1 * * * * ?")
     public void execute() {
         logger.info("ActiveCount :" + taskExecutor.getActiveCount());
         if (taskExecutor.getActiveCount() < 70) {
