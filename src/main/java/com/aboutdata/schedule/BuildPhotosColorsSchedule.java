@@ -32,7 +32,7 @@ public class BuildPhotosColorsSchedule {
     private int pageNow = 0;
     private int pagesize = 24;
 
-    private int totalPages = 0;
+    private int totalPages = 2167;
 
     Logger logger = LoggerFactory.getLogger(BuildPhotosColorsSchedule.class);
 
@@ -47,25 +47,20 @@ public class BuildPhotosColorsSchedule {
 
     @Scheduled(cron = "*/1 * * * * ?")
     public void execute() {
-        logger.info("=============================================");
         logger.info("ActiveCount :" + taskExecutor.getActiveCount());
-        if (taskExecutor.getActiveCount() < 20) {
+        if (taskExecutor.getActiveCount() < 70) {
+            logger.info("当前页码 {}", pageNow);
             if (pageNow <= totalPages) {
                 Pageable pageable = new PageRequest(pageNow, 24);
                 Page<PhotosModel> page = photosService.find(pageable);
                 for (PhotosModel model : page.getContent()) {
                     taskExecutor.execute(new BuildPhotosColorsTask(model.getId(), PhotosColorsService));
                 }
+                pageNow++;
             } else {
                 logger.info("截取图片颜色结束 {}", pageNow);
             }
         }
-    }
-
-    public BuildPhotosColorsSchedule() {
-        Pageable pageable = new PageRequest(0, 24);
-        Page<PhotosModel> page = photosService.find(pageable);
-        totalPages = page.getTotalPages();
     }
 
 }

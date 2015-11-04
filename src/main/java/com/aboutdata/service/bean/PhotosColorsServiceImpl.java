@@ -49,28 +49,32 @@ public class PhotosColorsServiceImpl implements PhotosColorsService {
     public void generateColors(String photosID) {
         Photos photos = photosDao.findOne(photosID);
         try {
-            File file = getImages(photos.getStorageHost()+"/"+ photos.getSource(), "/tmp/full" + photos.getWallhaven() + ".jpg");
-            // /data
+            File file = getImages(photos.getStorageHost() + "/" + photos.getSource(), "/tmp/full" + photos.getWallhaven() + ".jpg");
+
             //File file = new File("D:\\workspace\\GitHub\\croma\\images\\lockbur-com.jpg");
-            Image img = new AWTImage(file);
+            if (file != null) {
+                Image img = new AWTImage(file);
+                ColorPicker km = new KMeansColorPicker();
+                // ColorPicker km = new DBScanColorPicker();
+                //截取算法不一样
+                // ColorPicker km = new MedianCutColorPicker();
+                //6 取出6种颜色
+                List<Color> list = km.getUsefulColors(img, 6);
+                file.delete();
+                for (Color c : list) {
+                    PhotosColors colors = new PhotosColors();
+                    colors.setBlue(c.getBlue());
+                    colors.setGreen(c.getGreen());
+                    colors.setRed(c.getRed());
+                    colors.setColor(c.toHexString());
 
-            ColorPicker km = new KMeansColorPicker();
-            // ColorPicker km = new DBScanColorPicker();
-            //截取算法不一样
-            // ColorPicker km = new MedianCutColorPicker();
-
-            //6 取出6种颜色
-            List<Color> list = km.getUsefulColors(img, 6);
-            for (Color c : list) {
-                PhotosColors colors = new PhotosColors();
-                colors.setBlue(c.getBlue());
-                colors.setGreen(c.getGreen());
-                colors.setRed(c.getRed());
-                colors.setColor(c.toHexString());
-
-                colors.setPhotos(photos);
-                photosColorsDao.save(colors);
+                    colors.setPhotos(photos);
+                    photosColorsDao.save(colors);
+                }
+            } else {
+                logger.info("download error message: Read timed out :{}", photosID);
             }
+
         } catch (IOException ex) {
             logger.error("cut images color error inf :{}", ex);
         }
