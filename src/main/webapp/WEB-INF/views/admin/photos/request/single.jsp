@@ -165,6 +165,9 @@
                                                             <c:when test="${photos.status == 'APPROVED'}">   
                                                                 <span class="badge badge-success">已批准</span>
                                                             </c:when> 
+                                                            <c:when test="${photos.status == 'INDEXED'}">   
+                                                                <span class="badge badge-success">已批准</span>
+                                                            </c:when> 
                                                             <c:when test="${photos.status == 'REJECTED'}">   
                                                                 <span class="badge badge-inverse">已驳回</span>
                                                             </c:when>

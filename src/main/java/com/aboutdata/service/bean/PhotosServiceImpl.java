@@ -59,6 +59,18 @@ public class PhotosServiceImpl implements PhotosService {
     }
 
     @Override
+    public Page<PhotosModel> findByStatusList(List<PhotoStatus> statusList, Pageable pageable) {
+        Page<Photos> page = photosDao.findByStatusIn(statusList, pageable);
+
+        List<Photos> photos = page.getContent();
+
+        List<PhotosModel> models = PhotosDTO.getPhotosModeslDTO(photos);
+        Page<PhotosModel> result = new PageImpl<PhotosModel>(models, pageable, page.getTotalElements());
+
+        return result;
+    }
+
+    @Override
     public Page<PhotosModel> find(Pageable pageable) {
         Page<Photos> page = photosDao.findAll(pageable);
         List<Photos> photos = page.getContent();

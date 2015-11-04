@@ -36,6 +36,8 @@ public interface PhotosService {
 
     public Page<PhotosModel> findByStatus(PhotoStatus status, Pageable pageable);
 
+    public Page<PhotosModel> findByStatusList(List<PhotoStatus> statusList, Pageable pageable);
+
     public List<PhotosModel> random();
 
     /**
