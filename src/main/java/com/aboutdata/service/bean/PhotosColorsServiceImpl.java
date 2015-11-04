@@ -75,7 +75,17 @@ public class PhotosColorsServiceImpl implements PhotosColorsService {
         } catch (IOException ex) {
             logger.error("cut images color error inf :{}", ex);
         }
+    }
 
+    /**
+     * 获取图片主要颜色
+     *
+     * @param photosId
+     * @return
+     */
+    @Override
+    public List<PhotosColors> findByPhotosId(String photosId) {
+        return photosColorsDao.findByPhotosId(photosId);
     }
 
     /**

@@ -33,29 +33,26 @@
                             <section class="scrollable wrapper">
                                 <h4 class="font-thin m-b">Wallpaper Colors</h4>
                                 <div>
-                                    <a href="#" class="btn btn-block btn-primary"></a>
-                                    <a href="#" class="btn btn-block btn-success"></a>
-                                    <a href="#" class="btn btn-block btn-info"></a>
-                                    <a href="#" class="btn btn-block btn-warning"></a>
-                                    <a href="#" class="btn btn-block btn-danger"></a>
-                                    <a href="#" class="btn btn-block btn-dark"></a>
-                                </div>
-                                <h4 class="font-thin m-b">Properties</h4>
-                                <div class="row">
-                                    <div class="col-xs-6 text-right">Category</div>
-                                    <div class="col-xs-6 text-left">Variables</div>
+                                <c:forEach items="${colors}" var="color">
+                                    <a href="#" class="btn btn-block" style="background-color: ${color.color}"></a>
+                                </c:forEach>
+                            </div>
+                            <h4 class="font-thin m-b">Properties</h4>
+                            <div class="row">
+                                <div class="col-xs-6 text-right">Category</div>
+                                <div class="col-xs-6 text-left">Variables</div>
 
-                                    <div class="col-xs-6 text-right">Resolution</div>
-                                    <div class="col-xs-6 text-left">Variables</div>
+                                <div class="col-xs-6 text-right">Resolution</div>
+                                <div class="col-xs-6 text-left">Variables</div>
 
-                                    <div class="col-xs-6 text-right">Size</div>
-                                    <div class="col-xs-6 text-left">335.88 KB</div>
+                                <div class="col-xs-6 text-right">Size</div>
+                                <div class="col-xs-6 text-left">335.88 KB</div>
 
-                                    <div class="col-xs-6 text-right">Type</div>
-                                    <div class="col-xs-6 text-left">image/jpeg</div>
+                                <div class="col-xs-6 text-right">Type</div>
+                                <div class="col-xs-6 text-left">image/jpeg</div>
 
-                                    <div class="col-xs-6 text-right">Posted</div>
-                                    <div class="col-xs-6 text-left"><a href="#">${photos.member.username}</a></div>
+                                <div class="col-xs-6 text-right">Posted</div>
+                                <div class="col-xs-6 text-left"><a href="#">${photos.member.username}</a></div>
 
                                 <div class="col-xs-6 text-right">Date</div>
                                 <div class="col-xs-6 text-left">${photos.createDate}</div>
