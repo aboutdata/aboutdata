@@ -33,9 +33,19 @@
                             <section class="scrollable wrapper">
                                 <h4 class="font-thin m-b">Wallpaper Colors</h4>
                                 <div>
-                                <c:forEach items="${colors}" var="color">
-                                    <a href="#" class="btn btn-block" style="background-color: ${color.color}"></a>
-                                </c:forEach>
+                                <c:if test="${empty colors}">
+                                    <a href="#" class="btn btn-block btn-primary"></a>
+                                    <a href="#" class="btn btn-block btn-success"></a>
+                                    <a href="#" class="btn btn-block btn-info"></a>
+                                    <a href="#" class="btn btn-block btn-warning"></a>
+                                    <a href="#" class="btn btn-block btn-danger"></a>
+                                    <a href="#" class="btn btn-block btn-dark"></a>
+                                </c:if>
+                                <c:if test="${not empty colors}">
+                                    <c:forEach items="${colors}" var="color">
+                                        <a href="#" class="btn btn-block" style="background-color: ${color.color}"></a>
+                                    </c:forEach>
+                                </c:if>
                             </div>
                             <h4 class="font-thin m-b">Properties</h4>
                             <div class="row">
@@ -123,14 +133,14 @@
         </c:otherwise>
     </c:choose>
     <script type="text/javascript">
-            $(document).ready(function () {
-                $('body').vegas({
-                    timer: false,
-                    slides: [
-                        {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
-                    ]
-                });
+        $(document).ready(function () {
+            $('body').vegas({
+                timer: false,
+                slides: [
+                    {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
+                ]
             });
+        });
     </script>
 </html>
 
