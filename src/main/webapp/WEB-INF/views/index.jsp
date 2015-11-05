@@ -13,6 +13,7 @@
         <title>Lockbur - 更多壁纸，更多分享</title>
         <meta name="baidu-site-verification" content="bB5uKKGWVi" />
         <meta name="msvalidate.01" content="1E5396A70FFDF1DD629CEAAD96CCEE15" />
+        <meta name="alexaVerifyID" content="wdV1JUI4A1-05aTdniAVHICFPMI"/>
         <jsp:include page="/WEB-INF/views/portal/common/head_and_css.jsp"/>
         <!--百度统计-->
         <script>
