@@ -62,7 +62,7 @@
                                 <div class="col-xs-6 text-left">image/jpeg</div>
 
                                 <div class="col-xs-6 text-right">上传者</div>
-                                <div class="col-xs-6 text-left"><a href="#">${photos.member.username}</a></div>
+                                <div class="col-xs-6 text-left"><a>${photos.member.username}</a></div>
 
                                 <div class="col-xs-6 text-right">上传时间</div>
                                 <div class="col-xs-6 text-left">${photos.createDate}</div>
