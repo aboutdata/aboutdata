@@ -33,22 +33,22 @@
                             <c:if test="${empty errorMessage}">
                                 <p>登录可以获得更好的服务</p>
                             </c:if>
-                            <form role="form" data-validate="parsley" action="${pageContext.request.contextPath}/register/submit" method="post">
+                            <form role="form" id="inputForm" action="${pageContext.request.contextPath}/register/submit" method="post">
                                 <div class="form-group">
                                     <label>用户名</label>
-                                    <input type="text" class="form-control" name="username" value="aboutdata" placeholder="Enter email" data-required="true">
+                                    <input type="text" class="form-control {required:true,username:true}" name="username"  placeholder="用户名">
                                 </div>
                                 <div class="form-group">
                                     <label>电子邮件</label>
-                                    <input type=email class="form-control" name="email" value="845885222@qq.com" placeholder="Enter email" data-required="true">
+                                    <input type="text" class="form-control {required:true,email:true}" name="email" placeholder="电子邮件">
                                 </div>
                                 <div class="form-group">
                                     <label>密码</label>
-                                    <input type="password" class="form-control" id="password" name="password"  placeholder="密码" data-required="true">
+                                    <input type="password" class="form-control {required:true,minlength: 6}" id="password" name="password" placeholder="密码">
                                 </div>
                                 <div class="form-group">
                                     <label>确认密码</label>
-                                    <input type="password" class="form-control" name="confirmpassword" data-equalto="#password"  placeholder="确认密码" data-required="true">
+                                    <input type="password" class="form-control {required:true,equalTo:'#password'}" name="confirmpassword" placeholder="确认密码">
                                 </div>
                                 <div class="checkbox m-t-lg">
                                     <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs"><strong>注册</strong></button>
@@ -80,6 +80,11 @@
         <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+        <!--引入验证的js代码--->
+        <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.validate.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.validate.methods.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.metadata.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.validate.zh-CN.js"></script>
         <!-- App -->
         <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
 
@@ -87,9 +92,11 @@
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $("#search").click(function () {
-                    $("#searchbar").toggle("slow");
+                $("#inputForm").validate({
+                    errorClass: 'text-danger-lter',
+                    validClass: "text-success"
                 });
+
                 $('body').vegas({
                     timer: false,
                     slides: [
