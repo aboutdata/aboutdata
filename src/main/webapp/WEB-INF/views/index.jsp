@@ -32,7 +32,7 @@
             <!---header //END-->
             <section class="w-f-md">
                 <section class="container scrollable padder-lg">
-                    <h2 class="font-thin m-b">Home</h2>
+                    <h4 class="font-thin m-b m-t text-white">欢迎进入高清壁纸基地!</h4>
                     <div class="row row-sm">
                         <c:forEach items="${content}" var="photos" varStatus="idx">
                             <div class="col-xs-6 col-sm-4 col-md-3">

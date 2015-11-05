@@ -7,16 +7,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="row row-sm">
-    <h3 class="pull-right text-muted m-t-lg" >${page}/${pages.totalPages}</h3>
-    <h2 class="font-thin m-b">Search 
-        <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
-            <span class="bar1 a1 bg-primary lter"></span>
-            <span class="bar2 a2 bg-info lt"></span>
-            <span class="bar3 a3 bg-success"></span>
-            <span class="bar4 a4 bg-warning dk"></span>
-            <span class="bar5 a5 bg-danger dker"></span>
-        </span>
-    </h2>
+    <div class="text-white">
+        <h5 class="font-thin m-b">页码 ${page}/${pages.totalPages} 
+            <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
+                <span class="bar1 a1 bg-primary lter"></span>
+                <span class="bar2 a2 bg-info lt"></span>
+                <span class="bar3 a3 bg-success"></span>
+                <span class="bar4 a4 bg-warning dk"></span>
+                <span class="bar5 a5 bg-danger dker"></span>
+            </span>
+        </h5>
+    </div>
     <c:forEach items="${pages.content}" var="photos" varStatus="idx">
         <div class="col-xs-6 col-sm-4 col-md-3">
             <div class="item">

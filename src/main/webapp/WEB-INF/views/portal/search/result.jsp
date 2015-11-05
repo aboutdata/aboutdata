@@ -29,7 +29,7 @@
             <!--main page-->
             <section>
                 <section id="waterfall"  class="container scrollable padder-lg">
-                    <h2 class="font-thin m-b">${pages.totalElements} Wallpapers found for "${keywords}"</h2>
+                    <h2 class="font-thin m-b">${pages.totalElements} 张高清壁纸被检索 "${keywords}"</h2>
                     <div class="row row-sm">
                         <c:forEach items="${pages.content}" var="photos" varStatus="idx">
                             <div class="col-xs-6 col-sm-4 col-md-3">

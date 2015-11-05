@@ -29,9 +29,9 @@
                 <!--main page-->
                 <section class="w-f-md">
                     <section class="hbox">
-                        <aside class="aside b-r b-black">
+                        <aside class="aside-md b-r b-black">
                             <section class="scrollable wrapper">
-                                <h4 class="font-thin m-b">Wallpaper Colors</h4>
+                                <h4 class="font-thin m-b">颜色</h4>
                                 <div>
                                 <c:if test="${empty colors}">
                                     <a href="#" class="btn btn-block btn-primary"></a>
@@ -47,37 +47,37 @@
                                     </c:forEach>
                                 </c:if>
                             </div>
-                            <h4 class="font-thin m-b">Properties</h4>
+                            <h4 class="font-thin m-b">属性</h4>
                             <div class="row">
-                                <div class="col-xs-6 text-right">Category</div>
+                                <div class="col-xs-6 text-right">栏目</div>
                                 <div class="col-xs-6 text-left">Variables</div>
 
-                                <div class="col-xs-6 text-right">Resolution</div>
+                                <div class="col-xs-6 text-right">分辨率</div>
                                 <div class="col-xs-6 text-left">Variables</div>
 
-                                <div class="col-xs-6 text-right">Size</div>
+                                <div class="col-xs-6 text-right">大小</div>
                                 <div class="col-xs-6 text-left">335.88 KB</div>
 
-                                <div class="col-xs-6 text-right">Type</div>
+                                <div class="col-xs-6 text-right">类型</div>
                                 <div class="col-xs-6 text-left">image/jpeg</div>
 
-                                <div class="col-xs-6 text-right">Posted</div>
+                                <div class="col-xs-6 text-right">上传者</div>
                                 <div class="col-xs-6 text-left"><a href="#">${photos.member.username}</a></div>
 
-                                <div class="col-xs-6 text-right">Date</div>
+                                <div class="col-xs-6 text-right">上传时间</div>
                                 <div class="col-xs-6 text-left">${photos.createDate}</div>
 
-                                <div class="col-xs-6 text-right">Views</div>
+                                <div class="col-xs-6 text-right">查看次数</div>
                                 <div class="col-xs-6 text-left">${photos.order}</div>
 
-                                <div class="col-xs-6 text-right">Comments</div>
+                                <div class="col-xs-6 text-right">评论数</div>
                                 <div class="col-xs-6 text-left">1</div>
 
-                                <div class="col-xs-6 text-right">Downloads</div>
+                                <div class="col-xs-6 text-right">下载次数</div>
                                 <div class="col-xs-6 text-left">1</div>
                             </div>
                             <!-- Properties end// -->
-                            <h4 class="font-thin m-b">Tags</h4>
+                            <h4 class="font-thin m-b">标签</h4>
                             <div class="m-b-lg l-h-2x">
                                 <c:forEach items="${photos.tags}" var="tag">
                                     <lable class="label bg-primary">${tag.name}</lable> 
@@ -87,14 +87,14 @@
                     </aside>
                     <!--主题类容-->
                     <section class="wrapper">    
-                        <h4 class="font-thin m-b">Wallpaper Source</h4>
+                        <h4 class="font-thin m-b">壁纸原图</h4>
                         <div class="row wrapper r r-2x ">
                             <a href="${photos.storageHost}/${photos.large}" target="_blank" >
                                 <img src="${photos.storageHost}/${photos.large}" class="r r-2x img-full" style="cursor: zoom-in">
                             </a>
                         </div>
                         <div>
-                            <h4 class="font-thin m-b">Wallpaper Descriptions</h4>
+                            <h4 class="font-thin m-b">描述信息</h4>
                             <p> Lorem ipsum dolor sit amet, consecteter adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
                         </div>
                     </section>  <!--main end-->

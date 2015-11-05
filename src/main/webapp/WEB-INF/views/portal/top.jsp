@@ -29,7 +29,7 @@
             <!--main page-->
             <section>
                 <section id="waterfall"  class="container scrollable padder-lg">
-                    <h2 class="font-thin m-b">Acoustic</h2>
+                    <h5 class="font-thin m-b m-t text-white">&nbsp;</h5>
                     <div class="row row-sm">
                         <c:forEach items="${pages.content}" var="photos" varStatus="idx">
                             <div class="col-xs-6 col-sm-4 col-md-3">

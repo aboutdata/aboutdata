@@ -29,7 +29,7 @@
             <!--main page-->
             <section>
                 <section id="waterfall"  class="container scrollable padder-lg">
-                    <h2 class="font-thin m-b">Acoustic</h2>
+                    <h5 class="font-thin m-b m-t text-white">随机显示</h5>
                     <div class="row row-sm">
                         <c:forEach items="${list}" var="photos" varStatus="idx">
                             <div class="col-xs-6 col-sm-4 col-md-3">
@@ -38,7 +38,7 @@
                                         <div class="item-overlay opacity r r-2x bg-black">
                                             <c:if test="${appBean.getCurrentUser() != null}">
                                                 <div class="text-info padder m-t-sm text-sm">
-                                                     <button data-photos-id="${photos.id}" class="pull-right addFavorite" >
+                                                    <button data-photos-id="${photos.id}" class="pull-right addFavorite" >
                                                         <i class="fa fa-heart-o text-danger"></i>
                                                     </button>
                                                 </div>
@@ -54,6 +54,7 @@
                             </div>
                             <!--gallery end first// old-->
                         </c:forEach>
+                        <div class="line line-dashed b-b line-lg pull-in"></div>
                     </div>
 
                     <div class="row row-sm">
@@ -61,7 +62,7 @@
 
                         </div>
                         <div id="navigation">
-                            <a href="${pageContext.request.contextPath}/latest/next?page=1"></a>
+                            <a href="${pageContext.request.contextPath}/random/next?page=1"></a>
                         </div>
                     </div>
                 </section>

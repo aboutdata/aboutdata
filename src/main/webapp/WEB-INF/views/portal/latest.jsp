@@ -28,8 +28,8 @@
             <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
             <!--main page-->
             <section>
-                <section id="waterfall"  class="container scrollable padder-lg">
-                    <h2 class="font-thin m-b">Acoustic</h2>
+                <section id="waterfall" class="container scrollable padder-lg">
+                    <h5 class="font-thin m-b m-t text-white">最新上传</h5>
                     <div class="row row-sm">
                         <c:forEach items="${pages.content}" var="photos" varStatus="idx">
                             <div class="col-xs-6 col-sm-4 col-md-3">
