@@ -34,14 +34,14 @@
                                 <p>登录可以获得更好的服务</p>
                             </c:if>
 
-                            <form role="form" data-validate="parsley" action="${pageContext.request.contextPath}/login/submit" method="post">
+                            <form role="form" id="inputForm" action="${pageContext.request.contextPath}/login/submit" method="post">
                                 <div class="form-group">
                                     <label>用户名</label>
-                                    <input type="text" class="form-control" name="username" data-required="true">
+                                    <input type="text" class="form-control {required:true,username:true}" name="username">
                                 </div>
                                 <div class="form-group">
                                     <label>密码</label>
-                                    <input type="password" class="form-control" name="password" data-required="true">
+                                    <input type="password" class="form-control {required:true,minlength: 6}" name="password">
                                 </div>
                                 <div class="checkbox m-t-lg">
                                     <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs"><strong>登录</strong></button>
@@ -73,18 +73,24 @@
         <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-        <!-- App -->
-        <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-        <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/masonry/tiles.min.js"></script>
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
+        <!--引入验证的js代码--->
+        <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.validate.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.validate.methods.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.metadata.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.validate.zh-CN.js"></script>
+        <!-- App -->
+        <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $("#search").click(function () {
-                    $("#searchbar").toggle("slow");
+                //表单验证
+                $("#inputForm").validate({
+                    errorClass: 'text-danger-lter',
+                    validClass: "text-success"
                 });
+                //背景图片
                 $('body').vegas({
                     timer: false,
                     slides: [
