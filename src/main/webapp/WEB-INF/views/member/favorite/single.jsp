@@ -31,12 +31,12 @@
                         <aside class="aside bg-light dk" id="sidebar">
                             <section class="vbox animated fadeInUp">
                                 <header>
-                                    <h3 class="font-thin m-l">Collections</h3>
+                                    <h3 class="font-thin m-l">收藏夹</h3>
                                 </header>
                                 <section class="hover">
                                     <div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none auto">
                                         <a href="#" class="list-group-item active">
-                                            <i class="icon icon-lock"></i> Default
+                                            <i class="icon icon-lock"></i> 默认收藏夹
                                         </a>
                                     </div>
                                 </section>
@@ -45,7 +45,7 @@
                         <aside class="bg-white">
                             <section class="vbox">
                                 <section class="padder-lg">
-                                    <h2 class="font-thin m-b">Default Collections</h2>
+                                    <h5 class="font-thin m-b">默认收藏夹</h5>
                                     <div class="row row-sm">
                                         <c:forEach items="${collections.photos}" var="photos">
                                             <div class="col-xs-6 col-sm-4 col-md-3">

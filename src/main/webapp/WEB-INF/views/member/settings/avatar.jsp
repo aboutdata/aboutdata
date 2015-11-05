@@ -124,7 +124,7 @@
                                                         <div class="fileupload fileupload-new" data-provides="fileupload">
                                                             <div class="col-sm-3">
                                                                 <div class="fileupload-new thumbnail b-a b-dashed b-danger">
-                                                                    <img src="${pageContext.request.contextPath}/avatars/${appBean.getCurrentUser().id}?t=${appBean.getCurrentUser().avatarType}&v=2" alt="" class="img-full">
+                                                                    <img src="${pageContext.request.contextPath}/avatars/${appBean.getCurrentUser().id}?t=${appBean.getCurrentUser().avatarType}&v=2" alt="您还未上传过头像信息" class="img-full">
                                                                 </div>
                                                                 <div class="fileupload-preview fileupload-exists thumbnail  b-a b-dashed b-danger">
 
