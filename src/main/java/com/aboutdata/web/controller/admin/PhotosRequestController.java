@@ -21,12 +21,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller("adminPhotosRequestController")
 @RequestMapping("/admin/photosRequest")
 public class PhotosRequestController {
-    
+
     Logger logger = LoggerFactory.getLogger(getClass());
-    
+
     @Resource
     private PhotosService photosService;
-    
+
     @Resource
     private PhotosColorsService photosColorsService;
 
@@ -39,7 +39,7 @@ public class PhotosRequestController {
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(ModelMap model) {
-        
+
         return "/admin/photos/request/list";
     }
 
@@ -63,9 +63,9 @@ public class PhotosRequestController {
             String sSearch,
             int sEcho) {
         Pageable pageable = new PageRequest(iDisplayStart, iDisplayLength);
-        
+
         Page<PhotosModel> list = photosService.findByStatus(PhotoStatus.UNASSIGNED, pageable);
-        
+
         return new TableData(list, sEcho, false);
     }
 
@@ -88,21 +88,16 @@ public class PhotosRequestController {
      * 审核通过
      *
      * @param id
-     * @param comment
+     * @param description
      * @param model
      * @return
      */
     @RequestMapping(value = "/approve/{id}", method = RequestMethod.POST)
-    public String approve(@PathVariable("id") String id, String comment, ModelMap model) {
-        
-        photosService.makrStatus(id, PhotoStatus.APPROVED);
+    public String approve(@PathVariable("id") String id, String description, ModelMap model) {
+        photosService.approve(id, description);
         //再批准通过 同时截取图片颜色
         photosColorsService.generateColors(id);
-        
-        PhotosModel photos = photosService.findById(id);
-        model.addAttribute("photos", photos);
-        logger.info("comment", comment);
-        return "/admin/photos/request/single";
+        return "redirect:/admin/photosRequest/single/" + id;
     }
 
     /**
@@ -115,12 +110,12 @@ public class PhotosRequestController {
      */
     @RequestMapping(value = "/reject/{id}", method = RequestMethod.POST)
     public String reject(@PathVariable("id") String id, String comment, ModelMap model) {
-        
+
         photosService.makrStatus(id, PhotoStatus.REJECTED);
         PhotosModel photos = photosService.findById(id);
         model.addAttribute("photos", photos);
         logger.info("comment", comment);
         return "/admin/photos/request/single";
     }
-    
+
 }

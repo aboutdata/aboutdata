@@ -115,6 +115,20 @@ public class PhotosServiceImpl implements PhotosService {
         return photosDao.save(photos);
     }
 
+    /**
+     * @ 批准通过
+     * @ 批准通过 定时任务会马上创建索引
+     * @param id
+     * @param description
+     */
+    @Override
+    @Transactional
+    public void approve(String id, String description) {
+        Photos photos = photosDao.findOne(id);
+        photos.setStatus(PhotoStatus.APPROVED);
+        photos.setDescription(description);
+    }
+
     @Override
     @Transactional
     public int makrStatus(String id, PhotoStatus status) {

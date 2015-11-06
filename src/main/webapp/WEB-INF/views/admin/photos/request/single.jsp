@@ -279,10 +279,17 @@
                                                         本申请已经被驳回！
                                                     </div>
                                                 </c:when>
+                                                <c:when test="${photos.status == 'INDEXED'}">
+                                                    <div class="space-10"></div>
+                                                    <div class="alert alert-block alert-success successMessage">
+                                                        <i class="icon-ok bigger-130 green"></i> 
+                                                        本申请已经被批准！已创建索引！
+                                                    </div>
+                                                </c:when>
                                                 <c:otherwise>
                                                     <form action="${pageContext.request.contextPath}/admin/photosRequest/approve/${photos.id}" method="post">
                                                         <div>
-                                                            <textarea class="form-control" name="comment" placeholder="请输入您的评论..." id="form-field-8"></textarea>
+                                                            <textarea class="form-control" name="description" placeholder="请输入您的评论..." id="description"></textarea>
                                                         </div>
                                                         <div class="clearfix form-actions">
                                                             <div class="col-md-offset-3 col-md-9">

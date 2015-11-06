@@ -53,7 +53,7 @@
                                 <div class="col-xs-6 text-left">Variables</div>
 
                                 <div class="col-xs-6 text-right">分辨率</div>
-                                <div class="col-xs-6 text-left">Variables</div>
+                                <div class="col-xs-6 text-left">${photos.width}x${photos.height}</div>
 
                                 <div class="col-xs-6 text-right">大小</div>
                                 <div class="col-xs-6 text-left">335.88 KB</div>
@@ -95,7 +95,7 @@
                         </div>
                         <div>
                             <h4 class="font-thin m-b">描述信息</h4>
-                            <p> Lorem ipsum dolor sit amet, consecteter adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
+                            <p> ${photos.description}</p>
                         </div>
                     </section>  <!--main end-->
 
@@ -133,14 +133,14 @@
         </c:otherwise>
     </c:choose>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('body').vegas({
-                timer: false,
-                slides: [
-                    {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
-                ]
+            $(document).ready(function () {
+                $('body').vegas({
+                    timer: false,
+                    slides: [
+                        {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
+                    ]
+                });
             });
-        });
     </script>
 </html>
 

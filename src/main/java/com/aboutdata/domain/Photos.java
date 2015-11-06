@@ -31,6 +31,15 @@ public class Photos extends BaseEntity {
     private String title;
 
     /**
+     * 壁纸原图的宽高
+     */
+    @Column(nullable = false)
+    private int width = 0;
+
+    @Column(nullable = false)
+    private int height = 0;
+
+    /**
      * 原图片
      */
     private String source;
@@ -49,20 +58,18 @@ public class Photos extends BaseEntity {
      * 缩略图
      */
     private String thumbnail;
-    
+
     /**
      * 是否来自wallhaven
      */
     @Column(length = 9)
     private String wallhaven;
-    
-    
-     /**
+
+    /**
      * 图片服务器地址
      */
     @Column(length = 20)
     private String storageHost;
-
 
     /**
      * 排序 暂时用orders用来存储访问次数
@@ -70,13 +77,19 @@ public class Photos extends BaseEntity {
     @Min(0)
     @Column(name = "orders")
     private Integer order;
-    
+
+    /**
+     * @ 壁纸的描述信息
+     * @ 主要为更好的说明图片内容和搜索引擎收录
+     */
+    @Length(max = 500)
+    private String description;
     /**
      * PhotoStatus 状态信息
      */
     @Enumerated(EnumType.STRING)
-    @Column(nullable = true,length = 20)
-    private PhotoStatus status=PhotoStatus.ASSIGNED;
+    @Column(nullable = true, length = 20)
+    private PhotoStatus status = PhotoStatus.ASSIGNED;
 
     @ManyToOne
     @JoinColumn(name = "album_id", nullable = false)
@@ -195,9 +208,33 @@ public class Photos extends BaseEntity {
         this.wallhaven = wallhaven;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
-        return "Photos{" + "title=" + title + ", source=" + source + ", large=" + large + ", medium=" + medium + ", thumbnail=" + thumbnail + ", wallhaven=" + wallhaven + ", storageHost=" + storageHost + ", order=" + order + ", status=" + status + ", album=" + album + ", member=" + member + ", tags=" + tags + '}';
+        return "Photos{" + "title=" + title + ", width=" + width + ", height=" + height + ", source=" + source + ", large=" + large + ", medium=" + medium + ", thumbnail=" + thumbnail + ", wallhaven=" + wallhaven + ", storageHost=" + storageHost + ", order=" + order + ", description=" + description + ", status=" + status + ", album=" + album + ", member=" + member + ", tags=" + tags + '}';
     }
 
 }
