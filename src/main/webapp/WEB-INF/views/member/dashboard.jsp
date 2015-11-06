@@ -24,8 +24,11 @@
         </script>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
-            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
+            <!---header-->
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
+            <!---header //END-->
             <section>
                 <section class="container scrollable m-b m-t">
                     <section class="hbox stretch">
@@ -214,17 +217,17 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $("#search").click(function () {
-                $("#searchbar").toggle("slow");
+            $(document).ready(function () {
+                $("#search").click(function () {
+                    $("#searchbar").toggle("slow");
+                });
+                $('body').vegas({
+                    timer: false,
+                    slides: [
+                        {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
+                    ]
+                });
             });
-            $('body').vegas({
-                timer: false,
-                slides: [
-                    {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
-                ]
-            });
-        });
     </script>
 </html>
 

@@ -24,19 +24,20 @@
         </script>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
             <!---header-->
-            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"></jsp:include>
-                <!---header //END-->
-                <section>
-                    <section class="container scrollable padder-lg">
-                        <div class="row m-n">
-                            <div class="col-sm-4 col-sm-offset-4">
-                                <div class="text-center m-b-lg">
-                                    <h1 class="h text-white animated fadeInDownBig">404</h1>
-                                </div>
-                                <div class="list-group auto m-b-sm m-b-lg">
-                                    <a href="${pageContext.request.contextPath}/" class="list-group-item">
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
+            <!---header //END-->
+            <section>
+                <section class="container scrollable padder-lg">
+                    <div class="row m-n">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <div class="text-center m-b-lg">
+                                <h1 class="h text-white animated fadeInDownBig">404</h1>
+                            </div>
+                            <div class="list-group auto m-b-sm m-b-lg">
+                                <a href="${pageContext.request.contextPath}/" class="list-group-item">
                                     <i class="fa fa-chevron-right icon-muted"></i>
                                     <i class="fa fa-fw fa-home icon-muted"></i> 回到首页
                                 </a>
@@ -55,14 +56,14 @@
         <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
         <script type="text/javascript">
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $('body').vegas({
                     timer: false,
                     slides: [
                         {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
                     ]
                 });
-                $("img").error(function() {
+                $("img").error(function () {
                     $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
                 });
             });

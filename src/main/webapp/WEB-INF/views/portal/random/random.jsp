@@ -24,9 +24,11 @@
         </script>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
-            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
-            <!--main page-->
+            <!---header-->
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
+            <!---header //END-->
             <section>
                 <section id="waterfall"  class="container scrollable padder-lg">
                     <h5 class="font-thin m-b m-t text-white">随机显示</h5>

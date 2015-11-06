@@ -27,9 +27,10 @@
         </script>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
             <!---header-->
-            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
             <!---header //END-->
             <section class="w-f-md">
                 <section class="container scrollable padder-lg">
@@ -71,9 +72,9 @@
         <script src="${appBean.systemConfig.assetsUrl}/assets/js/bootstrap.js"></script>
         <script src="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.js"></script>
         <script src="${appBean.systemConfig.assetsUrl}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
-       
+
         <!-- App -->
-         <script src="${pageContext.request.contextPath}/assets/js/lazyload/jquery.lazyload.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/lazyload/jquery.lazyload.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
         <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
         <script type="text/javascript">
@@ -104,8 +105,8 @@
                 $("img").error(function () {
                     $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
                 });
-                
-             
+
+
             });
         </script>
     </body>

@@ -24,15 +24,17 @@
         </script>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
-            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"></jsp:include>
-                <!--main page-->
-                <section class="w-f-md">
-                    <section class="hbox">
-                        <aside class="aside-md b-r b-black">
-                            <section class="scrollable wrapper">
-                                <h4 class="font-thin m-b">颜色</h4>
-                                <div>
+            <!---header-->
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
+            <!---header //END-->
+            <section class="w-f-md">
+                <section class="hbox">
+                    <aside class="aside-md b-r b-black">
+                        <section class="scrollable wrapper">
+                            <h4 class="font-thin m-b">颜色</h4>
+                            <div>
                                 <c:if test="${empty colors}">
                                     <a href="#" class="btn btn-block btn-primary"></a>
                                     <a href="#" class="btn btn-block btn-success"></a>

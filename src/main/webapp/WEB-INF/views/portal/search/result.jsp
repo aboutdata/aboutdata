@@ -24,9 +24,11 @@
         </script>
     </head>
     <body>
+       <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
-            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
-            <!--main page-->
+            <!---header-->
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
+            <!---header //END-->
             <section>
                 <section id="waterfall"  class="container scrollable padder-lg">
                     <h2 class="font-thin m-b">${pages.totalElements} 张高清壁纸被检索 "${keywords}"</h2>

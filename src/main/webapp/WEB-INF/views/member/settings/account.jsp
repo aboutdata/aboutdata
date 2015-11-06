@@ -19,8 +19,11 @@
         </script>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
-            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
+            <!---header-->
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
+            <!---header //END-->
             <section>
                 <section class="container scrollable m-b m-t">
                     <section class="hbox stretch">

@@ -14,8 +14,11 @@
         <jsp:include page="/WEB-INF/views/portal/common/head_and_css.jsp"/>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
-            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
+            <!---header-->
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
+            <!---header //END-->
             <section class="w-f-md m-t">
                 <!--content-->
                 <section class="padder">

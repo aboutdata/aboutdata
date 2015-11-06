@@ -3920,8 +3920,6 @@ fieldset[disabled] .i-checks input + i:before {
 #header {
         float:left;
 	font-size:1.1em;
-	line-height:50px;
-	text-align:left;
 	white-space:nowrap;
 	background-color:#212427;
 	background-image:-webkit-linear-gradient(top, #292c2f 0, #191c1f 100%);
@@ -3936,53 +3934,13 @@ fieldset[disabled] .i-checks input + i:before {
 #header #logo {
 	float:left;
 	display:inline-block;
-	height:50px;
 	line-height:inherit
 }
 #header #logo img {
 	position:relative;
 }
-#topmenu {
-	font-family:'Montserrat','Source Sans Pro','Arial',sans
-}
-#topmenu,
-#topmenu li,
-#topmenu a {
-	display:inline-block;
-	max-height:50px;
-	line-height:50px
-}
-#topmenu li:first-child {
-	border-left:1px solid rgba(0,0,0,0.5)
-}
-#topmenu li:last-child {
-	border-right:1px solid rgba(255,255,255,0.05)
-}
-#topmenu li:hover,
-#topmenu li:active,
-#topmenu li:focus {
-	background-color:#212427;
-	background-image:-webkit-linear-gradient(top, #191c1f 0, #292c2f 100%);
-	background-image:-o-linear-gradient(top, #191c1f 0, #292c2f 100%);
-	background-image:linear-gradient(to bottom, #191c1f 0, #292c2f 100%)
-}
-#topmenu li a {
-	position:relative;
-	padding:0 1em;
-	border-width:0 1px;
-	border-color:transparent rgba(0,0,0,0.5) transparent rgba(255,255,255,0.05);
-	background-color:transparent;
-	-webkit-transition-property:color,text-shadow,background,box-shadow,border-color,padding;
-	-o-transition-property:color,text-shadow,background,box-shadow,border-color,padding;
-	transition-property:color,text-shadow,background,box-shadow,border-color,padding;
-	-webkit-transition-duration:.25s;
-	-o-transition-duration:.25s;
-	transition-duration:.25s;
-	text-align:center
-}
-#topmenu li a .fa {
-	position:relative;
-	bottom:0;
+
+#navbar li a .fa {
 	-webkit-transition-property:bottom;
 	-o-transition-property:bottom;
 	transition-property:bottom;
@@ -3991,55 +3949,69 @@ fieldset[disabled] .i-checks input + i:before {
 	transition-duration:.25s
 }
 
-#topmenu li a:hover,
-#topmenu li a:active,
-#topmenu li a:focus {
-	box-shadow:inset 0 0 .75em rgba(0,0,0,0.2);
-	padding:0 1.5em
+#navbar>ul>li:first-child {
+	border-left:1px solid rgba(0,0,0,0.5)
 }
-#topmenu li a:hover span,
-#topmenu li a:active span,
-#topmenu li a:focus span {
+#navbar>ul> li:last-child {
+	border-right:1px solid rgba(255,255,255,0.05)
+}
+#navbar li:hover,
+#navbar li:active,
+#navbar li:focus {
+	background-color:#212427;
+	background-image:-webkit-linear-gradient(top, #191c1f 0, #292c2f 100%);
+	background-image:-o-linear-gradient(top, #191c1f 0, #292c2f 100%);
+	background-image:linear-gradient(to bottom, #191c1f 0, #292c2f 100%)
+}
+#navbar li a:hover,
+#navbar li a:active,
+#navbar li a:focus {
+	box-shadow:inset 0 0 .75em rgba(0,0,0,0.2);
+}
+#navbar li a:hover span,
+#navbar li a:active span,
+#navbar li a:focus span {
 	font-size: 16px;
 	opacity:1
 }
-#topmenu li a.search:hover,
-#topmenu li a.search:active,
-#topmenu li a.search:focus {
+#navbar li a.search:hover,
+#navbar li a.search:active,
+#navbar li a.search:focus {
 	background-color:rgba(47,90,143,0.33)
 }
-#topmenu li a.latest:hover,
-#topmenu li a.latest:active,
-#topmenu li a.latest:focus {
+#navbar li a.latest:hover,
+#navbar li a.latest:active,
+#navbar li a.latest:focus {
 	background-color:rgba(98,125,41,0.33)
 }
-#topmenu li a.random:hover,
-#topmenu li a.random:active,
-#topmenu li a.random:focus {
+#navbar li a.random:hover,
+#navbar li a.random:active,
+#navbar li a.random:focus {
 	background-color:rgba(132,73,41,0.33)
 }
-#topmenu li a.upload:hover,
-#topmenu li a.upload:active,
-#topmenu li a.upload:focus {
+#navbar li a.upload:hover,
+#navbar li a.upload:active,
+#navbar li a.upload:focus {
 	background-color:rgba(123,56,58,0.33)
 }
-
-header .latest {
+#navbar .latest {
 	color:#ad3
 }
-header .random {
+#navbar .random {
 	color:#e73
 }
-header .upload {
+#navbar .upload {
 	color:#d55
 }
-header .upload .fa-circle {
+#navbar .upload .fa-circle {
 	color:#6d0;
 	font-size:.6em
 }
-header .search {
+#navbar .search {
 	color:#49f
 }
-header .discover {
+#navbar .discover {
 	color:#F9F900
 }
+
+

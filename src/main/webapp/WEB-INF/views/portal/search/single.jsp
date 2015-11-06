@@ -24,13 +24,15 @@
         </script>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
-            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
-                <!--main page-->
-                <section>
-                    <div class="m-t-xxs">
-                        <div class="modal-center animated fadeInUp text-center" style="width:200px;margin:-80px 0 0 -100px;">
-                            <div class="thumb-lg"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" class="img-circle b-a b-light b-2x"></div>
+            <!---header-->
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
+            <!---header //END-->
+            <section>
+                <div class="m-t-xxs">
+                    <div class="modal-center animated fadeInUp text-center" style="width:200px;margin:-80px 0 0 -100px;">
+                        <div class="thumb-lg"><img src="${pageContext.request.contextPath}/assets/images/avatars.jpg" class="img-circle b-a b-light b-2x"></div>
                         <p class="text-white h4 m-t m-b">I Am Dangerous</p>
                         <div class="input-group">
                             <input type="text" id="keywords" class="form-control text-sm btn-rounded" value="china">
@@ -54,18 +56,18 @@
     <script src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('body').vegas({
-                timer: false,
-                slides: [
-                    {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
-                ]
+            $(document).ready(function () {
+                $('body').vegas({
+                    timer: false,
+                    slides: [
+                        {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
+                    ]
+                });
+                $("#search").click(function () {
+                    var keywords = $("#keywords").val();
+                    location.href = "${pageContext.request.contextPath}/search?keywords=" + keywords;
+                });
             });
-            $("#search").click(function () {
-                var keywords = $("#keywords").val();
-                location.href = "${pageContext.request.contextPath}/search?keywords=" + keywords;
-            });
-        });
     </script>
 
 </body>

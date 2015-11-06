@@ -24,31 +24,33 @@
         </script>
     </head>
     <body class="container">
+        <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
-                <jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>
-                <!--main page-->
-                <section id="content">
-                    <section class="vbox padder-lg">
-                        <h2 class="font-thin m-b">标签列表 
-                            <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
-                                <span class="bar1 a1 bg-primary lter"></span>
-                                <span class="bar2 a2 bg-info lt"></span>
-                                <span class="bar3 a3 bg-success"></span>
-                                <span class="bar4 a4 bg-warning dk"></span>
-                                <span class="bar5 a5 bg-danger dker"></span>
-                            </span>
-                        </h2>
-                        <div class="alltags">
+            <!---header-->
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
+            <!---header //END-->
+            <section id="content">
+                <section class="vbox padder-lg">
+                    <h2 class="font-thin m-b">标签列表 
+                        <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
+                            <span class="bar1 a1 bg-primary lter"></span>
+                            <span class="bar2 a2 bg-info lt"></span>
+                            <span class="bar3 a3 bg-success"></span>
+                            <span class="bar4 a4 bg-warning dk"></span>
+                            <span class="bar5 a5 bg-danger dker"></span>
+                        </span>
+                    </h2>
+                    <div class="alltags">
                         <c:forEach items="${pages.content}" var="tag">
-                              <a href="#">${tag.name}</a> 
+                            <a href="#">${tag.name}</a> 
                         </c:forEach>
-                        </div>
-                    </section>
-                    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+                    </div>
                 </section>
-                <!--main page //END-->
+                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
             </section>
-            <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+            <!--main page //END-->
+        </section>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
         <!-- App -->
