@@ -40,6 +40,11 @@ public class Photos extends BaseEntity {
     private int height = 0;
 
     /**
+     * 图片大小
+     */
+    @Column(nullable = false)
+    private long size;
+    /**
      * 原图片
      */
     private String source;
@@ -232,9 +237,18 @@ public class Photos extends BaseEntity {
         this.description = description;
     }
 
+    public long getSize() {
+        return size;
+    }
+
+    public void setSize(long size) {
+        this.size = size;
+    }
+
     @Override
     public String toString() {
-        return "Photos{" + "title=" + title + ", width=" + width + ", height=" + height + ", source=" + source + ", large=" + large + ", medium=" + medium + ", thumbnail=" + thumbnail + ", wallhaven=" + wallhaven + ", storageHost=" + storageHost + ", order=" + order + ", description=" + description + ", status=" + status + ", album=" + album + ", member=" + member + ", tags=" + tags + '}';
+        return "Photos{" + "title=" + title + ", width=" + width + ", height=" + height + ", size=" + size + ", source=" + source + ", large=" + large + ", medium=" + medium + ", thumbnail=" + thumbnail + ", wallhaven=" + wallhaven + ", storageHost=" + storageHost + ", order=" + order + ", description=" + description + ", status=" + status + ", album=" + album + ", member=" + member + ", tags=" + tags + '}';
     }
+    
 
 }

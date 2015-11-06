@@ -20,6 +20,9 @@ public class PhotosModel extends BaseModel {
     private int width;
 
     private int height;
+
+    private long size;
+
     /**
      * 原图片
      */
@@ -188,9 +191,17 @@ public class PhotosModel extends BaseModel {
         this.description = description;
     }
 
+    public long getSize() {
+        return size;
+    }
+
+    public void setSize(long size) {
+        this.size = size;
+    }
+
     @Override
     public String toString() {
-        return "PhotosModel{" + "title=" + title + ", width=" + width + ", height=" + height + ", source=" + source + ", large=" + large + ", medium=" + medium + ", thumbnail=" + thumbnail + ", wallhaven=" + wallhaven + ", storageHost=" + storageHost + ", order=" + order + ", description=" + description + ", status=" + status + ", album=" + album + ", member=" + member + ", tags=" + tags + '}';
+        return "PhotosModel{" + "title=" + title + ", width=" + width + ", height=" + height + ", size=" + size + ", source=" + source + ", large=" + large + ", medium=" + medium + ", thumbnail=" + thumbnail + ", wallhaven=" + wallhaven + ", storageHost=" + storageHost + ", order=" + order + ", description=" + description + ", status=" + status + ", album=" + album + ", member=" + member + ", tags=" + tags + '}';
     }
 
 }
