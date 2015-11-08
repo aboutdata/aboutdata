@@ -23,14 +23,14 @@
             })();
         </script>
     </head>
-    <body class="container">
+    <body>
         <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
-            <!---header-->
-            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
-            <!---header //END-->
-            <section id="content">
-                <section class="vbox padder-lg">
+            <section>
+                <section class="padder-lg container">
+                    <a href="#" class="pull-right btn btn-default m-t-lg">
+                        <i class="fa fa-tags fa-lg"></i> 创建标签
+                    </a>
                     <h2 class="font-thin m-b">标签列表 
                         <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
                             <span class="bar1 a1 bg-primary lter"></span>
@@ -44,6 +44,23 @@
                         <c:forEach items="${pages.content}" var="tag">
                             <a href="#">${tag.name}</a> 
                         </c:forEach>
+                    </div>
+                    <div class="text-center">
+                        <ul class="pagination pagination">
+                            <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">6</a></li>
+                            <li><a href="#">7</a></li>
+                            <li><a href="#">8</a></li>
+                            <li><a href="#">9</a></li>
+                            <li><a href="#">10</a></li>
+                            <li><a href="#">11</a></li>
+                            <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                        </ul>
                     </div>
                 </section>
                 <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
