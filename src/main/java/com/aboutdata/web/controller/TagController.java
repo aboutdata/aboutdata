@@ -88,7 +88,7 @@ public class TagController {
     @RequestMapping(value = "/source", method = RequestMethod.GET)
     @ResponseBody
     public List<String> execute(String name, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-        List<String> tags = tagService.findTagStringByName(name);
-        return tags;
+
+        return tagService.findTagStringByName(name);
     }
 }
