@@ -81,12 +81,14 @@
                             <!-- Properties end// -->
                             <h4 class="font-thin m-b">标签</h4>
                             <div class="m-b-lg l-h-2x">
-                                <div class="input-group">
-                                    <input type="text" id="typeahead"class="form-control bg-dark b-dark" placeholder="添加标签">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-dark dker" id="add-tags-btn" data-photos-id="${photos.id}" type="button"><i class="fa  fa-plus"></i></button>
-                                    </span>
-                                </div>
+                                <c:if test="${appBean.getCurrentUser() != null}">
+                                    <div class="input-group">
+                                        <input type="text" id="typeahead"class="form-control bg-dark b-dark" placeholder="添加标签">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-dark dker" id="add-tags-btn" data-photos-id="${photos.id}" type="button"><i class="fa  fa-plus"></i></button>
+                                        </span>
+                                    </div>
+                                </c:if>
                                 <c:forEach items="${photos.tags}" var="tag">
                                     <lable class="label bg-primary">${tag.name}</lable> 
                                     </c:forEach>
@@ -169,6 +171,7 @@
                     }
                 });//typeahead end
                 //addtags
+        <c:if test="${appBean.getCurrentUser() != null}">
                 $("#add-tags-btn").click(function () {
                     var _id = $(this).data("photos-id");
                     var tagName = $input.val();
@@ -185,6 +188,7 @@
                         }
                     });
                 }); //addtags btn end
+        </c:if>
             });
     </script>
 </html>
