@@ -21,13 +21,13 @@
     <c:otherwise>
         <!--生产模式 使用css和常用js直接走nginx-->
         <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/bootstrap.css" type="text/css" />
-        <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.css" type="text/css" />
+        <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.min.css" type="text/css" />
         <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/animate.css" type="text/css" />
         <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/font-awesome.min.css" type="text/css" />
         <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/simple-line-icons.css" type="text/css" />
         <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/font.css" type="text/css" />
 
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/app.css" type="text/css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/app.min.css" type="text/css" />
     </c:otherwise>
 </c:choose>
 <!--[if lt IE 9]>
