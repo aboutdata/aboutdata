@@ -67,17 +67,18 @@
                 </div>
             </footer>
         </section>
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/bootstrap.js"></script>
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.js"></script>
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
+    </body>
+    <script src="${appBean.systemConfig.assetsUrl}/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="${appBean.systemConfig.assetsUrl}/assets/js/bootstrap.js"></script>
+    <script src="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.js"></script>
+    <script src="${appBean.systemConfig.assetsUrl}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
 
-        <!-- App -->
-        <script src="${pageContext.request.contextPath}/assets/js/lazyload/jquery.lazyload.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-        <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-        <script type="text/javascript">
+    <!-- App -->
+    <script src="${pageContext.request.contextPath}/assets/js/lazyload/jquery.lazyload.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
+    <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+    <script type="text/javascript">
             $(document).ready(function () {
                 //添加到收藏夹
                 $(document).on("click", ".addFavorite", function () {
@@ -105,9 +106,6 @@
                 $("img").error(function () {
                     $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
                 });
-
-
             });
-        </script>
-    </body>
+    </script>
 </html>

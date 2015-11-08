@@ -50,14 +50,15 @@
             </section>
             <!--main page //END-->
         </section>
-        <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-        <!-- App -->
-        <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-        <script src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-        <script type="text/javascript">
+    </body>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+    <!-- App -->
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
+    <script src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+    <script type="text/javascript">
             $(document).ready(function () {
                 $("#search").click(function () {
                     $("#searchbar").toggle("slow");
@@ -73,9 +74,7 @@
                     $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
                 });
             });
-        </script>
-
-    </body>
+    </script>
 </html>
 
 

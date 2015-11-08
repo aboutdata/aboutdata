@@ -80,36 +80,35 @@
                 </div>
             </footer>
         </section>
-        <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-        <!--引入验证的js代码--->
-        <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.validate.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.validate.methods.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.metadata.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.validate.zh-CN.js"></script>
-        <!-- App -->
-        <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-
-        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#inputForm").validate({
-                    errorClass: 'text-danger-lter',
-                    validClass: "text-success"
-                });
-
-                $('body').vegas({
-                    timer: false,
-                    slides: [
-                        {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
-                    ]
-                });
-                $("img").error(function () {
-                    $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
-                });
-            });
-        </script>
     </body>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
+    <!--引入验证的js代码--->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.validate.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.validate.methods.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.metadata.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-validation/jquery.validate.zh-CN.js"></script>
+    <!-- App -->
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
+    <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#inputForm").validate({
+                errorClass: 'text-danger-lter',
+                validClass: "text-success"
+            });
+
+            $('body').vegas({
+                timer: false,
+                slides: [
+                    {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
+                ]
+            });
+            $("img").error(function () {
+                $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
+            });
+        });
+    </script>
 </html>

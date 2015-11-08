@@ -71,15 +71,16 @@
             </section>
             <!--main page //END-->
         </section>
-        <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-        <!-- App -->
-        <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-        <script src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.infinitescroll.min.js" type="text/javascript"></script>
-        <script type="text/javascript">
+    </body>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+    <!-- App -->
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
+    <script src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.infinitescroll.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
             $(document).ready(function () {
                 //添加到收藏夹
                 $(document).on("click", ".addFavorite", function () {
@@ -130,8 +131,6 @@
                     $('#waterfall').append($newElems);
                 });
             });
-        </script>
-
-    </body>
+    </script>
 </html>
 
