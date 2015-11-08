@@ -35,4 +35,4 @@
 <script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/respond.min.js"></script>
 <script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/excanvas.js"></script>
 <![endif]-->
-<link rel="shortcut icon" href="favicon.ico" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" />

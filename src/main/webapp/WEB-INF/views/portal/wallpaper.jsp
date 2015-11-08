@@ -81,6 +81,12 @@
                             <!-- Properties end// -->
                             <h4 class="font-thin m-b">标签</h4>
                             <div class="m-b-lg l-h-2x">
+                                <div class="input-group">
+                                    <input type="text" id="typeahead"class="form-control bg-dark b-dark" placeholder="添加标签">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-dark dker" id="add-tags-btn" data-photos-id="${photos.id}" type="button"><i class="fa  fa-plus"></i></button>
+                                    </span>
+                                </div>
                                 <c:forEach items="${photos.tags}" var="tag">
                                     <lable class="label bg-primary">${tag.name}</lable> 
                                     </c:forEach>
@@ -92,12 +98,14 @@
                         <h4 class="font-thin m-b">壁纸原图</h4>
                         <div class="row wrapper r r-2x ">
                             <a href="${photos.storageHost}/${photos.large}" target="_blank" >
-                                <img src="${photos.storageHost}/${photos.large}" class="r r-2x img-full" style="cursor: zoom-in">
-                            </a>
-                        </div>
-                        <div>
-                            <h4 class="font-thin m-b">描述信息</h4>
-                            <p> ${photos.description}</p>
+                                <img src="${photos.storageHost}/${photos.large}" 
+                                     alt="<c:forEach items="${photos.tags}" var="tag">${tag.name} </c:forEach>"
+                                         class="r r-2x img-full" style="cursor: zoom-in"/>
+                                </a>
+                            </div>
+                            <div>
+                                <h4 class="font-thin m-b">描述信息</h4>
+                                <p> ${photos.description}</p>
                         </div>
                     </section>  <!--main end-->
 
@@ -117,7 +125,7 @@
             <!-- Bootstrap -->
             <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
             <script src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
-            <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
+            <script src="${pageContext.request.contextPath}/assets/js/bootstrap/typeahead/bootstrap3-typeahead.min.js"></script>
             <!-- App -->
             <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
             <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
@@ -128,7 +136,6 @@
             <!-- Bootstrap -->
             <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
             <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
-            <script src="${appBean.assetsUrl}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
             <!-- App -->
             <script src="${pageContext.request.contextPath}/build-${GruntVersion}/js/app.js"></script>  
             <script src="${pageContext.request.contextPath}/build-${GruntVersion}/js/app.plugin.js"></script>
@@ -142,6 +149,42 @@
                         {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
                     ]
                 });
+                var $input = $('#typeahead');
+                $input.typeahead({
+                    items: 20,
+                    source: function (query, process) {
+                        $.ajax({
+                            url: "${pageContext.request.contextPath}/tags/source",
+                            data: {name: query},
+                            type: "GET",
+                            dataType: 'json',
+                            success: function (result) {
+                                console.log(result);
+                                process(result);
+                            },
+                            error: function (er) {
+
+                            }
+                        });
+                    }
+                });//typeahead end
+                //addtags
+                $("#add-tags-btn").click(function () {
+                    var _id = $(this).data("photos-id");
+                    var tagName = $input.val();
+                    $.ajax({
+                        url: "${pageContext.request.contextPath}/member/photos/addTags",
+                        data: {id: _id, tagName: tagName},
+                        type: "POST",
+                        dataType: 'json',
+                        success: function (result) {
+                            console.log(result);
+                        },
+                        error: function (er) {
+                            console.log(er);
+                        }
+                    });
+                }); //addtags btn end
             });
     </script>
 </html>
