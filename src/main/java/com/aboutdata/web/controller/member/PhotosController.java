@@ -6,18 +6,17 @@
 package com.aboutdata.web.controller.member;
 
 import com.aboutdata.commons.ResponseMessage;
-import com.aboutdata.commons.enums.ResponseMessageType;
+import com.aboutdata.commons.enums.PhotoStatus;
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
-import com.aboutdata.domain.Tag;
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.model.TagModel;
 import com.aboutdata.service.ImageGraphicsService;
 import com.aboutdata.service.PhotosAlbumService;
 import com.aboutdata.service.PhotosService;
+import com.aboutdata.service.SearchService;
 import java.util.List;
-import java.util.Random;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,6 +47,9 @@ public class PhotosController {
 
     @Resource
     private ImageGraphicsService imageGraphicsService;
+
+    @Resource
+    private SearchService searchService;
 
     @RequestMapping(method = RequestMethod.GET)
 
@@ -101,10 +103,25 @@ public class PhotosController {
         }
     }
 
+    /**
+     * 普通用户可以为图片添加标签
+     *
+     * @param id
+     * @param tagName
+     * @param model
+     * @param rattr
+     * @return
+     */
     @RequestMapping(value = "/addTags", method = RequestMethod.POST)
     @ResponseBody
     public ResponseMessage addTags(String id, String tagName, ModelMap model, RedirectAttributes rattr) {
         photosService.addTags(id, tagName);
+        /**
+         * @ 添加新标签后需要更新索引
+         * @ 这里修改APPROVED
+         * @ 为了定时器BuildIndexSchedule能及时更新索引到solr
+         */
+        photosService.makrStatus(id, PhotoStatus.APPROVED);
 
         return ResponseMessage.success("添加标签成功");
     }
