@@ -121,29 +121,14 @@
             </footer>
         </section>
     </body>
-    <c:choose>
-        <c:when test="${appBean.developMode}">
-            <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-            <!-- Bootstrap -->
-            <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-            <script src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
-            <script src="${pageContext.request.contextPath}/assets/js/bootstrap/typeahead/bootstrap3-typeahead.min.js"></script>
-            <!-- App -->
-            <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-            <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-        </c:when>
-        <c:otherwise>
-            <!--生产模式 使用css和常用js直接走nginx-->
-            <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
-            <!-- Bootstrap -->
-            <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
-            <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
-            <script src="${pageContext.request.contextPath}/assets/js/bootstrap/typeahead/bootstrap3-typeahead.min.js"></script>
-            <!-- App -->
-            <script src="${pageContext.request.contextPath}/build-${GruntVersion}/js/app.js"></script>  
-            <script src="${pageContext.request.contextPath}/build-${GruntVersion}/js/app.plugin.js"></script>
-        </c:otherwise>
-    </c:choose>
+    <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap/typeahead/bootstrap3-typeahead.min.js"></script>
+    <!-- App -->
+    <script src="${pageContext.request.contextPath}/build-${GruntVersion}/js/app.js"></script>  
+    <script src="${pageContext.request.contextPath}/build-${GruntVersion}/js/app.plugin.js"></script>
     <script type="text/javascript">
             $(document).ready(function () {
                 $('body').vegas({
