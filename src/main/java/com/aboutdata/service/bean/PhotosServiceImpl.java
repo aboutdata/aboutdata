@@ -93,7 +93,7 @@ public class PhotosServiceImpl implements PhotosService {
         Set<Tag> tags = tagService.getTagsFromString(tagString);
         Photos photos = photosDao.findOne(id);
         logger.info("top10  tags {}", tags.size());
-        photos.setTags(tags);
+        photos.getTags().addAll(tags);
         photosDao.save(photos);
     }
 

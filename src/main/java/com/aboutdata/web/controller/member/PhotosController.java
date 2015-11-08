@@ -48,6 +48,7 @@ public class PhotosController {
 
     @Resource
     private ImageGraphicsService imageGraphicsService;
+
     @RequestMapping(method = RequestMethod.GET)
 
     public String index(Integer pageNumber, ModelMap model) {
@@ -102,8 +103,8 @@ public class PhotosController {
 
     @RequestMapping(value = "/addTags", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseMessage addTags(String id, String tags, ModelMap model, RedirectAttributes rattr) {
-        photosService.addTags(id, tags);
+    public ResponseMessage addTags(String id, String tagName, ModelMap model, RedirectAttributes rattr) {
+        photosService.addTags(id, tagName);
 
         return ResponseMessage.success("添加标签成功");
     }
