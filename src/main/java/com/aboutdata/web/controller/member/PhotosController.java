@@ -10,12 +10,16 @@ import com.aboutdata.commons.enums.PhotoStatus;
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
+import com.aboutdata.domain.Tag;
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.model.TagModel;
 import com.aboutdata.service.ImageGraphicsService;
+import com.aboutdata.service.MemberService;
 import com.aboutdata.service.PhotosAlbumService;
 import com.aboutdata.service.PhotosService;
 import com.aboutdata.service.SearchService;
+import com.aboutdata.service.TagService;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
@@ -50,6 +54,12 @@ public class PhotosController {
 
     @Resource
     private SearchService searchService;
+
+    @Resource(name = "memberServiceImpl")
+    private MemberService memberService;
+
+    @Resource
+    private TagService tagService;
 
     @RequestMapping(method = RequestMethod.GET)
 
@@ -115,6 +125,18 @@ public class PhotosController {
     @RequestMapping(value = "/addTags", method = RequestMethod.POST)
     @ResponseBody
     public ResponseMessage addTags(String id, String tagName, ModelMap model, RedirectAttributes rattr) {
+        Member member = memberService.getCurrent();
+        List<String> tags = tagService.findTagStringByName(tagName);
+        //判断是否存在该tag ,如果不存在就自动添加
+        if (tags == null || tags.size() == 0) {
+            Tag tag = new Tag();
+            tag.setName(tagName);
+            tag.setMember(member);
+            tag.setCreateDate(new Date());
+            tag.setModifyDate(new Date());
+            tagService.create(tag);
+        }
+
         photosService.addTags(id, tagName);
         /**
          * @ 添加新标签后需要更新索引

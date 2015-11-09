@@ -167,6 +167,7 @@
                         type: "POST",
                         dataType: 'json',
                         success: function (result) {
+                            alert("添加成功");
                             console.log(result);
                         },
                         error: function (er) {
