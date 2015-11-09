@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/simple-line-icons.css" type="text/css" />
         <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/font.css" type="text/css" />
 
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/app.min.css" type="text/css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/app.css" type="text/css" />
     </c:otherwise>
 </c:choose>
 <!--[if lt IE 9]>
