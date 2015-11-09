@@ -128,7 +128,7 @@ public class PhotosController {
         Member member = memberService.getCurrent();
         List<String> tags = tagService.findTagStringByName(tagName);
         //判断是否存在该tag ,如果不存在就自动添加
-        if (tags == null || tags.size() == 0) {
+        if (tags == null || tags.isEmpty()) {
             Tag tag = new Tag();
             tag.setName(tagName);
             tag.setMember(member);
