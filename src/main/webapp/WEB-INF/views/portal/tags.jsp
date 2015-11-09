@@ -42,7 +42,7 @@
                     </h2>
                     <div class="alltags">
                         <c:forEach items="${pages.content}" var="tag">
-                            <a href="#">${tag.name}</a> 
+                            <a href="${pageContext.request.contextPath}/tags/s/${tag.name}">${tag.name}</a> 
                         </c:forEach>
                     </div>
                     <div class="text-center">
