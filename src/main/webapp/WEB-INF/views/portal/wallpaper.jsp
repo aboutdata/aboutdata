@@ -85,13 +85,17 @@
                                     <div class="input-group">
                                         <input type="text" id="typeahead"class="form-control bg-dark b-dark" placeholder="添加标签">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-dark dker" id="add-tags-btn" data-photos-id="${photos.id}" type="button"><i class="fa  fa-plus"></i></button>
+                                            <button class="btn btn-dark dker" id="add-tags-btn" data-photos-id="${photos.id}" type="button">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
                                         </span>
                                     </div>
                                 </c:if>
-                                <c:forEach items="${photos.tags}" var="tag">
-                                    <lable class="label bg-primary">${tag.name}</lable> 
-                                    </c:forEach>
+                                <div id="tags-content">
+                                    <c:forEach items="${photos.tags}" var="tag">
+                                        <lable class="label bg-primary">${tag.name}</lable> 
+                                        </c:forEach>
+                                </div>
                             </div>	
                         </section>
                     </aside>
@@ -156,10 +160,12 @@
                         });
                     }
                 });//typeahead end
-                //addtags
+                //addtags 添加标签操作
         <c:if test="${appBean.getCurrentUser() != null}">
                 $("#add-tags-btn").click(function () {
-                    var _id = $(this).data("photos-id");
+                    var $that = $(this);
+                    $that.html("<i class=\"fa fa-spinner fa fa-spin fa\"></i>");
+                    var _id = $that.data("photos-id");
                     var tagName = $input.val();
                     $.ajax({
                         url: "${pageContext.request.contextPath}/member/photos/addTags",
@@ -167,7 +173,9 @@
                         type: "POST",
                         dataType: 'json',
                         success: function (result) {
-                            alert("添加成功");
+                            $input.val("");
+                            $that.html("<i class=\"fa fa-plus\"></i>");
+                            $("#tags-content").append("<lable class=\"label bg-primary\">"+tagName+"</lable> ")
                             console.log(result);
                         },
                         error: function (er) {
