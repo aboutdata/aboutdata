@@ -99,7 +99,7 @@ public class Member extends BaseEntity {
     @NotEmpty
     @Email
     @Length(max = 200)
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true, length = 50)
     private String email;
 
     /**

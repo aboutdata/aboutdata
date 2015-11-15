@@ -6,15 +6,23 @@
 package com.aboutdata.service.bean;
 
 import com.aboutdata.dao.MemberDao;
+import com.aboutdata.dao.SafeKeyDao;
 import com.aboutdata.domain.Member;
+import com.aboutdata.domain.SafeKey;
 import com.aboutdata.model.MemberModel;
 import com.aboutdata.model.dto.MemberDTO;
 import com.aboutdata.security.shiro.Principal;
 import com.aboutdata.service.MemberService;
 import java.util.List;
+import java.util.UUID;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.joda.time.LocalDateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -33,8 +41,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 @Service("memberServiceImpl")
 public class MemberServiceImpl implements MemberService {
 
+    Logger logger = LoggerFactory.getLogger(MemberServiceImpl.class);
+
     @Resource
     private MemberDao memberDao;
+    @Resource
+    private SafeKeyDao safeKeyDao;
 
     @Transactional(readOnly = true)
     @Override
@@ -70,8 +82,8 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Member> findListByEmail(String email) {
-        return memberDao.findListByEmail(email);
+    public Member findByEmail(String email) {
+        return memberDao.findByEmail(email);
     }
 
     @Override
@@ -139,6 +151,39 @@ public class MemberServiceImpl implements MemberService {
     public MemberModel findById(String id) {
         Member member = memberDao.findOne(id);
         return MemberDTO.getMemberModelDTO(member);
+    }
+
+    @Override
+    @Transactional
+    public boolean recoverPassword(String email) {
+        Member member = findByEmail(email);
+        if (member == null) {
+            logger.info("info {}", "该邮箱没有任何用户注册记录");
+            return false;
+        }
+        SafeKey safeKey = new SafeKey();
+        safeKey.setValue(UUID.randomUUID().toString() + DigestUtils.md5Hex(RandomStringUtils.randomAlphabetic(30)));
+        //该验证码12小时过期
+        safeKey.setExpire(LocalDateTime.now().plusHours(12).toDate());
+        safeKey.setMember(member);
+        safeKeyDao.save(safeKey);
+
+        //        emailService.sendFindPasswordMail(member.getEmail(), member.getUsername(), safeKey);
+        return true;
+    }
+
+    @Override
+    public List<SafeKey> getSafeKey(String memberId) {
+        return safeKeyDao.findByMemberId(memberId);
+    }
+
+    @Override
+    @Transactional
+    public void expireSafekey(String memberId) {
+        List<SafeKey> safeKeys = safeKeyDao.findByMemberId(memberId);
+        for (SafeKey safeKey : safeKeys) {
+            safeKeyDao.delete(safeKey);
+        }
     }
 
 }
