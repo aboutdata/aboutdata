@@ -5,6 +5,7 @@
  */
 package com.aboutdata.service.bean;
 
+import com.aboutdata.commons.enums.EmailType;
 import com.aboutdata.dao.MemberDao;
 import com.aboutdata.dao.SafeKeyDao;
 import com.aboutdata.domain.Member;
@@ -12,6 +13,8 @@ import com.aboutdata.domain.SafeKey;
 import com.aboutdata.model.MemberModel;
 import com.aboutdata.model.dto.MemberDTO;
 import com.aboutdata.security.shiro.Principal;
+import com.aboutdata.service.ConfigService;
+import com.aboutdata.service.EmailService;
 import com.aboutdata.service.MemberService;
 import java.util.List;
 import java.util.UUID;
@@ -47,6 +50,12 @@ public class MemberServiceImpl implements MemberService {
     private MemberDao memberDao;
     @Resource
     private SafeKeyDao safeKeyDao;
+
+    @Resource(name = "emailServiceImpl")
+    private EmailService emailService;
+
+    @Resource
+    private ConfigService configService;
 
     @Transactional(readOnly = true)
     @Override
@@ -168,7 +177,10 @@ public class MemberServiceImpl implements MemberService {
         safeKey.setMember(member);
         safeKeyDao.save(safeKey);
 
-        //        emailService.sendFindPasswordMail(member.getEmail(), member.getUsername(), safeKey);
+        //发送重置密码的地址
+        String link = configService.getSystemConfig().getSiteUrl() + "/password/reset?username=" + member.getUsername() + "&key=" + safeKey.getValue();
+
+        emailService.send(EmailType.MEMBER_RESET_PASSWORD, member.getEmail(), "Lockbur密码重置", member.getUsername(), link);
         return true;
     }
 

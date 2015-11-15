@@ -11,6 +11,7 @@ package com.aboutdata.commons.enums;
  */
 public enum EmailType implements BaseEnum {
 
+    MEMBER_RESET_PASSWORD("member.reset.password"),
     /**
      * 超级管理员为管理员设置密码
      */
