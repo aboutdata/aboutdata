@@ -95,6 +95,11 @@ public class RegisterController {
     public String submit(String username, String email, String password, HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap model) {
 
         Member member = new Member();
+       
+        if (memberService.emailExists(email)) {
+            model.addAttribute("errorMessage", "该邮件地址已经被注册");
+            return "/register";
+        }
         if (memberService.usernameExists(username)) {
             model.addAttribute("errorMessage", "用户名存在");
             return "/register";

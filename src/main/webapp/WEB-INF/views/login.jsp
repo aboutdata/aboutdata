@@ -46,6 +46,9 @@
                                     <label>密码</label>
                                     <input type="password" class="form-control {required:true,minlength: 6}" name="password">
                                 </div>
+                                <div class="form-group">
+                                  <p><a href="${pageContext.request.contextPath}/password/forget" class="text-info">忘记密码</a></p>
+                                </div>
                                 <div class="checkbox m-t-lg">
                                     <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs"><strong>登录</strong></button>
                                     <label>

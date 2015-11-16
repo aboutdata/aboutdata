@@ -2,6 +2,7 @@
 <SystemConfig>
     <developMode>true</developMode>
     <defaultPassword>123456</defaultPassword>
+    <siteUrl>http://localhost:8080/Aboutdata</siteUrl>
     <assetsUrl>http://assets.lockbur.com</assetsUrl>
     <solrServer>http://localhost:9090/solr</solrServer>
     <defaultStorageHost>http://localhost:9090/solr</defaultStorageHost>
