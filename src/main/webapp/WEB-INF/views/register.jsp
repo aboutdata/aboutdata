@@ -74,7 +74,7 @@
                 </section>
                 <!--content//end-->
             </section>   
-            <footer class="footer bg-black dker navbar-fixed-bottom">
+            <footer class="footer bg-black dker">
                 <jsp:include page="/WEB-INF/views/portal/common/footer.jsp"/>
             </footer>
         </section>
