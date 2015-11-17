@@ -62,39 +62,7 @@
                 </section>    
             </section>
             <footer class="footer bg-black dker">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <h4>版权申明</h4>
-                            <p>
-                                帮助中心<br>
-                                <a href="${pageContext.request.contextPath}/help/join" target="_blank">新浪微博</a><br>
-                                <a href="http://t.qq.com/wangkun44?preview" target="_blank">腾讯微博</a><br>
-                                <a href="${pageContext.request.contextPath}/help/join" target="_blank">微信</a><br>
-                            </p>
-                        </div>
-                        <div class="col-xs-4">
-                            <h4>团队活动</h4>
-                            <p>
-                                <a href="${pageContext.request.contextPath}/help/join" target="_blank">加入我们</a><br>
-                                #更新日志<br>
-                                #路线图<br>
-                                所有图片同步于<a href="http://alpha.wallhaven.cc/" target="_blank">alpha.wallhaven.cc</a><br>
-                                互联网ICP备案：京ICP备15054053号<br>
-                            </p>
-                        </div>
-                        <div class="col-xs-4">
-                            <h4>联系我</h4>
-                            <p>
-                                未知(X)<br>
-                                北京市 中国<br>
-                                版权2015©lockbur.com<br>
-                                电话: 13661014724<br>
-                                Email: 2900196090#qq.com OR wangko27#gmail.com<br>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <jsp:include page="/WEB-INF/views/portal/common/footer.jsp"/>
             </footer>
         </section>
     </body>
