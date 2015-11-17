@@ -32,7 +32,6 @@
         </div>
         <!--gallery end first// old-->
     </c:forEach>
-    <div class="line line-dashed b-b line-lg pull-in"></div>
 </div>
 
 
