@@ -59,7 +59,11 @@ public class OpenAuth2 extends BaseEntity {
     public void setMember(Member member) {
         this.member = member;
     }
-    
+
+    @Override
+    public String toString() {
+        return "OpenAuth2{" + "oauthId=" + oauthId + ", type=" + type + "}";
+    }
     
 
 }

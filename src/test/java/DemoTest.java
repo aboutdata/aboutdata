@@ -62,29 +62,6 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     private Logger log;
     
     @Resource
-    private PhotosColorsService PhotosColorsService;
-    
-    @Resource
-    private SearchService searchService;
-    
-    @Resource
-    private AdminDao adminDao;
-    
-    @Resource
-    private TagService tagService;
-    
-    @Resource
-    private PhotosService photosService;
-    
-    @Resource
-    private StorageService storageService;
-    
-    @Resource
-    private MemberInfomationDao memberInfomationDao;
-    
-    @Resource
-    private MemberService memberService;
-    @Resource
     private OpenAuth2Dao openAuth2Dao;
     
     public void empty() {
@@ -94,7 +71,8 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     @Test
     public void findByIdTest() {
         OpenAuth2 oauth2 = openAuth2Dao.findByOauthIdAndType("43534532", Oauth2Type.GITHUB);
-        log.info(""+oauth2);
+        System.out.println(""+oauth2);
+        log.info("{}",oauth2);
     }
     
 }
