@@ -5,7 +5,15 @@
  */
 package com.aboutdata.web.controller;
 
+import com.aboutdata.commons.enums.Oauth2Type;
 import com.aboutdata.commons.oauth2.GithubProfile;
+import com.aboutdata.domain.Member;
+import com.aboutdata.domain.OpenAuth2;
+import com.aboutdata.security.shiro.Principal;
+import com.aboutdata.security.utils.SecurityPasswordUtils;
+import com.aboutdata.service.MemberRankService;
+import com.aboutdata.service.MemberService;
+import com.aboutdata.service.OpenAuth2Service;
 import java.util.Random;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +31,9 @@ import com.github.scribejava.core.oauth.OAuthService;
 import org.springframework.stereotype.Controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
+import java.util.Date;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -48,6 +59,15 @@ public class GitHubLoginController {
             .callback("http://localhost:8080/oauth_callback/")
             .build();
 
+    @Resource
+    private OpenAuth2Service openAuth2Service;
+
+    @Resource
+    private MemberService memberService;
+
+    @Resource(name = "memberRankServiceImpl")
+    private MemberRankService memberRankService;
+
     @RequestMapping(value = "/github", method = RequestMethod.GET)
     public String displayGithubLogin(Model model) {
         final String authorizationUrl = service.getAuthorizationUrl(EMPTY_TOKEN);
@@ -58,7 +78,7 @@ public class GitHubLoginController {
     }
 
     @RequestMapping(value = "/oauth_callback", method = RequestMethod.GET)
-    public String page2(String code, Model model) {
+    public String callBack(String code,HttpSession session, Model model) {
         logger.info("oauth_callback code {}", code);
 //        logger.info("oauth_callback state {}", state);
         final Verifier verifier = new Verifier(code);
@@ -71,12 +91,50 @@ public class GitHubLoginController {
         try {
             ObjectMapper mapper = new ObjectMapper();
             GithubProfile githubProfile = mapper.readValue(response.getBody(), GithubProfile.class);
+            OpenAuth2 openAuth2 = openAuth2Service.findByOauthIdAndType(githubProfile.getId(), Oauth2Type.GITHUB);
+
+            //如果没有注册 系统自动为其注册新用户
+            if (openAuth2 == null) {
+                logger.info("githubProfile now regist {}", githubProfile);
+                Member member = new Member();
+                //密码
+                String salt = SecurityPasswordUtils.getSalt();
+                String passphrase = SecurityPasswordUtils.getPassphrase(salt, SecurityPasswordUtils.randomPassword());
+
+                member.setUsername("git_" + githubProfile.getLogin());
+                member.setSalt(salt);
+                member.setPassword(passphrase);
+                member.setEmail(githubProfile.getEmail());
+                member.setPoint(1l);
+
+                member.setIsEnabled(true);
+                member.setIsLocked(false);
+                member.setLoginFailureCount(0);
+                member.setLockedDate(null);
+//                member.setRegisterIp(request.getRemoteAddr());
+//                member.setLoginIp(request.getRemoteAddr());
+                member.setLoginDate(new Date());
+                member.setMemberRank(memberRankService.findDefault());
+                memberService.create(member);
+                
+                openAuth2 =new OpenAuth2();
+                openAuth2.setMember(member);
+                openAuth2.setOauthId(githubProfile.getId());
+                openAuth2.setType(Oauth2Type.GITHUB);
+                
+                openAuth2Service.save(openAuth2);
+                session.setAttribute(Member.PRINCIPAL_ATTRIBUTE_NAME, new Principal(member.getId(), member.getUsername()));
+            } else {
+                logger.info("githubProfile already regist {}", githubProfile);
+
+                Member member = openAuth2.getMember();
+                session.setAttribute(Member.PRINCIPAL_ATTRIBUTE_NAME, new Principal(member.getId(), member.getUsername()));
+            }
             logger.info("githubProfile  {}", githubProfile);
         } catch (IOException ex) {
             logger.info("oauth_callback parse json error  {}", ex);
         }
-
-        model.addAttribute("profile", response.getBody());
-        return "/";
+        
+        return "redirect:/";
     }
 }
