@@ -1,13 +1,16 @@
 
 import com.aboutdata.commons.application.InjectLogger;
 import com.aboutdata.commons.enums.EmailType;
+import com.aboutdata.commons.enums.Oauth2Type;
 import com.aboutdata.commons.enums.PhotoStatus;
 import com.aboutdata.dao.AdminDao;
 import com.aboutdata.dao.MemberInfomationDao;
+import com.aboutdata.dao.OpenAuth2Dao;
 import com.aboutdata.dao.PhotosAlbumDao;
 import com.aboutdata.domain.Admin;
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.MemberInfomation;
+import com.aboutdata.domain.OpenAuth2;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.domain.Tag;
@@ -54,41 +57,44 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/spring-context.xml")
 public class DemoTest extends AbstractJUnit4SpringContextTests {
-
+    
     @InjectLogger
     private Logger log;
-
+    
     @Resource
     private PhotosColorsService PhotosColorsService;
-
+    
     @Resource
     private SearchService searchService;
-
+    
     @Resource
     private AdminDao adminDao;
-
+    
     @Resource
     private TagService tagService;
-
+    
     @Resource
     private PhotosService photosService;
-
+    
     @Resource
     private StorageService storageService;
-
+    
     @Resource
     private MemberInfomationDao memberInfomationDao;
-
+    
     @Resource
     private MemberService memberService;
-
+    @Resource
+    private OpenAuth2Dao openAuth2Dao;
+    
     public void empty() {
-
+        
     }
-
+    
     @Test
     public void findByIdTest() {
-        PhotosColorsService.generateColors("000b6d44-5390-4077-a919-681b58b51b06");
+        OpenAuth2 oauth2 = openAuth2Dao.findByOauthIdAndType("43534532", Oauth2Type.GITHUB);
+        log.info(""+oauth2);
     }
-
+    
 }
