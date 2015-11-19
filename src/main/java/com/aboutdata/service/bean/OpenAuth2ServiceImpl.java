@@ -10,6 +10,7 @@ import com.aboutdata.dao.MemberDao;
 import com.aboutdata.dao.OpenAuth2Dao;
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.OpenAuth2;
+import com.aboutdata.service.ConfigService;
 import com.aboutdata.service.OpenAuth2Service;
 import com.github.scribejava.apis.GitHubApi;
 import com.github.scribejava.apis.SinaWeiboApi20;
@@ -33,6 +34,9 @@ public class OpenAuth2ServiceImpl implements OpenAuth2Service {
     Logger logger = LoggerFactory.getLogger(OpenAuth2ServiceImpl.class);
 
     @Resource
+    private ConfigService configService;
+
+    @Resource
     private OpenAuth2Dao openAuth2Dao;
 
     @Override
@@ -50,13 +54,15 @@ public class OpenAuth2ServiceImpl implements OpenAuth2Service {
     @Override
     public OAuthService getSinaWeiboService() {
         // Replace these with your own api key and secret
-        String apiKey = "2072911734";
-        String apiSecret = "30f2c2b0a6cd45539d57a8a4c8fbcb50";
-        OAuthService service = new ServiceBuilder()
+        final String apiKey = configService.getOpenAuth2Config().getSinaWeiboClient().getApiKey();
+        final String apiSecret = configService.getOpenAuth2Config().getSinaWeiboClient().getApiSecret();
+        final String callback = configService.getOpenAuth2Config().getSinaWeiboClient().getCallback();
+
+        final OAuthService service = new ServiceBuilder()
                 .provider(SinaWeiboApi20.class)
                 .apiKey(apiKey)
                 .apiSecret(apiSecret)
-                .callback("http://aboutdata.localhost:8080/oauth/sina")
+                .callback(callback)
                 .build();
 
         return service;
@@ -69,16 +75,18 @@ public class OpenAuth2ServiceImpl implements OpenAuth2Service {
      */
     @Override
     public OAuthService getGithubService() {
-        final String clientId = "e5071c636fc233d8a8c6";
-        final String clientSecret = "0fb4c03145b812596cc05bff459678affdc87ba3";
+        final String apiKey = configService.getOpenAuth2Config().getGithubClient().getApiKey();
+        final String apiSecret = configService.getOpenAuth2Config().getGithubClient().getApiSecret();
+        final String callback = configService.getOpenAuth2Config().getGithubClient().getCallback();
+
         final String secretState = "secret" + new Random().nextInt(999_999);
 
         final OAuthService service = new ServiceBuilder()
                 .provider(GitHubApi.class)
-                .apiKey(clientId)
-                .apiSecret(clientSecret)
+                .apiKey(apiKey)
+                .apiSecret(apiSecret)
                 .state(secretState)
-                .callback("http://localhost:8080/oauth_callback/")
+                .callback(callback)
                 .build();
         return service;
     }

@@ -7,6 +7,7 @@ package com.aboutdata.service.bean;
 
 import com.aboutdata.commons.config.BaseConfig;
 import com.aboutdata.commons.config.EmailConfig;
+import com.aboutdata.commons.config.OpenAuth2Config;
 import com.aboutdata.commons.config.SystemConfig;
 import com.aboutdata.service.ConfigService;
 import java.io.File;
@@ -35,7 +36,8 @@ public class ConfigServiceImpl implements ConfigService {
     private BaseConfig loadConfig(Class clazz) {
         BaseConfig result = null;
         try {
-            this.unmarshallingClassJAXB = JAXBContext.newInstance(new Class[]{SystemConfig.class,EmailConfig.class});
+            //没添加一个配置文件xml 就要修改此处
+            this.unmarshallingClassJAXB = JAXBContext.newInstance(new Class[]{SystemConfig.class, EmailConfig.class, OpenAuth2Config.class});
             String configName = (String) clazz.getField("CONFIG_NAME").get(null);
             result = (BaseConfig) unmarshallingClassJAXB.createUnmarshaller().unmarshal(new FileInputStream(getConfigFilename(configName)));
             result.setLastUpdate(System.currentTimeMillis());
@@ -60,12 +62,12 @@ public class ConfigServiceImpl implements ConfigService {
         return DEFAULT_CONFIG_DIR + configName + ".xml";
     }
 
-    
     @Override
     public String get() {
         // loaderCofig.load();
         return "i am dubbo demo server config";
     }
+
     /**
      * 系统配置
      *
@@ -75,10 +77,15 @@ public class ConfigServiceImpl implements ConfigService {
     public SystemConfig getSystemConfig() {
         return (SystemConfig) loadConfig(SystemConfig.class);
     }
-    
-     @Override
+
+    @Override
     public EmailConfig getEmailConfig() {
         return (EmailConfig) loadConfig(EmailConfig.class);
+    }
+
+    @Override
+    public OpenAuth2Config getOpenAuth2Config() {
+        return (OpenAuth2Config) loadConfig(OpenAuth2Config.class);
     }
 
 }

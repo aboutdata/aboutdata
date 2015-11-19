@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public final class OpenAuth2Config extends BaseConfig {
 
+    public static final String CONFIG_NAME = "OpenAuth2Config";
     /**
      * open.weibo 应用接入
      */
@@ -47,4 +48,10 @@ public final class OpenAuth2Config extends BaseConfig {
         this.githubClient = githubClient;
     }
 
+    @Override
+    public String toString() {
+        return "OpenAuth2Config{" + "sinaWeiboClient=" + sinaWeiboClient + ", githubClient=" + githubClient + '}';
+    }
+
+    
 }

@@ -6,6 +6,7 @@
 package com.aboutdata.service;
 
 import com.aboutdata.commons.config.EmailConfig;
+import com.aboutdata.commons.config.OpenAuth2Config;
 import com.aboutdata.commons.config.SystemConfig;
 
 /**
@@ -19,4 +20,6 @@ public interface ConfigService {
     public SystemConfig getSystemConfig();
 
     public EmailConfig getEmailConfig();
+
+    public OpenAuth2Config getOpenAuth2Config();
 }

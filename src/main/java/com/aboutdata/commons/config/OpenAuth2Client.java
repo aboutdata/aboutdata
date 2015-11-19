@@ -56,4 +56,10 @@ public final class OpenAuth2Client implements Serializable {
     public void setSecretState(String secretState) {
         this.secretState = secretState;
     }
+
+    @Override
+    public String toString() {
+        return "OpenAuth2Client{" + "apiKey=" + apiKey + ", apiSecret=" + apiSecret + ", callback=" + callback + ", secretState=" + secretState + '}';
+    }
+    
 }
