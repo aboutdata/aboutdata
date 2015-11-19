@@ -14,14 +14,12 @@ import com.aboutdata.security.utils.SecurityPasswordUtils;
 import com.aboutdata.service.MemberRankService;
 import com.aboutdata.service.MemberService;
 import com.aboutdata.service.OpenAuth2Service;
-import java.util.Random;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.github.scribejava.apis.GitHubApi;
-import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.model.OAuthRequest;
 import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Token;
@@ -47,18 +45,6 @@ public class GitHubLoginController {
     private static final String PROTECTED_RESOURCE_URL = "https://api.github.com/user";
     private static final Token EMPTY_TOKEN = null;
 
-    final String clientId = "e5071c636fc233d8a8c6";
-    final String clientSecret = "0fb4c03145b812596cc05bff459678affdc87ba3";
-    final String secretState = "secret" + new Random().nextInt(999_999);
-
-    final OAuthService service = new ServiceBuilder()
-            .provider(GitHubApi.class)
-            .apiKey(clientId)
-            .apiSecret(clientSecret)
-            .state(secretState)
-            .callback("http://localhost:8080/oauth_callback/")
-            .build();
-
     @Resource
     private OpenAuth2Service openAuth2Service;
 
@@ -70,7 +56,7 @@ public class GitHubLoginController {
 
     @RequestMapping(value = "/github", method = RequestMethod.GET)
     public String displayGithubLogin(Model model) {
-        final String authorizationUrl = service.getAuthorizationUrl(EMPTY_TOKEN);
+        final String authorizationUrl = openAuth2Service.getGithubService().getAuthorizationUrl(EMPTY_TOKEN);
 
         System.out.println(authorizationUrl);
 
@@ -78,9 +64,9 @@ public class GitHubLoginController {
     }
 
     @RequestMapping(value = "/oauth_callback", method = RequestMethod.GET)
-    public String callBack(String code,HttpSession session, Model model) {
+    public String callBack(String code, HttpSession session, Model model) {
         logger.info("oauth_callback code {}", code);
-//        logger.info("oauth_callback state {}", state);
+        OAuthService service = openAuth2Service.getGithubService();
         final Verifier verifier = new Verifier(code);
         final Token accessToken = service.getAccessToken(EMPTY_TOKEN, verifier);
 
@@ -116,12 +102,12 @@ public class GitHubLoginController {
                 member.setLoginDate(new Date());
                 member.setMemberRank(memberRankService.findDefault());
                 memberService.create(member);
-                
-                openAuth2 =new OpenAuth2();
+
+                openAuth2 = new OpenAuth2();
                 openAuth2.setMember(member);
                 openAuth2.setOauthId(githubProfile.getId());
                 openAuth2.setType(Oauth2Type.GITHUB);
-                
+
                 openAuth2Service.save(openAuth2);
                 session.setAttribute(Member.PRINCIPAL_ATTRIBUTE_NAME, new Principal(member.getId(), member.getUsername()));
             } else {
@@ -134,7 +120,7 @@ public class GitHubLoginController {
         } catch (IOException ex) {
             logger.info("oauth_callback parse json error  {}", ex);
         }
-        
+
         return "redirect:/";
     }
 }

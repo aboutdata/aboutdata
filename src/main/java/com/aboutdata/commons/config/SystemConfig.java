@@ -11,8 +11,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * 系统配置信息
- *
+ * @ 系统配置信息
+ * @/var/Anhao/config中配置会覆盖下面默认值
  * @author aboutdata.me
  */
 @XmlRootElement(name = "SystemConfig")

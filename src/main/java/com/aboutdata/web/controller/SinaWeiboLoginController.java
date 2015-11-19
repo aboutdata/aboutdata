@@ -6,8 +6,6 @@
 package com.aboutdata.web.controller;
 
 import com.aboutdata.commons.enums.Oauth2Type;
-import com.aboutdata.commons.oauth2.GithubProfile;
-import com.aboutdata.commons.oauth2.SinaWeiboProfile;
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.OpenAuth2;
 import com.aboutdata.security.shiro.Principal;
@@ -16,9 +14,6 @@ import com.aboutdata.service.MemberRankService;
 import com.aboutdata.service.MemberService;
 import com.aboutdata.service.OpenAuth2Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.scribejava.apis.GitHubApi;
-import com.github.scribejava.apis.SinaWeiboApi20;
-import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.model.OAuthRequest;
 import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Token;
@@ -28,7 +23,6 @@ import com.github.scribejava.core.oauth.OAuthService;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
-import java.util.Random;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
@@ -46,17 +40,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class SinaWeiboLoginController {
 
     private static final Logger logger = LoggerFactory.getLogger(SinaWeiboLoginController.class);
+    
     private static final String PROTECTED_RESOURCE_URL = "https://api.weibo.com/2/account/get_uid.json";
     private static final Token EMPTY_TOKEN = null;
-    // Replace these with your own api key and secret
-    String apiKey = "2072911734";
-    String apiSecret = "30f2c2b0a6cd45539d57a8a4c8fbcb50";
-    OAuthService service = new ServiceBuilder()
-            .provider(SinaWeiboApi20.class)
-            .apiKey(apiKey)
-            .apiSecret(apiSecret)
-            .callback("http://aboutdata.localhost:8080/oauth/sina")
-            .build();
 
     @Resource
     private OpenAuth2Service openAuth2Service;
@@ -69,7 +55,7 @@ public class SinaWeiboLoginController {
 
     @RequestMapping(value = "/weibo", method = RequestMethod.GET)
     public String displayGithubLogin(Model model) {
-        final String authorizationUrl = service.getAuthorizationUrl(EMPTY_TOKEN);
+        final String authorizationUrl = openAuth2Service.getSinaWeiboService().getAuthorizationUrl(EMPTY_TOKEN);
         System.out.println(authorizationUrl);
         return "redirect:" + authorizationUrl;
     }
@@ -85,7 +71,8 @@ public class SinaWeiboLoginController {
     @RequestMapping(value = "/oauth/sina", method = RequestMethod.GET)
     public String callBack(String code, HttpSession session, Model model) {
         logger.info("oauth_callback code {}", code);
-
+        OAuthService service = openAuth2Service.getSinaWeiboService();
+        
         final Verifier verifier = new Verifier(code);
         final Token accessToken = service.getAccessToken(EMPTY_TOKEN, verifier);
         final OAuthRequest request = new OAuthRequest(Verb.GET, PROTECTED_RESOURCE_URL, service);
