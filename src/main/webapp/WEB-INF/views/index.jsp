@@ -11,6 +11,7 @@
     <head>  
         <meta charset="utf-8" />
         <title>Lockbur - 更多壁纸，更多分享</title>
+        <meta property="wb:webmaster" content="b4ce7bb18f09c6bc"/>
         <meta name="baidu-site-verification" content="bB5uKKGWVi" />
         <meta name="msvalidate.01" content="1E5396A70FFDF1DD629CEAAD96CCEE15" />
         <meta name="alexaVerifyID" content="wdV1JUI4A1-05aTdniAVHICFPMI"/>
