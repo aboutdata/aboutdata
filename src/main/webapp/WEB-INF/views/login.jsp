@@ -47,7 +47,7 @@
                                     <input type="password" class="form-control {required:true,minlength: 6}" name="password">
                                 </div>
                                 <div class="form-group">
-                                  <p><a href="${pageContext.request.contextPath}/password/forget" class="text-info">忘记密码</a></p>
+                                    <p><a href="${pageContext.request.contextPath}/password/forget" class="text-info">忘记密码</a></p>
                                 </div>
                                 <div class="checkbox m-t-lg">
                                     <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs"><strong>登录</strong></button>
@@ -61,9 +61,9 @@
                             <h4>没有账号?</h4>
                             <p>点击<a href="${pageContext.request.contextPath}/register" class="text-info">注册新用户</a></p>
                             <p>OR</p>
-                            <a href="#" class="btn btn-primary btn-block m-b-sm"><i class="fa fa-pinterest-square pull-left"></i>qq登录</a>
-                            <a href="#" class="btn btn-info btn-block m-b-sm"><i class="fa fa-weibo pull-left"></i>微博登录</a>
-                            <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google-plus pull-left"></i>百度账号登录</a>
+                            <a href="${pageContext.request.contextPath}/github" class="btn btn-primary btn-block m-b-sm"><i class="fa fa-github pull-left"></i>Github</a>
+                            <a href="${pageContext.request.contextPath}/weibo" class="btn btn-info btn-block m-b-sm"><i class="fa fa-weibo pull-left"></i>微博登录</a>
+                            <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google-plus pull-left"></i>百度账号登录(账号申请为审核通过)</a>
                         </div>
                         <div class="col-sm-3"></div>
                     </div>
@@ -71,7 +71,7 @@
                 <!--content//end-->
             </section>   
             <footer class="footer bg-black dker">
-               <jsp:include page="/WEB-INF/views/portal/common/footer.jsp"/>
+                <jsp:include page="/WEB-INF/views/portal/common/footer.jsp"/>
             </footer>
         </section>
 
