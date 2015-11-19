@@ -1,5 +1,6 @@
 
 import com.aboutdata.commons.application.InjectLogger;
+import com.aboutdata.commons.config.OpenAuth2Client;
 import com.aboutdata.commons.enums.EmailType;
 import com.aboutdata.commons.enums.Oauth2Type;
 import com.aboutdata.commons.enums.PhotoStatus;
@@ -17,6 +18,7 @@ import com.aboutdata.domain.Tag;
 import com.aboutdata.model.AdminModel;
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.service.AdminService;
+import com.aboutdata.service.ConfigService;
 import com.aboutdata.service.EmailService;
 import com.aboutdata.service.MemberRankService;
 import com.aboutdata.service.MemberService;
@@ -57,22 +59,22 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/spring-context.xml")
 public class DemoTest extends AbstractJUnit4SpringContextTests {
-    
+
     @InjectLogger
     private Logger log;
-    
+
     @Resource
-    private OpenAuth2Dao openAuth2Dao;
-    
+    private ConfigService configService;
+
     public void empty() {
-        
+
     }
-    
+
     @Test
     public void findByIdTest() {
-        OpenAuth2 oauth2 = openAuth2Dao.findByOauthIdAndType("43534532", Oauth2Type.GITHUB);
-        System.out.println(""+oauth2);
-        log.info("{}",oauth2);
+        OpenAuth2Client github = configService.getOpenAuth2Config().getGithubClient();
+        System.out.println("github.getApiKey() "+github.getApiKey());
+        log.info("github {}",github.getApiKey());
     }
-    
+
 }
