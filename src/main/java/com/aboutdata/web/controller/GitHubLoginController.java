@@ -54,18 +54,14 @@ public class GitHubLoginController {
     @Resource(name = "memberRankServiceImpl")
     private MemberRankService memberRankService;
 
-    @RequestMapping(value = "/github", method = RequestMethod.GET)
+    @RequestMapping(value = "/oauth2/github", method = RequestMethod.GET)
     public String displayGithubLogin(Model model) {
         final String authorizationUrl = openAuth2Service.getGithubService().getAuthorizationUrl(EMPTY_TOKEN);
-
-        System.out.println(authorizationUrl);
-
         return "redirect:" + authorizationUrl;
     }
 
-    @RequestMapping(value = "/oauth_callback", method = RequestMethod.GET)
+    @RequestMapping(value = "/oauth2/github/callback", method = RequestMethod.GET)
     public String callBack(String code, HttpSession session, Model model) {
-        logger.info("oauth_callback code {}", code);
         OAuthService service = openAuth2Service.getGithubService();
         final Verifier verifier = new Verifier(code);
         final Token accessToken = service.getAccessToken(EMPTY_TOKEN, verifier);

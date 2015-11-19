@@ -61,8 +61,8 @@
                             <h4>没有账号?</h4>
                             <p>点击<a href="${pageContext.request.contextPath}/register" class="text-info">注册新用户</a></p>
                             <p>OR</p>
-                            <a href="${pageContext.request.contextPath}/github" class="btn btn-primary btn-block m-b-sm"><i class="fa fa-github pull-left"></i>Github</a>
-                            <a href="${pageContext.request.contextPath}/weibo" class="btn btn-info btn-block m-b-sm"><i class="fa fa-weibo pull-left"></i>微博登录</a>
+                            <a href="${pageContext.request.contextPath}/oauth2/github" class="btn btn-primary btn-block m-b-sm"><i class="fa fa-github pull-left"></i>Github</a>
+                            <a href="${pageContext.request.contextPath}/oauth2/sina" class="btn btn-info btn-block m-b-sm"><i class="fa fa-weibo pull-left"></i>微博登录</a>
                             <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google-plus pull-left"></i>百度账号登录(账号申请为审核通过)</a>
                         </div>
                         <div class="col-sm-3"></div>

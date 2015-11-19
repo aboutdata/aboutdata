@@ -53,7 +53,7 @@ public class SinaWeiboLoginController {
     @Resource(name = "memberRankServiceImpl")
     private MemberRankService memberRankService;
 
-    @RequestMapping(value = "/weibo", method = RequestMethod.GET)
+    @RequestMapping(value = "/oauth2/sina", method = RequestMethod.GET)
     public String displayGithubLogin(Model model) {
         final String authorizationUrl = openAuth2Service.getSinaWeiboService().getAuthorizationUrl(EMPTY_TOKEN);
         System.out.println(authorizationUrl);
@@ -68,7 +68,7 @@ public class SinaWeiboLoginController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/oauth/sina", method = RequestMethod.GET)
+    @RequestMapping(value = "/oauth2/sina/callback", method = RequestMethod.GET)
     public String callBack(String code, HttpSession session, Model model) {
         logger.info("oauth_callback code {}", code);
         OAuthService service = openAuth2Service.getSinaWeiboService();
