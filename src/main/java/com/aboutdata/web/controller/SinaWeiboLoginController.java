@@ -46,11 +46,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class SinaWeiboLoginController {
 
     private static final Logger logger = LoggerFactory.getLogger(SinaWeiboLoginController.class);
-    private static final String NETWORK_NAME = "SinaWeibo";
     private static final String PROTECTED_RESOURCE_URL = "https://api.weibo.com/2/account/get_uid.json";
-    private static final String PROFILE_URL = "https://api.weibo.com/2/users/show.json";
     private static final Token EMPTY_TOKEN = null;
-
     // Replace these with your own api key and secret
     String apiKey = "2072911734";
     String apiSecret = "30f2c2b0a6cd45539d57a8a4c8fbcb50";
@@ -58,7 +55,7 @@ public class SinaWeiboLoginController {
             .provider(SinaWeiboApi20.class)
             .apiKey(apiKey)
             .apiSecret(apiSecret)
-            .callback("http://lockbur.com/oauth/sina")
+            .callback("http://aboutdata.localhost:8080/oauth/sina")
             .build();
 
     @Resource
@@ -91,27 +88,17 @@ public class SinaWeiboLoginController {
 
         final Verifier verifier = new Verifier(code);
         final Token accessToken = service.getAccessToken(EMPTY_TOKEN, verifier);
-
         final OAuthRequest request = new OAuthRequest(Verb.GET, PROTECTED_RESOURCE_URL, service);
         service.signRequest(accessToken, request);
         final Response response = request.send();
-
         try {
             ObjectMapper mapper = new ObjectMapper();
             Map uidMap = mapper.readValue(response.getBody(), Map.class);
-            String uid = (String) uidMap.get("uid");
+            String uid = (Long) uidMap.get("uid") + "";
             OpenAuth2 openAuth2 = openAuth2Service.findByOauthIdAndType(uid, Oauth2Type.SINAWEIBO);
 
             //如果没有注册 系统自动为其注册新用户
             if (openAuth2 == null) {
-                //获取用户信息
-//                OAuthRequest requestProfile = new OAuthRequest(Verb.GET, PROFILE_URL, service);
-//                requestProfile.addParameter("uid", uid);
-//                //获取用户信息 参数uid
-//                service.signRequest(accessToken, requestProfile);
-//                Response responseProfile = requestProfile.send();
-//                SinaWeiboProfile profile = mapper.readValue(responseProfile.getBody(), SinaWeiboProfile.class);
-
                 Member member = new Member();
                 //密码
                 String salt = SecurityPasswordUtils.getSalt();
@@ -120,7 +107,7 @@ public class SinaWeiboLoginController {
                 member.setUsername("sina_" + uid);
                 member.setSalt(salt);
                 member.setPassword(passphrase);
-                // member.setEmail(githubProfile.getEmail());
+                member.setEmail(salt + "@temp.com");
                 member.setPoint(1l);
 
                 member.setIsEnabled(true);
