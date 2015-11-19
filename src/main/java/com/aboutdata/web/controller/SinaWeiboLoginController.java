@@ -118,13 +118,14 @@ public class SinaWeiboLoginController {
 //                member.setLoginIp(request.getRemoteAddr());
                 member.setLoginDate(new Date());
                 member.setMemberRank(memberRankService.findDefault());
+                //根据weibo用户id创建一个用户
                 memberService.create(member);
 
                 openAuth2 = new OpenAuth2();
                 openAuth2.setMember(member);
                 openAuth2.setOauthId(uid);
                 openAuth2.setType(Oauth2Type.SINAWEIBO);
-
+                //记录到数据库 保存改用户曾经再本网站登录过
                 openAuth2Service.save(openAuth2);
                 session.setAttribute(Member.PRINCIPAL_ATTRIBUTE_NAME, new Principal(member.getId(), member.getUsername()));
             } else {
