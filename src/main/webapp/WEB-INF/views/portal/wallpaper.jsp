@@ -119,9 +119,7 @@
             </section>
             <!--main page //END-->
             <footer class="footer bg-black dker">
-                <div class="container">
-                    <small>所有图片同步于<a href="http://alpha.wallhaven.cc/" target="_blank">alpha.wallhaven.cc</a>©lockbur.com2015  京ICP备15054053号</small>
-                </div>
+                <jsp:include page="/WEB-INF/views/portal/common/footer.jsp"/>
             </footer>
         </section>
     </body>
@@ -175,7 +173,7 @@
                         success: function (result) {
                             $input.val("");
                             $that.html("<i class=\"fa fa-plus\"></i>");
-                            $("#tags-content").append("<lable class=\"label bg-primary\">"+tagName+"</lable> ")
+                            $("#tags-content").append("<lable class=\"label bg-primary\">" + tagName + "</lable> ")
                             console.log(result);
                         },
                         error: function (er) {
