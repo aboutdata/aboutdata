@@ -1,69 +1,93 @@
 <%-- 
     Document   : contact
-    Created on : 2015-10-19, 11:37:23
+    Created on : 2015-11-1, 15:48:00
     Author     : Administrator
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-    <head>
+<html>
+    <head>  
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>使用规则 - 更多壁纸，更多分享</title>
-        <meta name="description" content="Lockbur旨在为设计人员提供更高质量壁纸或者桌面壁纸,同时也提供原画设计作品分享!" />
-        <meta name="keywords" content="高清壁纸,壁纸,高清背景,背景,原画,桌面壁纸,最靠谱的图片分享网站,lockbur,lockbur.com,www.lockbur.com,wallbase,wallhaven,best wallpapers,best wallpaper site,iphone wallpaper,android wallpaper,mobile wallpaper,free wallpaper hd,backgrounds,desktop wallpaper,widescreen"/>
-        <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="shortcut icon" href="favicon.ico" />
-        <style>
-            body {
-                background: #E4E6E9;
-            }
-            .main-container {
-                padding-top: 72px;
-            }
-            .navbar-inverse {
-                background-color: #438EB9;
-                border-bottom-color: rgba(0,0,0,0.33);
-            }
-            .navbar-inverse .navbar-brand {
-                color: #EEE;
-            }
-
-            hr {
-                border-width: 0;
-                margin-top: 6px;
-                margin-bottom: 6px;
-            }
-        </style>
+        <title>Lockbur-更多壁纸，更多分享</title>
+        <jsp:include page="/WEB-INF/views/portal/common/head_and_css.jsp"/>
+        <!--百度统计-->
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
     </head>
-
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header pull-left">
-                    <a class="navbar-brand" href="${pageContext.request.contextPath}/help">
-                        &nbsp;<img src="${pageContext.request.contextPath}/assets/images/logo.png" alt=".">&nbsp;
-                        更多壁纸，更多分享</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="container main-container">
-            <h2 class="page-header text-primary">联系我们</small></h2>
-            <h4 class="text-success">该文档旨在能更好让您了解和反馈Lockbur.com的网站信息</h4>
-            <div class="row">
-                <div class="col-xs-12">
-                    <h3 id="overview" class="page-header">联系方式</h3>
-                    <p>邮件 845885222@qq.com</p>
-                    <p>手机 13661014724</p>
-                    <h3 id="overview" class="page-header">反馈方式</h3>
-                    <p>反馈方式 </p>
-                </div>
-            </div>
-        </div>
-
+        <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
+        <section class="vbox">
+            <!---header-->
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
+            <!---header //END-->
+            <section class="w-f-md">
+                <section class="container scrollable padder-v">
+                    <section class="hbox stretch">
+                        <!-- .aside -->
+                        <aside class="aside b-r b-dark">
+                            <section class="vbox">
+                                <header class="header b-b navbar">
+                                    <a class="btn btn-link pull-right visible-xs" data-toggle="class:show" data-target=".nav-primary">
+                                        <i class="fa fa-bars"></i>
+                                    </a>
+                                    <a href="${pageContext.request.contextPath}/help" class="navbar-brand">帮助中心</a>
+                                </header>
+                                <section class="scrollable">
+                                    <nav class="nav-primary hidden-xs nav-docs">
+                                        <ul class="nav">
+                                            <li><a href="${pageContext.request.contextPath}/help/rules">使用规则</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/help/contact">联系我们</a></li>
+                                            <li><a href="#">服务条款</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/help/team">团队成员</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/help/join">加入我们</a></li>
+                                        </ul>
+                                    </nav>
+                                </section>
+                            </section>
+                        </aside>
+                        <!-- /.aside -->
+                        <section id="content">
+                            <section class="vbox">
+                                <section class="scrollable">
+                                    <section  id="docs">
+                                        <div class="clearfix padder">
+                                            <h3 id="arch">联系我们</h3>
+                                            <h3 class="text-success">电话 13661014724</h3>
+                                            <h3 class="text-success">邮箱 2900196090@qq.com</h3>
+                                            <h3 class="text-success">网站 <a><strong><a href="http://lockbur.com/" class="text-white" target="_blank">http://lockbur.com</a></strong></h3>
+                                        </div>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>         
+                </section>    
+            </section>
+            <footer class="footer bg-black dker">
+                <jsp:include page="/WEB-INF/views/portal/common/footer.jsp"/>
+            </footer>
+        </section>
     </body>
+    <script src="${appBean.systemConfig.assetsUrl}/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="${appBean.systemConfig.assetsUrl}/assets/js/bootstrap.js"></script>
+    <script src="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function () {
+                //背景图片
+                $('body').vegas({
+                    timer: false,
+                    slides: [
+                        {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
+                    ]
+                });
+            });
+    </script>
 </html>
