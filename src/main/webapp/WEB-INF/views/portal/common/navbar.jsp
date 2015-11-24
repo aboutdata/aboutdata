@@ -3,10 +3,8 @@
     Created on : 2015-11-6, 23:47:01
     Author     : Administrator
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
 <nav id="header" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -108,7 +106,6 @@
                     </c:otherwise>
                 </c:choose> 
             </c:if>
-
         </div><!--/.navbar-collapse -->
     </div>
 </nav>
