@@ -61,10 +61,8 @@
                 </section>
                 <!--content//end-->
             </section>   
-            <footer class="footer bg-black dker navbar-fixed-bottom">
-                <div class="container">
-                    <small>所有图片同步于<a href="http://alpha.wallhaven.cc/" target="_blank">alpha.wallhaven.cc</a>©lockbur.com2015  京ICP备15054053号</small>
-                </div>
+            <footer class="footer bg-black dker">
+                <jsp:include page="/WEB-INF/views/portal/common/footer.jsp"/>
             </footer>
         </section>
 

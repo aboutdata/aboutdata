@@ -153,12 +153,8 @@
                     </section>
                 </section>
             </section>   
-            <footer id="footer">
-                <div class="text-center text-muted">
-                    <p>
-                        <small>所有图片同步于<a href="http://alpha.wallhaven.cc/" target="_blank">alpha.wallhaven.cc</a>©lockbur.com2015  京ICP备15054053号</small>
-                    </p>
-                </div>
+            <footer class="footer bg-black dker">
+                <jsp:include page="/WEB-INF/views/portal/common/footer.jsp"/>
             </footer>
         </section>
         <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>

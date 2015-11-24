@@ -12,8 +12,8 @@
             <h4>网站介绍</h4>
             <p>
                 <a href="${pageContext.request.contextPath}/tags" target="_blank">标签</a><br>
+                <a href="${pageContext.request.contextPath}/help" target="_blank">帮助中心</a><br>
                 <a href="${pageContext.request.contextPath}/help/join" target="_blank">加入我们</a><br>
-                帮助中心<br>
                 <a href="${pageContext.request.contextPath}/help/changelog" target="_blank">更新日志</a><br>
                 #路线图<br>
                 所有图片同步于<a href="http://alpha.wallhaven.cc/" target="_blank">alpha.wallhaven.cc</a><br>
