@@ -31,12 +31,12 @@ public class MakeHtmlTask implements Runnable {
 
     @Override
     public void run() {
-        String template = "index.html";
+        String template = "portal/wallpaper.html";
 
         Map<String, Object> root = new HashMap<>();
         root.put("photo", photo);
-        
-        makeHtmlService.build(template,photo.getId()+ ".html", root);
+
+        makeHtmlService.build(template, photo.getId() + ".html", root);
 
     }
 

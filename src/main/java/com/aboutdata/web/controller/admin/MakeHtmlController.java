@@ -34,9 +34,6 @@ public class MakeHtmlController {
     @Resource
     private PhotosService photosService;
 
-    @Resource
-    ApplicationBean appBean;
-
     @RequestMapping(value = "/build", method = RequestMethod.GET)
     public void buildTest() {
 
@@ -46,7 +43,7 @@ public class MakeHtmlController {
         Map<String, Object> root = new HashMap<String, Object>();
 
         root.put("photos", photos);
-        root.put("appBean", appBean);
+ 
         makeHtmlService.build(template, photos.getId() + ".html", root);
     }
 }

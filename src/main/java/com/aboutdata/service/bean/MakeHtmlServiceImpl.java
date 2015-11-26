@@ -5,6 +5,7 @@
  */
 package com.aboutdata.service.bean;
 
+import com.aboutdata.commons.application.ApplicationBean;
 import com.aboutdata.service.MakeHtmlService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -23,36 +24,41 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 /**
  * 页面静态化 处理，主要把wallpaper详情页面静态化
+ *
  * @version 1.0
  * @author Administrator
  */
 @Service
 public class MakeHtmlServiceImpl implements MakeHtmlService {
 
-    private final static  String htmlPath = "/var/anhao/html/";
-    
+    private final static String htmlPath = "/var/anhao/html/";
+
     @Resource(name = "freeMarkerConfigurer")
     private FreeMarkerConfigurer freeMarkerConfigurer;
 
-
+    @Resource
+    private ApplicationBean appBean;
 
     /**
      * 模板+数据=输出
+     *
      * @param templatePath
      * @param name
      * @param model
-     * @return 
+     * @return
      */
     @Transactional(readOnly = true)
     @Override
     public int build(String templatePath, String name, Map<String, Object> model) {
+        //所有页面都有全局参数
+        model.put("appBean", appBean);
 
         FileOutputStream fileOutputStream = null;
         OutputStreamWriter outputStreamWriter = null;
         Writer writer = null;
         try {
             Template template = freeMarkerConfigurer.getConfiguration().getTemplate(templatePath);
-            File staticFile = new File(htmlPath+name);
+            File staticFile = new File(htmlPath + name);
             File staticDirectory = staticFile.getParentFile();
             if (!staticDirectory.exists()) {
                 staticDirectory.mkdirs();
@@ -62,7 +68,7 @@ public class MakeHtmlServiceImpl implements MakeHtmlService {
             writer = new BufferedWriter(outputStreamWriter);
             template.process(model, writer);
             writer.flush();
-            
+
             return 1;
         } catch (IOException | TemplateException e) {
             e.printStackTrace();
