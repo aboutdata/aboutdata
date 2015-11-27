@@ -1,8 +1,5 @@
 
 import com.aboutdata.commons.application.InjectLogger;
-import com.aboutdata.commons.config.OpenAuth2Client;
-import com.aboutdata.service.MakeHtmlService;
-import javax.annotation.Resource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -25,8 +22,6 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     @InjectLogger
     private Logger log;
 
-    @Resource
-    private MakeHtmlService makeHtmlService;
 
     public void empty() {
 
@@ -34,8 +29,7 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 
     @Test
     public void findByIdTest() {
-        String template = "/index.html";
-        makeHtmlService.build(template, "index222.html", null);
+      
     }
 
 }

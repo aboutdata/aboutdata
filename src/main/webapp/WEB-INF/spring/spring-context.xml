@@ -83,7 +83,4 @@
     <import resource="spring-shiro.xml"></import>
     
     <import resource="spring-data-jpa.xml"></import>
-    
-    <import resource="spring-freemarker.xml"></import>
-    
 </beans>
