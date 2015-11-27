@@ -20,7 +20,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * 页面静态化
  * @author Administrator
  */
 @Component
@@ -30,7 +30,7 @@ public class MakeHtmlSchedule {
 
     private int page = 0;
     private final int pagesize = 500;
-  
+
     @Resource
     private PhotosDao photosDao;
 
@@ -40,7 +40,7 @@ public class MakeHtmlSchedule {
     @Resource
     private ThreadPoolTaskExecutor taskExecutor;
 
-//    @Scheduled(cron = "*/1 * * * * ?")
+    @Scheduled(cron = "*/1 * * * * ?")
     public void execute() {
         logger.info("page: {} " + page);
         logger.info("ActiveCount :" + taskExecutor.getActiveCount());
