@@ -84,9 +84,6 @@
                                         </div>
                                     </li>
                                 </ul>
-
-                                
-
                             </div>
                         </section>
                     </section>

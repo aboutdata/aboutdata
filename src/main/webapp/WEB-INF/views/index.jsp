@@ -68,11 +68,11 @@
             </footer>
         </section>
     </body>
-    <script src="${appBean.systemConfig.assetsUrl}/assets/js/jquery.min.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="${appBean.systemConfig.assetsUrl}/assets/js/bootstrap.js"></script>
-    <script src="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.js"></script>
-    <script src="${appBean.systemConfig.assetsUrl}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- App -->
     <script src="${pageContext.request.contextPath}/assets/js/lazyload/jquery.lazyload.min.js"></script>
@@ -100,7 +100,7 @@
                 $('body').vegas({
                     timer: false,
                     slides: [
-                        {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
+                        {src: '${appBean.assetsUrl}/assets/images/background4.jpg'}
                     ]
                 });
                 $("img").error(function () {

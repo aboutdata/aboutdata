@@ -20,19 +20,19 @@
     </c:when>
     <c:otherwise>
         <!--生产模式 使用css和常用js直接走nginx-->
-        <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/bootstrap.css" type="text/css" />
-        <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.css" type="text/css" />
-        <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/animate.css" type="text/css" />
-        <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/font-awesome.min.css" type="text/css" />
-        <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/simple-line-icons.css" type="text/css" />
-        <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/font.css" type="text/css" />
+        <link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="${appBean.assetsUrl}/assets/js/vegas/vegas.css" type="text/css" />
+        <link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/simple-line-icons.css" type="text/css" />
+        <link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/font.css" type="text/css" />
 
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/app.min.css" type="text/css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${appBean.gruntVersion}/css/app.min.css" type="text/css" />
     </c:otherwise>
 </c:choose>
 <!--[if lt IE 9]>
-<script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/html5shiv.js"></script>
-<script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/respond.min.js"></script>
-<script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/excanvas.js"></script>
+<script src="${appBean.assetsUrl}/assets/js/ie/html5shiv.js"></script>
+<script src="${appBean.assetsUrl}/assets/js/ie/respond.min.js"></script>
+<script src="${appBean.assetsUrl}/assets/js/ie/excanvas.js"></script>
 <![endif]-->
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" />

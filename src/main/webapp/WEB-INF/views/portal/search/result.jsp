@@ -71,14 +71,15 @@
             <!--main page //END-->
         </section>
     </body>
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
+    <!--无限加载-->
+    <script src="${appBean.assetsUrl}/assets/js/masonry/jquery.infinitescroll.min.js"></script>
     <!-- App -->
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-    <script src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.infinitescroll.min.js" type="text/javascript"></script>
     <script type="text/javascript">
             $(document).ready(function () {
                 //添加到收藏夹
@@ -101,7 +102,7 @@
                 $('body').vegas({
                     timer: false,
                     slides: [
-                        {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
+                        {src: '${appBean.assetsUrl}/assets/images/background1.jpg'}
                     ]
                 });
                 $('body').infinitescroll({
@@ -121,7 +122,7 @@
                     loading: {
                         msgText: "",
                         finishedMsg: '没有新数据了...',
-                        img: "${pageContext.request.contextPath}/assets/images/loading.gif",
+                        img: "${appBean.assetsUrl}/assets/images/loading.gif",
                         selector: '.loading' // 显示loading信息的div
                     }
                 }, function (newElems) {

@@ -37,8 +37,7 @@ public class ServletListener extends ContextLoaderListener implements HttpSessio
         //获取spring上下文
         springContext = getCurrentWebApplicationContext();
         ApplicationBean appBean = (ApplicationBean) springContext.getBean("appBean");
-        sc.setAttribute("appBean", appBean);
-        logger.info("config {}", appBean.getSystemConfig());
+        
         //设置version 从grunt打包到生产使用
         try (InputStream is = sc.getResourceAsStream("/package.json")) {
             ObjectMapper mapper = new ObjectMapper();
@@ -49,6 +48,9 @@ public class ServletListener extends ContextLoaderListener implements HttpSessio
             //生产环境 打包部署需要
             logger.error("packeage.json is not exist {}", ex);
         }
+        
+        sc.setAttribute("appBean", appBean);
+        logger.info("config {}", appBean.getSystemConfig());
 
     }
 

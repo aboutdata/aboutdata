@@ -68,12 +68,12 @@
             <!--main page //END-->
         </section>
     </body>
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
     <!-- App -->
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-    <script src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
     <script type="text/javascript">
             $(document).ready(function () {
@@ -83,12 +83,12 @@
                 $('body').vegas({
                     timer: false,
                     slides: [
-                        {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
+                        {src: '${appBean.assetsUrl}/assets/images/background1.jpg'}
                     ]
                 });
 
                 $("img").error(function () {
-                    $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
+                    $(this).attr("src", "${appBean.assetsUrl}/assets/images/image20.jpg");
                 });
             });
     </script>

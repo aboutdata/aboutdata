@@ -127,16 +127,18 @@
     <!-- Bootstrap -->
     <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
     <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap/typeahead/bootstrap3-typeahead.min.js"></script>
+    
+    
+    <script src="${appBean.assetsUrl}/assets/js/bootstrap/typeahead/bootstrap3-typeahead.min.js"></script>
     <!-- App -->
-    <script src="${pageContext.request.contextPath}/build-${GruntVersion}/js/app.js"></script>  
-    <script src="${pageContext.request.contextPath}/build-${GruntVersion}/js/app.plugin.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
+    <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
     <script type="text/javascript">
             $(document).ready(function () {
                 $('body').vegas({
                     timer: false,
                     slides: [
-                        {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
+                        {src: '${appBean.assetsUrl}/assets/images/background4.jpg'}
                     ]
                 });
                 var $input = $('#typeahead');
