@@ -41,7 +41,7 @@ public final class SystemConfig extends BaseConfig {
     private String solrServer = "http://localhost:9090/solr";
 
     @XmlElement
-    private String defaultStorageHost = "http://aboutdata.me";
+    private String defaultStorageHost = "http://imgs1:lockbur.com";
 
     /**
      * 各平台通用功能

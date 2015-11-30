@@ -85,34 +85,6 @@ public class PhotosController {
 
         return "/member/photos/wallpaper";
     }
-
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String wallpaper(String albumId, MultipartFile multipartFile, ModelMap model, RedirectAttributes rattr) {
-        logger.info("file name {}", multipartFile.getOriginalFilename());
-        logger.info("file name {}", multipartFile.getName());
-
-        Member m = new Member();
-        m.setId("1");
-
-        Photos photos = new Photos();
-
-        PhotosAlbum album = new PhotosAlbum();
-        album.setId(albumId);
-        photos.setMember(m);
-        photos.setAlbum(album);
-        photos.setOrder(1);
-        photos.setTitle(multipartFile.getOriginalFilename());
-
-        //该方法会处理图片并保存 图片信息
-        imageGraphicsService.build(photos, multipartFile);
-
-        if (!albumId.isEmpty()) {
-            return "redirect:/member/photos/album/" + albumId;
-        } else {
-            return "redirect:/member/photos/album";
-        }
-    }
-
     /**
      * 普通用户可以为图片添加标签
      *

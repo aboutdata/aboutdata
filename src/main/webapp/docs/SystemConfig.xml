@@ -2,13 +2,14 @@
 <SystemConfig>
     <developMode>true</developMode>
     <defaultPassword>123456</defaultPassword>
-    <siteUrl>http://localhost:8080/Aboutdata</siteUrl>
-    <assetsUrl>http://assets.lockbur.com</assetsUrl>
+	<siteUrl>http://lockbur.com</siteUrl>
+	<assetsUrl>http://assets.lockbur.com</assetsUrl>
     <solrServer>http://localhost:9090/solr</solrServer>
-    <defaultStorageHost>http://localhost:9090/solr</defaultStorageHost>
+	<defaultStorageHost>http://imgs1:lockbur.com</defaultStorageHost>
     <features>
         <dimPrivacy>true</dimPrivacy>
         <enableSMS>true</enableSMS>
         <enableLogin>true</enableLogin>
+		<enableSearch>true</enableSearch>
     </features>
 </SystemConfig>

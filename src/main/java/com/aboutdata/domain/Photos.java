@@ -73,7 +73,7 @@ public class Photos extends BaseEntity {
     /**
      * 图片服务器地址
      */
-    @Column(length = 20)
+    @Column(length = 30)
     private String storageHost;
 
     /**
