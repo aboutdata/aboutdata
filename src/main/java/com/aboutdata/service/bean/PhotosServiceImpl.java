@@ -161,6 +161,10 @@ public class PhotosServiceImpl implements PhotosService {
         //3 上传缩略图  fastdfsId 也是存储路劲
         String fastdfsThumbnailId = storageService.upload(thumbnailImage);
 
+        //删除本地暂存原文件和缩略图
+        source.delete();
+        thumbnailImage.delete();
+
         photos.setThumbnail(fastdfsThumbnailId);
         photos.setMedium(fastdfsSourceId);
         photos.setLarge(fastdfsSourceId);
