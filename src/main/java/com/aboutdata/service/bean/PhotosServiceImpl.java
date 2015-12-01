@@ -6,6 +6,7 @@ import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.Tag;
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.model.dto.PhotosDTO;
+import com.aboutdata.service.ImageGraphicsService;
 import com.aboutdata.service.PhotosService;
 import com.aboutdata.service.TagService;
 
@@ -36,6 +37,9 @@ public class PhotosServiceImpl implements PhotosService {
 
     @Resource
     private TagService tagService;
+
+    @Resource
+    private ImageGraphicsService imageGraphicsService;
 
     @Override
     @Transactional
@@ -117,7 +121,7 @@ public class PhotosServiceImpl implements PhotosService {
 
     /**
      * @ 批准通过
-     * @ 批准通过 定时任务会马上创建索引
+     * @ 批准通过 定时任务会马上创建索引 需要再批准通过后创建缩略图 并上传到fastdfs
      * @param id
      * @param description
      */
@@ -125,7 +129,15 @@ public class PhotosServiceImpl implements PhotosService {
     @Transactional
     public void approve(String id, String description) {
         Photos photos = photosDao.findOne(id);
-        photos.setStatus(PhotoStatus.APPROVED);
+       // photos.setStatus(PhotoStatus.APPROVED);
+        
+        imageGraphicsService.thumbnail(photos.getTitle(), photos.getSource());
+        
+        // photos.setThumbnail(thumbnail);
+        //    photos.setMedium(path);
+        //  photos.setLarge(path);
+        // photos.setSource(path);
+        //  photos.setStorageHost(appBean.getSystemConfig().getDefaultStorageHost());
         photos.setDescription(description);
     }
 

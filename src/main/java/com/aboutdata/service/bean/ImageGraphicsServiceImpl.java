@@ -13,7 +13,13 @@ import com.aboutdata.service.StorageService;
 import com.aboutdata.utils.EasyImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
 import javax.annotation.Resource;
+import org.apache.commons.io.FileUtils;
+import org.im4java.core.ConvertCmd;
+import org.im4java.core.IM4JavaException;
+import org.im4java.core.IMOperation;
+import org.im4java.process.StandardStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -35,6 +41,8 @@ public class ImageGraphicsServiceImpl implements ImageGraphicsService {
 
     @Resource
     private ApplicationBean appBean;
+
+    private static ConvertCmd cmd = new ConvertCmd(true);
 
     @Override
     public void build(Photos photos, MultipartFile multipartFile) {
@@ -68,15 +76,38 @@ public class ImageGraphicsServiceImpl implements ImageGraphicsService {
                 //上传完毕后删除
                 tempThumbnail.delete();
 
-                photos.setThumbnail(thumbnail);
-                photos.setMedium(path);
-                photos.setLarge(path);
-                photos.setSource(path);
-                photos.setStorageHost(appBean.getSystemConfig().getDefaultStorageHost());
-                photosService.create(photos);
             } catch (IOException | IllegalStateException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    /**
+     * 生成缩略图
+     *
+     * @param name
+     * @param source
+     */
+    @Override
+    public void thumbnail(String name, String source) {
+        String thumbnail = "D://"+name+"testerTwo.jpg";
+        try {
+            IMOperation op = new IMOperation();
+            op.addImage();
+            op.resize(300, 200);
+            op.quality(85d);
+            op.addImage();
+            //IM4JAVA是同时支持ImageMagick和GraphicsMagick的，如果为true则使用GM，如果为false支持IM。  
+            String osName = System.getProperty("os.name").toLowerCase();
+            if (osName.contains("win")) {  //linux下不要设置此值，不然会报错  
+                cmd.setSearchPath("C:\\Program Files\\GraphicsMagick-1.3.23-Q8");
+            }
+            cmd.setErrorConsumer(StandardStream.STDERR);
+            cmd.run(op, source, thumbnail);
+        } catch (IOException | InterruptedException | IM4JavaException ex) {
+            ex.printStackTrace();
+        } finally {
+
         }
     }
 

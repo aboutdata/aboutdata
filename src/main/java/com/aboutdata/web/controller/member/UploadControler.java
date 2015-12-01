@@ -10,9 +10,14 @@ import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.service.ImageGraphicsService;
 import com.aboutdata.service.MemberService;
+import com.aboutdata.service.PhotosService;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
 import javax.annotation.Resource;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -34,6 +39,9 @@ public class UploadControler {
 
     @Resource(name = "memberServiceImpl")
     private MemberService memberService;
+
+    @Resource
+    private PhotosService photosService;
 
     @Resource
     private ImageGraphicsService imageGraphicsService;
@@ -61,6 +69,16 @@ public class UploadControler {
         logger.info("file name {}", multipartFile.getOriginalFilename());
         logger.info("file name {}", multipartFile.getName());
 
+        String type = multipartFile.getContentType().split("/")[1];
+        //会员的ID.png 会员的ID-200.png 尺寸为200
+        String path = "/var/uploads/" + multipartFile.getName() + "_" + RandomStringUtils.randomNumeric(6) + "." + type;
+        File destFile = new File(path);
+        try {
+            multipartFile.transferTo(destFile);
+        } catch (IOException | IllegalStateException ex) {
+            ex.printStackTrace();
+        }
+
         Member m = new Member();
         m.setId("1");
 
@@ -72,10 +90,11 @@ public class UploadControler {
         photos.setAlbum(album);
         photos.setOrder(1);
         photos.setTitle(multipartFile.getOriginalFilename());
-
+        photos.setSource(path);
+        photosService.create(photos);
         //该方法会处理图片并保存 图片信息
-        imageGraphicsService.build(photos, multipartFile);
 
+        // imageGraphicsService.build(photos, multipartFile);
         return "/member/upload/result";
     }
 }

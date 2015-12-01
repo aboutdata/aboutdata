@@ -23,6 +23,8 @@ public interface ImageGraphicsService {
      */
     public void build(Photos photos, MultipartFile file);
 
+    public void thumbnail(String name, String source);
+
     /**
      * 头像不同尺寸裁剪
      *
