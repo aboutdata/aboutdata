@@ -42,7 +42,7 @@ public class ImageGraphicsServiceImpl implements ImageGraphicsService {
 
     @Resource
     private ApplicationBean appBean;
-
+    //IM4JAVA是同时支持ImageMagick和GraphicsMagick的，如果为true则使用GM，如果为false支持IM。 
     private static ConvertCmd cmd = new ConvertCmd(true);
 
     @Override
@@ -99,7 +99,7 @@ public class ImageGraphicsServiceImpl implements ImageGraphicsService {
             op.resize(300, 200);
             op.quality(85d);
             op.addImage(thumbnail);
-            //IM4JAVA是同时支持ImageMagick和GraphicsMagick的，如果为true则使用GM，如果为false支持IM。  
+
             String osName = System.getProperty("os.name").toLowerCase();
             if (osName.contains("win")) {
                 //C:\Program Files\GraphicsMagick-1.3.23-Q16
