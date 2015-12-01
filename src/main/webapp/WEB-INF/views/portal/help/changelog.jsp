@@ -51,7 +51,7 @@
                                 <h5 class="m-t-lg"><strong><a href="http://lockbur.com/" target="_blank">http://lockbur.com</a></strong>是我业余时间开发设计,目前来说,有很多计划和功能都无法达到预期,SO 如果您认为您能帮助到我们,请与我们联系,我们也会非常其期待您加入.</h5>
                                 <h3 class="text-success">网站所使用的技术架构</h3>
                                 <p id="bootstrap">该网站是使用java语言开发,使用mysql社区版数据库作为系统的数据持久化存储系统</p>
-                               
+
                                 <p id="bootstrap">2015年12月 更新内容</p>
                                 <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
                                     <li class="list-group-item">
@@ -103,9 +103,7 @@
         <!-- Bootstrap -->
         <script src="js/bootstrap.js"></script>
         <!-- App -->
-        <script src="js/app.js"></script>  
-        <!-- Easy Pie Chart -->
         <script src="js/app.plugin.js"></script>
-
+        <script src="js/app.js"></script>  
     </body>
 </html>
