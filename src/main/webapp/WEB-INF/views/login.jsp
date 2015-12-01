@@ -86,24 +86,14 @@
     <script src="${appBean.assetsUrl}/assets/js/jquery-validation/jquery.metadata.js"></script>
     <script src="${appBean.assetsUrl}/assets/js/jquery-validation/jquery.validate.zh-CN.js"></script>
     <!-- App -->
-    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
     <script type="text/javascript">
         $(document).ready(function () {
             //表单验证
             $("#inputForm").validate({
                 errorClass: 'text-danger-lter',
                 validClass: "text-success"
-            });
-            //背景图片
-            $('body').vegas({
-                timer: false,
-                slides: [
-                    {src: '${appBean.assetsUrl}/assets/images/background1.jpg'}
-                ]
-            });
-            $("img").error(function () {
-                $(this).attr("src", "${appBean.assetsUrl}/assets/images/image20.jpg");
             });
         });
     </script>

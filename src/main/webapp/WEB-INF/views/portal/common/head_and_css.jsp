@@ -30,13 +30,14 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${appBean.gruntVersion}/css/app.min.css" type="text/css" />
     </c:otherwise>
 </c:choose>
-<!--[if lt IE 9]>
-<script src="${appBean.assetsUrl}/assets/js/ie/html5shiv.js"></script>
-<script src="${appBean.assetsUrl}/assets/js/ie/respond.min.js"></script>
-<script src="${appBean.assetsUrl}/assets/js/ie/excanvas.js"></script>
-<![endif]-->
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" />
-<script>
-    var CC = {};
-    CC.host = "${pageContext.request.scheme}://${header.host}${pageContext.request.contextPath}/";
-</script>
+        <!--[if lt IE 9]>
+        <script src="${appBean.assetsUrl}/assets/js/ie/html5shiv.js"></script>
+        <script src="${appBean.assetsUrl}/assets/js/ie/respond.min.js"></script>
+        <script src="${appBean.assetsUrl}/assets/js/ie/excanvas.js"></script>
+        <![endif]-->
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" />
+        <script>
+            var CC = {};
+            CC.host = "${pageContext.request.scheme}://${header.host}${pageContext.request.contextPath}/";
+            CC.assets_url = "${appBean.assetsUrl}/";
+        </script>

@@ -16,9 +16,6 @@
     <body>
         <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
-            <!---header-->
-            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
-            <!---header //END-->
             <section class="w-f-md m-t">
                 <!--content-->
                 <section class="padder">
@@ -89,23 +86,13 @@
     <script src="${appBean.assetsUrl}/assets/js/jquery-validation/jquery.metadata.js"></script>
     <script src="${appBean.assetsUrl}/assets/js/jquery-validation/jquery.validate.zh-CN.js"></script>
     <!-- App -->
-    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
     <script type="text/javascript">
         $(document).ready(function () {
             $("#inputForm").validate({
                 errorClass: 'text-danger-lter',
                 validClass: "text-success"
-            });
-
-            $('body').vegas({
-                timer: false,
-                slides: [
-                    {src: '${appBean.assetsUrl}/assets/images/background1.jpg'}
-                ]
-            });
-            $("img").error(function () {
-                $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
             });
         });
     </script>

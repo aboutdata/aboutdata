@@ -48,21 +48,15 @@
         </section>
         <!--main page //END-->
     </section>
-     <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
     <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
     <!-- App -->
-    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
     <script type="text/javascript">
             $(document).ready(function () {
-                $('body').vegas({
-                    timer: false,
-                    slides: [
-                        {src: '${appBean.assetsUrl}/assets/images/background1.jpg'}
-                    ]
-                });
                 $("#search").click(function () {
                     var keywords = $("#keywords").val();
                     location.href = "${pageContext.request.contextPath}/search?keywords=" + keywords;

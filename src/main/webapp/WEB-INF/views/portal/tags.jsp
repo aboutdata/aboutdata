@@ -73,25 +73,8 @@
     <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
     <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
     <!-- App -->
-    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-    <script type="text/javascript">
-            $(document).ready(function () {
-                $("#search").click(function () {
-                    $("#searchbar").toggle("slow");
-                });
-                $('body').vegas({
-                    timer: false,
-                    slides: [
-                        {src: '${appBean.assetsUrl}/assets/images/background1.jpg'}
-                    ]
-                });
-
-                $("img").error(function () {
-                    $(this).attr("src", "${appBean.assetsUrl}/assets/images/image20.jpg");
-                });
-            });
-    </script>
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
 </html>
 
 
