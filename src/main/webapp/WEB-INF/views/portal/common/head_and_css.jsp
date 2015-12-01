@@ -36,3 +36,7 @@
 <script src="${appBean.assetsUrl}/assets/js/ie/excanvas.js"></script>
 <![endif]-->
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" />
+<script>
+    var CC = {};
+    CC.host = "${pageContext.request.scheme}://${header.host}${pageContext.request.contextPath}/";
+</script>

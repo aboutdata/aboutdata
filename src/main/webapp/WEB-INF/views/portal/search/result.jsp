@@ -39,10 +39,17 @@
                                     <div class="pos-rlt">
                                         <div class="item-overlay opacity r r-2x bg-black">
                                             <c:if test="${appBean.getCurrentUser() != null}">
-                                                <div class="text-info padder m-t-sm text-sm">
-                                                    <button data-photos-id="${photos.id}" class="pull-right addFavorite" >
-                                                        <i class="fa fa-heart-o text-danger"></i>
-                                                    </button>
+                                                <div class="top">
+                                                    <a href="#" data-photos-id="${photos.id}" class="pull-right m-t-n-xs m-r-n-xs badge bg-danger count addFavorite">
+                                                        <i class="fa fa-star"></i>
+                                                    </a>
+                                                    <span class="pull-right m-t-n-xs m-r-n-xs badge bg-white count hide">
+                                                        <i class="fa fa-spinner fa fa-spin fa fa-large"></i>
+                                                    </span>
+                                                    <!-- 已收藏过 -->
+                                                    <a href="#" class="pull-right m-t-n-xs m-r-n-xs badge bg-white-only count hide">
+                                                        <i class="fa fa-star text-danger"></i>
+                                                    </a>
                                                 </div>
                                             </c:if>
                                             <div class="center text-center m-t-n">
@@ -84,19 +91,8 @@
             $(document).ready(function () {
                 //添加到收藏夹
                 $(document).on("click", ".addFavorite", function () {
-                    var _photo_id = $(this).data("photos-id");
-                    $.ajax({
-                        type: "post",
-                        url: "${pageContext.request.contextPath}/member/favorite/add",
-                        data: {photosId: _photo_id},
-                        dataType: "json",
-                        success: function (data) {
-                            alert("添加成功");
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            alert(errorThrown);
-                        }
-                    });
+                    $(this).addFavorite();
+                    return false;//阻止链接跳转
                 });
                 //背景图片
                 $('body').vegas({

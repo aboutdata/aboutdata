@@ -11,7 +11,7 @@
     <head>  
         <meta charset="utf-8" />
         <title>Lockbur - 更多壁纸，更多分享</title>
-	<meta property="qc:admins" content="001022565332526375" />
+        <meta property="qc:admins" content="001022565332526375" />
         <meta property="wb:webmaster" content="b4ce7bb18f09c6bc"/>
         <meta name="baidu-site-verification" content="bB5uKKGWVi" />
         <meta name="msvalidate.01" content="1E5396A70FFDF1DD629CEAAD96CCEE15" />
@@ -42,12 +42,19 @@
                             <div class="col-xs-6 col-sm-4 col-md-3">
                                 <div class="item">
                                     <div class="pos-rlt">
-                                        <div class="item-overlay opacity r r-2x bg-black">
+                                        <div class="item-overlay opacity r r-2x">
                                             <c:if test="${appBean.getCurrentUser() != null}">
-                                                <div class="text-info padder m-t-sm text-sm">
-                                                    <button data-photos-id="${photos.id}" class="pull-right addFavorite" >
-                                                        <i class="fa fa-heart-o text-danger"></i>
-                                                    </button>
+                                                <div class="top">
+                                                    <a href="#" data-photos-id="${photos.id}" class="pull-right m-t-n-xs m-r-n-xs badge bg-danger count addFavorite">
+                                                        <i class="fa fa-star"></i>
+                                                    </a>
+                                                    <span class="pull-right m-t-n-xs m-r-n-xs badge bg-white count hide">
+                                                        <i class="fa fa-spinner fa fa-spin fa fa-large"></i>
+                                                    </span>
+                                                    <!-- 已收藏过 -->
+                                                    <a href="#" class="pull-right m-t-n-xs m-r-n-xs badge bg-white-only count hide">
+                                                        <i class="fa fa-star text-danger"></i>
+                                                    </a>
                                                 </div>
                                             </c:if>
                                             <div class="center text-center m-t-n">
@@ -82,19 +89,8 @@
             $(document).ready(function () {
                 //添加到收藏夹
                 $(document).on("click", ".addFavorite", function () {
-                    var _photo_id = $(this).data("photos-id");
-                    $.ajax({
-                        type: "post",
-                        url: "${pageContext.request.contextPath}/member/favorite/add",
-                        data: {photosId: _photo_id},
-                        dataType: "json",
-                        success: function (data) {
-                            alert("添加成功");
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            alert(errorThrown);
-                        }
-                    });
+                    $(this).addFavorite();
+                    return false;//阻止链接跳转
                 });
                 //背景图片
                 $('body').vegas({
