@@ -21,9 +21,10 @@ public interface ImageGraphicsService {
      * @param photos
      * @param file
      */
+    @Deprecated
     public void build(Photos photos, MultipartFile file);
 
-    public void thumbnail(String name, String source);
+    public File thumbnail(File sourceImage);
 
     /**
      * 头像不同尺寸裁剪

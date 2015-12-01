@@ -27,9 +27,6 @@ public class PhotosRequestController {
     @Resource
     private PhotosService photosService;
 
-    @Resource
-    private PhotosColorsService photosColorsService;
-
     /**
      * 列表
      *
@@ -95,8 +92,6 @@ public class PhotosRequestController {
     @RequestMapping(value = "/approve/{id}", method = RequestMethod.POST)
     public String approve(@PathVariable("id") String id, String description, ModelMap model) {
         photosService.approve(id, description);
-        //再批准通过 同时截取图片颜色
-        photosColorsService.generateColors(id);
         return "redirect:/admin/photosRequest/single/" + id;
     }
 

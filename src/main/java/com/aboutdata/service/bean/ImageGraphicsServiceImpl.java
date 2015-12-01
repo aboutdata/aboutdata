@@ -33,6 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ImageGraphicsServiceImpl implements ImageGraphicsService {
 
     Logger logger = LoggerFactory.getLogger(ImageGraphicsServiceImpl.class);
+
     @Resource
     private PhotosService photosService;
 
@@ -45,6 +46,7 @@ public class ImageGraphicsServiceImpl implements ImageGraphicsService {
     private static ConvertCmd cmd = new ConvertCmd(true);
 
     @Override
+    @Deprecated
     public void build(Photos photos, MultipartFile multipartFile) {
         if (multipartFile != null && !multipartFile.isEmpty()) {
             try {
@@ -85,30 +87,31 @@ public class ImageGraphicsServiceImpl implements ImageGraphicsService {
     /**
      * 生成缩略图
      *
-     * @param name
-     * @param source
+     * @param sourceImage
+     * @return
      */
     @Override
-    public void thumbnail(String name, String source) {
-        String thumbnail = "D://"+name+"testerTwo.jpg";
+    public File thumbnail(File sourceImage) {
+        String thumbnail = "/tmp/thumbnail_" + sourceImage.getName();
         try {
             IMOperation op = new IMOperation();
-            op.addImage();
+            op.addImage(sourceImage.getAbsolutePath());
             op.resize(300, 200);
             op.quality(85d);
-            op.addImage();
+            op.addImage(thumbnail);
             //IM4JAVA是同时支持ImageMagick和GraphicsMagick的，如果为true则使用GM，如果为false支持IM。  
             String osName = System.getProperty("os.name").toLowerCase();
-            if (osName.contains("win")) {  //linux下不要设置此值，不然会报错  
+            if (osName.contains("win")) {
+                //C:\Program Files\GraphicsMagick-1.3.23-Q16
+                //linux下不要设置此值，不然会报错  
                 cmd.setSearchPath("C:\\Program Files\\GraphicsMagick-1.3.23-Q8");
             }
             cmd.setErrorConsumer(StandardStream.STDERR);
-            cmd.run(op, source, thumbnail);
+            cmd.run(op);
         } catch (IOException | InterruptedException | IM4JavaException ex) {
             ex.printStackTrace();
-        } finally {
-
         }
+        return new File(thumbnail);
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.aboutdata.service.bean;
 
+import com.aboutdata.commons.application.ApplicationBean;
 import com.aboutdata.commons.enums.PhotoStatus;
 import com.aboutdata.dao.PhotosDao;
 import com.aboutdata.domain.Photos;
@@ -7,23 +8,27 @@ import com.aboutdata.domain.Tag;
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.model.dto.PhotosDTO;
 import com.aboutdata.service.ImageGraphicsService;
+import com.aboutdata.service.PhotosColorsService;
 import com.aboutdata.service.PhotosService;
+import com.aboutdata.service.StorageService;
 import com.aboutdata.service.TagService;
+import java.io.File;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import javax.annotation.Resource;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
+ * 图片壁纸操作
  *
  * @author youyou
  */
@@ -33,6 +38,9 @@ public class PhotosServiceImpl implements PhotosService {
     Logger logger = LoggerFactory.getLogger(PhotosServiceImpl.class);
 
     @Resource
+    private ApplicationBean appBean;
+
+    @Resource
     private PhotosDao photosDao;
 
     @Resource
@@ -40,6 +48,12 @@ public class PhotosServiceImpl implements PhotosService {
 
     @Resource
     private ImageGraphicsService imageGraphicsService;
+
+    @Resource
+    private StorageService storageService;
+
+    @Resource
+    private PhotosColorsService photosColorsService;
 
     @Override
     @Transactional
@@ -129,15 +143,29 @@ public class PhotosServiceImpl implements PhotosService {
     @Transactional
     public void approve(String id, String description) {
         Photos photos = photosDao.findOne(id);
-       // photos.setStatus(PhotoStatus.APPROVED);
-        
-        imageGraphicsService.thumbnail(photos.getTitle(), photos.getSource());
-        
-        // photos.setThumbnail(thumbnail);
-        //    photos.setMedium(path);
-        //  photos.setLarge(path);
-        // photos.setSource(path);
-        //  photos.setStorageHost(appBean.getSystemConfig().getDefaultStorageHost());
+        // photos.setStatus(PhotoStatus.APPROVED);
+        if (StringUtils.isEmpty(photos.getSource())) {
+            logger.error("photos source not exists {}", photos);
+            return;
+        }
+        //再批准通过 同时截取图片颜色
+        photosColorsService.generateColors(photos);
+
+        File source = new File(photos.getSource());
+        //1 生成缩略图
+        File thumbnailImage = imageGraphicsService.thumbnail(source);
+
+        logger.error("thumbnailImage {}", thumbnailImage);
+        //2 上传原图
+        String fastdfsSourceId = storageService.upload(source);
+        //3 上传缩略图  fastdfsId 也是存储路劲
+        String fastdfsThumbnailId = storageService.upload(thumbnailImage);
+
+        photos.setThumbnail(fastdfsThumbnailId);
+        photos.setMedium(fastdfsSourceId);
+        photos.setLarge(fastdfsSourceId);
+        photos.setSource(fastdfsSourceId);
+        photos.setStorageHost(appBean.getSystemConfig().getDefaultStorageHost());
         photos.setDescription(description);
     }
 

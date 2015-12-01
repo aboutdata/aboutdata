@@ -71,7 +71,7 @@ public class UploadControler {
 
         String type = multipartFile.getContentType().split("/")[1];
         //会员的ID.png 会员的ID-200.png 尺寸为200
-        String path = "/var/uploads/" + multipartFile.getName() + "_" + RandomStringUtils.randomNumeric(6) + "." + type;
+        String path = "/tmp/" + multipartFile.getName() + "_" + RandomStringUtils.randomNumeric(6) + "." + type;
         File destFile = new File(path);
         try {
             multipartFile.transferTo(destFile);

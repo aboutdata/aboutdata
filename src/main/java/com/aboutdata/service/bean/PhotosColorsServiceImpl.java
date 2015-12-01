@@ -39,21 +39,16 @@ public class PhotosColorsServiceImpl implements PhotosColorsService {
     Logger logger = LoggerFactory.getLogger(PhotosColorsServiceImpl.class);
 
     @Resource
-    private PhotosDao photosDao;
-
-    @Resource
     private PhotosColorsDao photosColorsDao;
 
     @Override
     @Transactional
-    public void generateColors(String photosID) {
-        Photos photos = photosDao.findOne(photosID);
+    public void generateColors(Photos photos) {
         try {
-            File file = getImages(photos.getStorageHost() + "/" + photos.getSource(), "/tmp/full" + photos.getWallhaven() + ".jpg");
-
             //File file = new File("D:\\workspace\\GitHub\\croma\\images\\lockbur-com.jpg");
-            if (file != null) {
-                Image img = new AWTImage(file);
+            if (photos.getSource() != null) {
+                File source = new File(photos.getSource());
+                Image img = new AWTImage(source);
                 ColorPicker km = new KMeansColorPicker();
                 // ColorPicker km = new DBScanColorPicker();
                 //截取算法不一样
