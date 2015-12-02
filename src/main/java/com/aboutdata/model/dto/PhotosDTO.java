@@ -55,8 +55,8 @@ public class PhotosDTO {
      * @return
      */
     public static List<PhotosModel> getPhotosModeslDTO(List<Photos> photos) {
-        List<PhotosModel> result = null;
-        if (photos != null && photos.size() > 0) {
+        List<PhotosModel> result = new ArrayList<PhotosModel>(photos.size());
+        if (photos.size() > 0) {
             result = new ArrayList(photos.size());
             for (Photos photo : photos) {
                 //DTO转换

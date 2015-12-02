@@ -8,9 +8,12 @@ package com.aboutdata.web.controller.member;
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
+import com.aboutdata.domain.PhotosRequest;
 import com.aboutdata.service.ImageGraphicsService;
 import com.aboutdata.service.MemberService;
+import com.aboutdata.service.PhotosRequestService;
 import com.aboutdata.service.PhotosService;
+import com.aboutdata.utils.EasyImage;
 import java.io.File;
 import java.io.IOException;
 import javax.annotation.Resource;
@@ -38,10 +41,7 @@ public class UploadControler {
     private MemberService memberService;
 
     @Resource
-    private PhotosService photosService;
-
-    @Resource
-    private ImageGraphicsService imageGraphicsService;
+    private PhotosRequestService photosRequestService;
 
     /**
      * 上传页面
@@ -63,11 +63,13 @@ public class UploadControler {
      */
     @RequestMapping(method = RequestMethod.POST)
     public String upload(MultipartFile multipartFile, ModelMap model) {
-        logger.info("file name {}", multipartFile.getOriginalFilename());
-        logger.info("file name {}", multipartFile.getName());
 
+        Member member = memberService.getCurrent();
+        PhotosRequest request = new PhotosRequest();
+
+        //getContentType()  = jpeg/image  png/image
         String type = multipartFile.getContentType().split("/")[1];
-        //会员的ID.png 会员的ID-200.png 尺寸为200
+        
         String path = "/tmp/" + multipartFile.getName() + "_" + RandomStringUtils.randomNumeric(6) + "." + type;
         File destFile = new File(path);
         try {
@@ -75,23 +77,19 @@ public class UploadControler {
         } catch (IOException | IllegalStateException ex) {
             ex.printStackTrace();
         }
+        //获取图片的宽高和大小(size)
+        EasyImage easyImage = new EasyImage(path);
 
-        Member m = new Member();
-        m.setId("1");
+        request.setOrder(1);
+        request.setMember(member);
+        request.setWidth(easyImage.getWidth());
+        request.setHeight(easyImage.getHeight());
+        request.setSize(multipartFile.getSize());
+        request.setTitle(multipartFile.getOriginalFilename());
+        request.setSource(path);
+//        request.setDescription("该方法会处理图片并保存 图片信息 setDescription");
+        photosRequestService.create(request);
 
-        Photos photos = new Photos();
-
-        PhotosAlbum album = new PhotosAlbum();
-        album.setId("ff8081814f7e13d8014f7e18a95a0000");
-        photos.setMember(m);
-        photos.setAlbum(album);
-        photos.setOrder(1);
-        photos.setTitle(multipartFile.getOriginalFilename());
-        photos.setSource(path);
-        photosService.create(photos);
-        //该方法会处理图片并保存 图片信息
-
-        // imageGraphicsService.build(photos, multipartFile);
         return "/member/upload/result";
     }
 }
