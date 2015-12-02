@@ -7,6 +7,7 @@ package com.aboutdata.service;
 
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosColors;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public interface PhotosColorsService {
      *
      * @param photos
      */
-    public void generateColors(Photos photos);
+    public void generateColors(Photos photos, File source);
 
     /**
      * 获取图片主要颜色

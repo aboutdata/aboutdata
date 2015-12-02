@@ -58,7 +58,7 @@
                                 <div class="col-xs-6 text-left">${photos.width}x${photos.height}</div>
 
                                 <div class="col-xs-6 text-right">大小</div>
-                                <div class="col-xs-6 text-left">335.88 KB</div>
+                                <div class="col-xs-6 text-left">${photos.size} KB</div>
 
                                 <div class="col-xs-6 text-right">类型</div>
                                 <div class="col-xs-6 text-left">image/jpeg</div>

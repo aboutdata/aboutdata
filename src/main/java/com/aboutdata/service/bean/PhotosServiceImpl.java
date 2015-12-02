@@ -39,80 +39,80 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service("photosServiceImpl")
 public class PhotosServiceImpl implements PhotosService {
-    
+
     Logger logger = LoggerFactory.getLogger(PhotosServiceImpl.class);
-    
+
     @Resource
     private ApplicationBean appBean;
-    
+
     @Resource
     private PhotosDao photosDao;
-    
+
     @Resource
     private PhotosRequestDao photosRequestDao;
-    
+
     @Resource
     private TagService tagService;
-    
+
     @Resource
     private ImageGraphicsService imageGraphicsService;
-    
+
     @Resource
     private StorageService storageService;
-    
+
     @Resource
     private PhotosColorsService photosColorsService;
-    
+
     @Override
     @Transactional
     public Photos get(String id) {
         Photos photo = photosDao.findOne(id);
-        
+
         return photo;
     }
-    
+
     @Override
     public Page<PhotosModel> findByStatus(PhotoStatus status, Pageable pageable) {
-        
+
         Page<Photos> page = photosDao.findByStatus(status, pageable);
-        
+
         List<Photos> photos = page.getContent();
-        
+
         List<PhotosModel> models = PhotosDTO.getPhotosModeslDTO(photos);
         Page<PhotosModel> result = new PageImpl<PhotosModel>(models, pageable, page.getTotalElements());
-        
+
         return result;
     }
-    
+
     @Override
     public Page<PhotosModel> findByStatusList(List<PhotoStatus> statusList, Pageable pageable) {
         Page<Photos> page = photosDao.findByStatusIn(statusList, pageable);
-        
+
         List<Photos> photos = page.getContent();
-        
+
         List<PhotosModel> models = PhotosDTO.getPhotosModeslDTO(photos);
         Page<PhotosModel> result = new PageImpl<PhotosModel>(models, pageable, page.getTotalElements());
-        
+
         return result;
     }
-    
+
     @Override
     public Page<PhotosModel> find(Pageable pageable) {
         Page<Photos> page = photosDao.findAll(pageable);
         List<Photos> photos = page.getContent();
-        
+
         List<PhotosModel> models = PhotosDTO.getPhotosModeslDTO(photos);
         Page<PhotosModel> result = new PageImpl<PhotosModel>(models, pageable, page.getTotalElements());
-        
+
         return result;
     }
-    
+
     @Override
     public List<Photos> findPhotosAndTags() {
         List<Photos> all = photosDao.findAll();
         return all;
     }
-    
+
     @Override
     @Transactional
     public void addTags(String id, String tagString) {
@@ -122,22 +122,22 @@ public class PhotosServiceImpl implements PhotosService {
         photos.getTags().addAll(tags);
         photosDao.save(photos);
     }
-    
+
     @Override
     public List<Photos> findByAlbumId(String albumId) {
         return photosDao.findByAlbumId(albumId);
     }
-    
+
     @Override
     public PhotosModel findById(String id) {
         Photos photos = photosDao.findOne(id);
         return PhotosDTO.getPhotosModelDTO(photos);
     }
-    
+
     @Override
     @Transactional
     public Photos create(Photos photos) {
-        
+
         return photosDao.save(photos);
     }
 
@@ -150,7 +150,7 @@ public class PhotosServiceImpl implements PhotosService {
     @Override
     @Transactional
     public void approve(String id, String claim) {
-        
+
         PhotosRequest request = photosRequestDao.findOne(id);
         // photos.setStatus(PhotoStatus.APPROVED);
         if (StringUtils.isEmpty(request.getSource())) {
@@ -160,19 +160,19 @@ public class PhotosServiceImpl implements PhotosService {
         File source = new File(request.getSource());
         //1 生成缩略图
         File thumbnailImage = imageGraphicsService.thumbnail(source);
-        
+
         logger.error("thumbnailImage {}", thumbnailImage);
         //2 上传原图
         String fastdfsSourceId = storageService.upload(source);
         //3 上传缩略图  fastdfsId 也是存储路劲
         String fastdfsThumbnailId = storageService.upload(thumbnailImage);
-        
+
         Photos photos = new Photos();
         PhotosAlbum album = new PhotosAlbum();
-        
+
         album.setId("ff8081814f7e13d8014f7e18a95a0000");
         photos.setAlbum(album);
-        
+
         photos.setTitle(request.getTitle());
         photos.setWidth(request.getWidth());
         photos.setHeight(request.getHeight());
@@ -188,7 +188,7 @@ public class PhotosServiceImpl implements PhotosService {
         photos.setMember(request.getMember());
         photosDao.save(photos);
         //再批准通过 同时截取图片颜色
-        photosColorsService.generateColors(photos);
+        photosColorsService.generateColors(photos, source);
 
         //修改PhotosRequest
         request.setClaim(claim);
@@ -200,16 +200,16 @@ public class PhotosServiceImpl implements PhotosService {
         source.delete();
         thumbnailImage.delete();
     }
-    
+
     @Override
     @Transactional
     public int makrStatus(String id, PhotoStatus status) {
         return photosDao.makrStatus(id, status);
     }
-    
+
     @Override
     public List<PhotosModel> random() {
-        
+
         List<String> ids = photosDao.findAllIds();
         /**
          * *
@@ -219,9 +219,9 @@ public class PhotosServiceImpl implements PhotosService {
         Collections.shuffle(ids);
         //取出24条记录
         List<Photos> photos = photosDao.findByIds(ids.subList(0, 24));
-        
+
         List<PhotosModel> result = PhotosDTO.getPhotosModeslDTO(photos);
-        
+
         return result;
     }
 
@@ -239,10 +239,10 @@ public class PhotosServiceImpl implements PhotosService {
         photos.setOrder(photos.getOrder() + 1);
         return PhotosDTO.getPhotosModelDTO(photos);
     }
-    
+
     @Override
     public long count() {
         return photosDao.count();
     }
-    
+
 }

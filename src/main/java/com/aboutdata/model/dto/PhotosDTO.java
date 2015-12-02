@@ -15,28 +15,29 @@ import java.util.List;
  * @author Photosistrator
  */
 public class PhotosDTO {
-
+    
     public static PhotosModel getPhotosModelDTO(Photos photos) {
         PhotosModel result = null;
         if (photos != null) {
             result = new PhotosModel();
-
+            
             result.setId(photos.getId());
             result.setThumbnail(photos.getThumbnail());
             result.setLarge(photos.getLarge());
             result.setSource(photos.getSource());
             result.setMedium(photos.getMedium());
-
+            
             result.setTitle(photos.getTitle());
-
+            
             result.setWidth(photos.getWidth());
             result.setHeight(photos.getHeight());
+            result.setSize(photos.getSize());
 //              model.setAlbum(album);
             result.setMember(MemberDTO.getMemberModelDTO(photos.getMember()));
             //tags
 
             result.setTags(TagDTO.getTagModelsDTO(photos.getTags()));
-
+            
             result.setStatus(photos.getStatus());
             result.setOrder(photos.getOrder());
             result.setDescription(photos.getDescription());
@@ -65,7 +66,7 @@ public class PhotosDTO {
                 //photos.setMember(m);
                 model.setId(photo.getId());
                 model.setThumbnail(photo.getThumbnail());
-
+                
                 model.setTitle(photo.getTitle());
                 model.setWidth(photo.getWidth());
                 model.setHeight(photo.getHeight());
@@ -74,12 +75,12 @@ public class PhotosDTO {
                 model.setStatus(photo.getStatus());
                 model.setOrder(photo.getOrder());
                 model.setDescription(photo.getDescription());
-
+                
                 model.setStorageHost(photo.getStorageHost());
                 model.setWallhaven(photo.getWallhaven());
                 model.setCreateDate(photo.getCreateDate());
                 model.setModifyDate(photo.getModifyDate());
-
+                
                 result.add(model);
             }
         }

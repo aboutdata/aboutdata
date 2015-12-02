@@ -43,29 +43,26 @@ public class PhotosColorsServiceImpl implements PhotosColorsService {
 
     @Override
     @Transactional
-    public void generateColors(Photos photos) {
+    public void generateColors(Photos photos, File source) {
         try {
             //File file = new File("D:\\workspace\\GitHub\\croma\\images\\lockbur-com.jpg");
-            if (photos.getSource() != null) {
-                File source = new File(photos.getSource());
-                Image img = new AWTImage(source);
-                ColorPicker km = new KMeansColorPicker();
-                // ColorPicker km = new DBScanColorPicker();
-                //截取算法不一样
-                // ColorPicker km = new MedianCutColorPicker();
-                //6 取出6种颜色
-                List<Color> list = km.getUsefulColors(img, 6);
-                //file.delete();
-                for (Color c : list) {
-                    PhotosColors colors = new PhotosColors();
-                    colors.setBlue(c.getBlue());
-                    colors.setGreen(c.getGreen());
-                    colors.setRed(c.getRed());
-                    colors.setColor(c.toHexString());
+            Image img = new AWTImage(source);
+            ColorPicker km = new KMeansColorPicker();
+            // ColorPicker km = new DBScanColorPicker();
+            //截取算法不一样
+            // ColorPicker km = new MedianCutColorPicker();
+            //6 取出6种颜色
+            List<Color> list = km.getUsefulColors(img, 6);
+            //file.delete();
+            for (Color c : list) {
+                PhotosColors colors = new PhotosColors();
+                colors.setBlue(c.getBlue());
+                colors.setGreen(c.getGreen());
+                colors.setRed(c.getRed());
+                colors.setColor(c.toHexString());
 
-                    colors.setPhotos(photos);
-                    photosColorsDao.save(colors);
-                }
+                colors.setPhotos(photos);
+                photosColorsDao.save(colors);
             }
         } catch (IOException ex) {
             logger.error("cut images color error inf :{}", ex);
