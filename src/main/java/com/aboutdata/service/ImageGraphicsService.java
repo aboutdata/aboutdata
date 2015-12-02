@@ -29,7 +29,10 @@ public interface ImageGraphicsService {
     /**
      * 头像不同尺寸裁剪
      *
+     * @param memberID
      * @param Imagefile
      */
     public void buildAvatar(String memberID, MultipartFile Imagefile);
+
+    public byte[] scale(byte[] input, int height, int width);
 }

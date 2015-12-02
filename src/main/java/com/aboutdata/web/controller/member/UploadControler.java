@@ -62,7 +62,7 @@ public class UploadControler {
      * @return
      */
     @RequestMapping(method = RequestMethod.POST)
-    public String wallpaper(MultipartFile multipartFile, ModelMap model) {
+    public String upload(MultipartFile multipartFile, ModelMap model) {
         logger.info("file name {}", multipartFile.getOriginalFilename());
         logger.info("file name {}", multipartFile.getName());
 

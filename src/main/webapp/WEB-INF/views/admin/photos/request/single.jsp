@@ -101,7 +101,7 @@
                                     <ul class="ace-thumbnails clearfix">
                                         <li >
                                             <div>
-                                                <img id="imageFullScreen" style="cursor:zoom-in" class="col-xs-6" alt="150x150" src="${photos.storageHost}/${photos.large}">
+                                                <img id="imageFullScreen" style="cursor:zoom-in" class="col-xs-6" alt="150x150" src="${pageContext.request.contextPath}/admin/gallery/${photos.id}/thumb">
                                             </div>
                                         </li>
                                     </ul>

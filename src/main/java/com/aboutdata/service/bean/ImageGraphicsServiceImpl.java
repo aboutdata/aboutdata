@@ -144,4 +144,31 @@ public class ImageGraphicsServiceImpl implements ImageGraphicsService {
         }
     }
 
+    @Override
+    public byte[] scale(byte[] input, int height, int width) {
+        File inputFile = null;
+        File outputFile = null;
+        try {
+            inputFile = File.createTempFile("input", ".tmp");
+            outputFile = File.createTempFile("output", ".tmp");
+
+            FileUtils.writeByteArrayToFile(inputFile, input);
+
+            IMOperation op = new IMOperation();
+            op.size(width, height);
+            op.addImage(inputFile.getAbsolutePath());
+            op.resize(width, height);
+            op.p_profile("*");
+            op.addImage(outputFile.getAbsolutePath());
+            logger.debug("Command will be {}", op);
+            cmd.run(op);
+            return FileUtils.readFileToByteArray(outputFile);
+        } catch (IOException | InterruptedException | IM4JavaException ex) {
+            ex.printStackTrace();
+        } finally {
+            inputFile.delete();
+            outputFile.delete();
+        }
+        return null;
+    }
 }
