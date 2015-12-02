@@ -12,6 +12,7 @@ import com.aboutdata.service.PhotosColorsService;
 import com.aboutdata.service.PhotosService;
 import com.aboutdata.service.StorageService;
 import com.aboutdata.service.TagService;
+import com.aboutdata.utils.EasyImage;
 import java.io.File;
 
 import java.util.Collections;
@@ -152,6 +153,9 @@ public class PhotosServiceImpl implements PhotosService {
         photosColorsService.generateColors(photos);
 
         File source = new File(photos.getSource());
+
+        //获取图片的宽高和大小(size)
+        EasyImage easyImage = new EasyImage(source);
         //1 生成缩略图
         File thumbnailImage = imageGraphicsService.thumbnail(source);
 
@@ -161,16 +165,20 @@ public class PhotosServiceImpl implements PhotosService {
         //3 上传缩略图  fastdfsId 也是存储路劲
         String fastdfsThumbnailId = storageService.upload(thumbnailImage);
 
-        //删除本地暂存原文件和缩略图
-        source.delete();
-        thumbnailImage.delete();
-
         photos.setThumbnail(fastdfsThumbnailId);
         photos.setMedium(fastdfsSourceId);
         photos.setLarge(fastdfsSourceId);
         photos.setSource(fastdfsSourceId);
         photos.setStorageHost(appBean.getSystemConfig().getDefaultStorageHost());
+        photos.setStatus(PhotoStatus.APPROVED);
+        photos.setWidth(easyImage.getWidth());
+        photos.setHeight(easyImage.getHeight());
+        photos.setSize(source.length());
         photos.setDescription(description);
+
+        //删除本地暂存原文件和缩略图
+        source.delete();
+        thumbnailImage.delete();
     }
 
     @Override
