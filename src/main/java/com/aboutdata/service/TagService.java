@@ -24,6 +24,8 @@ public interface TagService {
 
     public List<String> findTagStringByName(String name);
 
+    public List<TagModel> findTagsByName(String name);
+
     public Set<Tag> getTagsFromString(String tagString);
 
     public Page<TagModel> find(Pageable pageable);

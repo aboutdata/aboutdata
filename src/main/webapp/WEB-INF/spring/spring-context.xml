@@ -74,7 +74,7 @@
     <!-- Spring定时器注解开关-->  
     <task:annotation-driven />  
     <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-        <property name="corePoolSize" value="50" />
+        <property name="corePoolSize" value="100" />
         <property name="maxPoolSize" value="150" />
         <property name="queueCapacity" value="1000" />
         <property name="keepAliveSeconds" value="60" />
@@ -83,5 +83,4 @@
     <import resource="spring-shiro.xml"></import>
     
     <import resource="spring-data-jpa.xml"></import>
-    
 </beans>

@@ -67,4 +67,28 @@ public class HelpController {
         return "/portal/help/team";
     }
 
+    /**
+     * 加入我们
+     *
+     * @param request
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/join", method = RequestMethod.GET)
+    public String displayJoin(HttpServletRequest request, Model model) {
+        return "/portal/help/join";
+    }
+    
+    /**
+     * 更新日志页面
+     *
+     * @param request
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/changelog", method = RequestMethod.GET)
+    public String displayChangelog(HttpServletRequest request, Model model) {
+        return "/portal/help/changelog";
+    }
+
 }

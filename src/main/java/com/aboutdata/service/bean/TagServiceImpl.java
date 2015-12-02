@@ -75,6 +75,13 @@ public class TagServiceImpl implements TagService {
         return tagString;
     }
 
+    @Override
+    public List<TagModel> findTagsByName(String name) {
+        List<Tag> tags = tagDao.findTagStringByName(name);
+        List<TagModel> models = TagDTO.getTagModelsDTO(tags);
+        return models;
+    }
+
     /**
      * 分页查找
      *
@@ -82,7 +89,7 @@ public class TagServiceImpl implements TagService {
      * @return
      */
     @Override
-    public Page<TagModel> find(Pageable pageable){
+    public Page<TagModel> find(Pageable pageable) {
         Page<Tag> page = tagDao.findAll(pageable);
         List<Tag> tags = page.getContent();
         List<TagModel> models = TagDTO.getTagModelsDTO(tags);

@@ -19,7 +19,6 @@
         <div class="container">
             <div class="row text-center ">
                 <div class="col-md-12">
-                    <h5>(测试admin/admin 医生doctor/123456)</h5>
                     <h5>
                         <c:if test="${errorMessage != null}">
                             <b style="color: #FF0000">${errorMessage}</b>

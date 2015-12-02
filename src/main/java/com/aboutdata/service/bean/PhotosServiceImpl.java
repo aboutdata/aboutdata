@@ -1,28 +1,39 @@
 package com.aboutdata.service.bean;
 
+import com.aboutdata.commons.application.ApplicationBean;
 import com.aboutdata.commons.enums.PhotoStatus;
+import com.aboutdata.commons.enums.PhotosRequestStatus;
 import com.aboutdata.dao.PhotosDao;
+import com.aboutdata.dao.PhotosRequestDao;
 import com.aboutdata.domain.Photos;
+import com.aboutdata.domain.PhotosAlbum;
+import com.aboutdata.domain.PhotosRequest;
 import com.aboutdata.domain.Tag;
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.model.dto.PhotosDTO;
+import com.aboutdata.service.ImageGraphicsService;
+import com.aboutdata.service.PhotosColorsService;
 import com.aboutdata.service.PhotosService;
+import com.aboutdata.service.StorageService;
 import com.aboutdata.service.TagService;
+import com.aboutdata.utils.EasyImage;
+import java.io.File;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import javax.annotation.Resource;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
+ * 图片壁纸操作
  *
  * @author youyou
  */
@@ -32,10 +43,25 @@ public class PhotosServiceImpl implements PhotosService {
     Logger logger = LoggerFactory.getLogger(PhotosServiceImpl.class);
 
     @Resource
+    private ApplicationBean appBean;
+
+    @Resource
     private PhotosDao photosDao;
 
     @Resource
+    private PhotosRequestDao photosRequestDao;
+
+    @Resource
     private TagService tagService;
+
+    @Resource
+    private ImageGraphicsService imageGraphicsService;
+
+    @Resource
+    private StorageService storageService;
+
+    @Resource
+    private PhotosColorsService photosColorsService;
 
     @Override
     @Transactional
@@ -49,6 +75,18 @@ public class PhotosServiceImpl implements PhotosService {
     public Page<PhotosModel> findByStatus(PhotoStatus status, Pageable pageable) {
 
         Page<Photos> page = photosDao.findByStatus(status, pageable);
+
+        List<Photos> photos = page.getContent();
+
+        List<PhotosModel> models = PhotosDTO.getPhotosModeslDTO(photos);
+        Page<PhotosModel> result = new PageImpl<PhotosModel>(models, pageable, page.getTotalElements());
+
+        return result;
+    }
+
+    @Override
+    public Page<PhotosModel> findByStatusList(List<PhotoStatus> statusList, Pageable pageable) {
+        Page<Photos> page = photosDao.findByStatusIn(statusList, pageable);
 
         List<Photos> photos = page.getContent();
 
@@ -81,7 +119,7 @@ public class PhotosServiceImpl implements PhotosService {
         Set<Tag> tags = tagService.getTagsFromString(tagString);
         Photos photos = photosDao.findOne(id);
         logger.info("top10  tags {}", tags.size());
-        photos.setTags(tags);
+        photos.getTags().addAll(tags);
         photosDao.save(photos);
     }
 
@@ -101,6 +139,66 @@ public class PhotosServiceImpl implements PhotosService {
     public Photos create(Photos photos) {
 
         return photosDao.save(photos);
+    }
+
+    /**
+     * @ 批准通过
+     * @ 批准通过 定时任务会马上创建索引 需要再批准通过后创建缩略图 并上传到fastdfs
+     * @param id
+     * @param claim
+     */
+    @Override
+    @Transactional
+    public void approve(String id, String claim) {
+
+        PhotosRequest request = photosRequestDao.findOne(id);
+        // photos.setStatus(PhotoStatus.APPROVED);
+        if (StringUtils.isEmpty(request.getSource())) {
+            logger.error("PhotosRequest source not exists {}", request);
+            return;
+        }
+        File source = new File(request.getSource());
+        //1 生成缩略图
+        File thumbnailImage = imageGraphicsService.thumbnail(source);
+
+        logger.error("thumbnailImage {}", thumbnailImage);
+        //2 上传原图
+        String fastdfsSourceId = storageService.upload(source);
+        //3 上传缩略图  fastdfsId 也是存储路劲
+        String fastdfsThumbnailId = storageService.upload(thumbnailImage);
+
+        Photos photos = new Photos();
+        PhotosAlbum album = new PhotosAlbum();
+
+        album.setId("ff8081814f7e13d8014f7e18a95a0000");
+        photos.setAlbum(album);
+
+        photos.setTitle(request.getTitle());
+        photos.setWidth(request.getWidth());
+        photos.setHeight(request.getHeight());
+        photos.setSize(request.getSize());
+        photos.setOrder(request.getOrder());
+        photos.setThumbnail(fastdfsThumbnailId);
+        photos.setMedium(fastdfsSourceId);
+        photos.setLarge(fastdfsSourceId);
+        photos.setSource(fastdfsSourceId);
+        photos.setStorageHost(appBean.getSystemConfig().getDefaultStorageHost());
+        photos.setStatus(PhotoStatus.APPROVED);
+        photos.setDescription(request.getDescription());
+        photos.setMember(request.getMember());
+        photosDao.save(photos);
+        //再批准通过 同时截取图片颜色
+        photosColorsService.generateColors(photos, source);
+
+        //修改PhotosRequest
+        request.setClaim(claim);
+        request.setStatus(PhotosRequestStatus.APPROVED);
+        request.setDescription(photos.getId());
+        photosRequestDao.saveAndFlush(request);
+
+        //删除本地暂存原文件和缩略图
+        source.delete();
+        thumbnailImage.delete();
     }
 
     @Override

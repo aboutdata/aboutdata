@@ -97,15 +97,7 @@
                                         <h4> 图片预览<small> (双击可以缩放图片)</small></h4>
                                     </div>
                                 </div>
-                                <div>
-                                    <ul class="ace-thumbnails clearfix">
-                                        <li >
-                                            <div>
-                                                <img id="imageFullScreen" style="cursor:zoom-in" class="col-xs-6" alt="150x150" src="${photos.storageHost}/${photos.large}">
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div><!-- PAGE CONTENT ENDS -->
+                                <img style="cursor:zoom-in" class="col-xs-6" alt="300x200" src="${pageContext.request.contextPath}/admin/photosRequest/thumb/${photos.id}">
                             </div><!-- /.col -->
                             <div class="col-sm-6">
                                 <div class="tabbable">
@@ -131,20 +123,7 @@
                                                         <span>${photos.title}</span>
                                                     </div>
                                                 </div>
-                                                <div class="profile-info-row">
-                                                    <div class="profile-info-name"> wallhaven ID </div>
 
-                                                    <div class="profile-info-value">
-                                                        <span>${photos.wallhaven}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="profile-info-row">
-                                                    <div class="profile-info-name"> 服务器地址 </div>
-
-                                                    <div class="profile-info-value">
-                                                        <span>${photos.storageHost}</span>
-                                                    </div>
-                                                </div>
                                                 <div class="profile-info-row">
                                                     <div class="profile-info-name"> 状态 </div>
 
@@ -164,7 +143,7 @@
                                                             </c:when>
                                                             <c:when test="${photos.status == 'APPROVED'}">   
                                                                 <span class="badge badge-success">已批准</span>
-                                                            </c:when> 
+                                                            </c:when>
                                                             <c:when test="${photos.status == 'REJECTED'}">   
                                                                 <span class="badge badge-inverse">已驳回</span>
                                                             </c:when>
@@ -180,21 +159,6 @@
                                                         </c:choose> 
                                                     </div>
                                                 </div>
-
-                                                <div class="profile-info-row">
-                                                    <div class="profile-info-name"> 缩略图 </div>
-
-                                                    <div class="profile-info-value">
-                                                        <span>${photos.thumbnail}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="profile-info-row">
-                                                    <div class="profile-info-name"> 相册 </div>
-
-                                                    <div class="profile-info-value">
-                                                        <span>${photos.wallhaven}</span>
-                                                    </div>
-                                                </div>
                                                 <div class="profile-info-row">
                                                     <div class="profile-info-name"> up主 </div>
 
@@ -202,31 +166,6 @@
                                                         <span>${photos.member.username}</span>
                                                     </div>
                                                 </div>
-
-                                                <div class="profile-info-row">
-                                                    <div class="profile-info-name"> 标签 </div>
-
-                                                    <div class="profile-info-value">
-                                                        <span>${photos.wallhaven}</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-info-row">
-                                                    <div class="profile-info-name"> 浏览次数 </div>
-
-                                                    <div class="profile-info-value">
-                                                        <span>${photos.wallhaven}</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="profile-info-row">
-                                                    <div class="profile-info-name"> 审批通过时间 </div>
-
-                                                    <div class="profile-info-value">
-                                                        <span>${photos.modifyDate}</span>
-                                                    </div>
-                                                </div>
-
                                                 <div class="profile-info-row">
                                                     <div class="profile-info-name"> 创建时间 </div>
 
@@ -279,7 +218,7 @@
                                                 <c:otherwise>
                                                     <form action="${pageContext.request.contextPath}/admin/photosRequest/approve/${photos.id}" method="post">
                                                         <div>
-                                                            <textarea class="form-control" name="comment" placeholder="请输入您的评论..." id="form-field-8"></textarea>
+                                                            <textarea class="form-control" name="description" placeholder="请输入您的评论..." id="description"></textarea>
                                                         </div>
                                                         <div class="clearfix form-actions">
                                                             <div class="col-md-offset-3 col-md-9">
@@ -343,11 +282,8 @@
         </div><!-- /.main-container -->
         <!-- basic scripts -->
         <%@include file="/WEB-INF/views/admin/common/footer.jsp" %>
-        <script src="${pageContext.request.contextPath}/resources/js/e-smart-zoom/e-smart-zoom-jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript">
-                            $(document).ready(function () {
-                                $('#imageFullScreen').smartZoom({'containerClass': 'zoomableContainer'});
-                            });
+
         </script>
     </body>
 </html>

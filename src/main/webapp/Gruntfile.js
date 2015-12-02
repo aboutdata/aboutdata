@@ -55,7 +55,7 @@ module.exports = function (grunt) {
         cssmin: {
             css: {
                 src: 'build-<%= pkg.version %>/css/app.css',
-                dest: 'build-<%= pkg.version %>/css/app-min.css'
+                dest: 'build-<%= pkg.version %>/css/app.min.css'
             }
         },
         uglify: {

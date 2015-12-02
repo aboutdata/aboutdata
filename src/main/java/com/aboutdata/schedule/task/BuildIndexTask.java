@@ -6,11 +6,9 @@
 package com.aboutdata.schedule.task;
 
 import com.aboutdata.commons.enums.PhotoStatus;
-import com.aboutdata.dao.PhotosDao;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.Tag;
 import com.aboutdata.service.PhotosService;
-import javax.annotation.Resource;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 import org.slf4j.Logger;
@@ -29,7 +27,7 @@ public class BuildIndexTask implements Runnable {
     private final HttpSolrServer solrServer;
     private final PhotosService photosService;
 
-    public BuildIndexTask(Photos photo,PhotosService photosService, HttpSolrServer solrServer) {
+    public BuildIndexTask(Photos photo, PhotosService photosService, HttpSolrServer solrServer) {
         this.photo = photo;
         this.photosService = photosService;
         this.solrServer = solrServer;

@@ -28,28 +28,47 @@ public interface PhotosDao extends JpaRepository<Photos, String> {
 
     /**
      * Modifying 跟新语句 必须加上
+     *
      * @param id
      * @param status
-     * @return 
+     * @return
      */
     @Modifying
     @Query(value = "update Photos photos set photos.status =:status where photos.id=:id")
     public int makrStatus(@Param("id") String id, @Param("status") PhotoStatus status);
 
+    /**
+     * 根据状态查询
+     *
+     * @param status
+     * @param pageable
+     * @return
+     */
     public Page<Photos> findByStatus(@Param("status") PhotoStatus status, Pageable pageable);
-    
+
+    /**
+     * 多状态查询
+     * @param statusList
+     * @param pageable
+     * @return 
+     */
+    public Page<Photos> findByStatusIn(@Param("status") List<PhotoStatus> statusList, Pageable pageable);
+
+    /**
+     * 查询出所有id 用于随机序列
+     *
+     * @return
+     */
     @Query("SELECT photos.id FROM Photos photos")
     public List<String> findAllIds();
-    
-    
+
     /**
      * 根据id 列表查询
+     *
      * @param ids
      * @return
      */
     @Query("SELECT photos FROM Photos photos where photos.id in :ids")
-    public List<Photos> findByIds(@Param("ids")List<String> ids);
-    
-    
-    
+    public List<Photos> findByIds(@Param("ids") List<String> ids);
+
 }

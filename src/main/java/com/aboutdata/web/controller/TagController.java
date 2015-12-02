@@ -7,13 +7,16 @@ package com.aboutdata.web.controller;
 
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.Tag;
+import com.aboutdata.model.PhotosModel;
 import com.aboutdata.model.TagModel;
+import com.aboutdata.service.SearchService;
 import com.aboutdata.service.TagService;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -37,6 +40,9 @@ public class TagController {
     Logger logger = LoggerFactory.getLogger(TagController.class);
     @Resource
     private TagService tagService;
+
+    @Resource
+    private SearchService searchService;
 
     /**
      * 标签页面
@@ -76,6 +82,20 @@ public class TagController {
             return "/portal/tags";
         }
     }
+    /**
+     * 点击标签后 搜索给标签图片
+     * @param tagName
+     * @param model
+     * @return 
+     */
+    @RequestMapping(value = "/s/{tagName}", method = RequestMethod.GET)
+    public String search(@PathVariable("tagName") String tagName, Model model) {
+        Pageable pageable = new PageRequest(1, 24);
+        Page<PhotosModel> pages = searchService.search(tagName, pageable);
+        model.addAttribute("pages", pages);
+        model.addAttribute("keywords", tagName);
+        return "/portal/search/result";
+    }
 
     /**
      *
@@ -88,7 +108,7 @@ public class TagController {
     @RequestMapping(value = "/source", method = RequestMethod.GET)
     @ResponseBody
     public List<String> execute(String name, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-        List<String> tags = tagService.findTagStringByName(name);
-        return tags;
+
+        return tagService.findTagStringByName(name);
     }
 }

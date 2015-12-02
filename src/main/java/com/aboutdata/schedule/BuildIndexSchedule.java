@@ -51,7 +51,7 @@ public class BuildIndexSchedule {
         if (taskExecutor.getActiveCount() < 10) {
             Pageable pageable = new PageRequest(page, pagesize);
             Page<Photos> pages = photosDao.findByStatus(PhotoStatus.APPROVED, pageable);
-            logger.info("solrServer : {}", solrServer);
+            logger.info("solrServer : {}", solrServer.getBaseURL());
             for (Photos photo : pages.getContent()) {
                 taskExecutor.execute(new BuildIndexTask(photo, photosService, solrServer));
             }

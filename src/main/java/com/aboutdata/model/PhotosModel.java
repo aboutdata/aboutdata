@@ -8,6 +8,7 @@ package com.aboutdata.model;
 import com.aboutdata.commons.enums.PhotoStatus;
 import com.aboutdata.domain.PhotosAlbum;
 import java.util.List;
+
 /**
  *
  * @author Administrator
@@ -15,6 +16,12 @@ import java.util.List;
 public class PhotosModel extends BaseModel {
 
     private String title;
+
+    private int width;
+
+    private int height;
+
+    private long size;
 
     /**
      * 原图片
@@ -51,6 +58,8 @@ public class PhotosModel extends BaseModel {
      */
     private Integer order;
 
+    private String description;
+
     /**
      * PhotoStatus 状态信息
      */
@@ -59,7 +68,7 @@ public class PhotosModel extends BaseModel {
     private PhotosAlbum album;
 
     private MemberModel member;
-    
+
     private List<TagModel> tags;
 
     public String getTitle() {
@@ -157,6 +166,42 @@ public class PhotosModel extends BaseModel {
     public void setTags(List<TagModel> tags) {
         this.tags = tags;
     }
-    
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public long getSize() {
+        return size;
+    }
+
+    public void setSize(long size) {
+        this.size = size;
+    }
+
+    @Override
+    public String toString() {
+        return "PhotosModel{" + "title=" + title + ", width=" + width + ", height=" + height + ", size=" + size + ", source=" + source + ", large=" + large + ", medium=" + medium + ", thumbnail=" + thumbnail + ", wallhaven=" + wallhaven + ", storageHost=" + storageHost + ", order=" + order + ", description=" + description + ", status=" + status + ", album=" + album + ", member=" + member + ", tags=" + tags + '}';
+    }
 
 }

@@ -11,8 +11,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * 系统配置信息
- *
+ * @ 系统配置信息
+ * @/var/Anhao/config中配置会覆盖下面默认值
  * @author aboutdata.me
  */
 @XmlRootElement(name = "SystemConfig")
@@ -31,6 +31,8 @@ public final class SystemConfig extends BaseConfig {
     @XmlElement
     private String defaultPassword = "123456";
 
+    @XmlElement
+    private String siteUrl = "http://localhost:8080";
     //静态资源服务器(css js 等)
     @XmlElement
     private String assetsUrl = "http://assets.lockbur.com";
@@ -39,7 +41,7 @@ public final class SystemConfig extends BaseConfig {
     private String solrServer = "http://localhost:9090/solr";
 
     @XmlElement
-    private String defaultStorageHost = "http://aboutdata.me";
+    private String defaultStorageHost = "http://imgs1.lockbur.com";
 
     /**
      * 各平台通用功能
@@ -96,9 +98,17 @@ public final class SystemConfig extends BaseConfig {
         this.assetsUrl = assetsUrl;
     }
 
+    public String getSiteUrl() {
+        return siteUrl;
+    }
+
+    public void setSiteUrl(String siteUrl) {
+        this.siteUrl = siteUrl;
+    }
+
     @Override
     public String toString() {
         return "SystemConfig{" + "developMode=" + developMode + ", defaultPassword=" + defaultPassword + ", assetsUrl=" + assetsUrl + ", solrServer=" + solrServer + ", defaultStorageHost=" + defaultStorageHost + ", features=" + features + '}';
     }
-    
+
 }

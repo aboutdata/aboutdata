@@ -10,37 +10,14 @@
 <html lang="zh">
     <head>  
         <meta charset="utf-8" />
-        <title>Lockbur-更多壁纸，更多分享</title>
-        <meta name="description" content="高清壁纸,桌面壁纸" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <c:choose>
-            <c:when test="${appBean.systemConfig.developMode}">
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/vegas/vegas.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/simple-line-icons.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font.css" type="text/css" />
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css" type="text/css" />  
-            </c:when>
-            <c:otherwise>
-                <!--生产模式 使用css和常用js直接走nginx-->
-                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/bootstrap.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/animate.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/font-awesome.min.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/simple-line-icons.css" type="text/css" />
-                <link rel="stylesheet" href="${appBean.systemConfig.assetsUrl}/assets/css/font.css" type="text/css" />
-                
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/build-${GruntVersion}/css/app.css" type="text/css" />
-            </c:otherwise>
-        </c:choose>
-        <!--[if lt IE 9]>
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/html5shiv.js"></script>
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/respond.min.js"></script>
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/ie/excanvas.js"></script>
-      <![endif]-->
-        <link rel="shortcut icon" href="favicon.ico" />
+        <title>Lockbur - 更多壁纸，更多分享</title>
+        <meta property="qc:admins" content="001022565332526375" />
+        <meta property="wb:webmaster" content="b4ce7bb18f09c6bc"/>
+        <meta name="baidu-site-verification" content="bB5uKKGWVi" />
+        <meta name="msvalidate.01" content="1E5396A70FFDF1DD629CEAAD96CCEE15" />
+        <meta name="alexaVerifyID" content="wdV1JUI4A1-05aTdniAVHICFPMI"/>
+        <jsp:include page="/WEB-INF/views/portal/common/head_and_css.jsp"/>
+        <!--百度统计-->
         <script>
             var _hmt = _hmt || [];
             (function () {
@@ -52,28 +29,39 @@
         </script>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
             <!---header-->
-            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"></jsp:include>
-                <!---header //END-->
-                <section class="w-f-md">
-                    <section class="container scrollable padder-lg">
-                        <h2 class="font-thin m-b">Home</h2>
-                        <div class="row row-sm">
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
+            <!---header //END-->
+            <section class="w-f-md">
+                <section class="container scrollable padder-lg">
+                    <h4 class="font-thin m-b m-t text-white">欢迎进入高清壁纸基地!</h4>
+                    <div class="row row-sm">
                         <c:forEach items="${content}" var="photos" varStatus="idx">
                             <div class="col-xs-6 col-sm-4 col-md-3">
                                 <div class="item">
                                     <div class="pos-rlt">
-                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}" class="item-overlay opacity r r-2x bg-black">
-                                            <div class="text-info padder m-t-sm text-sm">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o text-muted"></i>
+                                        <div class="item-overlay opacity r r-2x">
+                                            <c:if test="${appBean.getCurrentUser() != null}">
+                                                <div class="top">
+                                                    <a href="#" data-photos-id="${photos.id}" class="pull-right m-t-n-xs m-r-n-xs badge bg-danger count addFavorite">
+                                                        <i class="fa fa-star"></i>
+                                                    </a>
+                                                    <span class="pull-right m-t-n-xs m-r-n-xs badge bg-white count hide">
+                                                        <i class="fa fa-spinner fa fa-spin fa fa-large"></i>
+                                                    </span>
+                                                    <!-- 已收藏过 -->
+                                                    <a href="#" class="pull-right m-t-n-xs m-r-n-xs badge bg-white-only count hide">
+                                                        <i class="fa fa-star text-danger"></i>
+                                                    </a>
+                                                </div>
+                                            </c:if>
+                                            <div class="center text-center m-t-n">
+                                                <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-control-play i-2x"></i></a>
                                             </div>
-                                        </a>
-                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
+                                        </div>
+                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="lazy r r- img-full"></a>
                                     </div>
                                     <div class="wrapper-sm" ></div>
                                 </div>
@@ -83,35 +71,18 @@
                 </section>    
             </section>
             <footer class="footer bg-black dker">
-                <div class="container">
-                    <small>所有图片同步于<a href="http://alpha.wallhaven.cc/" target="_blank">alpha.wallhaven.cc</a>©lockbur.com2015  京ICP备15054053号</small>
-                </div>
+                <jsp:include page="/WEB-INF/views/portal/common/footer.jsp"/>
             </footer>
         </section>
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/bootstrap.js"></script>
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/vegas/vegas.js"></script>
-        <script src="${appBean.systemConfig.assetsUrl}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
-        
-        <!-- App -->
-        <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-        <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#search").click(function () {
-                    $("#searchbar").toggle("slow");
-                });
-                $('body').vegas({
-                    timer: false,
-                    slides: [
-                        {src: '${pageContext.request.contextPath}/assets/images/background4.jpg'}
-                    ]
-                });
-                $("img").error(function () {
-                    $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
-                });
-            });
-        </script>
     </body>
+    <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- App -->
+    <script src="${pageContext.request.contextPath}/assets/js/lazyload/jquery.lazyload.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
 </html>

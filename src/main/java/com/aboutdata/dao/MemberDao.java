@@ -50,5 +50,5 @@ public interface MemberDao extends JpaRepository<Member, String> {
      * @return 会员，若不存在则返回null
      */
     @Query("select members from Member members where lower(members.email) = lower(:email)")
-    List<Member> findListByEmail(@Param("email") String email);
+    Member findByEmail(@Param("email") String email);
 }

@@ -11,46 +11,51 @@
     <head>  
         <meta charset="utf-8"/>
         <title>随机显示  - 更多壁纸，更多分享</title>
-        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/vegas/vegas.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/simple-line-icons.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css" type="text/css" />  
-        <!--[if lt IE 9]>
-        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/html5shiv.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/respond.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
-      <![endif]-->
-        <!-- ////////////////////////////////// -->
-        <!-- //        Favicon Files         // -->
-        <!-- ////////////////////////////////// -->
-        <link rel="shortcut icon" href="favicon.ico" />
+        <jsp:include page="/WEB-INF/views/portal/common/head_and_css.jsp"/>
+        <!--百度统计-->
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
-            <jsp:include page="/WEB-INF/views/portal/common/header.jsp"></jsp:include>
-                <!--main page-->
-                <section>
-                    <section id="waterfall"  class="container scrollable padder-lg">
-                        <h2 class="font-thin m-b">Acoustic</h2>
-                        <div class="row row-sm">
+            <!---header-->
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
+            <!---header //END-->
+            <section>
+                <section id="waterfall"  class="container scrollable padder-lg">
+                    <h5 class="font-thin m-b m-t text-white">随机显示</h5>
+                    <div class="row row-sm">
                         <c:forEach items="${list}" var="photos" varStatus="idx">
                             <div class="col-xs-6 col-sm-4 col-md-3">
                                 <div class="item">
                                     <div class="pos-rlt">
-                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}" class="item-overlay opacity r r-2x bg-black">
-                                            <div class="text-info padder m-t-sm text-sm">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o text-muted"></i>
+                                        <div class="item-overlay opacity r r-2x">
+                                            <c:if test="${appBean.getCurrentUser() != null}">
+                                                <div class="top">
+                                                    <a href="#" data-photos-id="${photos.id}" class="pull-right m-t-n-xs m-r-n-xs badge bg-danger count addFavorite">
+                                                        <i class="fa fa-star"></i>
+                                                    </a>
+                                                    <span class="pull-right m-t-n-xs m-r-n-xs badge bg-white count hide">
+                                                        <i class="fa fa-spinner fa fa-spin fa fa-large"></i>
+                                                    </span>
+                                                    <!-- 已收藏过 -->
+                                                    <a href="#" class="pull-right m-t-n-xs m-r-n-xs badge bg-white-only count hide">
+                                                        <i class="fa fa-star text-danger"></i>
+                                                    </a>
+                                                </div>
+                                            </c:if>
+                                            <div class="center text-center m-t-n">
+                                                <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-control-play i-2x"></i></a>
                                             </div>
-                                        </a>
+                                        </div>
                                         <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
                                     </div>
                                     <div class="wrapper-sm" ></div>
@@ -65,32 +70,25 @@
 
                         </div>
                         <div id="navigation">
-                            <a href="${pageContext.request.contextPath}/latest/next?page=1"></a>
+                            <a href="${pageContext.request.contextPath}/random/next?page=1"></a>
                         </div>
                     </div>
                 </section>
             </section>
             <!--main page //END-->
         </section>
-        <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-        <!-- App -->
-        <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-        <script src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.infinitescroll.min.js" type="text/javascript"></script>
-        <script type="text/javascript">
+    </body>
+    <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
+    <!--无限加载-->
+    <script src="${appBean.assetsUrl}/assets/js/masonry/jquery.infinitescroll.min.js"></script>
+    <!-- App -->
+    <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
+    <script type="text/javascript">
             $(document).ready(function () {
-                $("#search").click(function () {
-                    $("#searchbar").toggle("slow");
-                });
-                $('body').vegas({
-                    timer: false,
-                    slides: [
-                        {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
-                    ]
-                });
                 $('body').infinitescroll({
                     navSelector: "#navigation", //导航的选择器，会被隐藏
                     nextSelector: "#navigation a", //包含下一页链接的选择器
@@ -108,7 +106,7 @@
                     loading: {
                         msgText: "",
                         finishedMsg: '没有新数据了...',
-                        img: "${pageContext.request.contextPath}/assets/images/loading.gif",
+                        img: "${appBean.assetsUrl}/assets/images/loading.gif",
                         selector: '.loading' // 显示loading信息的div
                     }
                 }, function (newElems) {
@@ -116,13 +114,7 @@
                     var $newElems = $(newElems);
                     $('#waterfall').append($newElems);
                 });
-
-                $("img").error(function () {
-                    $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
-                });
             });
-        </script>
-
-    </body>
+    </script>
 </html>
 

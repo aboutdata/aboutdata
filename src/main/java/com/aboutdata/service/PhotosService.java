@@ -32,9 +32,13 @@ public interface PhotosService {
 
     public Photos create(Photos photos);
 
+    public void approve(String id,String description);
+
     public int makrStatus(String id, PhotoStatus status);
 
     public Page<PhotosModel> findByStatus(PhotoStatus status, Pageable pageable);
+
+    public Page<PhotosModel> findByStatusList(List<PhotoStatus> statusList, Pageable pageable);
 
     public List<PhotosModel> random();
 

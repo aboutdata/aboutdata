@@ -3,239 +3,182 @@
     Created on : 2015-8-22, 11:02:53
     Author     : youyou
 --%>
-<%-- 
-    Document   : latest
-    Created on : 2015-8-16, 13:41:17
-    Author     : youyou
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="zh">
+<html>
     <head>  
         <meta charset="utf-8"/>
-        <title>查看壁纸 - 更多壁纸，更多分享</title>
-        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
-          <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/tag/css/bootstrap-tag.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/vegas/vegas.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/simple-line-icons.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font.css" type="text/css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css" type="text/css" />  
-        <!--[if lt IE 9]>
-        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/html5shiv.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/respond.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/${pageContext.request.contextPath}/assets/js/ie/excanvas.js"></script>
-      <![endif]-->
-      <link rel="shortcut icon" href="favicon.ico"/>
+        <title>查看壁纸原图 - 更多壁纸，更多分享</title>
+        <jsp:include page="/WEB-INF/views/portal/common/head_and_css.jsp"/>
+        <!--百度统计-->
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
-              <jsp:include page="/WEB-INF/views/portal/common/header.jsp"></jsp:include>
-            <!--main page-->
-            <section id="content">
-              <section class="hbox">
-             <aside class="aside animated fadeInLeftBig">
-			      <section class="vbox">
-			        <section class="scrollable wrapper">
-			        <h4 class="font-thin m-b">Wallpaper Colors</h4>
-			         <div>
-		                <a href="#" class="btn btn-block btn-primary">Primary</a>
-		                <a href="#" class="btn btn-block btn-success">Success</a>
-		                <a href="#" class="btn btn-block btn-info">Info</a>
-		                <a href="#" class="btn btn-block btn-warning">Warning</a>
-		                <a href="#" class="btn btn-block btn-danger">Danger</a>
-		                <a href="#" class="btn btn-block btn-dark">Dark</a>
-		              </div>
-		              
-		               <!-- Properties start-->
-		             <h4 class="font-thin m-b">Properties</h4>
-		             <div class="bg-black">
-	                    <h5 class="lter m-n wrapper">Category ==</h5>
-	                    <h5 class="lt m-n wrapper">Resolution ==</h5>
-	                    <h5 class="m-n wrapper">Size 335.88 KB</h5>
-	                    <h5 class="dk m-n wrapper">Type image/jpeg</h5>
-	                    <h5 class="dker m-n wrapper">Posted 
-	                    	<p><a href="#">${photos.member.username}</a></p>
-	                    </h5>
-	                    <h5 class="dk m-n wrapper">Date 
-	                    	<p>${photos.createDate}</p>
-	                    </h5>
-	                    <h5 class="m-n wrapper">Views 
-	                    	<p>${photos.order}</p>
-	                    </h5>
-	                    <h5 class="lt m-n wrapper">Comments 1</h5>
-	                    <h5 class="lter m-n wrapper">Downloads 1</h5>
-	                  </div>
-		             
-		             <!-- Properties end// -->
-                  
-                </ul>
-		             
-		             <h4 class="font-thin m-b">Tags</h4>
-					<div class="m-b-lg l-h-2x">
-					  <c:forEach items="${photos.tags}" var="tag">
-                             <lable class="label bg-primary">${tag.name}</lable> 
-                      </c:forEach>
-                    </div>			            
-			        
-			        </section>
-			      </section>
-    			</aside>
-              <section>
-              
-              
-              <section class="scrollable wrapper">
-               <h4 class="font-thin m-b">Wallpaper Source</h4>
-               
-               <div class="row wrapper r r-2x ">
-               	<a href="${photos.storageHost}/${photos.large}" target="_blank" >
-                	<img src="${photos.storageHost}/${photos.large}" class="r r-2x img-full" style="cursor: zoom-in">
-                </a>
-               </div>
-               <div class="row">
-                <div class="col-sm-6">
-                  <h4 class="m-t-lg m-b">Wallpapers Comments</h4>
-                  <section class="comment-list block">
-                    <article id="comment-id-1" class="comment-item">
-                      <a class="pull-left thumb-sm">
-                        <img src="${pageContext.request.contextPath}/assets/images/a0.png" class="img-circle">
-                      </a>
-                      <section class="comment-body m-b">
-                        <header>
-                          <a href="#"><strong>John smith</strong></a>
-                          <label class="label bg-info m-l-xs">Editor</label> 
-                          <span class="text-muted text-xs block m-t-xs">
-                            24 minutes ago
-                          </span>
-                        </header>
-                        <div class="m-t-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum.</div>
-                      </section>
-                    </article>
-                    <!-- .comment-reply -->
-                    <article id="comment-id-2" class="comment-item comment-reply">
-                      <a class="pull-left thumb-sm">
-                        <img src="${pageContext.request.contextPath}/assets/images/a1.png" class="img-circle">
-                      </a>
-                      <section class="comment-body m-b">
-                        <header>
-                          <a href="#"><strong>John smith</strong></a>
-                          <label class="label bg-dark m-l-xs">Admin</label> 
-                          <span class="text-muted text-xs block m-t-xs">
-                            26 minutes ago
-                          </span>
-                        </header>
-                        <div class="m-t-sm">Lorem ipsum dolor sit amet, consecteter adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</div>
-                      </section>
-                    </article>
-                    <!-- / .comment-reply -->
-                    <article id="comment-id-2" class="comment-item">
-                      <a class="pull-left thumb-sm">
-                        <img src="${pageContext.request.contextPath}/assets/images/a2.png" class="img-circle">
-                      </a>
-                      <section class="comment-body m-b">
-                        <header>
-                          <a href="#"><strong>John smith</strong></a>
-                          <label class="label bg-dark m-l-xs">Admin</label> 
-                          <span class="text-muted text-xs block m-t-xs">
-                            26 minutes ago
-                          </span>
-                        </header>
-                        <blockquote class="m-t">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                          <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                        </blockquote>
-                        <div class="m-t-sm">Lorem ipsum dolor sit amet, consecteter adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</div>
-                      </section>
-                    </article>
-                  </section>
-                  <form>
-                    <div class="form-group">
-                      <label>Comment</label>
-                      <textarea class="form-control" rows="5" placeholder="Type your comment"></textarea>
-                    </div>
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-success">Submit comment</button>
-                    </div>
-                  </form>
-                </div>
-                <div class="col-lg-6">
-               	 <h4 class="m-t-lg m-b">You might also like</h4>
-               	 
-                </div>
-              </div>
-               
-                                    
-              </section>
-              
-              </section>
-              </section>
-                        
+            <!---header-->
+            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
+            <!---header //END-->
+            <section class="w-f-md">
+                <section class="hbox">
+                    <aside class="aside-md b-r b-black">
+                        <section class="scrollable wrapper">
+                            <h4 class="font-thin m-b">颜色</h4>
+                            <div>
+                                <c:if test="${empty colors}">
+                                    <a href="#" class="btn btn-block btn-primary"></a>
+                                    <a href="#" class="btn btn-block btn-success"></a>
+                                    <a href="#" class="btn btn-block btn-info"></a>
+                                    <a href="#" class="btn btn-block btn-warning"></a>
+                                    <a href="#" class="btn btn-block btn-danger"></a>
+                                    <a href="#" class="btn btn-block btn-dark"></a>
+                                </c:if>
+                                <c:if test="${not empty colors}">
+                                    <c:forEach items="${colors}" var="color">
+                                        <a href="#" class="btn btn-block" style="background-color: ${color.color}"></a>
+                                    </c:forEach>
+                                </c:if>
+                            </div>
+                            <h4 class="font-thin m-b">属性</h4>
+                            <div class="row">
+                                <div class="col-xs-6 text-right">栏目</div>
+                                <div class="col-xs-6 text-left">Variables</div>
+
+                                <div class="col-xs-6 text-right">分辨率</div>
+                                <div class="col-xs-6 text-left">${photos.width}x${photos.height}</div>
+
+                                <div class="col-xs-6 text-right">大小</div>
+                                <div class="col-xs-6 text-left">${photos.size} KB</div>
+
+                                <div class="col-xs-6 text-right">类型</div>
+                                <div class="col-xs-6 text-left">image/jpeg</div>
+
+                                <div class="col-xs-6 text-right">上传者</div>
+                                <div class="col-xs-6 text-left"><a>${photos.member.username}</a></div>
+
+                                <div class="col-xs-6 text-right">上传时间</div>
+                                <div class="col-xs-6 text-left">${photos.createDate}</div>
+
+                                <div class="col-xs-6 text-right">查看次数</div>
+                                <div class="col-xs-6 text-left">${photos.order}</div>
+
+                                <div class="col-xs-6 text-right">评论数</div>
+                                <div class="col-xs-6 text-left">1</div>
+
+                                <div class="col-xs-6 text-right">下载次数</div>
+                                <div class="col-xs-6 text-left">1</div>
+                            </div>
+                            <!-- Properties end// -->
+                            <h4 class="font-thin m-b">标签</h4>
+                            <div class="m-b-lg l-h-2x">
+                                <c:if test="${appBean.getCurrentUser() != null}">
+                                    <div class="input-group">
+                                        <input type="text" id="typeahead"class="form-control bg-dark b-dark" placeholder="添加标签">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-dark dker" id="add-tags-btn" data-photos-id="${photos.id}" type="button">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </c:if>
+                                <div id="tags-content">
+                                    <c:forEach items="${photos.tags}" var="tag">
+                                        <lable class="label bg-primary">${tag.name}</lable> 
+                                        </c:forEach>
+                                </div>
+                            </div>	
+                        </section>
+                    </aside>
+                    <!--主题类容-->
+                    <section class="wrapper">    
+                        <h4 class="font-thin m-b">壁纸原图</h4>
+                        <div class="row wrapper r r-2x ">
+                            <a href="${photos.storageHost}/${photos.large}" target="_blank" >
+                                <img src="${photos.storageHost}/${photos.large}" 
+                                     alt="<c:forEach items="${photos.tags}" var="tag">${tag.name} </c:forEach>"
+                                         class="r r-2x img-full" style="cursor: zoom-in"/>
+                                </a>
+                            </div>
+                            <div>
+                                <h4 class="font-thin m-b">描述信息</h4>
+                                <p> ${photos.description}</p>
+                        </div>
+                    </section>  <!--main end-->
+
+                </section>    
             </section>
             <!--main page //END-->
+            <footer class="footer bg-black dker">
+                <jsp:include page="/WEB-INF/views/portal/common/footer.jsp"/>
+            </footer>
         </section>
-        <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-         <script src="${pageContext.request.contextPath}/assets/js/elements.typeahead.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/tag/js/bootstrap-tag.min.js"></script>
-        <!-- App -->
-        <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-        <script src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/masonry/jquery.infinitescroll.min.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(document).ready(function (){
-            	 $("#search").click(function () {
-                     $("#searchbar").toggle("slow");
-                 });
-                 $('body').vegas({
-                     timer: false,
-                     slides: [
-                         {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
-                     ]
-                 });
-            	
-            	var tag_input = $('#form-field-tags');
-                try {
-                    tag_input.tag(
-                            {
-                                placeholder: tag_input.attr('placeholder'),
-                                //enable typeahead by specifying the source array
-                                //source: mycars //defined in ace.js >> ace.enable_search_ahead
-                                //or fetch data from database, fetch those that match "query"
-                                source: function (query, process) {
-                                    $.ajax({
-                                        url: '${pageContext.request.contextPath}/tags/source?name=' + encodeURIComponent(query)
-                                    }).done(function (result_items) {
-                                        process(result_items);
-                                    });
-                                }
+    </body>
+    <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
+    
+    
+    <script src="${appBean.assetsUrl}/assets/js/bootstrap/typeahead/bootstrap3-typeahead.min.js"></script>
+    <!-- App -->
+    <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
+    <script type="text/javascript">
+            $(document).ready(function () {
+                var $input = $('#typeahead');
+                $input.typeahead({
+                    items: 20,
+                    source: function (query, process) {
+                        $.ajax({
+                            url: "${pageContext.request.contextPath}/tags/source",
+                            data: {name: query},
+                            type: "GET",
+                            dataType: 'json',
+                            success: function (result) {
+                                console.log(result);
+                                process(result);
+                            },
+                            error: function (er) {
 
                             }
-                    );
-                }
-                catch (e) {
-
-                }
-                $("#save-tags-btn").click(function () {
-                    var id = $(this).data("id");
+                        });
+                    }
+                });//typeahead end
+                //addtags 添加标签操作
+        <c:if test="${appBean.getCurrentUser() != null}">
+                $("#add-tags-btn").click(function () {
+                    var $that = $(this);
+                    $that.html("<i class=\"fa fa-spinner fa fa-spin fa\"></i>");
+                    var _id = $that.data("photos-id");
+                    var tagName = $input.val();
                     $.ajax({
+                        url: "${pageContext.request.contextPath}/member/photos/addTags",
+                        data: {id: _id, tagName: tagName},
                         type: "POST",
-                        url: '${pageContext.request.contextPath}/member/photos/addTags',
-                        data: {id: id, tags: tag_input.val()}
-                    }).done(function (data) {
-                        alert("添加成功");
-                        location.reload();
+                        dataType: 'json',
+                        success: function (result) {
+                            $input.val("");
+                            $that.html("<i class=\"fa fa-plus\"></i>");
+                            $("#tags-content").append("<lable class=\"label bg-primary\">" + tagName + "</lable> ")
+                            console.log(result);
+                        },
+                        error: function (er) {
+                            console.log(er);
+                        }
                     });
-                });
+                }); //addtags btn end
+        </c:if>
             });
-        </script>
-
-    </body>
+    </script>
 </html>
 

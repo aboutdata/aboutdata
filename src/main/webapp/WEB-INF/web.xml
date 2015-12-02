@@ -56,5 +56,18 @@
         <servlet-name>springmvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    <!-- 配置session超时时间，单位分钟 -->
+    
+    <!-- 删除JSP编译后的空行办法如下 -->
+    <jsp-config> 
+        <jsp-property-group> 
+            <url-pattern>*.jsp</url-pattern> 
+            <trim-directive-whitespaces>true</trim-directive-whitespaces> 
+        </jsp-property-group> 
+    </jsp-config> 
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/common/resource_not_found</location>
+    </error-page>
+    
 </web-app>

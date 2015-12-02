@@ -4,6 +4,7 @@ import com.aboutdata.commons.TableData;
 import com.aboutdata.commons.enums.PhotoStatus;
 import com.aboutdata.model.PhotosModel;
 import com.aboutdata.service.PhotosService;
+import java.util.Arrays;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,8 +64,10 @@ public class PhotosController {
             String sSearch,
             int sEcho) {
         Pageable pageable = new PageRequest(iDisplayStart, iDisplayLength);
+        
+        
         //审核已通过才显示出来
-        Page<PhotosModel> list = photosService.findByStatus(PhotoStatus.APPROVED, pageable);
+        Page<PhotosModel> list = photosService.findByStatusList(Arrays.asList(PhotoStatus.APPROVED,PhotoStatus.INDEXED), pageable);
 
         return new TableData(list, sEcho, false);
     }

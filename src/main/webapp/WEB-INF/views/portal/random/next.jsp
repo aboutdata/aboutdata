@@ -11,15 +11,25 @@
         <div class="col-xs-6 col-sm-4 col-md-3">
             <div class="item">
                 <div class="pos-rlt">
-                    <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}" class="item-overlay opacity r r-2x bg-black">
-                        <div class="text-info padder m-t-sm text-sm">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o text-muted"></i>
+                    <div class="item-overlay opacity r r-2x">
+                        <c:if test="${appBean.getCurrentUser() != null}">
+                            <div class="top">
+                                <a href="#" data-photos-id="${photos.id}" class="pull-right m-t-n-xs m-r-n-xs badge bg-danger count addFavorite">
+                                    <i class="fa fa-star"></i>
+                                </a>
+                                <span class="pull-right m-t-n-xs m-r-n-xs badge bg-white count hide">
+                                    <i class="fa fa-spinner fa fa-spin fa fa-large"></i>
+                                </span>
+                                <!-- 已收藏过 -->
+                                <a href="#" class="pull-right m-t-n-xs m-r-n-xs badge bg-white-only count hide">
+                                    <i class="fa fa-star text-danger"></i>
+                                </a>
+                            </div>
+                        </c:if>
+                        <div class="center text-center m-t-n">
+                            <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-control-play i-2x"></i></a>
                         </div>
-                    </a>
+                    </div>
                     <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}">
                         <img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full">
                     </a>

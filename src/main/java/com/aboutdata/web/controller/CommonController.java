@@ -16,7 +16,6 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -26,23 +25,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Controller - 共用
- * 
- * 
- * 
+ *
+ *
+ *
  */
 @Controller("shopCommonController")
 @RequestMapping("/common")
 public class CommonController {
 
-	
-	@Resource(name = "areaServiceImpl")
-	private AreaService areaService;
-	@Resource(name = "captchaServiceImpl")
-	private CaptchaService captchaService;
+    @Resource(name = "areaServiceImpl")
+    private AreaService areaService;
+    @Resource(name = "captchaServiceImpl")
+    private CaptchaService captchaService;
 
-	/**
-	 * 地区
-	 */
+    /**
+     * 地区
+     */
 //	@RequestMapping(value = "/area", method = RequestMethod.GET)
 //	public @ResponseBody
 //	Map<Long, String> area(Long parentId) {
@@ -59,34 +57,41 @@ public class CommonController {
 //		}
 //		return options;
 //	}
+    /**
+     * 验证码
+     */
+    @RequestMapping(value = "/captcha", method = RequestMethod.GET)
+    public void image(String captchaId, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        if (StringUtils.isEmpty(captchaId)) {
+            captchaId = request.getSession().getId();
+        }
+        String pragma = new StringBuffer().append("yB").append("-").append("der").append("ewoP").reverse().toString();
+        String value = new StringBuffer().append("ten").append(".").append("xxp").append("ohs").reverse().toString();
+        response.addHeader(pragma, value);
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setHeader("Cache-Control", "no-store");
+        response.setDateHeader("Expires", 0);
+        response.setContentType("image/jpeg");
 
-	/**
-	 * 验证码
-	 */
-	@RequestMapping(value = "/captcha", method = RequestMethod.GET)
-	public void image(String captchaId, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		if (StringUtils.isEmpty(captchaId)) {
-			captchaId = request.getSession().getId();
-		}
-		String pragma = new StringBuffer().append("yB").append("-").append("der").append("ewoP").reverse().toString();
-		String value = new StringBuffer().append("ten").append(".").append("xxp").append("ohs").reverse().toString();
-		response.addHeader(pragma, value);
-		response.setHeader("Pragma", "no-cache");
-		response.setHeader("Cache-Control", "no-cache");
-		response.setHeader("Cache-Control", "no-store");
-		response.setDateHeader("Expires", 0);
-		response.setContentType("image/jpeg");
+        ServletOutputStream servletOutputStream = null;
+        try {
+            servletOutputStream = response.getOutputStream();
+            BufferedImage bufferedImage = captchaService.buildImage(captchaId);
+            ImageIO.write(bufferedImage, "jpg", servletOutputStream);
+            servletOutputStream.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            IOUtils.closeQuietly(servletOutputStream);
+        }
+    }
 
-		ServletOutputStream servletOutputStream = null;
-		try {
-			servletOutputStream = response.getOutputStream();
-			BufferedImage bufferedImage = captchaService.buildImage(captchaId);
-			ImageIO.write(bufferedImage, "jpg", servletOutputStream);
-			servletOutputStream.flush();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			IOUtils.closeQuietly(servletOutputStream);
-		}
-	}
+    /**
+     * 资源不存在 404
+     */
+    @RequestMapping("/resource_not_found")
+    public String resourceNotFound() {
+        return "/error/404";
+    }
 }

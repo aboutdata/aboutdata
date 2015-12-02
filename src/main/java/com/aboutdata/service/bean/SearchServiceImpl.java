@@ -16,6 +16,7 @@ import com.aboutdata.service.ConfigService;
 import com.aboutdata.service.SearchService;
 import com.aboutdata.service.TagService;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import javax.annotation.Resource;
@@ -173,13 +174,15 @@ public class SearchServiceImpl implements SearchService {
                 model.setSource(source);
 
                 model.setWallhaven(wallhaven);
-                model.setCreateDate(new DateTime(create_date).toDate());
-                model.setModifyDate(new DateTime(modify_date).toDate());
+                //model.setCreateDate(new Date());
+               // model.setModifyDate(new DateTime(modify_date).toDate());
 
                 model.setMember(member);
                 //转换tag
                 List<TagModel> tagList = TagDTO.getTagModelsDTO(tagSet);
                 model.setTags(tagList);
+                
+                models.add(model);
             }
             Page<PhotosModel> result = new PageImpl<PhotosModel>(models, pageable, docs.getNumFound());
             return result;

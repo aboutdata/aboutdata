@@ -35,6 +35,9 @@ public class EmailServiceImpl implements EmailService {
         String contentTemplate = resourceBundle.getString(emailType.getKey());
         String content = "";
         switch (emailType) {
+            case MEMBER_RESET_PASSWORD:
+                content = String.format(contentTemplate, contents[0],contents[1]);
+                break;
             case ADMIN_RESET_PASSWORD:
                 content = String.format(contentTemplate, contents[0]);
                 break;

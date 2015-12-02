@@ -1,9 +1,8 @@
 package com.aboutdata.service;
 
-import com.aboutdata.domain.Admin;
 import com.aboutdata.domain.Member;
+import com.aboutdata.domain.SafeKey;
 import com.aboutdata.model.MemberModel;
-import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -55,7 +54,7 @@ public interface MemberService {
      * @param email E-mail(忽略大小写)
      * @return 会员，若不存在则返回null
      */
-    List<Member> findListByEmail(String email);
+    Member findByEmail(String email);
 
     /**
      * 判断会员是否登录
@@ -85,5 +84,21 @@ public interface MemberService {
     public Page<MemberModel> find(Pageable pageable);
 
     public MemberModel findById(String id);
+
+    public boolean recoverPassword(String email);
+
+    /**
+     * @ 获取用户重置密码时的安全密钥
+     * @param memberId
+     * @return
+     */
+    public List<SafeKey> getSafeKey(String memberId);
+
+    /**
+     * 当用户重置新密码后 之前重置密钥safeKey全部删除
+     *
+     * @param memberId
+     */
+    public void expireSafekey(String memberId);
 
 }

@@ -23,7 +23,7 @@
         <property name="successUrl" value="/admin/dashboard"/> 
         <property name="filterChainDefinitions">
             <value>
-                /admin/common/captcha = anon
+                /admin/common/** = anon
                 /admin/** = authc
             </value>
         </property>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenAuth2Config>
+    <sinaWeiboClient>
+        <apiKey>2072911734</apiKey>
+        <apiSecret>30f2c2b0a6cd45539d57a8a4c8fbcb50</apiSecret>
+        <callback>http://aboutdata.localhost:8080/oauth/sina</callback>
+    </sinaWeiboClient>
+	
+    <githubClient>
+        <apiKey>e5071c636fc233d8a8c6</apiKey>
+        <apiSecret>0fb4c03145b812596cc05bff459678affdc87ba3</apiSecret>
+        <callback>http://localhost:8080/oauth_callback/</callback>
+    </githubClient>
+</OpenAuth2Config>
