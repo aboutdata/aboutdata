@@ -143,10 +143,7 @@
                                                             </c:when>
                                                             <c:when test="${photos.status == 'APPROVED'}">   
                                                                 <span class="badge badge-success">已批准</span>
-                                                            </c:when> 
-                                                            <c:when test="${photos.status == 'INDEXED'}">   
-                                                                <span class="badge badge-success">已批准</span>
-                                                            </c:when> 
+                                                            </c:when>
                                                             <c:when test="${photos.status == 'REJECTED'}">   
                                                                 <span class="badge badge-inverse">已驳回</span>
                                                             </c:when>
@@ -216,13 +213,6 @@
                                                     <div class="alert alert-block alert-error">
                                                         <i class="icon-remove bigger-130 red"></i> 
                                                         本申请已经被驳回！
-                                                    </div>
-                                                </c:when>
-                                                <c:when test="${photos.status == 'INDEXED'}">
-                                                    <div class="space-10"></div>
-                                                    <div class="alert alert-block alert-success successMessage">
-                                                        <i class="icon-ok bigger-130 green"></i> 
-                                                        本申请已经被批准！已创建索引！
                                                     </div>
                                                 </c:when>
                                                 <c:otherwise>

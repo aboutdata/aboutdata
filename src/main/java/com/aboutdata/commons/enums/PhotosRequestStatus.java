@@ -16,7 +16,6 @@ public enum PhotosRequestStatus implements BaseEnum {
     CANCELED("已取消"),//只有在UNASSIGNED和ASSIGNED状态的可以取消
     PENDING_APPORVE("待批准"),
     APPROVED("已批准"),
-    INDEXED("已索引"),//用来标识是否意见solr建立索引
     REJECTED("已驳回"),
     ARCHIVED("已存档"),
     DELETED("已刪除");

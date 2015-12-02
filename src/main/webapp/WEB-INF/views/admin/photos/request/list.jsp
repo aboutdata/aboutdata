@@ -208,8 +208,6 @@
                                                     return '<span class="badge badge-pink">待批准</span>';
                                                 } else if (status === "APPROVED") {
                                                     return '<span class="badge badge-success">已批准</span>';
-                                                } else if (status === "INDEXED") {
-                                                    return '<span class="badge badge-success">已创建索引</span>';
                                                 } else if (status === "REJECTED") {
                                                     return '<span class="badge badge-inverse">已驳回</span>';
                                                 } else if (status === "ARCHIVED") {
