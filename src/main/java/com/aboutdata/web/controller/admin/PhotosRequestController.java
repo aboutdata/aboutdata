@@ -2,6 +2,7 @@ package com.aboutdata.web.controller.admin;
 
 import com.aboutdata.commons.TableData;
 import com.aboutdata.commons.enums.PhotoStatus;
+import com.aboutdata.commons.enums.PhotosRequestStatus;
 import javax.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,7 +12,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.aboutdata.model.PhotosModel;
+import com.aboutdata.model.PhotosRequestModel;
 import com.aboutdata.service.PhotosColorsService;
+import com.aboutdata.service.PhotosRequestService;
 import com.aboutdata.service.PhotosService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +29,9 @@ public class PhotosRequestController {
 
     @Resource
     private PhotosService photosService;
+
+    @Resource
+    private PhotosRequestService photosRequestService;
 
     /**
      * 列表
@@ -61,8 +67,8 @@ public class PhotosRequestController {
             int sEcho) {
         Pageable pageable = new PageRequest(iDisplayStart, iDisplayLength);
 
-        Page<PhotosModel> list = photosService.findByStatus(PhotoStatus.UNASSIGNED, pageable);
-
+        Page<PhotosRequestModel> list = photosRequestService.findByStatus(PhotosRequestStatus.UNASSIGNED, pageable);
+        
         return new TableData(list, sEcho, false);
     }
 

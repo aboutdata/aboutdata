@@ -115,12 +115,10 @@
                                 <table id="myDatatbles" class="table table-striped table-bordered table-hover dataTables-example dataTable" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>编号</th>
-                                            <th>阅览</th>
                                             <th>标题</th>
-                                            <th>wallhaven</th>
-                                            <th>服务器地址</th>
                                             <th>排序</th>
+                                            <th>投稿人</th>
+                                            <th>大小(kb)</th>
                                             <th>状态</th>
                                             <th>创建时间</th>
                                         </tr>
@@ -185,27 +183,20 @@
                                     "dom": 'rtlip',
                                     "sAjaxSource": "${pageContext.request.contextPath}/admin/photosRequest/getDatatables",
                                     "aoColumns": [
-                                        {"mData": "id"},
-                                        {"mData": "thumbnail"},
                                         {"mData": "title"},
-                                        {"mData": "wallhaven"},
-                                        {"mData": "storageHost"},
                                         {"mData": "order"},
+                                        {"mData": "member.username"},
+                                        {"mData": "size"},
                                         {"mData": "status"},
                                         {"mData": "createDate"}
                                     ],
-                                    "aoColumnDefs": [{
-                                            "aTargets": [1],
-                                            "mRender": function (thumbnail, type, row) {
-                                                return "<img alt=\"Image 4\" src=" + row['storageHost'] + "/" + thumbnail + " width=\"128\" class=\"img-rounded\">";
+                                    "aoColumnDefs": [ {
+                                            "aTargets": [0],
+                                            "mRender": function (title, type, row) {
+                                                return "<a href=\"${pageContext.request.contextPath}/admin/photosRequestdetails/" + row['id'] + "\">" + title + "</a>";
                                             }
                                         },{
-                                            "aTargets": [2],
-                                            "mRender": function (title, type, row) {
-                                                return "<a href=\"${pageContext.request.contextPath}/admin/photosRequest/single/"+row['id']+"\">"+title+"</a>";
-                                            }
-                                        }, {
-                                            "aTargets": [6],
+                                            "aTargets": [4],
                                             "mRender": function (status, type, row) {
                                                 if (status === "UNASSIGNED") {
                                                     return '<span class="badge badge-grey">未处理</span>';
@@ -219,7 +210,7 @@
                                                     return '<span class="badge badge-success">已批准</span>';
                                                 } else if (status === "INDEXED") {
                                                     return '<span class="badge badge-success">已创建索引</span>';
-                                                }else if (status === "REJECTED") {
+                                                } else if (status === "REJECTED") {
                                                     return '<span class="badge badge-inverse">已驳回</span>';
                                                 } else if (status === "ARCHIVED") {
                                                     return '<span class="badge badge-purple">已存档</span>';
@@ -228,7 +219,7 @@
                                                 }
                                             }
                                         }, {
-                                            "aTargets": [7],
+                                            "aTargets": [5],
                                             "mRender": function (createDate, type, row) {
                                                 return new Date(createDate).Format("yyyy-MM-dd hh:mm:ss");
                                             }

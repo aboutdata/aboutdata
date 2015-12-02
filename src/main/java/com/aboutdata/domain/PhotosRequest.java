@@ -75,7 +75,7 @@ public class PhotosRequest extends BaseEntity {
      */
     @Enumerated(EnumType.STRING)
     @Column(nullable = true, length = 20)
-    private PhotosRequestStatus status = PhotosRequestStatus.ASSIGNED;
+    private PhotosRequestStatus status = PhotosRequestStatus.UNASSIGNED;
 
     @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
