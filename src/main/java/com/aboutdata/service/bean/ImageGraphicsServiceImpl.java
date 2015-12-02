@@ -155,10 +155,10 @@ public class ImageGraphicsServiceImpl implements ImageGraphicsService {
             FileUtils.writeByteArrayToFile(inputFile, input);
 
             IMOperation op = new IMOperation();
-            op.size(width, height);
             op.addImage(inputFile.getAbsolutePath());
+            //op.size(width, height); 不要使用改方法 图片不清晰
             op.resize(width, height);
-            op.p_profile("*");
+            op.quality(95d);
             op.addImage(outputFile.getAbsolutePath());
             logger.debug("Command will be {}", op);
             cmd.run(op);
