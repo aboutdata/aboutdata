@@ -108,7 +108,7 @@ public class PhotosRequestController {
     @RequestMapping(value = "/approve/{id}", method = RequestMethod.POST)
     public String approve(@PathVariable("id") String id, String description, ModelMap model) {
         photosService.approve(id, description);
-        return "redirect:/admin/photosRequest/single/" + id;
+        return "redirect:/admin/photosRequest/list";
     }
 
     /**
