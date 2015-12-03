@@ -6,6 +6,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="zh">
     <head>  
@@ -37,40 +38,47 @@
                                     <div class="tab-pane" id="home">
                                         <!-- .comment-list -->
                                         <section class="comment-list block">
-                                            <c:forEach items="${pages.content}" var="message">
-                                                <article id="comment-id-1" class="comment-item">
-                                                    <a class="pull-left thumb-sm avatar">
-                                                        <img src="${pageContext.request.contextPath}/assets/images/m0.jpg" class="img-circle" alt="...">
-                                                    </a>
-                                                    <span class="arrow left"></span>
-                                                    <section class="comment-body panel panel-default">
-                                                        <header class="panel-heading bg-white">
-                                                            <a href="#">${message.title}</a>
-                                                            <label class="label bg-info m-l-xs">${message.receiver.username}</label> 
-                                                            <span class="text-muted m-l-sm pull-right">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                ${message.createDate}
-                                                            </span>
-                                                        </header>
-                                                        <div class="panel-body">
-                                                            <div> ${message.content}</div>
-                                                        </div>
+                                            <c:if test="${pages.content!= null && fn:length(pages.content) > 0}">
+                                                <c:forEach items="${pages.content}" var="message">
+                                                    <article id="comment-id-1" class="comment-item">
+                                                        <a class="pull-left thumb-sm avatar">
+                                                            <img src="${pageContext.request.contextPath}/assets/images/m0.jpg" class="img-circle" alt="...">
+                                                        </a>
+                                                        <span class="arrow left"></span>
+                                                        <section class="comment-body panel panel-default">
+                                                            <header class="panel-heading bg-white">
+                                                                <a href="#">${message.title}</a>
+                                                                <label class="label bg-info m-l-xs">${message.receiver.username}</label> 
+                                                                <span class="text-muted m-l-sm pull-right">
+                                                                    <i class="fa fa-clock-o"></i>
+                                                                    ${message.createDate}
+                                                                </span>
+                                                            </header>
+                                                            <div class="panel-body">
+                                                                <div> ${message.content}</div>
+                                                            </div>
+                                                        </section>
+                                                    </article>
+                                                </c:forEach>
+                                                <article class="comment-item media" id="comment-form">
+                                                    <a class="pull-left thumb-sm avatar"><img src="${pageContext.request.contextPath}/assets/images/m1.jpg" alt="..."></a>
+                                                    <section class="media-body">
+                                                        <form action="#" class="m-b-none">
+                                                            <div class="input-group">
+                                                                <input class="form-control" placeholder="如有异议,请说明原因" type="text">
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn btn-primary" type="button">回复</button>
+                                                                </span>
+                                                            </div>
+                                                        </form>
                                                     </section>
                                                 </article>
-                                            </c:forEach>
-                                            <article class="comment-item media" id="comment-form">
-                                                <a class="pull-left thumb-sm avatar"><img src="${pageContext.request.contextPath}/assets/images/m1.jpg" alt="..."></a>
-                                                <section class="media-body">
-                                                    <form action="#" class="m-b-none">
-                                                        <div class="input-group">
-                                                            <input class="form-control" placeholder="如有异议,请说明原因" type="text">
-                                                            <span class="input-group-btn">
-                                                                <button class="btn btn-primary" type="button">回复</button>
-                                                            </span>
-                                                        </div>
-                                                    </form>
-                                                </section>
-                                            </article>
+                                            </c:if>
+                                            <c:if test="${pages.content== null || fn:length(pages.content) == 0}">
+                                                <article class="comment-item media" id="comment-form">
+                                                    <p>暂时没有消息!</p>
+                                                </article>
+                                            </c:if>
                                         </section>
                                         <!-- / .comment-list -->
                                     </div>
