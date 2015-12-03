@@ -77,6 +77,9 @@
                                         <li>
                                             <a href="${pageContext.request.contextPath}/member/favorite">收藏</a>
                                         </li>
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/member/message">消息</a>
+                                        </li>
                                         <li class="divider"></li>
                                         <li>
                                             <a href="${pageContext.request.contextPath}/logout">注销登录</a>
