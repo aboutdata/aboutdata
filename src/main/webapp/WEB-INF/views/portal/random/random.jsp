@@ -64,16 +64,15 @@
                             <!--gallery end first// old-->
                         </c:forEach>
                     </div>
-
-                    <div class="row row-sm">
-                        <div class="loading text-center">
-
-                        </div>
-                        <div id="navigation">
-                            <a href="${pageContext.request.contextPath}/random/next?page=1"></a>
-                        </div>
-                    </div>
                 </section>
+                <div class="row row-sm">
+                    <div class="loading text-center">
+
+                    </div>
+                    <div id="navigation">
+                        <a href="${pageContext.request.contextPath}/random/next?page=1"></a>
+                    </div>
+                </div>
             </section>
             <!--main page //END-->
         </section>
