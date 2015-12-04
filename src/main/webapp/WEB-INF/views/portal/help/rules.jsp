@@ -88,7 +88,8 @@
     </body>
     <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
+    <!--<script src="${appBean.assetsUrl}/assets/js/bootstrap/bootstrap.min.js"></script>-->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
     <script type="text/javascript">
             $(document).ready(function () {

@@ -9,7 +9,7 @@
         $('body').vegas({
             timer: false,
             slides: [
-                {src: CC.assets_url+ 'assets/images/background4.jpg'}
+                {src: CC.assets_url+ 'assets/images/background1.jpg'}
             ]
         });
         $("img").error(function () {

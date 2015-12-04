@@ -10,7 +10,8 @@
 <meta name="keywords" content="高清壁纸,壁纸,高清背景,背景,原画,桌面壁纸,最靠谱的图片分享网站,lockbur,lockbur.com,www.lockbur.com,wallbase,wallhaven,best wallpapers,best wallpaper site,iphone wallpaper,android wallpaper,mobile wallpaper,free wallpaper hd,backgrounds,desktop wallpaper,widescreen"/>
 <c:choose>
     <c:when test="${appBean.systemConfig.developMode}">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" type="text/css" />
+        <!--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/vegas/vegas.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate.css" type="text/css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css" />
@@ -20,7 +21,8 @@
     </c:when>
     <c:otherwise>
         <!--生产模式 使用css和常用js直接走nginx-->
-        <link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <!--<link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/bootstrap.min.css" type="text/css" />-->
         <link rel="stylesheet" href="${appBean.assetsUrl}/assets/js/vegas/vegas.css" type="text/css" />
         <link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/animate.css" type="text/css" />
         <link rel="stylesheet" href="${appBean.assetsUrl}/assets/css/font-awesome.min.css" type="text/css" />
