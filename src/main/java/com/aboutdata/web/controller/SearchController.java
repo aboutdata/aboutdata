@@ -40,7 +40,7 @@ public class SearchController {
             //如果没有参数 就所搜索框的页面
             return "/portal/search/single";
         }
-        Pageable pageable = new PageRequest(1, 24);
+        Pageable pageable = new PageRequest(0, 24);
         Page<PhotosModel> pages = searchService.search(keywords, pageable);
         model.addAttribute("pages", pages);
         model.addAttribute("keywords", keywords);
@@ -59,6 +59,12 @@ public class SearchController {
     @RequestMapping("/next")
     public ModelAndView infinitescroll(int page, String keywords, ModelAndView model) {
         logger.info("page now {}", page);
+        if (page <= 0) {
+            page = 0;
+        } else {
+            //消除data spring 默认从0开始问题
+            page = page - 1;
+        }
         Pageable pageable = new PageRequest(page, 24);
         Page<PhotosModel> pages = searchService.search(keywords, pageable);
         logger.info("page size {}", pages.getContent().size());
