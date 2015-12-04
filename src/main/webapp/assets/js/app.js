@@ -9,11 +9,11 @@
         $('body').vegas({
             timer: false,
             slides: [
-                {src: CC.assets_url+ 'assets/images/background1.jpg'}
+                {src: CC.assets_url + 'assets/images/background1.jpg'}
             ]
         });
         $("img").error(function () {
-            $(this).attr("src", "${pageContext.request.contextPath}/assets/images/image20.jpg");
+            $(this).attr("src", CC.assets_url + 'assets/images/image20.jpg');
         });
     });
 }(window.jQuery);

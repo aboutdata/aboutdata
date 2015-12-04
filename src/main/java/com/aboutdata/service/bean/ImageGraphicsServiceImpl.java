@@ -96,7 +96,9 @@ public class ImageGraphicsServiceImpl implements ImageGraphicsService {
         try {
             IMOperation op = new IMOperation();
             op.addImage(sourceImage.getAbsolutePath());
-            op.resize(300, 200);
+            //op.resize(300, 200);
+            //先缩放，后居中切割图片 
+            op.resize(300, 200, '^').gravity("center").extent(300, 200);  
             op.quality(85d);
             op.addImage(thumbnail);
 

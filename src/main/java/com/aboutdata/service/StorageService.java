@@ -9,6 +9,7 @@ import java.io.File;
 
 /**
  * 存储文件到 文件服务器
+ *
  * @author Administrator
  */
 public interface StorageService {
@@ -17,8 +18,9 @@ public interface StorageService {
      * 文件上传
      *
      * @param file 上传文件
-     * @return 
+     * @return
      */
     public String upload(File file);
 
+    public boolean remove(String fileId);
 }

@@ -32,7 +32,9 @@ public interface PhotosService {
 
     public Photos create(Photos photos);
 
-    public void approve(String id,String description);
+    public void delete(String id);
+
+    public void approve(String id, String description);
 
     public int makrStatus(String id, PhotoStatus status);
 

@@ -21,6 +21,7 @@ public interface PhotosColorsService {
      * 生成图片颜色
      *
      * @param photos
+     * @param source
      */
     public void generateColors(Photos photos, File source);
 
@@ -31,4 +32,12 @@ public interface PhotosColorsService {
      * @return
      */
     public List<PhotosColors> findByPhotosId(String photosId);
+
+    /**
+     * 根据图片id删除颜色值
+     *
+     * @param photosId
+     * @return
+     */
+    public int deleteByPhotosId(String photosId);
 }

@@ -18,6 +18,7 @@ public interface SearchService {
 
     /**
      * 创建索引
+     *
      * @param photo
      */
     public void build(Photos photo);
@@ -30,4 +31,12 @@ public interface SearchService {
      * @return
      */
     public Page<PhotosModel> search(String keyword, Pageable pageable);
+
+    /**
+     * 删除索引
+     *
+     * @param id
+     */
+    public void delete(String id);
+
 }

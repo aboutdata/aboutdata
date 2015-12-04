@@ -35,7 +35,8 @@ public class LatestController {
     private PhotosService photosService;
 
     /**
-     * 每次加载24张图片
+     * 按日期降序排列
+     * @每次加载24张图片
      * @param request
      * @param model
      * @return
@@ -43,8 +44,8 @@ public class LatestController {
     @RequestMapping
     public String list(HttpServletRequest request, Model model) {
         
-        Sort sort = new Sort(Sort.Direction.ASC, "createDate");
-        Pageable pageable = new PageRequest(1, 24,sort);
+        Sort sort = new Sort(Sort.Direction.DESC, "createDate");
+        Pageable pageable = new PageRequest(0, 24,sort);
         
         Page<PhotosModel> pages = photosService.find(pageable);
         
@@ -63,7 +64,8 @@ public class LatestController {
     @RequestMapping("/next")
     public ModelAndView infinitescroll(int page,ModelAndView model) {
     	logger.info("page now {}",page);
-        Pageable pageable = new PageRequest(page, 24);
+         Sort sort = new Sort(Sort.Direction.DESC, "createDate");
+        Pageable pageable = new PageRequest(page, 24,sort);
         Page<PhotosModel> pages = photosService.find(pageable);
         logger.info("page size {}",pages.getContent().size());
 	    model.setViewName("/portal/common/next");

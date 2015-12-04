@@ -258,7 +258,7 @@
                                     <div class="widget-header">
                                         <h4>
                                             <i class="ace-icon fa fa-arrows"></i>
-                                            图片审核
+                                            图片删除(谨慎操作,删除后将不能恢复)
                                         </h4>
                                     </div> 
 
@@ -281,20 +281,15 @@
                                                     </div>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <form action="${pageContext.request.contextPath}/admin/photosRequest/approve/${photos.id}" method="post">
+                                                    <form action="${pageContext.request.contextPath}/admin/photos/delete/${photos.id}" method="post">
                                                         <div>
                                                             <textarea class="form-control" name="comment" placeholder="请输入您的评论..." id="form-field-8"></textarea>
                                                         </div>
                                                         <div class="clearfix form-actions">
                                                             <div class="col-md-offset-3 col-md-9">
-                                                                <button class="btn btn-info" type="submit">
-                                                                    <i class="ace-icon fa fa-check bigger-110"></i>
-                                                                    审核通过
-                                                                </button>
-                                                                &nbsp; &nbsp; &nbsp;
-                                                                <button class="btn btn-danger">
-                                                                    <i class="ace-icon fa fa-undo bigger-110"></i>
-                                                                    拒绝申请
+                                                                <button class="btn btn-danger" type="submit">
+                                                                    <i class="ace-icon fa fa-trash-o bigger-110"></i>
+                                                                    删除图片
                                                                 </button>
                                                             </div>
                                                         </div>

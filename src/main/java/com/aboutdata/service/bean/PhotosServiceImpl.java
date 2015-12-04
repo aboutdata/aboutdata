@@ -14,6 +14,7 @@ import com.aboutdata.model.dto.PhotosDTO;
 import com.aboutdata.service.ImageGraphicsService;
 import com.aboutdata.service.PhotosColorsService;
 import com.aboutdata.service.PhotosService;
+import com.aboutdata.service.SearchService;
 import com.aboutdata.service.StorageService;
 import com.aboutdata.service.TagService;
 import com.aboutdata.utils.EasyImage;
@@ -62,6 +63,9 @@ public class PhotosServiceImpl implements PhotosService {
 
     @Resource
     private PhotosColorsService photosColorsService;
+
+    @Resource
+    private SearchService searchService;
 
     @Override
     @Transactional
@@ -139,6 +143,31 @@ public class PhotosServiceImpl implements PhotosService {
     public Photos create(Photos photos) {
 
         return photosDao.save(photos);
+    }
+
+    /**
+     * 如果fasdfs或者solr服务删除失败但是数据任然会删除 待解决
+     *
+     * @param id
+     */
+    @Override
+    @Transactional
+    public void delete(String id) {
+        Photos photos = photosDao.findOne(id);
+
+        /**
+         * @ 删除fastdfs上的文件,目前图片只保留了原图和缩略
+         * @ 1 删除缩略图
+         * @ 2 删除原图
+         */
+        storageService.remove(photos.getThumbnail());
+        storageService.remove(photos.getSource());
+        //@2 删除solr上的索引
+        searchService.delete(id);
+        //@3 删出mysql数据
+        photosColorsService.deleteByPhotosId(id);
+
+        photosDao.delete(photos);
     }
 
     /**

@@ -80,6 +80,13 @@ public class PhotosColorsServiceImpl implements PhotosColorsService {
         return photosColorsDao.findByPhotosId(photosId);
     }
 
+    @Override
+    @Transactional
+    public int deleteByPhotosId(String photosId) {
+
+        return photosColorsDao.deleteByPhotosId(photosId);
+    }
+
     /**
      * @param urlPath
      * @param fileName 默认存放到/tmp/

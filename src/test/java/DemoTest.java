@@ -1,11 +1,13 @@
 
 import com.aboutdata.commons.application.InjectLogger;
 import com.aboutdata.dao.MessageDao;
+import com.aboutdata.dao.PhotosColorsDao;
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.Message;
 import com.aboutdata.domain.Photos;
 import com.aboutdata.domain.PhotosAlbum;
 import com.aboutdata.domain.PhotosRequest;
+import com.aboutdata.service.PhotosColorsService;
 import com.aboutdata.service.PhotosRequestService;
 import javax.annotation.Resource;
 import org.junit.Test;
@@ -34,7 +36,10 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
     private Logger log;
 
     @Resource
-    private MessageDao messageDao;
+    private PhotosColorsDao photosColorsDao;
+    
+    @Resource
+    private PhotosColorsService photosColorsService;
 
     public void empty() {
 
@@ -42,15 +47,10 @@ public class DemoTest extends AbstractJUnit4SpringContextTests {
 
     @Test
     public void findByIdTest() {
-        Member m = new Member();
-        m.setId("1");
-
-        Pageable pageable = new PageRequest(0, 24);
-        Page<Message> pages = messageDao.findByReceiver(m, pageable);
-        
-        logger.info("################--------------");
-        logger.info("################{}"+pages.getTotalElements());
-
+        Photos p = new Photos();
+        p.setId("3c3c83ea51608fba015160912a8a0000");
+        int result = photosColorsService.deleteByPhotosId("3c3c83ea51608fba015160912a8a0000");
+        log.info("delete count {}", result);
     }
 
 }

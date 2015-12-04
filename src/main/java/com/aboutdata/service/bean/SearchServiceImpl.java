@@ -15,16 +15,19 @@ import com.aboutdata.model.dto.TagDTO;
 import com.aboutdata.service.ConfigService;
 import com.aboutdata.service.SearchService;
 import com.aboutdata.service.TagService;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
 import javax.annotation.Resource;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.client.solrj.impl.XMLResponseParser;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.client.solrj.response.UpdateResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
@@ -53,7 +56,7 @@ public class SearchServiceImpl implements SearchService {
 
     @Resource
     private ConfigService configService;
-    
+
     private static HttpSolrServer solrServer = null;
 
     //初始化slor连接器
@@ -61,7 +64,7 @@ public class SearchServiceImpl implements SearchService {
         if (solrServer == null) {
             try {
                 // configure a server object with actual solr values.
-                 String url ="http://localhost:9090/solr";
+                String url = "http://localhost:9090/solr";
                 // configure a server object with actual solr values.
                 solrServer = new HttpSolrServer(url);
                 solrServer.setParser(new XMLResponseParser());
@@ -175,13 +178,13 @@ public class SearchServiceImpl implements SearchService {
 
                 model.setWallhaven(wallhaven);
                 //model.setCreateDate(new Date());
-               // model.setModifyDate(new DateTime(modify_date).toDate());
+                // model.setModifyDate(new DateTime(modify_date).toDate());
 
                 model.setMember(member);
                 //转换tag
                 List<TagModel> tagList = TagDTO.getTagModelsDTO(tagSet);
                 model.setTags(tagList);
-                
+
                 models.add(model);
             }
             Page<PhotosModel> result = new PageImpl<PhotosModel>(models, pageable, docs.getNumFound());
@@ -190,6 +193,16 @@ public class SearchServiceImpl implements SearchService {
             logger.error("build index error {}", ex);
         }
         return null;
+    }
+
+    @Override
+    public void delete(String id) {
+        try {
+            UpdateResponse response = solrServer.deleteById(id);
+            logger.info("delete index status {}", response.getStatus());
+        } catch (SolrServerException | IOException ex) {
+            logger.error("delete index error {}", ex);
+        }
     }
 
 }

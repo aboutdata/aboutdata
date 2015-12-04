@@ -64,10 +64,9 @@ public class PhotosController {
             String sSearch,
             int sEcho) {
         Pageable pageable = new PageRequest(iDisplayStart, iDisplayLength);
-        
-        
+
         //审核已通过才显示出来
-        Page<PhotosModel> list = photosService.findByStatusList(Arrays.asList(PhotoStatus.APPROVED,PhotoStatus.INDEXED), pageable);
+        Page<PhotosModel> list = photosService.findByStatusList(Arrays.asList(PhotoStatus.APPROVED, PhotoStatus.INDEXED), pageable);
 
         return new TableData(list, sEcho, false);
     }
@@ -85,6 +84,22 @@ public class PhotosController {
         model.addAttribute("photos", photos);
         logger.info(id);
         return "/admin/photos/details";
+    }
+
+    /**
+     * 管理员可以删除图片
+     *
+     * @param comment
+     * @ 现在是永久删除 节省空间 fastdfs也需要把改图片删除
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+    public String delete(@PathVariable("id") String id, String comment, ModelMap model) {
+        logger.info("comment {}", comment);
+        photosService.delete(id);
+        return "redirect:/admin/photos/list";
     }
 
 }
