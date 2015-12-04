@@ -13,16 +13,6 @@
         <title>Lockbur-更多壁纸，更多分享</title>
         <jsp:include page="/WEB-INF/views/portal/common/head_and_css.jsp"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/bootstrap-fileupload/bootstrap-fileupload.min.css">
-        <!--百度统计-->
-        <script>
-            var _hmt = _hmt || [];
-            (function () {
-                var hm = document.createElement("script");
-                hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();
-        </script>
     </head>
     <body>
         <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
@@ -173,30 +163,16 @@
             </footer>
         </section>
     </body>
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
+    <!--<script src="${appBean.assetsUrl}/assets/js/bootstrap/bootstrap.min.js"></script>-->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
     <!-- App -->
-    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
 
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
-
-    <script type="text/javascript">
-            $(document).ready(function () {
-                $("#search").click(function () {
-                    $("#searchbar").toggle("slow");
-                });
-                $('body').vegas({
-                    timer: false,
-                    slides: [
-                        {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
-                    ]
-                });
-            });
-    </script>
 </html>
 
 

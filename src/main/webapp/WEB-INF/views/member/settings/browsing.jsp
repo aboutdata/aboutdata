@@ -179,26 +179,13 @@
             </footer>
         </section>
     </body>
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+    <!--<script src="${appBean.assetsUrl}/assets/js/bootstrap/bootstrap.min.js"></script>-->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
     <!-- App -->
+    <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script> 
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
-    <script src="${pageContext.request.contextPath}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/vegas/vegas.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-    <script type="text/javascript">
-            $(document).ready(function () {
-                $("#search").click(function () {
-                    $("#searchbar").toggle("slow");
-                });
-                $('body').vegas({
-                    timer: false,
-                    slides: [
-                        {src: '${pageContext.request.contextPath}/assets/images/background1.jpg'}
-                    ]
-                });
-            });
-    </script>
 </html>
 

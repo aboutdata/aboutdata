@@ -13,16 +13,6 @@
         <title>查看壁纸原图 - 更多壁纸，更多分享</title>
         <jsp:include page="/WEB-INF/views/portal/common/head_and_css.jsp"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/file-input/css/fileinput.css" type="text/css" />
-        <!--百度统计-->
-        <script>
-            var _hmt = _hmt || [];
-            (function () {
-                var hm = document.createElement("script");
-                hm.src = "//hm.baidu.com/hm.js?15dcd777f63423d27dbca739598638ed";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();
-        </script>
     </head>
     <body>
         <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
@@ -45,7 +35,8 @@
     </body>
     <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
+    <!--<script src="${appBean.assetsUrl}/assets/js/bootstrap/bootstrap.min.js"></script>-->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
 
     <!-- App -->

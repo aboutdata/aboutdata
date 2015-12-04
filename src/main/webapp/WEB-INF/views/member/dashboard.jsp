@@ -26,9 +26,6 @@
     <body>
         <jsp:include page="/WEB-INF/views/portal/common/navbar.jsp"/>
         <section class="vbox">
-            <!---header-->
-            <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
-            <!---header //END-->
             <section>
                 <section class="container scrollable m-b m-t">
                     <section class="hbox stretch">
