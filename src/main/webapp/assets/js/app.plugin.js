@@ -1,6 +1,7 @@
-+function ($) {
++function ($, window) {
     "use strict";
     $(function () {
+        var $window = $(window);
         // slim-scroll
         $('.no-touch .slim-scroll').each(function () {
             var $self = $(this), $data = $self.data(), $slimResize;
@@ -42,5 +43,7 @@
         };
         //END addFavorite
 
-    });
-}(window.jQuery);
+        //图片延迟加载
+        
+    });//"use strict"; function
+}(jQuery, window);

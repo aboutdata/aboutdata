@@ -57,7 +57,13 @@
                                                 <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-control-play i-2x"></i></a>
                                             </div>
                                         </div>
-                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="r r- img-full"></a>
+                                        <!--当图片加载完移除loading-->
+                                        <div class="center text-center m-t-n" id="loading_${photos.id}">
+                                            <img src="${pageContext.request.contextPath}/assets/images/loading.gif">
+                                        </div>
+                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}">
+                                            <img src="${photos.storageHost}/${photos.thumbnail}" data-id="${photos.id}" class="r r- img-full">
+                                        </a>
                                     </div>
                                     <div class="wrapper-sm" ></div>
                                 </div>
@@ -83,6 +89,7 @@
     <!--<script src="${appBean.assetsUrl}/assets/js/bootstrap/bootstrap.min.js"></script>-->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="${appBean.assetsUrl}/assets/js/masonry/jquery.infinitescroll.min.js"></script>
     <!-- App -->
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
@@ -105,7 +112,7 @@
                     navSelector: "#navigation", //导航的选择器，会被隐藏
                     nextSelector: "#navigation a", //包含下一页链接的选择器
                     itemSelector: ".row", //你将要取回的选项(内容块)
-                    debug: true, //启用调试信息
+                    debug: false, //启用调试信息
                     animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
                     extraScrollPx: 150, //滚动条距离底部多少像素的时候开始加载，默认150
                     bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
@@ -125,7 +132,28 @@
                     //程序执行完的回调函数
                     var $newElems = $(newElems);
                     $('#waterfall').append($newElems);
+                    $('#waterfall').imagesLoaded().progress(function (instance, image) {
+                        var $image = $(image.img);
+                        if (!image.isLoaded) {
+                            $image.attr("src", "${pageContext.request.contextPath}/assets/images/images300x200.jpg");
+                        } else {
+                            //加载完毕
+                            var id = $image.data("id");
+                            $("#loading_" + id).hide();
+                        }
+                    });//图片延时加载 END
                 });
+                //图片延时加载  //当图片没加载完显示加载图标和默认图片
+                $('#waterfall').imagesLoaded().progress(function (instance, image) {
+                    var $image = $(image.img);
+                    if (!image.isLoaded) {
+                        $image.attr("src", "${pageContext.request.contextPath}/assets/images/images300x200.jpg");
+                    } else {
+                        //加载完毕
+                        var id = $image.data("id");
+                        $("#loading_" + id).hide();
+                    }
+                });//图片延时加载 END
             });
     </script>
 </html>

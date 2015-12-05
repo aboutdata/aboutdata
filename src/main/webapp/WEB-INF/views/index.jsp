@@ -35,7 +35,7 @@
             <%--<jsp:include page="/WEB-INF/views/portal/common/header.jsp"/>--%>
             <!---header //END-->
             <section class="w-f-md">
-                <section class="container scrollable padder-lg">
+                <section id="waterfall" class="container scrollable padder-lg">
                     <h4 class="font-thin m-b m-t text-white">欢迎进入高清壁纸基地!</h4>
                     <div class="row row-sm">
                         <c:forEach items="${content}" var="photos" varStatus="idx">
@@ -61,7 +61,12 @@
                                                 <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><i class="icon-control-play i-2x"></i></a>
                                             </div>
                                         </div>
-                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}"><img src="${photos.storageHost}/${photos.thumbnail}" alt="" class="lazy r r- img-full"></a>
+                                        <div class="center text-center m-t-n" id="loading_${photos.id}">
+                                            <img src="${pageContext.request.contextPath}/assets/images/loading.gif">
+                                        </div>
+                                        <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}">
+                                            <img src="${photos.storageHost}/${photos.thumbnail}" data-id="${photos.id}" class="r r- img-full">
+                                        </a>
                                     </div>
                                     <div class="wrapper-sm" ></div>
                                 </div>
@@ -80,10 +85,26 @@
     <!--<script src="${appBean.assetsUrl}/assets/js/bootstrap/bootstrap.min.js"></script>-->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="${appBean.assetsUrl}/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- App -->
-    <script src="${pageContext.request.contextPath}/assets/js/lazyload/jquery.lazyload.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>  
+    <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function () {
+                //图片延时加载  //当图片没加载完显示加载图标和默认图片
+                $('#waterfall').imagesLoaded().progress(function (instance, image) {
+                    var $image = $(image.img);
+                    if (!image.isLoaded) {
+                        $image.attr("src", "${pageContext.request.contextPath}/assets/images/images300x200.jpg");
+                    } else {
+                        //加载完毕
+                        var id = $image.data("id");
+                        $("#loading_" + id).hide();
+                    }
+                });//图片延时加载 END
+            });
+    </script>
+
 </html>

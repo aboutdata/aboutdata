@@ -26,7 +26,7 @@ a {
 }
 a:hover,
 a:focus {
-  /*  color: #303437;*/
+    /*  color: #303437;*/
     text-decoration: none;
 }
 label {
@@ -3495,6 +3495,7 @@ fieldset[disabled] .i-checks input + i:before {
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
 }
+
 .item .top {
     position: absolute;
     top: 0;
