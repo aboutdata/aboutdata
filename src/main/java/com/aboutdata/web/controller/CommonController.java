@@ -6,6 +6,7 @@ import com.aboutdata.service.CaptchaService;
 import java.awt.image.BufferedImage;
 import java.security.interfaces.RSAPublicKey;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,8 +36,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/common")
 public class CommonController {
 
+    private static final Logger logger = LoggerFactory.getLogger(CommonController.class);
+
     @Resource(name = "areaServiceImpl")
     private AreaService areaService;
+
     @Resource(name = "captchaServiceImpl")
     private CaptchaService captchaService;
 
@@ -89,9 +95,25 @@ public class CommonController {
 
     /**
      * 资源不存在 404
+     *
+     * @return
      */
     @RequestMapping("/resource_not_found")
     public String resourceNotFound() {
         return "/error/404";
+    }
+
+    /**
+     * 50x错误页面
+     *
+     * @return
+     */
+    @RequestMapping("/server_internal_error")
+    public String serverInternalError() {
+        //sendmail to admin
+        logger.error("serverInternalError {}", new Date());
+
+        //输出当前服务cpu和内存使用信息
+        return "/error/50x";
     }
 }
