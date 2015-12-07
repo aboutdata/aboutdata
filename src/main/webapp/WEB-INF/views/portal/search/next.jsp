@@ -42,11 +42,8 @@
                         </div>
                     </div>
                     <!--当图片加载完移除loading-->
-                    <div class="center text-center m-t-n" id="loading_${photos.id}">
-                        <img src="${pageContext.request.contextPath}/assets/images/loading.gif">
-                    </div>
                     <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}">
-                        <img src="${photos.storageHost}/${photos.thumbnail}" data-id="${photos.id}" class="r r- img-full">
+                        <img src="${pageContext.request.contextPath}/assets/images/images300x200.jpg" data-original="${photos.storageHost}/${photos.thumbnail}" data-provider="lazyload" class="r r- img-full">
                     </a>
                 </div>
                 <div class="wrapper-sm" ></div>
