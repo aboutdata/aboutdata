@@ -58,7 +58,7 @@
                                         </div>
                                         <!--当图片加载完移除loading-->
                                         <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}">
-                                            <img src="${pageContext.request.contextPath}/assets/images/images300x200.jpg" data-original="${photos.storageHost}/${photos.thumbnail}" data-provider="lazyload" class="r r- img-full">
+                                            <img src="${pageContext.request.contextPath}/assets/images/images300x200.jpg" data-original="${appBean.systemConfig.defaultStorageHost}/${photos.thumbnail}" data-provider="lazyload" class="r r- img-full">
                                         </a>
                                     </div>
                                     <div class="wrapper-sm" ></div>
@@ -82,7 +82,7 @@
     </body>
     <script src="${appBean.assetsUrl}/assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="${appBean.assetsUrl}/assets/js/bootstrap.js"></script>
+    <script src="${appBean.assetsUrl}/assets/js/bootstrap.min.js"></script>
     <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/lazyload/jquery.lazyload.min.js"></script>
     <!--无限加载-->

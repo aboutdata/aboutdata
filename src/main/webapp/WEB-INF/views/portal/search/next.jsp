@@ -43,7 +43,7 @@
                     </div>
                     <!--当图片加载完移除loading-->
                     <a href="${pageContext.request.contextPath}/wallpaper/${photos.id}">
-                        <img src="${pageContext.request.contextPath}/assets/images/images300x200.jpg" data-original="${photos.storageHost}/${photos.thumbnail}" data-provider="lazyload" class="r r- img-full">
+                        <img src="${pageContext.request.contextPath}/assets/images/images300x200.jpg" data-original="${appBean.systemConfig.defaultStorageHost}/${photos.thumbnail}" data-provider="lazyload" class="r r- img-full">
                     </a>
                 </div>
                 <div class="wrapper-sm" ></div>
