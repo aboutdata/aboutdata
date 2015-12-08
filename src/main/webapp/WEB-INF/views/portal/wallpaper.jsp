@@ -92,9 +92,17 @@
                                     </div>
                                 </c:if>
                                 <div id="tags-content">
+
                                     <c:forEach items="${photos.tags}" var="tag">
-                                        <lable class="label bg-primary">${tag.name}</lable> 
-                                        </c:forEach>
+                                        <div class="btn-group">
+                                            <a href="${pageContext.request.contextPath}/tags/s/${tag.name}" class="btn btn-dark btn-xs">${tag.name}</a>
+                                            <c:if test="${appBean.getCurrentUser() != null}">
+                                                <a href="#" class="btn btn-danger btn-xs" data-provider="remove-tag" data-photos-id="${photos.id}" data-tag-id="${tag.id}">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </c:if>
+                                        </div>
+                                    </c:forEach>
                                 </div>
                             </div>	
                         </section>
@@ -128,8 +136,8 @@
     <!--<script src="${appBean.assetsUrl}/assets/js/bootstrap/bootstrap.min.js"></script>-->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="${appBean.assetsUrl}/assets/js/vegas/vegas.js"></script>
-    
-    
+
+
     <script src="${appBean.assetsUrl}/assets/js/bootstrap/typeahead/bootstrap3-typeahead.min.js"></script>
     <!-- App -->
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
@@ -178,6 +186,29 @@
                         }
                     });
                 }); //addtags btn end
+
+                //移除标签操作
+                $("a[data-provider=remove-tag]").click(function () {
+                    var _self = $(this);
+
+                    var _photos_id = _self.data("photos-id");
+                    var _tag_id = _self.data("tag-id");
+
+                    $.ajax({
+                        url: "${pageContext.request.contextPath}/member/photos/removeTags",
+                        data: {id: _photos_id, tagId: _tag_id},
+                        type: "POST",
+                        dataType: 'json',
+                        success: function (result) {
+                            _self.parent("div").hide();
+                            console.log(result);
+                        },
+                        error: function (er) {
+                            console.log(er);
+                        }
+                    });
+                    return false;//阻止链接跳转
+                });//remove tag end
         </c:if>
             });
     </script>

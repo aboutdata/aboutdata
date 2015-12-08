@@ -45,6 +45,11 @@
                     <i class="fa fa-github"></i> GitHub Fork Me
                 </a>
             </p>
+            <p>
+                <a href="http://www.userinterface.com.cn" target="_blank">
+                    <i class="fa fa-hand-o-right"></i> 设计师网址导航    
+                </a>
+            </p>
         </div>
     </div>
 </div>

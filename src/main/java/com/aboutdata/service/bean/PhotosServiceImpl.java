@@ -128,6 +128,29 @@ public class PhotosServiceImpl implements PhotosService {
     }
 
     @Override
+    @Transactional
+    public void removeTags(String id, String tagId) {
+        Photos photos = photosDao.findOne(id);
+        Set<Tag> tags = photos.getTags();
+
+        //移除
+        for (Tag tag : tags) {
+             logger.info("{} remove tag id## {}", tag.getId(),tagId);
+            if (tag.getId().equals(tagId)) {
+                logger.info("remove tag id {}", tag.getId());
+                tags.remove(tag);
+                break;
+            }
+        }
+        //重新保存
+        photos.setTags(tags);
+        logger.info("remove tag id {}", tags.size());
+        photos.setStatus(PhotoStatus.APPROVED);
+        photosDao.save(photos);
+
+    }
+
+    @Override
     public List<Photos> findByAlbumId(String albumId) {
         return photosDao.findByAlbumId(albumId);
     }

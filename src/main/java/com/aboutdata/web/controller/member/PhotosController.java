@@ -85,6 +85,7 @@ public class PhotosController {
 
         return "/member/photos/wallpaper";
     }
+
     /**
      * 普通用户可以为图片添加标签
      *
@@ -117,6 +118,23 @@ public class PhotosController {
          */
         photosService.makrStatus(id, PhotoStatus.APPROVED);
 
+        return ResponseMessage.success("添加标签成功");
+    }
+
+    /**
+     * 移除标签
+     *
+     * @param id
+     * @param tagId
+     * @param model
+     * @param rattr
+     * @return
+     */
+    @RequestMapping(value = "/removeTags", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseMessage removeTags(String id, String tagId, ModelMap model, RedirectAttributes rattr) {
+        Member member = memberService.getCurrent();
+        photosService.removeTags(id, tagId);
         return ResponseMessage.success("添加标签成功");
     }
 

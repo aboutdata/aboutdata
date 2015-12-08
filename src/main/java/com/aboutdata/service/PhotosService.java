@@ -26,6 +26,8 @@ public interface PhotosService {
 
     public void addTags(String id, String tagString);
 
+    public void removeTags(String id, String tagId);
+
     public List<Photos> findByAlbumId(String albumId);
 
     public PhotosModel findById(String id);
