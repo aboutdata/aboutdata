@@ -61,6 +61,13 @@
                     var keywords = $("#keywords").val();
                     location.href = "${pageContext.request.contextPath}/search?keywords=" + keywords;
                 });
+                //回车搜索事件
+                $("#keywords").keydown(function (event) {
+                    if (event.keyCode == "13"){
+                       var keywords = $(this).val();
+                       location.href = "${pageContext.request.contextPath}/search?keywords=" + keywords;
+                    };
+                });
             });
     </script>
 
