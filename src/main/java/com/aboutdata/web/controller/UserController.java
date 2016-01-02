@@ -6,6 +6,8 @@
 package com.aboutdata.web.controller;
 
 import com.aboutdata.domain.Member;
+import com.aboutdata.domain.MemberInfomation;
+import com.aboutdata.service.MemberInfomationService;
 import com.aboutdata.service.MemberService;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
@@ -18,6 +20,7 @@ import org.springframework.ui.Model;
 
 /**
  * 主要用于别人查看 该用户资料
+ *
  * @author Administrator
  * @date 2015-12-30 16:11:32
  * @version V1.0
@@ -31,19 +34,23 @@ public class UserController {
     @Resource(name = "memberServiceImpl")
     private MemberService memberService;
 
+    @Resource
+    private MemberInfomationService memberInfomationService;
+
     /**
      * 显示用户主页
+     *
      * @param username
      * @param model
-     * @return 
+     * @return
      */
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)
-    public String wallpaper(@PathVariable("username") String username,Model model) {
+    public String user(@PathVariable("username") String username, Model model) {
         Member member = memberService.findByUsername(username);
+        MemberInfomation memberInfomation = memberInfomationService.findByMember(member);
         
         model.addAttribute("user", member);
-        
-        
+        model.addAttribute("userInfomation", memberInfomation);
         return "/portal/user/profile";
     }
 }

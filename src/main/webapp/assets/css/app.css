@@ -4030,5 +4030,11 @@ fieldset[disabled] .i-checks input + i:before {
     color:#FFF;
     background: rgba(0, 0, 0, 0.4);
 } 
-
+.bg-white-opacity {
+  //opacity:0.5;
+   //background-color: #fff;
+   color:#ad3;
+   background: rgba(255, 255, 255, 0.4);
+   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.33), 0px 0px 50px rgba(255, 255, 255, 0.2) inset;
+}
 
