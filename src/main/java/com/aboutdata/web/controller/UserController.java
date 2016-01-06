@@ -5,10 +5,13 @@
  */
 package com.aboutdata.web.controller;
 
+import com.aboutdata.domain.Comments;
 import com.aboutdata.domain.Member;
 import com.aboutdata.domain.MemberInfomation;
+import com.aboutdata.service.CommentsService;
 import com.aboutdata.service.MemberInfomationService;
 import com.aboutdata.service.MemberService;
+import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +40,9 @@ public class UserController {
     @Resource
     private MemberInfomationService memberInfomationService;
 
+    @Resource
+    private CommentsService commentsService;
+
     /**
      * 显示用户主页
      *
@@ -48,9 +54,14 @@ public class UserController {
     public String user(@PathVariable("username") String username, Model model) {
         Member member = memberService.findByUsername(username);
         MemberInfomation memberInfomation = memberInfomationService.findByMember(member);
-        
+
+        List<Comments> userComments = commentsService.findByUserId(member.getId());
+
         model.addAttribute("user", member);
         model.addAttribute("userInfomation", memberInfomation);
+
+        model.addAttribute("userComments", userComments);
+        
         return "/portal/user/profile";
     }
 }

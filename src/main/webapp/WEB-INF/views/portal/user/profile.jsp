@@ -63,125 +63,44 @@
                                     <section class="panel panel-default">
                                         <header class="panel-heading font-bold">人生格言</header>
                                         <div class="panel-body">
-                                             <p>${userInfomation.description}</p>
+                                            <p>${userInfomation.description}</p>
                                         </div>
                                     </section>
 
                                     <section class="panel panel-default">
                                         <div class="panel-body">
                                             <section class="comment-list block">
-                                                <article id="comment-id-1" class="comment-item">
-                                                    <a class="pull-left thumb-sm avatar">
-                                                        <img src="${pageContext.request.contextPath}/assets/images/user.jpg" class="img-circle" alt="...">
-                                                    </a>
-                                                    <span class="arrow left"></span>
-                                                    <section class="comment-body panel panel-default">
-                                                        <header class="panel-heading bg-white">
-                                                            <a href="#">一名清官</a>
-                                                            <label class="label bg-info m-l-xs">Editor</label> 
-                                                            <span class="text-muted m-l-sm pull-right">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                Just now
-                                                            </span>
-                                                        </header>
-                                                        <div class="panel-body">
-                                                            <div>Lorem ipsum dolor sit amet, consecteter adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</div>
-                                                            <div class="comment-action m-t-sm">
-                                                                <a href="#" data-toggle="class" class="btn btn-default btn-xs active">
-                                                                    <i class="fa fa-star-o text-muted text"></i>
-                                                                    <i class="fa fa-star text-danger text-active"></i> 
-                                                                    Like
-                                                                </a>
-                                                                <a href="#comment-form" class="btn btn-default btn-xs">
-                                                                    <i class="fa fa-mail-reply text-muted"></i> Reply
-                                                                </a>
+                                                <c:forEach items="${userComments}" var="comments">
+                                                    <article id="comment-id-1" class="comment-item">
+                                                        <a class="pull-left thumb-sm avatar">
+                                                            <img src="${pageContext.request.contextPath}/assets/images/user.jpg" class="img-circle" alt="...">
+                                                        </a>
+                                                        <span class="arrow left"></span>
+                                                        <section class="comment-body panel panel-default">
+                                                            <header class="panel-heading bg-white">
+                                                                <a href="#">${comments.member.username}</a>
+                                                                <label class="label bg-info m-l-xs">普通用户</label> 
+                                                                <span class="text-muted m-l-sm pull-right">
+                                                                    <i class="fa fa-clock-o"></i>
+                                                                    ${comments.createDate}
+                                                                </span>
+                                                            </header>
+                                                            <div class="panel-body">
+                                                                <div>${comments.comment}.</div>
                                                             </div>
-                                                        </div>
-                                                    </section>
-                                                </article>
-                                                <!-- .comment-reply -->
-                                                <article id="comment-id-2" class="comment-item comment-reply">
-                                                    <a class="pull-left thumb-sm avatar">
-                                                        <img src="${pageContext.request.contextPath}/assets/images/user.jpg" alt="...">
-                                                    </a>
-                                                    <span class="arrow left"></span>
-                                                    <section class="comment-body panel panel-default text-sm">
-                                                        <div class="panel-body">
-                                                            <span class="text-muted m-l-sm pull-right">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                10m ago
-                                                            </span>
-                                                            <a href="#">Mika Sam</a>
-                                                            <label class="label bg-dark m-l-xs">Admin</label> 
-                                                            Report this comment is helpful                           
-                                                        </div>
-                                                    </section>
-                                                </article>
-                                                <!-- / .comment-reply -->
-                                                <article id="comment-id-3" class="comment-item">
-                                                    <a class="pull-left thumb-sm avatar"><img src="${pageContext.request.contextPath}/assets/images/user.jpg" alt="..."></a>
-                                                    <span class="arrow left"></span>
-                                                    <section class="comment-body panel panel-default">
-                                                        <header class="panel-heading">                      
-                                                            <a href="#">By me</a>
-                                                            <label class="label bg-success m-l-xs">User</label> 
-                                                            <span class="text-muted m-l-sm pull-right">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                1h ago
-                                                            </span>
-                                                        </header>
-                                                        <div class="panel-body">
-                                                            <div>This comment was posted by you.</div>
-                                                            <div class="comment-action m-t-sm">
-                                                                <a href="#comment-id-3" data-dismiss="alert" class="btn btn-default btn-xs">
-                                                                    <i class="fa fa-trash-o text-muted"></i> 
-                                                                    Remove
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </section>
-                                                </article>
-                                                <article id="comment-id-4" class="comment-item">
-                                                    <a class="pull-left thumb-sm avatar"><img src="${pageContext.request.contextPath}/assets/images/user.jpg" alt="..."></a>
-                                                    <span class="arrow left"></span>
-                                                    <section class="comment-body panel panel-default">
-                                                        <header class="panel-heading">
-                                                            <a href="#">Peter</a>
-                                                            <label class="label bg-primary m-l-xs">Vip</label> 
-                                                            <span class="text-muted m-l-sm pull-right">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                2hs ago
-                                                            </span>
-                                                        </header>
-                                                        <div class="panel-body">
-                                                            <blockquote>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                                                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                                                            </blockquote>
-                                                            <div>Lorem ipsum dolor sit amet, consecteter adipiscing elit...</div>
-                                                            <div class="comment-action m-t-sm">
-                                                                <a href="#" data-toggle="class" class="btn btn-default btn-xs">
-                                                                    <i class="fa fa-star-o text-muted text"></i>
-                                                                    <i class="fa fa-star text-danger text-active"></i> 
-                                                                    Like
-                                                                </a>
-                                                                <a href="#comment-form" class="btn btn-default btn-xs"><i class="fa fa-mail-reply text-muted"></i> Reply</a>
-                                                            </div>
-                                                        </div>
-                                                    </section>
-                                                </article>
+                                                        </section>
+                                                    </article>
+                                                </c:forEach>
                                                 <!-- comment form -->
                                                 <article class="comment-item media" id="comment-form">
                                                     <a class="pull-left thumb-sm avatar"><img src="${pageContext.request.contextPath}/assets/images/user.jpg" alt="..."></a>
                                                     <section class="media-body">
-                                                        <form action="index.html" class="m-b-none">
-                                                            <div class="input-group">
-                                                                <input class="form-control" placeholder="Input your comment here" type="text">
-                                                                <span class="input-group-btn">
-                                                                    <button class="btn btn-primary" type="button">提交</button>
-                                                                </span>
-                                                            </div>
-                                                        </form>
+                                                        <div class="input-group">
+                                                            <input id="user-comment" class="form-control" placeholder="Input your comment here" type="text">
+                                                            <span class="input-group-btn">
+                                                                <button id="user-comments-post" class="btn btn-primary" type="button">提交</button>
+                                                            </span>
+                                                        </div>
                                                     </section>
                                                 </article>
                                             </section>
@@ -328,14 +247,33 @@
     <script src="${pageContext.request.contextPath}/assets/js/app.plugin.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>
     <script type="text/javascript">
-                $(document).ready(function () {
-                    //图片延时加载  //当图片没加载完显示加载图标和默认图片
-                    $("img[data-provider=lazyload]").lazyload({
-                        placeholder: "${pageContext.request.contextPath}/assets/images/images300x200.jpg",
-                        container: $("#waterfall")
-                    });
-
+            $(document).ready(function () {
+                //图片延时加载  //当图片没加载完显示加载图标和默认图片
+                $("img[data-provider=lazyload]").lazyload({
+                    placeholder: "${pageContext.request.contextPath}/assets/images/images300x200.jpg",
+                    container: $("#waterfall")
                 });
+
+                $("#user-comments-post").click(function () {
+                    var _userId = "${user.id}";
+                    var _comment = $("#user-comment").val();
+                    $.ajax({
+                        type: "post",
+                        url: "/member/comments/user",
+                        data: {userId: _userId, comment: _comment},
+                        dataType: "json",
+                        success: function (data) {
+                            //成功后显示红星
+                            //_self.siblings("span").addClass("hide");
+                            // _self.siblings("a").removeClass("hide");
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert(errorThrown);
+                        }
+                    });
+                });
+
+            });
     </script>
 
 </html>
